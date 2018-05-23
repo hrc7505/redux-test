@@ -1,0 +1,5 @@
+$leftPaneWidth:200px;
+$leftPaneBorder:2px; // 1px to left and 1px to right
+.header {
+    width: calc(100% - #{$leftPaneWidth} - #{$leftPaneBorder});
+}

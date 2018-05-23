@@ -3,14 +3,14 @@ import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, Store } from "redux";
 
-import { ConnectedApp } from "./components/header/top-bar/Container";
-import toggleMenu from "./components/header/top-bar/reducer";
-import { IToggleMenu } from "./components/header/top-bar/State";
+import LeftPaneContainer from "./app/duck/LeftPaneContainer";
+import toggleMenu from "./app/header/top-bar/duck/reducer";
+import { IToggleMenu } from "./app/header/top-bar/duck/State";
 
 const store: Store<IToggleMenu> = createStore(toggleMenu);
 ReactDOM.render(
     <Provider store={store}>
-        <ConnectedApp />
+        <LeftPaneContainer />
     </Provider>,
     document.getElementById("root")
 );

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { IToggleMenu } from "./State";
+import { IToggleMenu } from "./duck/State";
 
 import "./topBarStyle.scss";
 
@@ -11,9 +11,9 @@ export interface ITopBarProps extends IToggleMenu {
 export default class TopBar extends React.Component<ITopBarProps> {
     public render(): JSX.Element {
         return (
-            <div className="topBar pullLeft">
+            <div className="topBar cPanel">
                 <div onClick={(): void => this.toggleHamburgerMenu()} className="hamburgerMenuIcon">
-                    icon
+                    MENU
                 </div>
             </div>
         );
