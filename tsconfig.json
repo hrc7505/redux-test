@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonJs",
+        "target": "es5",
+        "jsx": "react",
+        "noUnusedLocals": true,
+        "lib": [
+            "es5",
+            "es6",
+            "dom"
+        ]
+    },
+    "include": [
+        "./client/**/*"
+    ]
+}

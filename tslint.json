@@ -1,0 +1,68 @@
+{
+    "extends": ["tslint:recommended"],
+    "jsRules": {},
+    "rules": {
+      "prefer-conditional-expression":true,
+      "ordered-imports": [
+        true,
+        {
+          "import-sources-order": "case-insensitive",
+          "module-source-path":"basename", 
+          "named-imports-order": "case-insensitive",
+          "grouped-imports": true
+        }
+      ],
+      "no-duplicate-imports": true,
+      "no-import-side-effect": [true, {"ignore-module": "(\\.css|.scss)$"}],
+      "whitespace": [
+        true, 
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-module",
+        "check-separator",
+        "check-rest-spread",
+        "check-type",
+        "check-typecast",
+        "check-type-operator",
+        "check-preblock"
+      ],
+      "one-variable-per-declaration": true,
+      "newline-before-return": true,
+      "trailing-comma":false,
+      "no-any": true,
+      "only-arrow-functions": true,
+      "member-ordering": [
+        true,
+        {
+          "order": [
+            "public-static-field",
+            "public-instance-field",
+            "public-constructor",
+            "private-static-field",
+            "private-instance-field",
+            "private-constructor",
+            "public-instance-method",
+            "protected-instance-method",
+            "private-instance-method"
+          ]
+        }
+      ],
+      "typedef": [
+        true,
+          "call-signature",
+          "parameter", 
+          "member-variable-declaration",
+          "arrow-call-signature",
+          "property-declaration",
+          "variable-declaration",
+          "arrow-parameter"
+      ],
+      "prefer-object-spread": true,
+      "arrow-return-shorthand": [true, "multiline"],
+      "jsdoc-format": [true, "check-multiline-start"],
+      "prefer-switch": true,
+      "no-magic-numbers":[true,-1]
+    },
+    "rulesDirectory": []
+}
