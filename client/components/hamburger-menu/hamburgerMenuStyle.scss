@@ -1,0 +1,19 @@
+$commonBorder:1px solid;
+.hamburgerMenu {
+    width: 200px;
+    border: $commonBorder;
+    height: 100vh;
+    .logo {
+        height: 50px;
+        border-bottom: $commonBorder;
+    }
+    .menuItemContainer {
+        .menuItem {
+            border-bottom: $commonBorder;
+            padding: 10px;
+            .menuItemName {
+                margin-left: 10px;
+            }
+        }
+    }
+}
