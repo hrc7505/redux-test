@@ -1,0 +1,13 @@
+.topBar {
+    height: 50px;
+    box-shadow: 0 0px 20px 2px #ccc;
+    .hamburgerMenuIcon {
+        width: 50px;
+        height: 100%;
+        background: #ccc;
+        display: flex;
+        align-items: center;
+        border:1px solid;
+        cursor: pointer;
+    }
+}
