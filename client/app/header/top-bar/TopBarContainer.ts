@@ -1,17 +1,17 @@
 import { connect, Dispatch } from "react-redux";
 
-import { IToggleMenuAction, toggleMenu } from "./actions";
-import { IToggleMenu } from "./State";
-import TopBar from "../TopBar";
+import { IToggleMenuAction, toggleMenu } from "./duck/actions";
+import { IToggleMenu } from "./duck/State";
+import TopBar from "./TopBar";
 
 const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({
-    isShowMenu: state.isShowMenu
+    isLeftMenuVisible: state.isLeftMenuVisible
 });
 
 const TopBarContainer: React.ComponentClass = connect(
     mapStateToProps,
     (dispatch: Dispatch<IToggleMenuAction>) => ({
-        toggleMenu: (toggle: IToggleMenu): IToggleMenuAction => dispatch(toggleMenu(toggle)),
+        toggleMenu: (): IToggleMenuAction => dispatch(toggleMenu()),
     })
 )<IToggleMenu>(TopBar);
 

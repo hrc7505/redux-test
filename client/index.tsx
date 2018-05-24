@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, Store } from "redux";
 
-import LeftPaneContainer from "./app/duck/LeftPaneContainer";
+import LeftPaneContainer from "./app/LeftPaneContainer";
 import toggleMenu from "./app/header/top-bar/duck/reducer";
 import { IToggleMenu } from "./app/header/top-bar/duck/State";
 

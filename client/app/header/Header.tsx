@@ -1,11 +1,12 @@
 import * as React from "react";
 
-import TopBarContainer from "./top-bar/duck/TopBarContainer";
+import { IToggleMenu } from "./top-bar/duck/State";
+import TopBarContainer from "./top-bar/TopBarContainer";
 
 import "./headerStyle.scss";
 
-const Header: React.SFC<object> = (): JSX.Element => (
-    <header className="header pullLeft">
+const Header: React.SFC<IToggleMenu> = (props: IToggleMenu): JSX.Element => (
+    <header className={`header pullLeft ${!props.isLeftMenuVisible ? "cPanel" : ""}`}>
         <TopBarContainer />
     </header>
 );
