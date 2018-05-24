@@ -1,12 +1,9 @@
-import { IToggleMenu } from "./State";
-
 import { TOGGLE_MENU } from "./actionTypes";
 
-export interface IToggleMenuAction extends IToggleMenu {
+export interface IToggleMenuAction {
     type: TOGGLE_MENU;
 }
 
-export const toggleMenu: (newState: IToggleMenu) => IToggleMenuAction = (newState: IToggleMenu): IToggleMenuAction => ({
-    isShowMenu: newState.isShowMenu,
+export const toggleMenu: () => IToggleMenuAction = (): IToggleMenuAction => ({
     type: TOGGLE_MENU
 });

@@ -4,6 +4,12 @@ body {
     padding: 0;
 }
 
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 $width:100%;
 $fLeft:left;
 .cPanel {
@@ -15,8 +21,13 @@ $fLeft:left;
     float: $fLeft;
 }
 
-// Flexbox classes
+.containerFluid {
+    // 212px = leftPane width, 72px = left side empty space, 170px = right side empty space
+    width: calc(100% - 212px - 72px - 170px);
+    padding: 0 20px;
+}
 
+// Flexbox classes
 .flexBox {
     display: flex;
     display: -webkit-flex;
@@ -28,4 +39,14 @@ $fLeft:left;
 
 .flexBox.hCenter {
     justify-content: center;
+}
+
+.flexBox.hSpaceBetween{
+    justify-content: space-between;
+}
+
+@media only screen and (min-width:1920px) {
+    .containerFluid {
+        max-width: 1366px;
+    }
 }

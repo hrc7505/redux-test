@@ -7,7 +7,7 @@ const toggleMenu: (state: IToggleMenu, action: IToggleMenuAction) => IToggleMenu
 
         switch (action.type) {
             case TOGGLE_MENU:
-                return { isShowMenu: !state.isShowMenu };
+                return { isLeftMenuVisible: !state.isLeftMenuVisible };
 
             default:
                 return state || defaultState;

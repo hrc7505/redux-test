@@ -1,7 +1,7 @@
 export interface IToggleMenu {
-    isShowMenu: boolean;
+    isLeftMenuVisible: boolean;
 }
 
 export const defaultState: IToggleMenu = {
-    isShowMenu: true
+    isLeftMenuVisible: true
 };
