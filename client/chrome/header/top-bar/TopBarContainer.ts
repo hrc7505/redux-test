@@ -1,7 +1,7 @@
 import { connect, Dispatch } from "react-redux";
 
-import { IToggleMenuAction, toggleMenu } from "./duck/actions";
-import { IToggleMenu } from "./duck/State";
+import { IToggleMenuAction, toggleMenu } from "../../../duck/Actions";
+import { IToggleMenu } from "../../../duck/State";
 import TopBar from "./TopBar";
 
 const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({

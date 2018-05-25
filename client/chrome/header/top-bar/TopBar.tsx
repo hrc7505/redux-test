@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { IToggleMenu } from "./duck/State";
+import { IToggleMenu } from "../../../duck/State";
 
 import "./topBarStyle.scss";
 

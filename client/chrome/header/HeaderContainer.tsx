@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import Header from "./Header";
-import { IToggleMenu } from "./top-bar/duck/State";
+import { IToggleMenu } from "../../duck/State";
 
 const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({
     isLeftMenuVisible: state.isLeftMenuVisible
