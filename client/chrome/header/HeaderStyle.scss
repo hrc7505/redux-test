@@ -1,0 +1,11 @@
+$leftPaneWidth:212px;
+.header {
+    width: calc(100% - #{$leftPaneWidth});
+    .menuItem {
+        text-transform: uppercase;
+    }
+    .entityTitle {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+}

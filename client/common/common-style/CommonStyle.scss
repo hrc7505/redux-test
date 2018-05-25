@@ -27,6 +27,13 @@ $fLeft:left;
     padding: 0 20px;
 }
 
+.contentContainer {
+    margin-left: 72px;
+    padding: 0 20px;
+    width: calc(100% - 72px);
+    float: $fLeft;
+}
+
 // Flexbox classes
 .flexBox {
     display: flex;
@@ -41,7 +48,7 @@ $fLeft:left;
     justify-content: center;
 }
 
-.flexBox.hSpaceBetween{
+.flexBox.hSpaceBetween {
     justify-content: space-between;
 }
 
