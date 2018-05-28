@@ -1,15 +1,24 @@
+$leftPaneWidth:212px;
+$commonBorder:1px solid #EAEEF8;
+$topBarHeight:72px;
 .topBar {
-    height: 72px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100% - #{$leftPaneWidth});
+    height: $topBarHeight;
+    background: #fff;
+    z-index: 2;
     box-shadow: 0 0px 20px 2px #ccc;
+    border-bottom: $commonBorder;
     .hamburgerMenuIcon {
-        width: 72px;
+        width: $topBarHeight;
         height: 100%;
-        background: #ccc;
-        border: 1px solid;
+        border: $commonBorder;
         cursor: pointer;
     }
     .remainingPart {
-        width: calc(100% - 72px);
+        width: calc(100% - #{$topBarHeight});
         padding: 0 20px;
         .companyName {
             font-size: 16px;

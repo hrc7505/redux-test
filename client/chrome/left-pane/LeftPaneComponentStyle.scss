@@ -1,10 +1,18 @@
 $commonBorder:1px solid #EAEEF8;
+$paneWidth:212px;
 .hamburgerMenu {
-    width: 212px;
+    width: $paneWidth;
     border: $commonBorder;
     height: 100vh;
     .logo {
         height: 72px;
+        border-bottom: $commonBorder;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #fff;
+        z-index: 3;
+        width: $paneWidth;
         border-bottom: $commonBorder;
     }
     .menuItemContainer {
@@ -23,5 +31,15 @@ $commonBorder:1px solid #EAEEF8;
                 padding: 0 17px 0 8px;
             }
         }
+    }
+}
+
+.hamburgerMenu.hiddeMenu {
+    width: 0;
+    overflow: hidden;
+    height: 0;
+    border: 0;
+    .logo{
+        z-index: 0;
     }
 }

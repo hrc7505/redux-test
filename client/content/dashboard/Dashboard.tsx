@@ -1,12 +1,12 @@
 import * as React from "react";
 
+import DetailsListComponent from "../../common/detail-list/DetailListComponent";
 import JobComponent from "./JobComponent";
 
 import "./dashboardStyle.scss";
-import DetailsListComponent from "../../common/detail-list/DetailListComponent";
 
 const Dashboard: React.SFC<object> = (): JSX.Element => (
-    <div className="dashboard containerFluid pullLeft">
+    <div className="dashboard pullLeft">
         <div className="cPanel">
             <div className="activeJobs cPanel">
                 <JobComponent />
