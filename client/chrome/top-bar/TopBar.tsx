@@ -1,17 +1,19 @@
 import * as React from "react";
 
-import { IToggleMenu } from "../../../duck/State";
-
 import "./topBarStyle.scss";
 
+export interface IToggleMenu {
+    isLeftMenuVisible: boolean;
+}
+
 export interface ITopBarProps extends IToggleMenu {
-    toggleMenu: () => void;
+    toggleMenu?: () => void;
 }
 
 export default class TopBar extends React.Component<ITopBarProps> {
     public render(): JSX.Element {
         return (
-            <div className="topBar cPanel flexBox vCenter">
+            <div className={`topBar flexBox vCenter ${!this.props.isLeftMenuVisible ? "cPanel" : ""}`}>
                 <div
                     onClick={(): void => this.toggleHamburgerMenu()}
                     className="hamburgerMenuIcon flexBox vCenter hCenter pullLeft"

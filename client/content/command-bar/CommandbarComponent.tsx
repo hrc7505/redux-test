@@ -2,6 +2,8 @@ import { CommandBar, ICommandBarProps } from "office-ui-fabric-react/lib/Command
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import * as React from "react";
 
+import { IRightPanelAction } from "../../duck/Actions";
+
 import "./CommandComponentBarStyle.scss";
 
 interface IState {
@@ -10,9 +12,14 @@ interface IState {
     areNamesVisible: boolean;
 }
 
-export default class CommandbarComponent extends React.Component<ICommandBarProps, IState> {
+export interface ICommandBarComponentProps {
+    commandBarProps: ICommandBarProps;
+    showRightPanel: () => IRightPanelAction;
+}
 
-    constructor(props: ICommandBarProps) {
+export default class CommandbarComponent extends React.Component<ICommandBarComponentProps, IState> {
+
+    constructor(props: ICommandBarComponentProps) {
         super(props);
         this.state = {
             areIconsVisible: true,
@@ -22,7 +29,7 @@ export default class CommandbarComponent extends React.Component<ICommandBarProp
     }
 
     public render(): JSX.Element {
-        const { items, overflowItems, farItems } = this.props;
+        const { items, overflowItems, farItems } = this.props.commandBarProps;
 
         const filteredItems: IContextualMenuItem[] = items.map((item: IContextualMenuItem) => (
             this.getMenuItemProps(item)
@@ -38,6 +45,7 @@ export default class CommandbarComponent extends React.Component<ICommandBarProp
 
         return (
             <div className="cPanel commandBarContainer" >
+                <button onClick={this.props.showRightPanel}>open right panel</button>
                 <CommandBar
                     elipisisAriaLabel="More options"
                     items={filteredItems}

@@ -1,0 +1,8 @@
+$topBarHeight:72px;
+.panelLayerClass {
+    height: calc(100% - #{$topBarHeight});
+    top: $topBarHeight;
+    .panelRoot {
+        background: rgba(0, 0, 0, 0.62);
+    }
+}

@@ -1,6 +1,10 @@
 $leftPaneWidth:212px;
-.header {
+$topBarHeight:72px;
+.contentComponent {
     width: calc(100% - #{$leftPaneWidth});
+    margin-top: $topBarHeight;
+    overflow: auto;
+    height: calc(100vh - #{$topBarHeight});
     .menuItem {
         text-transform: uppercase;
     }
