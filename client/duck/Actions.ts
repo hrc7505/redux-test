@@ -1,18 +1,28 @@
-import { TOGGLE_MENU } from "./actionTypes";
-import { TOGGLE_RIGHT_PANEL } from "./ActionTypes";
+import * as ActionTypes from "./ActionTypes";
 
 export interface IToggleMenuAction {
-    type: TOGGLE_MENU;
+    type: ActionTypes.TOGGLE_MENU;
 }
 
-export interface IRightPanelAction {
-    type: TOGGLE_RIGHT_PANEL;
+export interface IOpenRightPanelAction {
+    childComponent: JSX.Element;
+    type: ActionTypes.OPEN_RIGHT_PANEL;
+}
+
+export interface ICloseRightPanelAction {
+    type: ActionTypes.CLOSE_RIGHT_PANEL;
 }
 
 export const toggleMenu: () => IToggleMenuAction = (): IToggleMenuAction => ({
-    type: TOGGLE_MENU
+    type: ActionTypes.TOGGLE_MENU
 });
 
-export const toggleRightPanel: () => IRightPanelAction = (): IRightPanelAction => ({
-    type: TOGGLE_RIGHT_PANEL
+export const openRightPanel: (childComponent: JSX.Element) => IOpenRightPanelAction =
+    (childComponent: JSX.Element): IOpenRightPanelAction => ({
+        childComponent,
+        type: ActionTypes.OPEN_RIGHT_PANEL,
+    });
+
+export const closeRightPanel: () => ICloseRightPanelAction = (): ICloseRightPanelAction => ({
+    type: ActionTypes.CLOSE_RIGHT_PANEL
 });

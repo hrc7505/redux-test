@@ -2,22 +2,28 @@ import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button"
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import * as React from "react";
 
-import { IRightPanelAction } from "../../duck/Actions";
+import { ICloseRightPanelAction } from "../../duck/Actions";
 
 import "./RightPanelComponentStyle.scss";
 
 export interface IRightPanelProps {
     isRightPanelVisible: boolean;
-    showRightPanel: () => IRightPanelAction;
+    childComponent: JSX.Element;
+    closeRightPanel: () => ICloseRightPanelAction;
 }
 
 export default class RightPanelComponent extends React.Component<IRightPanelProps> {
+    private panelInstance: Panel;
     public render(): JSX.Element {
         return (
             <Panel
+                componentRef={(panelInstance: Panel): Panel => this.panelInstance = panelInstance}
                 isOpen={this.props.isRightPanelVisible}
-                type={PanelType.smallFixedFar}
-                onDismissed={this.props.showRightPanel}
+                type={PanelType.custom}
+                customWidth="500px"
+                onLightDismissClick={this.closePanel}
+                onDismissed={this.closePanel}
+                isLightDismiss={true}
                 headerText="Test Panel"
                 closeButtonAriaLabel="Close"
                 onRenderFooterContent={this.onRenderFooterContent}
@@ -25,17 +31,21 @@ export default class RightPanelComponent extends React.Component<IRightPanelProp
                 className="panelRoot"
                 layerProps={{ className: "panelLayerClass" }}
             >
-                <div>hello I am panel</div>
+               {this.props.childComponent}
             </Panel>
         );
     }
 
+    private closePanel = (): void => {
+        this.props.closeRightPanel();
+    }
+
     private onRenderFooterContent = (): JSX.Element => (
         <div>
-            <PrimaryButton onClick={this.props.showRightPanel} style={{ marginRight: "8px" }}>
+            <PrimaryButton onClick={this.panelInstance.dismiss} style={{ marginRight: "8px" }}>
                 Save
             </PrimaryButton>
-            <DefaultButton onClick={this.props.showRightPanel}>Cancel</DefaultButton>
+            <DefaultButton onClick={this.props.closeRightPanel}>Cancel</DefaultButton>
         </div>
     )
 }

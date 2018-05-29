@@ -7,9 +7,11 @@ const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu
     isLeftMenuVisible: state.isLeftMenuVisible,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<IToggleMenuAction>) => ({
-    toggleMenu: (): IToggleMenuAction => dispatch(toggleMenu()),
-});
+function mapDispatchToProps(dispatch: Dispatch<IToggleMenuAction>): ReturnType<typeof mapDispatchToProps> {
+    return {
+        toggleMenu: (): IToggleMenuAction => dispatch(toggleMenu())
+    };
+}
 
 const TopBarContainer: React.ComponentClass = connect(
     mapStateToProps,

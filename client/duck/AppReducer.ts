@@ -1,27 +1,30 @@
-import { IRightPanelAction, IToggleMenuAction } from "./actions";
-import { TOGGLE_MENU } from "./actionTypes";
-import { TOGGLE_RIGHT_PANEL } from "./ActionTypes";
+import { ICloseRightPanelAction, IOpenRightPanelAction, IToggleMenuAction } from "./actions";
+import * as ActionTypes from "./ActionTypes";
 import IAppState, { defaultState } from "./State";
 
-type Action = IToggleMenuAction | IRightPanelAction;
+type Action = IToggleMenuAction | IOpenRightPanelAction | ICloseRightPanelAction;
 
-const AppReducer: (state: IAppState, action: Action) => IAppState =
-    (state: IAppState, action: Action): IAppState => {
-        switch (action.type) {
-            case TOGGLE_MENU:
-                return {
-                    ...state,
-                    isLeftMenuVisible: !state.isLeftMenuVisible
-                };
-            case TOGGLE_RIGHT_PANEL:
-                return {
-                    ...state,
-                    isRightPanelVisible: !state.isRightPanelVisible
-                };
+export default function appReducer(state: IAppState, action: Action): IAppState {
+    switch (action.type) {
+        case ActionTypes.TOGGLE_MENU:
+            return {
+                ...state,
+                isLeftMenuVisible: !state.isLeftMenuVisible
+            };
+        case ActionTypes.OPEN_RIGHT_PANEL:
+            return {
+                ...state,
+                childComponent: action.childComponent,
+                isRightPanelVisible: true,
+            };
 
-            default:
-                return state || defaultState;
-        }
-    };
+        case ActionTypes.CLOSE_RIGHT_PANEL:
+            return {
+                ...state,
+                isRightPanelVisible: false
+            };
 
-export default AppReducer;
+        default:
+            return state || defaultState;
+    }
+}

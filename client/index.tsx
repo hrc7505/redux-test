@@ -4,10 +4,10 @@ import { Provider } from "react-redux";
 import { createStore, Store } from "redux";
 
 import AppComponent from "./AppComponent";
-import AppReducer from "./duck/AppReducer";
+import appReducer from "./duck/AppReducer";
 import IAppState from "./duck/State";
 
-const store: Store<IAppState> = createStore(AppReducer);
+const store: Store<IAppState> = createStore(appReducer);
 ReactDOM.render(
     <Provider store={store}>
         <AppComponent />

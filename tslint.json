@@ -31,7 +31,6 @@
       "newline-before-return": true,
       "trailing-comma":false,
       "no-any": true,
-      "only-arrow-functions": true,
       "member-ordering": [
         true,
         {
@@ -62,7 +61,8 @@
       "arrow-return-shorthand": [true, "multiline"],
       "jsdoc-format": [true, "check-multiline-start"],
       "prefer-switch": true,
-      "no-magic-numbers":[true,-1]
+      "no-magic-numbers":[true,-1],
+      "object-literal-sort-keys":false
     },
     "rulesDirectory": []
 }
