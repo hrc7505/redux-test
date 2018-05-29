@@ -52,10 +52,12 @@ export default interface IAppState {
     isLeftMenuVisible: boolean;
     isRightPanelVisible: boolean;
     commandBarProps: ICommandBarProps;
+    childComponent: JSX.Element;
 }
 
 export const defaultState: IAppState = {
+    childComponent: null,
     commandBarProps,
-    isLeftMenuVisible: true,
     isRightPanelVisible: false,
+    isLeftMenuVisible: true
 };
