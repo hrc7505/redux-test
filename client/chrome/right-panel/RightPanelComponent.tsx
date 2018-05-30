@@ -2,15 +2,9 @@ import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button"
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import * as React from "react";
 
-import { ICloseRightPanelAction } from "../../duck/Actions";
+import IRightPanelProps from "./models/IRightPanelProps";
 
 import "./RightPanelComponentStyle.scss";
-
-export interface IRightPanelProps {
-    isRightPanelVisible: boolean;
-    childComponent: JSX.Element;
-    closeRightPanel: () => ICloseRightPanelAction;
-}
 
 export default class RightPanelComponent extends React.Component<IRightPanelProps> {
     private panelInstance: Panel;

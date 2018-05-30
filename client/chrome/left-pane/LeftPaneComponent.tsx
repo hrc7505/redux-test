@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { IToggleMenu } from "../top-bar/TopBar";
+import IToggleMenu from "../top-bar/models/IToggleMenu";
 
 import "./leftPaneComponentStyle.scss";
 

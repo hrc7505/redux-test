@@ -1,29 +1,28 @@
-import { CommandBar, ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
+import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
+import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { Dropdown } from "office-ui-fabric-react/lib/Dropdown";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
-import { IOpenRightPanelAction } from "../../duck/Actions";
+import ICommandBarComponentProps from "./models/ICommandBarComponentProps";
 
-import "./CommandComponentBarStyle.scss";
-
-export interface ICommandBarComponentProps {
-    commandBarProps: ICommandBarProps;
-    openRightPanel: (child: JSX.Element) => IOpenRightPanelAction;
-}
+import "./CommandBarComponentStyle.scss";
 
 export default class CommandbarComponent extends React.Component<ICommandBarComponentProps> {
-    public render(): JSX.Element {
-        const { items, overflowItems, farItems } = this.props.commandBarProps;
+    constructor(props: ICommandBarComponentProps) {
+        super(props);
+console.log(props);
+
+        const { items, farItems } = props.commandBarReducer.commandBarProps;
+        this.addClickHandlerToItems(items);
+        this.addClickHandlerToItems(farItems);
+    }
+
+    public render(): JSX.Element | JSX.Element[] {
+        const { items, overflowItems, farItems } = this.props.commandBarReducer.commandBarProps;
 
         return (
             <div className="cPanel commandBarContainer" >
-                <button onClick={(): IOpenRightPanelAction => this.props.openRightPanel(<Test1 />)}>
-                    Show compoment1
-                </button>
-                <button onClick={(): IOpenRightPanelAction => this.props.openRightPanel(<Test2 />)}>
-                    Show compoment2
-                </button>
                 <CommandBar
                     elipisisAriaLabel="More options"
                     items={items}
@@ -33,9 +32,31 @@ export default class CommandbarComponent extends React.Component<ICommandBarComp
             </div>
         );
     }
+
+    private addClickHandlerToItems = (items: IContextualMenuItem[]): void => {
+        items.map((data: IContextualMenuItem) => {
+            data.onClick = (): void => this.setAction(data);
+        });
+    }
+
+    private setAction(item: IContextualMenuItem): void {
+        switch (item.key) {
+            case "asset":
+                this.props.openRightPanel(<Test1 />);
+                break;
+
+            case "job":
+                this.props.openRightPanel(<Test2 />);
+                break;
+
+            case "information":
+                this.props.toggleRightPane();
+                break;
+        }
+    }
 }
 
-export const Test1: React.SFC<object> = (): JSX.Element => (
+const Test1: React.SFC<object> = (): JSX.Element => (
     <div className="cPanel">
         <TextField label="Site Name:*" placeholder="Site Name" errorMessage="Site Name is mandatory" />
         {

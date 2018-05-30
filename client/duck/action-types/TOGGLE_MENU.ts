@@ -1,0 +1,4 @@
+type TOGGLE_MENU = "TOGGLE_MENU";
+const TOGGLE_MENU: TOGGLE_MENU = "TOGGLE_MENU";
+
+export default TOGGLE_MENU;
