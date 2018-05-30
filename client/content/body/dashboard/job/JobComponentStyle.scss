@@ -16,18 +16,6 @@ $colour:#475357;
     }
     .jobShortInfoContainer {
         padding: 10px;
-        .jobShortInfo {
-            text-transform: capitalize;
-            .infoLabel {
-                font-size: 14px;
-                color: #002327;
-                line-height: 19px;
-            }
-            .infoValue {
-                font-size: 14px;
-                color: #78909C;
-            }
-        }
     }
     .siteName {
         @extend %similarProperties;

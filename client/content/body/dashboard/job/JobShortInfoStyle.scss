@@ -1,0 +1,13 @@
+$fontSize:14px;
+.jobShortInfo {
+    text-transform: capitalize;
+    .infoLabel {
+        font-size: $fontSize;
+        color: #002327;
+        line-height: 19px;
+    }
+    .infoValue {
+        font-size: $fontSize;
+        color: #78909C;
+    }
+}

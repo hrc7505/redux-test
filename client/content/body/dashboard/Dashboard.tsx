@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import DetailsListComponent from "../../common/detail-list/DetailListComponent";
-import JobComponent from "./JobComponent";
+import DetailsListComponent from "../../../common/detail-list/DetailListComponent";
+import JobComponent from "./job/JobComponent";
 
 import "./dashboardStyle.scss";
 

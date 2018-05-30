@@ -1,14 +1,8 @@
 import * as React from "react";
 
+import ITopBarProps from "./models/ITopBarProps";
+
 import "./topBarStyle.scss";
-
-export interface IToggleMenu {
-    isLeftMenuVisible: boolean;
-}
-
-export interface ITopBarProps extends IToggleMenu {
-    toggleMenu?: () => void;
-}
 
 export default class TopBar extends React.Component<ITopBarProps> {
     public render(): JSX.Element {

@@ -8,6 +8,9 @@ import {
 import { MarqueeSelection } from "office-ui-fabric-react/lib/MarqueeSelection";
 import * as React from "react";
 
+import IDetailsListDocumentsExampleState from "./models/IDetailsListDocumentsExampleState";
+import IDocument from "./models/IDocument";
+
 let emptyitems: IDocument[] = [];
 
 const fileIcons: Array<{ name: string; }> = [
@@ -36,28 +39,8 @@ const fileIcons: Array<{ name: string; }> = [
     { name: "xsn" }
 ];
 
-export interface IDetailsListDocumentsExampleState {
-    columns: IColumn[];
-    items: IDocument[];
-    selectionDetails: string;
-    isModalSelection: boolean;
-    isCompactMode: boolean;
-}
-
-export interface IDocument {
-    [key: string]: any;
-    name: string;
-    value: string;
-    iconName: string;
-    modifiedBy: string;
-    dateModified: string;
-    dateModifiedValue: number;
-    fileSize: string;
-    fileSizeRaw: number;
-}
-
-export default class DetailsListComponent extends React.Component<any, IDetailsListDocumentsExampleState> {
-    constructor(props: any) {
+export default class DetailsListComponent extends React.Component<object, IDetailsListDocumentsExampleState> {
+    constructor(props: object) {
         super(props);
 
         //  Populate with items for demos.

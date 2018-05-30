@@ -1,7 +1,9 @@
 import { connect, Dispatch } from "react-redux";
 
-import { IToggleMenuAction, toggleMenu } from "../../duck/Actions";
-import TopBar, { IToggleMenu } from "./TopBar";
+import IToggleMenu from "./models/IToggleMenu";
+import IToggleMenuAction from "../../duck/actions/models/IToggleMenuAction";
+import toggleMenu from "../../duck/actions/ToggleMenu";
+import TopBar from "./TopBar";
 
 const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({
     isLeftMenuVisible: state.isLeftMenuVisible,

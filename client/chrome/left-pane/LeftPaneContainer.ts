@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
+import IToggleMenu from "../top-bar/models/IToggleMenu";
 import LeftPaneComponent from "./LeftPaneComponent";
-import { IToggleMenu } from "../top-bar/TopBar";
 
 const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({
     isLeftMenuVisible: state.isLeftMenuVisible

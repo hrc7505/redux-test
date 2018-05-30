@@ -1,11 +1,16 @@
 import { connect } from "react-redux";
 
 import ContentComponent from "./ContentComponent";
-import { IToggleMenu } from "../chrome/top-bar/TopBar";
+import IContentComponentProps from "./models/IContentComponentProps";
 
-const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({
-    isLeftMenuVisible: state.isLeftMenuVisible
-});
+function mapStateToProps(state: IContentComponentProps): IContentComponentProps {
+    return {
+        isLeftMenuVisible: state.isLeftMenuVisible
+    };
+}
 
-const ContentContainer: React.ComponentClass = connect(mapStateToProps)<IToggleMenu>(ContentComponent);
+const ContentContainer: React.ComponentClass = connect(
+    mapStateToProps
+)<IContentComponentProps>(ContentComponent);
+
 export default ContentContainer;
