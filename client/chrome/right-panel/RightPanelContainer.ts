@@ -1,15 +1,17 @@
 import { connect, Dispatch } from "react-redux";
 
 import closeRightPanel from "../../duck/actions/CloseRightPanel";
+import IAppReducer from "../../duck/models/IAppReducer";
 import ICloseRightPanelAction from "../../duck/actions/models/ICloseRightPanelAction";
 import IRightPanelProps from "./models/IRightPanelProps";
 import RightPanelComponent from "./RightPanelComponent";
 
-const mapStateToProps: (state: IRightPanelProps) => IRightPanelProps = (state: IRightPanelProps): IRightPanelProps => ({
-    ...state,
-    childComponent: state.childComponent,
-    isRightPanelVisible: state.isRightPanelVisible,
-});
+function mapStateToProps(state: IAppReducer): IRightPanelProps {
+    return {
+        childComponent: state.chromeReducer.childComponent,
+        isRightPanelVisible: state.chromeReducer.isRightPanelVisible
+    };
+}
 
 function mapDispatchToProps(dispatch: Dispatch<ICloseRightPanelAction>): ReturnType<typeof mapDispatchToProps> {
     return {
