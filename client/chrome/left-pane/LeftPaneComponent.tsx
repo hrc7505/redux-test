@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import IToggleMenu from "../top-bar/models/IToggleMenu";
+import ILeftPaneProps from "./models/ILeftPaneProps";
 
 import "./leftPaneComponentStyle.scss";
+import { NavLink } from "react-router-dom";
 
-export default class LeftPaneComponent extends React.Component<IToggleMenu> {
+export default class LeftPaneComponent extends React.Component<ILeftPaneProps> {
     public render(): JSX.Element {
         const { isLeftMenuVisible } = this.props;
 
@@ -12,17 +13,21 @@ export default class LeftPaneComponent extends React.Component<IToggleMenu> {
             <div className={`hamburgerMenu pullLeft ${!isLeftMenuVisible ? "hiddeMenu" : ""}`}>
                 <div className="cPanel logo flexBox vCenter hCenter">logo</div>
                 <div className="menuItemContainer cPanel">
-                    <div className="menuItem flexBox vCenter">
-                        <div className="menuItemIcon">
-                            <img src="./client/images/hamburger-menu/dashboard.png" />
-                        </div>
-                        <div className="menuItemName">DashBoard</div>
+                    <div className="menuItem">
+                        <NavLink to="/" className="flexBox vCenter">
+                            <div className="menuItemIcon">
+                                <img src="./client/images/hamburger-menu/dashboard.png" />
+                            </div>
+                            <div className="menuItemName">DashBoard</div>
+                        </NavLink>
                     </div>
-                    <div className="menuItem flexBox vCenter">
-                        <div className="menuItemIcon">
-                            <img src="./client/images/hamburger-menu/dashboard.png" />
-                        </div>
-                        <div className="menuItemName">Sites</div>
+                    <div className="menuItem">
+                        <NavLink to="/sites" className="flexBox vCenter">
+                            <div className="menuItemIcon">
+                                <img src="./client/images/hamburger-menu/dashboard.png" />
+                            </div>
+                            <div className="menuItemName">Sites</div>
+                        </NavLink>
                     </div>
                     <div className="menuItem flexBox vCenter">
                         <div className="menuItemIcon">

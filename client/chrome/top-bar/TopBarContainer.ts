@@ -1,13 +1,16 @@
 import { connect, Dispatch } from "react-redux";
 
+import IAppReducer from "../../duck/models/IAppReducer";
 import IToggleMenu from "./models/IToggleMenu";
 import IToggleMenuAction from "../../duck/actions/models/IToggleMenuAction";
 import toggleMenu from "../../duck/actions/ToggleMenu";
 import TopBar from "./TopBar";
 
-const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({
-    isLeftMenuVisible: state.isLeftMenuVisible,
-});
+function mapStateToProps(state: IAppReducer): IToggleMenu {
+    return {
+        isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible,
+    };
+}
 
 function mapDispatchToProps(dispatch: Dispatch<IToggleMenuAction>): ReturnType<typeof mapDispatchToProps> {
     return {

@@ -37,7 +37,8 @@ module.exports = {
     plugins: [],
     devServer: {
         compress: true,
-        disableHostCheck: true
+        disableHostCheck: true,
+        historyApiFallback: true
     },
     mode: env || "development"
 }

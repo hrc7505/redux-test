@@ -1,12 +1,17 @@
 import { connect } from "react-redux";
 
-import IToggleMenu from "../top-bar/models/IToggleMenu";
+import IAppReducer from "../../duck/models/IAppReducer";
+import ILeftPaneProps from "./models/ILeftPaneProps";
 import LeftPaneComponent from "./LeftPaneComponent";
 
-const mapStateToProps: (state: IToggleMenu) => IToggleMenu = (state: IToggleMenu): IToggleMenu => ({
-    isLeftMenuVisible: state.isLeftMenuVisible
-});
+function mapStateToProps(state: IAppReducer): ILeftPaneProps {
+    return {
+        isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible
+    };
+}
 
-const LeftPaneContainer: React.ComponentClass = connect(mapStateToProps)<IToggleMenu>(LeftPaneComponent);
+const LeftPaneContainer: React.ComponentClass = connect(
+    mapStateToProps
+)<ILeftPaneProps>(LeftPaneComponent);
 
 export default LeftPaneContainer;

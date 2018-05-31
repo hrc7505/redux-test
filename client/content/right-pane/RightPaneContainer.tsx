@@ -1,9 +1,14 @@
-import IRightPaneComponentProps from "./models/IRightPaneComponentProps";
 import { connect } from "react-redux";
+
+import IAppReducer from "../../duck/models/IAppReducer";
+import IRightPaneComponentProps from "./models/IRightPaneComponentProps";
 import RightPaneComponent from "./RightPaneComponent";
 
-function mapStateToProps(state: IRightPaneComponentProps): IRightPaneComponentProps {
-    return state;
+function mapStateToProps(state: IAppReducer): IRightPaneComponentProps {
+    return {
+        isRightPaneVisible: state.rightPaneReducer.isRightPaneVisible,
+        childComponent: state.rightPaneReducer.childComponent
+    };
 }
 
 const RightPaneContainer: React.ComponentClass = connect(

@@ -1,13 +1,13 @@
 import { combineReducers } from "redux";
 
 import chromeReducer from "./ChromeReducer";
-import commandBarReducer from "../content/duck/CommandBarReducer";
-import rightPaneReducer from "../content/duck/RightPanelReducer";
+import navigationReducer from "../content/duck/NavigationReducer";
+import rightPaneReducer from "../content/duck/RightPaneReducer";
 
 const appReducer: ReturnType<typeof combineReducers> = combineReducers({
     chromeReducer,
     rightPaneReducer,
-    commandBarReducer
+    navigationReducer
 });
 
 export default appReducer;
