@@ -1,4 +1,4 @@
-import ICloseRightPanelAction from "../../../duck/actions/models/ICloseRightPanelAction";
+import ICloseRightPanelAction from "../../../duck/actions/interfaces/ICloseRightPanelAction";
 
 export default interface IRightPanelProps {
     isRightPanelVisible: boolean;

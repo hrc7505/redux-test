@@ -1,5 +1,6 @@
 $leftPaneWidth:212px;
 $topBarHeight:72px;
+
 .contentComponent {
     width: calc(100% - #{$leftPaneWidth});
     margin-top: $topBarHeight;
@@ -11,5 +12,22 @@ $topBarHeight:72px;
     .entityTitle {
         margin-top: 15px;
         font-weight: bold;
+    }
+    .bodyRightPanelContainer {
+        width: 100%;
+        overflow: hidden;
+        .bodyContainer {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - #{$topBarHeight});
+            margin-left: $topBarHeight;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+        .bodyContainer.shrink {
+            // 250px = width of Right Pane
+            // 30px = margin to left-right 15px+15px
+            width: calc(100% - #{$topBarHeight} - 250px - 30px);
+        }
     }
 }

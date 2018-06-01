@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import IJobShortInfoProps from "./models/IJobShortInfoProps";
+import IJobShortInfoProps from "./interfaces/IJobShortInfoProps";
 
 import "./JobShortInfoStyle.scss";
 

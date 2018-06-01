@@ -8,8 +8,8 @@ import {
 import { MarqueeSelection } from "office-ui-fabric-react/lib/MarqueeSelection";
 import * as React from "react";
 
-import IDetailsListDocumentsExampleState from "./models/IDetailsListDocumentsExampleState";
-import IDocument from "./models/IDocument";
+import IDetailsListDocumentsExampleState from "./interfaces/IDetailsListDocumentsExampleState";
+import IDocument from "./interfaces/IDocument";
 
 let emptyitems: IDocument[] = [];
 

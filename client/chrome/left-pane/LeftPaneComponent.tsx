@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import ILeftPaneProps from "./models/ILeftPaneProps";
+import ILeftPaneProps from "./interfaces/ILeftPaneProps";
 
 import "./leftPaneComponentStyle.scss";
 import { NavLink } from "react-router-dom";

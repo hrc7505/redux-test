@@ -1,5 +1,5 @@
 import GET_CONTENTS from "../action-types/GET_CONTENTS";
-import IGetContentsAction from "./models/IGetContentsAction";
+import IGetContentsAction from "./interfaces/IGetContentsAction";
 
 export default function getContents(url: string): IGetContentsAction {
     return {

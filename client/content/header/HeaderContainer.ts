@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 
 import HeaderComponent from "./HeaderComponent";
-import IAppReducer from "../../duck/models/IAppReducer";
-import IHeaderComponentProps from "./models/IHeaderComponentProps";
+import IAppReducer from "../../duck/interfaces/IAppReducer";
+import IHeaderComponentProps from "./interfaces/IHeaderComponentProps";
 
 function mapStateToProps(state: IAppReducer): IHeaderComponentProps {
     return { ...state.navigationReducer };
