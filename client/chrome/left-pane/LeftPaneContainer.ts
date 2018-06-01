@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import IAppReducer from "../../duck/models/IAppReducer";
-import ILeftPaneProps from "./models/ILeftPaneProps";
+import IAppReducer from "../../duck/interfaces/IAppReducer";
+import ILeftPaneProps from "./interfaces/ILeftPaneProps";
 import LeftPaneComponent from "./LeftPaneComponent";
 
 function mapStateToProps(state: IAppReducer): ILeftPaneProps {

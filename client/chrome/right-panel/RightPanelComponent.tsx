@@ -2,7 +2,7 @@ import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button"
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import * as React from "react";
 
-import IRightPanelProps from "./models/IRightPanelProps";
+import IRightPanelProps from "./interfaces/IRightPanelProps";
 
 import "./RightPanelComponentStyle.scss";
 

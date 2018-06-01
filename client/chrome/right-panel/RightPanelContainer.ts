@@ -1,9 +1,9 @@
 import { connect, Dispatch } from "react-redux";
 
 import closeRightPanel from "../../duck/actions/CloseRightPanel";
-import IAppReducer from "../../duck/models/IAppReducer";
-import ICloseRightPanelAction from "../../duck/actions/models/ICloseRightPanelAction";
-import IRightPanelProps from "./models/IRightPanelProps";
+import IAppReducer from "../../duck/interfaces/IAppReducer";
+import ICloseRightPanelAction from "../../duck/actions/interfaces/ICloseRightPanelAction";
+import IRightPanelProps from "./interfaces/IRightPanelProps";
 import RightPanelComponent from "./RightPanelComponent";
 
 function mapStateToProps(state: IAppReducer): IRightPanelProps {

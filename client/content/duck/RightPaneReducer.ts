@@ -1,7 +1,7 @@
 import CLOSE_RIGHT_PANE from "./action-types/CLOSE_RIGHT_PANE";
-import ICloseRightPaneAction from "./actions/models/ICloseRightPaneAction";
-import IRightPaneComponentProps from "../right-pane/models/IRightPaneComponentProps";
-import IToggleRightPaneAction from "./actions/models/IToggleRightPaneAction";
+import ICloseRightPaneAction from "./actions/interfaces/ICloseRightPaneAction";
+import IRightPaneComponentProps from "../right-pane/interfaces/IRightPaneComponentProps";
+import IToggleRightPaneAction from "./actions/interfaces/IToggleRightPaneAction";
 import TOGGLE_RIGHT_PANE from "./action-types/TOGGLE_RIGHT_PANE";
 
 type Action = IToggleRightPaneAction | ICloseRightPaneAction;

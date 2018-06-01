@@ -1,14 +1,16 @@
+import { createBrowserHistory, History } from "history";
 import * as React from "react";
 
 import GET_CONTENTS from "./action-types/GET_CONTENTS";
-import IGetContentsAction from "./actions/models/IGetContentsAction";
-import IHeaderComponentProps from "../header/models/IHeaderComponentProps";
+import IGetContentsAction from "./actions/interfaces/IGetContentsAction";
+import IHeaderComponentProps from "../header/interfaces/IHeaderComponentProps";
 import { IBreadcrumbProps } from "office-ui-fabric-react/lib/Breadcrumb";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
-import Test1 from "../../chrome/right-panel/body-components/Test1";
-import Test2 from "../../chrome/right-panel/body-components/Test2";
+import Test1 from "../right-panel-body-components/Test1";
+import Test2 from "../right-panel-body-components/Test2";
 
 type Action = IGetContentsAction;
+export const history: History = createBrowserHistory();
 
 export default function navigationReducer(state: IHeaderComponentProps, action: Action): IHeaderComponentProps {
     switch (action.type) {
@@ -59,7 +61,7 @@ function getContents(state: IHeaderComponentProps, url: string): IHeaderComponen
                 title: "Sites",
                 breadcrumb: {
                     items: [
-                        { text: "Home", key: "home", href: "/" },
+                        { text: "Home", key: "home" },
                         { text: "Sites", key: "sites", isCurrentItem: true },
                     ]
                 },

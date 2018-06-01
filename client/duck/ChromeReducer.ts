@@ -1,20 +1,28 @@
+import CLOSE_LEFT_PANE from "./action-types/CLOSE_LEFT_PANE";
 import CLOSE_RIGHT_PANEL from "./action-types/CLOSE_RIGHT_PANEL";
 import defaultState from "./DefaultState";
-import ICloseRightPanelAction from "./actions/models/ICloseRightPanelAction";
-import IOpenRightPanelAction from "./actions/models/IOpenRightPanelAction";
-import IToggleMenuAction from "./actions/models/IToggleMenuAction";
+import ICloseLeftPaneAction from "./actions/interfaces/ICloseLeftPaneAction";
+import ICloseRightPanelAction from "./actions/interfaces/ICloseRightPanelAction";
+import IOpenRightPanelAction from "./actions/interfaces/IOpenRightPanelAction";
+import IToggleLeftPaneAction from "./actions/interfaces/IToggleLeftPaneAction";
 import OPEN_RIGHT_PANEL from "./action-types/OPEN_RIGHT_PANEL";
 import IAppState from "./State";
-import TOGGLE_MENU from "./action-types/TOGGLE_MENU";
+import TOGGLE_LEFT_PANE from "./action-types/TOGGLE_LEFT_PANE";
 
-type Action = IToggleMenuAction | IOpenRightPanelAction | ICloseRightPanelAction;
+type Action = IToggleLeftPaneAction | IOpenRightPanelAction | ICloseRightPanelAction | ICloseLeftPaneAction;
 
 export default function chromeReducer(state: IAppState, action: Action): IAppState {
     switch (action.type) {
-        case TOGGLE_MENU:
+        case TOGGLE_LEFT_PANE:
             return {
                 ...state,
                 isLeftMenuVisible: !state.isLeftMenuVisible
+            };
+
+        case CLOSE_LEFT_PANE:
+            return {
+                ...state,
+                isLeftMenuVisible: false
             };
 
         case OPEN_RIGHT_PANEL:

@@ -1,5 +1,5 @@
 import CLOSE_RIGHT_PANE from "../action-types/CLOSE_RIGHT_PANE";
-import ICloseRightPaneAction from "./models/ICloseRightPaneAction";
+import ICloseRightPaneAction from "./interfaces/ICloseRightPaneAction";
 
 export default function closeRightPane(): ICloseRightPaneAction {
     return {

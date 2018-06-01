@@ -3,9 +3,9 @@ import * as React from "react";
 import { withRouter } from "react-router-dom";
 
 import HeaderContainer from "./header/HeaderContainer";
-import IContentComponentProps from "./models/IContentComponentProps";
+import IContentComponentProps from "./interfaces/IContentComponentProps";
 import RightPaneContainer from "./right-pane/RightPaneContainer";
-import Rootes from "./Rootes";
+import Routes from "./Routes";
 
 import "./ContentComponentStyle.scss";
 
@@ -13,11 +13,17 @@ class ContentComponent extends React.Component<IContentComponentProps> {
     private unRegister: UnregisterCallback;
 
     public render(): JSX.Element {
+        const { isLeftMenuVisible, isRightPaneVisible } = this.props;
+
         return (
-            <section className={`contentComponent ${!this.props.isLeftMenuVisible ? "cPanel" : "pullLeft"}`}>
+            <section className={`contentComponent ${!isLeftMenuVisible ? "cPanel" : "pullLeft"}`}>
                 <HeaderContainer />
-                <Rootes />
-                <RightPaneContainer />
+                <div className="pullLeft bodyRightPanelContainer">
+                    <div className={`bodyContainer pullLeft ${isRightPaneVisible ? "shrink" : ""}`}>
+                        <Routes />
+                    </div>
+                    <RightPaneContainer />
+                </div>
             </section>
         );
     }

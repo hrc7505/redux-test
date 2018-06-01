@@ -4,15 +4,16 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 import closeRightPane from "./duck/actions/CloseRightPane";
 import ContentComponent from "./ContentComponent";
 import getContents from "./duck/actions/GetContents";
-import IAppReducer from "../duck/models/IAppReducer";
-import ICloseRightPaneAction from "./duck/actions/models/ICloseRightPaneAction";
-import IContentComponentProps from "./models/IContentComponentProps";
-import IGetContentsAction from "./duck/actions/models/IGetContentsAction";
+import IAppReducer from "../duck/interfaces/IAppReducer";
+import ICloseRightPaneAction from "./duck/actions/interfaces/ICloseRightPaneAction";
+import IContentComponentProps from "./interfaces/IContentComponentProps";
+import IGetContentsAction from "./duck/actions/interfaces/IGetContentsAction";
 
 function mapStateToProps(state: IAppReducer, ownProps: IContentComponentProps): IContentComponentProps {
     return {
         ...ownProps,
-        isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible
+        isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible,
+        isRightPaneVisible: state.rightPaneReducer.isRightPaneVisible
     };
 }
 
