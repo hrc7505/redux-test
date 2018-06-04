@@ -1,0 +1,20 @@
+$topBarHeight:72px;
+$rightPaneWidth:250px;
+$leftRightMarginToRightPane:15px+15px;
+.siteComponent {
+    .bodyRightPanelContainer {
+        overflow: hidden;
+        .bodyContainer {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - #{$topBarHeight});
+            margin-left: $topBarHeight;
+            transition: 0.3s;
+            margin-top: 15px;
+            border: 1px solid;
+        }
+        .bodyContainer.shrink {
+            width: calc(100% - #{$topBarHeight} - #{$rightPaneWidth} - #{$leftRightMarginToRightPane});
+        }
+    }
+}

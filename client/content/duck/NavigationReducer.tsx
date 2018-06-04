@@ -3,7 +3,7 @@ import * as React from "react";
 
 import GET_CONTENTS from "./action-types/GET_CONTENTS";
 import IGetContentsAction from "./actions/interfaces/IGetContentsAction";
-import IHeaderComponentProps from "../header/interfaces/IHeaderComponentProps";
+import IHeaderComponentProps from "../body/site/header/interfaces/iHeaderComponentProps";
 import { IBreadcrumbProps } from "office-ui-fabric-react/lib/Breadcrumb";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
 import Test1 from "../right-panel-body-components/Test1";

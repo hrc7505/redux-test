@@ -1,6 +1,8 @@
+$topBarMenuIconWidth:72px;
+$spaceFromIcon:10px;
 .breadcrumbs {
     margin-top: 15px;
-    padding: 0 10px 0 82px;
+    padding: 0 10px 0 $topBarMenuIconWidth+$spaceFromIcon;
     .ms-Breadcrumb-listItem {
         .ms-Link.ms-Breadcrumb-itemLink,
         .ms-Breadcrumb-item {

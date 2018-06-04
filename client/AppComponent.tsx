@@ -1,22 +1,31 @@
 import { initializeIcons } from "@uifabric/icons";
 import * as React from "react";
 
-import ContentContainer from "./content/ContentContainer";
+// import ContentContainer from "./content/ContentContainer";
 import LeftPaneContainer from "./chrome/left-pane/LeftPaneContainer";
 import RightPanelContainer from "./chrome/right-panel/RightPanelContainer";
 import TopBarContainer from "./chrome/top-bar/TopBarContainer";
 
 import "./common/common-style/CommonStyle.scss";
 
-initializeIcons();
+export class AppComponent extends React.Component {
+    constructor(props: object) {
+        super(props);
 
-const AppComponent: React.SFC<object> = (): JSX.Element => (
-    <div className="cPanel">
-        <LeftPaneContainer />
-        <TopBarContainer />
-        <ContentContainer />
-        <RightPanelContainer/>
-    </div>
-);
+        initializeIcons(undefined, { disableWarnings: true });
+    }
 
-export default AppComponent;
+    public render(): JSX.Element {
+        console.log("rendering app");
+
+        return (
+            <div className="cPanel">
+                <LeftPaneContainer />
+                <TopBarContainer />
+                <div id="contentPart" />
+                {/* <ContentContainer /> */}
+                <RightPanelContainer />
+            </div >
+        );
+    }
+}

@@ -32,9 +32,5 @@ export default class TopBarComponent extends React.Component<ITopBarComponentPro
 
     private toggleLeftPane(): void {
         this.props.toggleLeftPane();
-
-        if (this.props.isRightPanelVisible) {
-            this.props.closeRightPane();
-        }
     }
 }

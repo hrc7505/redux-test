@@ -4,5 +4,4 @@ export default interface IContentComponentProps extends RouteComponentProps<stri
     isLeftMenuVisible: boolean;
     isRightPaneVisible: boolean;
     getContents: (url: string) => void;
-    closeRightPane: () => void;
 }
