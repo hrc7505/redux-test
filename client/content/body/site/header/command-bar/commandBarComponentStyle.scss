@@ -1,9 +1,10 @@
 $border:1px solid;
+$topBarMenuIconWidth:72px;
 .commandBarContainer {
-    padding-left: 72px;
     border-top: $border;
     border-bottom: $border;
     margin-top: 15px;
+    padding-left: $topBarMenuIconWidth;
     .ms-CommandBar-primaryCommands.primaryCommands_b8e768e9 {
         margin-left: 11px;
     }

@@ -1,7 +1,6 @@
 $topBarMenuIconWidth:72px;
-
-.dashboard {
-    width: 100%;
+.entityTitle {
     margin: 15px 0 0 $topBarMenuIconWidth;
-    padding:0 10px;
+    font-weight: bold;
+    padding-left: 18px;
 }

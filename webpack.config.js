@@ -1,12 +1,16 @@
 const path = require("path");
-const env = process.env.NODE_ENV
+const env = process.env.NODE_ENV;
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var package = require("./package.json");
 
 module.exports = {
-    entry: "./client/index.tsx",
+    entry: {
+        chrome: "./client/index.tsx",
+        content: "./client/contentIndex.tsx"
+    },
     output: {
         path: path.resolve("dist"),
-        publicPath: "/dist/",
-        filename: "centerpointSource.js"
+        filename: "[name].js"
     },
     devtool: "source-map",
     resolve: {
@@ -34,7 +38,20 @@ module.exports = {
             }
         ]
     },
-    plugins: [],
+    plugins: [
+        new HtmlWebpackPlugin({
+            hash: true,
+            template: "index.html",
+            chunks: ["chrome"],
+            filename: "index.html" //relative to root of the application
+        }),
+        new HtmlWebpackPlugin({
+            hash: true,
+            template: "index.html",
+            chunks: ["content"],
+            filename: "index.html" //relative to root of the application
+        })
+    ],
     devServer: {
         compress: true,
         disableHostCheck: true,

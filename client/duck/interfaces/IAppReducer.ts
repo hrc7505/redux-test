@@ -1,6 +1,6 @@
 import IChromeReducer from "./IChromeReducer";
-import ICommandBarComponentProps from "../../content/header/command-bar/interfaces/ICommandBarComponentProps";
-import IHeaderComponentProps from "../../content/header/interfaces/IHeaderComponentProps";
+import ICommandBarComponentProps from "../../content/body/site/header/command-bar/interfaces/iCommandBarComponentProps";
+import IHeaderComponentProps from "../../content/body/site/header/interfaces/iHeaderComponentProps";
 import IRightPaneComponentProps from "../../content/right-pane/interfaces/IRightPaneComponentProps";
 
 export default interface IAppReducer {

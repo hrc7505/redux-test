@@ -1,8 +1,6 @@
 import { connect, Dispatch } from "react-redux";
 
-import closeRightPane from "../../content/duck/actions/CloseRightPane";
 import IAppReducer from "../../duck/interfaces/IAppReducer";
-import ICloseRightPaneAction from "../../content/duck/actions/interfaces/ICloseRightPaneAction";
 import IToggleLeftPane from "./interfaces/IToggleLeftPane";
 import IToggleLeftPaneAction from "../../duck/actions/interfaces/IToggleLeftPaneAction";
 import ITopBarComponentProps from "./interfaces/ITopBarComponentProps";
@@ -17,12 +15,11 @@ function mapStateToProps(state: IAppReducer, ownProps: ITopBarComponentProps): I
     };
 }
 
-type DispatchTypes = IToggleLeftPaneAction | ICloseRightPaneAction;
+type DispatchTypes = IToggleLeftPaneAction;
 
 function mapDispatchToProps(dispatch: Dispatch<DispatchTypes>): ReturnType<typeof mapDispatchToProps> {
     return {
-        toggleLeftPane: (): IToggleLeftPaneAction => dispatch(toggleLeftPane()),
-        closeRightPane: (): ICloseRightPaneAction => dispatch(closeRightPane())
+        toggleLeftPane: (): IToggleLeftPaneAction => dispatch(toggleLeftPane())
     };
 }
 

@@ -41,11 +41,6 @@ export default class CommandbarComponent extends React.Component<ICommandBarComp
     private toggleRightPaneAndCloseLeftPane = (
         ev?: React.MouseEvent<HTMLElement>,
         item?: IContextualMenuItem): void => {
-
-        if (this.props.isLeftMenuVisible && !this.props.isRightPaneVisible) {
-            this.props.closeLeftPane();
-        }
-
         this.props.toggleRightPane(item.data);
     }
 }
