@@ -42,13 +42,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             hash: true,
             template: "index.html",
-            chunks: ["chrome"],
-            filename: "index.html" //relative to root of the application
-        }),
-        new HtmlWebpackPlugin({
-            hash: true,
-            template: "index.html",
-            chunks: ["content"],
+            chunks: ["chrome", "content"],
             filename: "index.html" //relative to root of the application
         })
     ],
