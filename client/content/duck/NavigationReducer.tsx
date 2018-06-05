@@ -25,36 +25,7 @@ export default function navigationReducer(state: IHeaderComponentProps, action: 
 function getContents(state: IHeaderComponentProps, url: string): IHeaderComponentProps {
     switch (url) {
         case "/":
-            return {
-                ...state,
-                title: "Dashboard",
-                breadcrumb: {
-                    items: [
-                        { text: "Home", key: "home", isCurrentItem: true },
-                    ]
-                },
-                commands: {
-                    farItems: [
-                        {
-                            iconProps: {
-                                iconName: "Info",
-                                iconType: IconType.default
-                            },
-                            key: "information",
-                            data: "Right pane for Dashboard",
-                            type: "RIGHT_PEN"
-                        }
-                    ],
-                    items: [
-                        {
-                            key: "asset",
-                            name: "Asset",
-                            data: "No body avlaible to show"
-                        }
-                    ],
-                    overflowItems: [],
-                }
-            };
+            return { ...state, title: "Active Jobs" };
         case "/sites":
             return {
                 ...state,
