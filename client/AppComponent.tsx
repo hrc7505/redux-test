@@ -16,13 +16,10 @@ export class AppComponent extends React.Component {
     }
 
     public render(): JSX.Element {
-        console.log("rendering app");
-
         return (
             <div className="cPanel">
                 <LeftPaneContainer />
                 <TopBarContainer />
-                <div id="contentPart" />
                 {/* <ContentContainer /> */}
                 <RightPanelContainer />
             </div >

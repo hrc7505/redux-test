@@ -30,7 +30,8 @@ class ContentComponent extends React.Component<IContentComponentProps> {
     }
 
     private getContents = (): void => {
-        this.props.getContents(this.props.history.location.pathname);
+        const url: string = this.props.history.location.pathname.split("/testcontent")[1];
+        this.props.getContents(url);
     }
 }
 

@@ -6,7 +6,8 @@ var package = require("./package.json");
 module.exports = {
     entry: {
         chrome: "./client/index.tsx",
-        content: "./client/contentIndex.tsx"
+        vendor: Object.keys(package.dependencies),
+        content: "./client/contentIndex.tsx",
     },
     output: {
         path: path.resolve("dist"),
@@ -42,8 +43,20 @@ module.exports = {
         new HtmlWebpackPlugin({
             hash: true,
             template: "index.html",
-            chunks: ["chrome", "content"],
+            chunks: ["vendor", "chrome"],
             filename: "index.html" //relative to root of the application
+        }),
+        new HtmlWebpackPlugin({
+            hash: true,
+            template: "index.html",
+            chunks: ["vendor", "content"],
+            filename: "./testcontent/index.html" //relative to root of the application
+        }),
+        new HtmlWebpackPlugin({
+            hash: true,
+            template: "index.html",
+            chunks: ["vendor", "content"],
+            filename: "./testcontent/sites/index.html" //relative to root of the application
         })
     ],
     devServer: {
