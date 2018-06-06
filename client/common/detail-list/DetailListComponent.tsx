@@ -1,11 +1,8 @@
 import {
     DetailsList,
     DetailsListLayoutMode,
-    IColumn,
-    Selection,
-    SelectionMode
+    IColumn
 } from "office-ui-fabric-react/lib/DetailsList";
-import { MarqueeSelection } from "office-ui-fabric-react/lib/MarqueeSelection";
 import * as React from "react";
 
 import IDetailsListDocumentsExampleState from "./interfaces/IDetailsListDocumentsExampleState";
@@ -92,7 +89,7 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 isResizable: true,
                 onColumnClick: this.onColumnClick,
                 data: "number",
-                onRender: (item: IDocument) => <span>{item.dateModified}</span>,
+                onRender: (item: IDocument): JSX.Element => <span>{item.dateModified}</span>,
                 isPadded: true
             },
             {
@@ -105,7 +102,7 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 isCollapsable: true,
                 data: "string",
                 onColumnClick: this.onColumnClick,
-                onRender: (item: IDocument) => <span>{item.modifiedBy}</span>,
+                onRender: (item: IDocument): JSX.Element => <span>{item.modifiedBy}</span>,
                 isPadded: true
             },
             {
@@ -118,57 +115,36 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 isCollapsable: true,
                 data: "number",
                 onColumnClick: this.onColumnClick,
-                onRender: (item: IDocument) => <span>{item.fileSize}</span>
+                onRender: (item: IDocument): JSX.Element => <span>{item.fileSize}</span>
             },
         ];
 
-        this.selection = new Selection({
-            onSelectionChanged: () => {
-                this.setState({
-                    selectionDetails: this.getSelectionDetails(),
-                    isModalSelection: this.selection.isModal()
-                });
-            }
-        });
 
         this.state = {
             columns,
             isCompactMode: false,
-            isModalSelection: this.selection.isModal(),
-            items: emptyitems,
-            selectionDetails: this.getSelectionDetails()
+            //  isModalSelection: this.selection.isModal(),
+            items: emptyitems
         };
     }
-
-    private selection: Selection;
 
     public render(): JSX.Element {
         const { columns, isCompactMode, items } = this.state;
 
         return (
             <div className="cPanel">
-                <MarqueeSelection selection={this.selection} >
-                    <DetailsList
-                        items={items}
-                        compact={isCompactMode}
-                        columns={columns}
-                        selectionMode={this.state.isModalSelection ? SelectionMode.multiple : SelectionMode.none}
-                        setKey="set"
-                        layoutMode={DetailsListLayoutMode.justified}
-                        isHeaderVisible={true}
-                        selection={this.selection}
-                        selectionPreservedOnEmptyClick={true}
-                        enterModalSelectionOnTouch={true}
-                    />
-                </MarqueeSelection>
+                <DetailsList
+                    items={items}
+                    compact={isCompactMode}
+                    columns={columns}
+                    setKey="set"
+                    layoutMode={DetailsListLayoutMode.justified}
+                    isHeaderVisible={true}
+                    selectionPreservedOnEmptyClick={true}
+                    enterModalSelectionOnTouch={true}
+                />
             </div>
         );
-    }
-
-    public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState): void {
-        if (previousState.isModalSelection !== this.state.isModalSelection) {
-            this.selection.setModal(this.state.isModalSelection);
-        }
     }
 
 
@@ -198,19 +174,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
             rawSize: fileSize,
             value: `${fileSize} KB`
         };
-    }
-
-    private getSelectionDetails(): string {
-        const selectionCount: number = this.selection.getSelectedCount();
-
-        switch (selectionCount) {
-            case 0:
-                return "No items selected";
-            case 1:
-                return "1 item selected: " + (this.selection.getSelection()[0] as any).name;
-            default:
-                return `${selectionCount} items selected`;
-        }
     }
 
     private onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {

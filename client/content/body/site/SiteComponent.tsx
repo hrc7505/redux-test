@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import DetailsListComponent from "../../../common/detail-list/DetailListComponent";
 import HeaderContainer from "./header/headerContainer";
 import ISiteComponentProps from "./interfaces/iSiteComponentProps";
 import RightPaneContainer from "../../right-pane/rightPaneContainer";
@@ -11,7 +12,7 @@ const SiteComponent: React.SFC<ISiteComponentProps> = (props: ISiteComponentProp
         <HeaderContainer />
         <div className="bodyRightPanelContainer cPanel">
             <div className={`bodyContainer pullLeft ${props.isRightPaneVisible ? "shrink" : ""}`}>
-                I am Sites
+                <DetailsListComponent/>
             </div>
             <RightPaneContainer />
         </div>
