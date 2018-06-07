@@ -8,14 +8,18 @@ import { withRouter } from "react-router";
 
 class BreadcrumbComponent extends React.Component<IBreadcrumbComponentProps> {
     public render(): JSX.Element {
-        if (this.props.items) {
+        let items: IBreadcrumbItem[] = this.props.items;
+
+        if (items) {
             this.addClickHandlerToItems();
+        } else {
+            items = [];
         }
 
         return (
             <div className="cPanel breadcrumbs">
                 <Breadcrumb
-                    items={this.props.items}
+                    items={items}
                 />
             </div >
         );

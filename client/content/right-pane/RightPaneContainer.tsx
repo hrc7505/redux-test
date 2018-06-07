@@ -6,8 +6,8 @@ import RightPaneComponent from "./RightPaneComponent";
 
 function mapStateToProps(state: IAppReducer): IRightPaneComponentProps {
     return {
-        isRightPaneVisible: state.rightPaneReducer.isRightPaneVisible,
-        childComponent: state.rightPaneReducer.childComponent
+        isRightPaneVisible: state.contentReducer.rightPaneReducer.isRightPaneVisible,
+        childComponent: state.contentReducer.rightPaneReducer.childComponent
     };
 }
 

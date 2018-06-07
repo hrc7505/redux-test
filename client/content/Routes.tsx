@@ -7,7 +7,8 @@ import SiteContainer from "./body/site/siteContainer";
 const Routes: React.SFC<RouteComponentProps<string>> = (props: RouteComponentProps<string>): JSX.Element => (
     <Switch>
         <Route exact path={`${props.match.path}`} component={Dashboard} />
-        <Route path={`${props.match.path}/sites`} component={SiteContainer} />
+        <Route path={`${props.match.path !== "/" ? props.match.path : ""}/dashboard`} component={Dashboard} />
+        <Route path={`${props.match.path !== "/" ? props.match.path : ""}/sites`} component={SiteContainer} />
     </Switch>
 );
 

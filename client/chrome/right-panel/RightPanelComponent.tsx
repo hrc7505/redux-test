@@ -8,6 +8,7 @@ import "./RightPanelComponentStyle.scss";
 
 export default class RightPanelComponent extends React.Component<IRightPanelProps> {
     private panelInstance: Panel;
+
     public render(): JSX.Element {
         return (
             <Panel
@@ -25,7 +26,7 @@ export default class RightPanelComponent extends React.Component<IRightPanelProp
                 className="panelRoot"
                 layerProps={{ className: "panelLayerClass" }}
             >
-               {this.props.childComponent}
+                {this.props.childComponent}
             </Panel>
         );
     }

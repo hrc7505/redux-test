@@ -8,7 +8,7 @@ import "./headerComponentStyle.scss";
 
 const HeaderComponent: React.SFC<IHeaderComponentProps> = (props: IHeaderComponentProps): JSX.Element => (
     <div className="cPanel">
-        <BreadcrumbComponent items={props.breadcrumb.items} />
+        <BreadcrumbComponent items={props.breadcrumb ? props.breadcrumb.items : null} />
         <div className="cPanel entityTitle">
             {props.title}
         </div>

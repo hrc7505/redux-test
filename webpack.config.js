@@ -1,12 +1,11 @@
 const path = require("path");
 const env = process.env.NODE_ENV;
 var HtmlWebpackPlugin = require("html-webpack-plugin");
-var package = require("./package.json");
 
 module.exports = {
     entry: {
-        chrome: "./client/index.tsx",
-        vendor: Object.keys(package.dependencies),
+        app: "./client/index.tsx",
+        chrome: "./client/chromeIndex.tsx",
         content: "./client/contentIndex.tsx",
     },
     output: {
@@ -40,24 +39,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            hash: true,
-            template: "index.html",
-            chunks: ["vendor", "chrome"],
-            filename: "index.html" //relative to root of the application
-        }),
-        new HtmlWebpackPlugin({
-            hash: true,
-            template: "index.html",
-            chunks: ["vendor", "content"],
-            filename: "./testcontent/index.html" //relative to root of the application
-        }),
-        new HtmlWebpackPlugin({
-            hash: true,
-            template: "index.html",
-            chunks: ["vendor", "content"],
-            filename: "./testcontent/sites/index.html" //relative to root of the application
-        })
+        createChunksJs(["app"], "index.html"),
+        createChunksJs(["chrome"], "./chrome/index.html"),
+        createChunksJs(["content"], "./testcontent/dashboard/index.html"),
+        createChunksJs(["content"], "./testcontent/sites/index.html")
     ],
     devServer: {
         compress: true,
@@ -65,4 +50,8 @@ module.exports = {
         historyApiFallback: true
     },
     mode: env || "development"
+}
+
+function createChunksJs(chunks, filename, template = "index.html") {
+    return new HtmlWebpackPlugin({ template, chunks, filename });
 }

@@ -1,10 +1,8 @@
 import { initializeIcons } from "@uifabric/icons";
 import * as React from "react";
 
-// import ContentContainer from "./content/ContentContainer";
-import LeftPaneContainer from "./chrome/left-pane/LeftPaneContainer";
-import RightPanelContainer from "./chrome/right-panel/RightPanelContainer";
-import TopBarContainer from "./chrome/top-bar/TopBarContainer";
+import Chrome from "./chrome/Chrome";
+import ContentContainer from "./content/ContentContainer";
 
 import "./common/common-style/CommonStyle.scss";
 
@@ -18,10 +16,8 @@ export class AppComponent extends React.Component {
     public render(): JSX.Element {
         return (
             <div className="cPanel">
-                <LeftPaneContainer />
-                <TopBarContainer />
-                {/* <ContentContainer /> */}
-                <RightPanelContainer />
+                <Chrome />
+                <ContentContainer />
             </div >
         );
     }

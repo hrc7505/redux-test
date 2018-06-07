@@ -11,7 +11,7 @@ function mapStateToProps(state: IAppReducer, ownProps: ITopBarComponentProps): I
     return {
         ...ownProps,
         isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible,
-        isRightPanelVisible: state.rightPaneReducer.isRightPaneVisible
+        isRightPanelVisible: state.contentReducer.rightPaneReducer.isRightPaneVisible
     };
 }
 
