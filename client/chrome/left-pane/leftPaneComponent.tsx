@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import ILeftPaneProps from "./interfaces/iLeftPaneProps";
 
-import "./leftPaneComponentStyle.scss";
+import "./leftPaneStyle.scss";
 
 export default class LeftPaneComponent extends React.Component<ILeftPaneProps> {
     public render(): JSX.Element {

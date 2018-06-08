@@ -4,7 +4,7 @@ import * as React from "react";
 
 import IRightPanelProps from "./interfaces/IRightPanelProps";
 
-import "./RightPanelComponentStyle.scss";
+import "./rightPanelStyle.scss";
 
 export default class RightPanelComponent extends React.Component<IRightPanelProps> {
     private panelInstance: Panel;
