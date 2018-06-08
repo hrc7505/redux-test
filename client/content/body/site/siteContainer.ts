@@ -1,17 +1,17 @@
 import { connect, Dispatch } from "react-redux";
 
 import getSitePageContents from "./duck/actions/getSitePageContents";
-import IAppReducer from "../../../duck/interfaces/IAppReducer";
+import IAppState from "../../../duck/interfaces/IAppState";
 import IGetSitePageContentsAction from "./duck/actions/interfaces/iGetSitePageContentsAction";
-import ISiteComponentProps from "./interfaces/iSiteComponentProps";
+import ISiteState from "./interfaces/ISiteState";
 import SiteComponent from "./SiteComponent";
 
-function mapStateToProps(state: IAppReducer, ownProps: ISiteComponentProps): ISiteComponentProps {
+function mapStateToProps(state: IAppState, ownProps: ISiteState): ISiteState {
     return {
         ...ownProps,
-        isRightPaneVisible: state.contentReducer.rightPaneReducer.isRightPaneVisible,
-        isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible,
-        headerData: state.contentReducer.siteReducer.headerData
+        isRightPaneVisible: state.contentState.rightPaneReducer.isRightPaneVisible,
+        isLeftMenuVisible: state.chromeState.isLeftPaneVisible,
+        headerData: state.contentState.siteReducer.headerData
     };
 }
 
@@ -24,6 +24,6 @@ function mapDispatchToProps(dispatch: Dispatch<IGetSitePageContentsAction>): Ret
 const SiteContainer: React.ComponentClass = connect(
     mapStateToProps,
     mapDispatchToProps
-)<ISiteComponentProps>(SiteComponent);
+)<ISiteState>(SiteComponent);
 
 export default SiteContainer;

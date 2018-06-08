@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 
-import IAppReducer from "../../duck/interfaces/IAppReducer";
+import IAppState from "../../duck/interfaces/IAppState";
 import IRightPaneComponentProps from "./interfaces/IRightPaneComponentProps";
 import RightPaneComponent from "./RightPaneComponent";
 
-function mapStateToProps(state: IAppReducer): IRightPaneComponentProps {
+function mapStateToProps(state: IAppState): IRightPaneComponentProps {
     return {
-        isRightPaneVisible: state.contentReducer.rightPaneReducer.isRightPaneVisible,
-        childComponent: state.contentReducer.rightPaneReducer.childComponent
+        isRightPaneVisible: state.contentState.rightPaneReducer.isRightPaneVisible,
+        childComponent: state.contentState.rightPaneReducer.childComponent
     };
 }
 

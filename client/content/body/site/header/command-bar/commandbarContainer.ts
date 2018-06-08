@@ -1,11 +1,11 @@
 import { connect, Dispatch } from "react-redux";
 
 import CommandbarComponent from "./CommandbarComponent";
-import ICloseRightPanelAction from "../../../../../duck/actions/interfaces/ICloseRightPanelAction";
+import ICloseRightPanelAction from "../../../../../chrome/duck/actions/interfaces/ICloseRightPanelAction";
 import ICommandBarComponentProps from "./interfaces/iCommandBarComponentProps";
-import IOpenRightPanelAction from "../../../../../duck/actions/interfaces/iOpenRightPanelAction";
+import IOpenRightPanelAction from "../../../../../chrome/duck/actions/interfaces/iOpenRightPanelAction";
 import IToggleRightPaneAction from "../../../../duck/actions/interfaces/iToggleRightPaneAction";
-import openRightPanel from "../../../../../duck/actions/openRightPanel";
+import openRightPanel from "../../../../../chrome/duck/actions/openRightPanel";
 import toggleRightPane from "../../../../duck/actions/toggleRightPane";
 
 type DisptchProps = IOpenRightPanelAction | ICloseRightPanelAction | IToggleRightPaneAction;
