@@ -2,13 +2,13 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import ContentComponent from "./contentComponent";
-import IAppReducer from "../duck/interfaces/IAppReducer";
+import IAppState from "../duck/interfaces/IAppState";
 import IContentComponentProps from "./interfaces/IContentComponentProps";
 
-function mapStateToProps(state: IAppReducer, ownProps: IContentComponentProps): IContentComponentProps {
+function mapStateToProps(state: IAppState, ownProps: IContentComponentProps): IContentComponentProps {
     return {
         ...ownProps,
-        isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible
+        isLeftMenuVisible: state.chromeState.isLeftPaneVisible
     };
 }
 

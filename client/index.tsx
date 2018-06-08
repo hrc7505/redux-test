@@ -4,17 +4,18 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { createStore, Store } from "redux";
 
-import { AppComponent } from "./appComponent";
+import { App } from "./app";
 import appReducer from "./duck/AppReducer";
-import IAppReducer from "./duck/interfaces/IAppReducer";
+import IAppState from "./duck/interfaces/IAppState";
 
-const store: Store<IAppReducer> = createStore(appReducer);
-export default store;
+import "./common/common-style/CommonStyle.scss";
+
+const appStore: Store<IAppState> = createStore(appReducer);
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={appStore}>
         <Router>
-            <AppComponent />
+            <App />
         </Router>
     </Provider>,
     document.getElementById("root")

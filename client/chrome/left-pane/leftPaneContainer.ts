@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 
-import IAppReducer from "../../duck/interfaces/IAppReducer";
+import IAppState from "../../duck/interfaces/IAppState";
 import ILeftPaneProps from "./interfaces/ILeftPaneProps";
 import LeftPaneComponent from "./LeftPaneComponent";
 
-function mapStateToProps(state: IAppReducer): ILeftPaneProps {
+function mapStateToProps(state: IAppState): ILeftPaneProps {
     return {
-        isLeftMenuVisible: state.chromeReducer.isLeftMenuVisible
+        isLeftPaneVisible: state.chromeState.isLeftPaneVisible,
+        isStandAlone: state.chromeState.isStandAlone
     };
 }
 

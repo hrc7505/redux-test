@@ -2,14 +2,14 @@ import * as React from "react";
 
 import GET_SITE_PAGE_CONTENTS from "./action-types/GET_SITE_PAGE_CONTENTS";
 import IGetSitePageContentsAction from "./actions/interfaces/iGetSitePageContentsAction";
-import ISiteComponentProps from "../interfaces/iSiteComponentProps";
+import ISiteState from "../interfaces/ISiteState";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
 import Test1 from "../../../right-panel-body-components/Test1";
 import Test2 from "../../../right-panel-body-components/Test2";
 
 type Action = IGetSitePageContentsAction;
 
-export default function siteReducer(state: ISiteComponentProps, action: Action): ISiteComponentProps {
+export default function siteReducer(state: ISiteState, action: Action): ISiteState {
     switch (action.type) {
         case GET_SITE_PAGE_CONTENTS:
             return {

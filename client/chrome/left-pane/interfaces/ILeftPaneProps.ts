@@ -1,3 +1,4 @@
 export default interface ILeftPaneProps {
-    isLeftMenuVisible: boolean;
+    isLeftPaneVisible: boolean;
+    isStandAlone: boolean;
 }

@@ -1,15 +1,15 @@
 import * as React from "react";
 
-import ITopBarComponentProps from "./interfaces/ITopBarComponentProps";
+import ITopBarComponentProps from "./interfaces/ITopBarProps";
 
 import "./topBarStyle.scss";
 
 export default class TopBarComponent extends React.Component<ITopBarComponentProps> {
     public render(): JSX.Element {
         return (
-            <div className={`topBar flexBox vCenter ${!this.props.isLeftMenuVisible ? "cPanel" : ""}`}>
+            <div className={`topBar flexBox vCenter ${!this.props.isLeftPaneVisible ? "cPanel" : ""}`}>
                 <div
-                    onClick={(): void => this.toggleLeftPane()}
+                    onClick={(): void => this.props.toggleLeftPane()}
                     className="hamburgerMenuIcon flexBox vCenter hCenter pullLeft"
                 >
                     MENU
@@ -28,9 +28,5 @@ export default class TopBarComponent extends React.Component<ITopBarComponentPro
                 </div>
             </div>
         );
-    }
-
-    private toggleLeftPane(): void {
-        this.props.toggleLeftPane();
     }
 }

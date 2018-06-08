@@ -1,7 +1,6 @@
-import ICloseRightPanelAction from "../../../duck/actions/interfaces/ICloseRightPanelAction";
+import IRightPanelPropsFromDispatch from "./IRightPanelPropsFromDispatch";
+import IRightPanelPropsFromState from "./IRightPanelPropsFromState";
 
-export default interface IRightPanelProps {
-    isRightPanelVisible: boolean;
-    childComponent: JSX.Element;
-    closeRightPanel?: () => ICloseRightPanelAction;
+export default interface IRightPanelProps
+    extends IRightPanelPropsFromDispatch, IRightPanelPropsFromState {
 }

@@ -1,12 +1,10 @@
 import { initializeIcons } from "@uifabric/icons";
 import * as React from "react";
 
-import Chrome from "./chrome/Chrome";
+import Chrome from "./chrome/chrome";
 import ContentContainer from "./content/ContentContainer";
 
-import "./common/common-style/CommonStyle.scss";
-
-export class AppComponent extends React.Component {
+export class App extends React.Component {
     constructor(props: object) {
         super(props);
 
