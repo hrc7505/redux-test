@@ -1,12 +1,10 @@
-import { combineReducers } from "redux";
+import { combineReducers, Reducer } from "redux";
 
 import IContentState from "./interfaces/IContentState";
-import rightPaneReducer from "./RightPaneReducer";
-import siteReducer from "../body/site/duck/siteReducer";
+import siteReducer from "../site/duck/siteReducer";
 
-const contentReducer: ReturnType<typeof combineReducers> = combineReducers<IContentState>({
-    siteReducer,
-    rightPaneReducer
+const contentReducer: Reducer<IContentState> = combineReducers<IContentState>({
+    siteState: siteReducer
 });
 
 export default contentReducer;

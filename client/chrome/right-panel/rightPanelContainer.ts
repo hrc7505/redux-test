@@ -10,7 +10,7 @@ import RightPanelComponent from "./RightPanelComponent";
 
 function mapStateToProps(state: IAppState): IRightPanelPropsFromState {
     return {
-        childComponent: state.chromeState.rightPanelComponent,
+        rightPanelData: state.chromeState.rightPanelData,
         isRightPanelVisible: state.chromeState.isRightPanelVisible
     };
 }

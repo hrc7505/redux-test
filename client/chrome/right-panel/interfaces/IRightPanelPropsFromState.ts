@@ -1,4 +1,6 @@
+import IRightPanelData from "./IRightPanelData";
+
 export default interface IRightPanelPropsFromState {
     isRightPanelVisible: boolean;
-    childComponent: JSX.Element;
+    rightPanelData: IRightPanelData;
 }

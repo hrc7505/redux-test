@@ -7,6 +7,7 @@ module.exports = {
         app: "./client/index.tsx",
         chrome: "./client/chromeIndex.tsx",
         dashboard: "./client/dashboardIndex.tsx",
+        sites: "./client/sitesIndex.tsx"
     },
     output: {
         path: path.resolve("dist"),
@@ -42,7 +43,7 @@ module.exports = {
         createChunksJs(["app"], "index.html"),
         createChunksJs(["chrome"], "./chrome/index.html"),
         createChunksJs(["dashboard"], "./dashboard/index.html"),
-        //createChunksJs(["content"], "./testcontent/sites/index.html")
+        createChunksJs(["sites"], "./test/sites/index.html")
     ],
     devServer: {
         compress: true,

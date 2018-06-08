@@ -2,7 +2,7 @@ import * as React from "react";
 import { Route, RouteComponentProps, Switch, withRouter } from "react-router";
 
 import Dashboard from "./dashboard/Dashboard";
-import SiteContainer from "./body/site/siteContainer";
+import SiteContainer from "./site/siteContainer";
 
 const Routes: React.SFC<RouteComponentProps<string>> = (props: RouteComponentProps<string>): JSX.Element => (
     <Switch>

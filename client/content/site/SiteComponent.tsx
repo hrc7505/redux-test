@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import DetailsListComponent from "../../../common/detail-list/DetailListComponent";
+import DetailsListComponent from "../../common/detail-list/DetailListComponent";
 import HeaderComponent from "./header/headerComponent";
-import ISiteState from "./interfaces/ISiteState";
-import RightPaneContainer from "../../right-pane/rightPaneContainer";
+import ISiteComponentProps from "./interfaces/ISiteComponentProps";
+import RightPaneComponent from "../right-pane/RightPaneComponent";
 
 import "./siteComponentStyle.scss";
 
-export default class SiteComponent extends React.Component<ISiteState> {
+export default class SiteComponent extends React.Component<ISiteComponentProps> {
     public render(): JSX.Element {
         const { isRightPaneVisible, headerData } = this.props;
 
@@ -18,7 +18,10 @@ export default class SiteComponent extends React.Component<ISiteState> {
                     <div className={`bodyContainer pullLeft ${isRightPaneVisible ? "shrink" : ""}`}>
                         <DetailsListComponent />
                     </div>
-                    <RightPaneContainer />
+                    <RightPaneComponent
+                        isRightPaneVisible={this.props.isRightPaneVisible}
+                        rightPaneData={this.props.rightPaneData}
+                    />
                 </div>
             </div>
         );

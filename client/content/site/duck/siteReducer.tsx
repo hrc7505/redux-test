@@ -3,11 +3,12 @@ import * as React from "react";
 import GET_SITE_PAGE_CONTENTS from "./action-types/GET_SITE_PAGE_CONTENTS";
 import IGetSitePageContentsAction from "./actions/interfaces/iGetSitePageContentsAction";
 import ISiteState from "../interfaces/ISiteState";
+import IToggleRightPaneAction from "./actions/interfaces/IToggleRightPaneAction";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
-import Test1 from "../../../right-panel-body-components/Test1";
-import Test2 from "../../../right-panel-body-components/Test2";
+import Test1 from "../../right-panel-body-components/Test1";
+import TOGGLE_RIGHT_PANE from "./action-types/TOGGLE_RIGHT_PANE";
 
-type Action = IGetSitePageContentsAction;
+type Action = IGetSitePageContentsAction | IToggleRightPaneAction;
 
 export default function siteReducer(state: ISiteState, action: Action): ISiteState {
     switch (action.type) {
@@ -15,13 +16,7 @@ export default function siteReducer(state: ISiteState, action: Action): ISiteSta
             return {
                 ...state,
                 headerData: {
-                    title: "Sites in site reducer",
-                    breadcrumb: {
-                        items: [
-                            { text: "Home", key: "home" },
-                            { text: "Sites", key: "sites", isCurrentItem: true },
-                        ]
-                    },
+                    title: "Sites",
                     commands: {
                         farItems: [
                             {
@@ -30,8 +25,7 @@ export default function siteReducer(state: ISiteState, action: Action): ISiteSta
                                     iconType: IconType.default
                                 },
                                 key: "information",
-                                data: "Right pane for site page",
-                                type: "RIGHT_PEN"
+                                rightPaneData: "Right pane for site page",
                             }
                         ],
                         items: [
@@ -40,25 +34,26 @@ export default function siteReducer(state: ISiteState, action: Action): ISiteSta
                                     iconName: "CirclePlus",
                                     iconType: IconType.default
                                 },
-                                key: "asset",
-                                name: "Asset",
-                                data: <Test1 />
+                                key: "site",
+                                name: "Site",
+                                rightPanelData: {
+                                    headerTitle: "Add New Site",
+                                    body: <Test1 />
+                                }
                             },
-                            {
-                                iconProps: {
-                                    iconName: "CirclePlus",
-                                    iconType: IconType.default
-                                },
-                                key: "job",
-                                name: "Job",
-                                data: <Test2 />,
-                            }
                         ],
                         overflowItems: [],
 
                     }
 
                 }
+            };
+
+        case TOGGLE_RIGHT_PANE:
+            return {
+                ...state,
+                isRightPaneVisible: !state.isRightPaneVisible,
+                rightPaneData: action.rightPaneData
             };
 
         default:

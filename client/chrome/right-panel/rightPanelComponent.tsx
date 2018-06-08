@@ -19,14 +19,14 @@ export default class RightPanelComponent extends React.Component<IRightPanelProp
                 onLightDismissClick={this.closePanel}
                 onDismissed={this.closePanel}
                 isLightDismiss={true}
-                headerText="Test Panel"
+                headerText={this.props.rightPanelData.headerTitle}
                 closeButtonAriaLabel="Close"
                 onRenderFooterContent={this.onRenderFooterContent}
                 isFooterAtBottom={true}
                 className="panelRoot"
                 layerProps={{ className: "panelLayerClass" }}
             >
-                {this.props.childComponent}
+                {this.props.rightPanelData.body}
             </Panel>
         );
     }

@@ -29,18 +29,14 @@ export default class CommandbarComponent extends React.Component<ICommandBarComp
     private addClickHandlerToItems = (items: IContextualMenuItem[]): void => {
         if (items) {
             items.map((data: IContextualMenuItem) => {
-                if (data.data) {
-                    data.onClick = data.type !== "RIGHT_PEN"
-                        ? (): void => this.props.openRightPanel(data.data)
-                        : this.toggleRightPaneAndCloseLeftPane;
+                if (data.rightPanelData) {
+                    data.onClick = (): void => this.props.openRightPanel(data.rightPanelData);
+                }
+
+                if (data.rightPaneData) {
+                    data.onClick = (): void => this.props.toggleRightPane(data.rightPaneData);
                 }
             });
         }
-    }
-
-    private toggleRightPaneAndCloseLeftPane = (
-        ev?: React.MouseEvent<HTMLElement>,
-        item?: IContextualMenuItem): void => {
-        this.props.toggleRightPane(item.data);
     }
 }

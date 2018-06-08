@@ -1,4 +1,4 @@
 export default interface IRightPaneComponentProps {
     isRightPaneVisible: boolean;
-    childComponent: JSX.Element;
+    rightPaneData: JSX.Element;
 }
