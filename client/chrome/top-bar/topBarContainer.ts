@@ -14,9 +14,7 @@ function mapStateToProps(state: IAppState): ITopBarPropsFromState {
     };
 }
 
-type DispatchTypes = IToggleLeftPaneAction;
-
-function mapDispatchToProps(dispatch: Dispatch<DispatchTypes>): ITopBarPropsFromDispatch {
+function mapDispatchToProps(dispatch: Dispatch<IToggleLeftPaneAction>): ITopBarPropsFromDispatch {
     return {
         toggleLeftPane: (): IToggleLeftPaneAction => dispatch(toggleLeftPane())
     };

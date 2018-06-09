@@ -1,0 +1,43 @@
+$fontSize:14px;
+%similarProperties {
+    padding: 10px 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+$colour:#475357;
+.job {
+    width: calc((100% - 30px) / 3);
+    border: solid 1px;
+    margin: 5px;
+    padding: 0 10px;
+    .jobTitle {
+        @extend %similarProperties;
+        border-bottom: 2px solid #3DBCBE;
+        font-size: 20px;
+        color: $colour;
+    }
+    .jobInfoContainer {
+        padding: 10px;
+        .jobInfo {
+            text-transform: capitalize;
+            .infoLabel {
+                font-size: $fontSize;
+                color: #002327;
+                line-height: 19px;
+            }
+            .infoValue {
+                font-size: $fontSize;
+                color: #78909C;
+            }
+        }
+    }
+    .siteName {
+        @extend %similarProperties;
+        font-size: 15px;
+        color: $colour;
+    }
+}
+.job.selected {
+    background-color: #EAEAEA;
+}
