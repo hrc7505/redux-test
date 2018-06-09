@@ -41,8 +41,8 @@ module.exports = {
     },
     plugins: [
         createChunksJs(["app"], "index.html"),
-        createChunksJs(["chrome"], "./chrome/index.html"),
-        createChunksJs(["dashboard"], "./dashboard/index.html"),
+        createChunksJs(["chrome"], "./test/chrome/index.html"),
+        createChunksJs(["dashboard"], "./test/dashboard/index.html"),
         createChunksJs(["sites"], "./test/sites/index.html")
     ],
     devServer: {

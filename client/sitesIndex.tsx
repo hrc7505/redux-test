@@ -14,7 +14,8 @@ import "./common/common-style/CommonStyle.scss";
 
 const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: null,
-    contentState: contentReducer
+    contentState: contentReducer,
+    dashboardState: null
 });
 
 const standAloneDefaultState: ISiteState = {
@@ -27,7 +28,8 @@ const standAloneDefaultState: ISiteState = {
 
 const standAloneSiteStore: Store<IContentState> = createStore(sitesOnlyReducer, {
     chromeState: null,
-    contentState: { siteState: standAloneDefaultState }
+    contentState: { siteState: standAloneDefaultState },
+    dashboardState: null
 });
 
 ReactDOM.render(

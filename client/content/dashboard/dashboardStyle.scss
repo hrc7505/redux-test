@@ -1,0 +1,13 @@
+$rightPaneWidth:250px;
+$leftRightMarginToRightPane:15px+15px;
+.dashboardComponent {
+    .dashboardBodyContainer {
+        width: 100%;
+        margin-top: 15px;
+        padding:0 10px;
+        transition: 0.3s;
+    }
+    .dashboardBodyContainer.shrink {
+        width: calc(100% - #{$rightPaneWidth} - #{$leftRightMarginToRightPane})
+    }
+}

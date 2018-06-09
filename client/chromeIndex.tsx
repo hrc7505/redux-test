@@ -13,7 +13,8 @@ import "./common/common-style/CommonStyle.scss";
 
 const chromeOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: chromeReducer,
-    contentState: null
+    contentState: null,
+    dashboardState: null
 });
 
 const standAloneDefaultState: IChromeState = {
