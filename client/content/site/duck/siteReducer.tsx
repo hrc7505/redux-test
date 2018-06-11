@@ -2,7 +2,7 @@ import * as React from "react";
 
 import GET_SITE_PAGE_CONTENTS from "./action-types/GET_SITE_PAGE_CONTENTS";
 import IGetSitePageContentsAction from "./actions/interfaces/iGetSitePageContentsAction";
-import ISiteState from "../interfaces/ISiteState";
+import ISiteState from "../duck/interfaces/ISiteState";
 import IToggleRightPaneAction from "./actions/interfaces/IToggleRightPaneAction";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
 import Test1 from "../../right-panel-body-components/Test1";
@@ -43,9 +43,7 @@ export default function siteReducer(state: ISiteState, action: Action): ISiteSta
                             },
                         ],
                         overflowItems: [],
-
                     }
-
                 }
             };
 

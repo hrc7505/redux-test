@@ -1,6 +1,6 @@
 $topBarMenuIconWidth:72px;
 .entityTitle {
-    margin: 15px 0 0 $topBarMenuIconWidth;
+    margin-top: 15px;
     font-weight: bold;
-    padding-left: 18px;
+    padding-left: 18px + $topBarMenuIconWidth;
 }

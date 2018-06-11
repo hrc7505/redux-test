@@ -3,5 +3,5 @@ export default interface IRightPaneSummaryProps {
     jobSite: string;
     jobCreatedDate: string;
     jobStatus: string;
-    jobId: string
+    jobId: string;
 }

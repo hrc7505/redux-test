@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import DetailsListComponent from "../../common/detail-list/DetailListComponent";
-import IDashboardProps from "./interfaces/IDashboardProps"
+import IDashboardProps from "./interfaces/IDashboardProps";
 import IJobSummaryTileProps from "../common/jobSummaryTile/interfaces/IJobSummaryTileProps";
 import JobSummaryTile from "../common/jobSummaryTile/jobSummaryTileComponent";
 import RightPaneComponent from "../right-pane/RightPaneComponent";
@@ -47,13 +47,17 @@ export default class DashboardComponent extends React.Component<IDashboardProps>
             <div className="cPanel dashboardComponent">
                 <div className={`dashboardBodyContainer pullLeft ${this.props.isRightPaneVisible ? "shrink" : ""}`}>
                     <div className="cPanel">
+                        <div className="cPanel sectionTitle">active jobs</div>
                         <div className="activeJobs cPanel">
-                            {tileProps.map((props:IJobSummaryTileProps): JSX.Element => {
-                                return(<JobSummaryTile key={props.jobId} {...props} />);
-                            })}
+                            {
+                                tileProps.map((props: IJobSummaryTileProps): JSX.Element => (
+                                    <JobSummaryTile key={props.jobId} {...props} />
+                                ))
+                            }
                         </div>
                     </div>
-                    <DetailsListComponent/>
+                    <div className="cPanel sectionTitle">sites</div>
+                    <DetailsListComponent />
                 </div>
                 <RightPaneComponent
                     isRightPaneVisible={this.props.isRightPaneVisible}

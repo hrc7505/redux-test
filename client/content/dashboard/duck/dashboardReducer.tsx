@@ -14,9 +14,9 @@ const emptyRightPaneSummaryProps: IRightPaneSummaryProps = {
     jobCreatedDate: "placeholder",
     jobStatus: "placeholder",
     jobSite: "placeholder"
-}
+};
 
-const emptyRightPaneSummary: JSX.Element = <RightPaneSummary key={"placeholder"} {...emptyRightPaneSummaryProps}/>;
+const emptyRightPaneSummary: JSX.Element = <RightPaneSummary key={"placeholder"} {...emptyRightPaneSummaryProps} />;
 
 const dashboardDefaultState: IDashboardState = {
     isRightPaneVisible: false,
@@ -29,6 +29,7 @@ export default function dashboardReducer(state: IDashboardState, action: Action)
             if (state.rightPaneData === null) {
                 return state;
             }
+
             if (state.rightPaneData.key === action.rightPaneData.key) {
                 // We want to be a toggle control if the data is the same.
                 return {
@@ -41,7 +42,7 @@ export default function dashboardReducer(state: IDashboardState, action: Action)
                     isRightPaneVisible: true,
                     rightPaneData: action.rightPaneData
                 };
-            };
+            }
 
         default:
             return state || dashboardDefaultState;

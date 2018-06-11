@@ -9,7 +9,7 @@ import "./siteComponentStyle.scss";
 
 export default class SiteComponent extends React.Component<ISiteComponentProps> {
     public render(): JSX.Element {
-        const { isRightPaneVisible, headerData } = this.props;
+        const { isRightPaneVisible, headerData, rightPaneData } = this.props;
 
         return (
             <div className="cPanel siteComponent">
@@ -19,8 +19,8 @@ export default class SiteComponent extends React.Component<ISiteComponentProps> 
                         <DetailsListComponent />
                     </div>
                     <RightPaneComponent
-                        isRightPaneVisible={this.props.isRightPaneVisible}
-                        rightPaneData={this.props.rightPaneData}
+                        isRightPaneVisible={isRightPaneVisible}
+                        rightPaneData={rightPaneData}
                     />
                 </div>
             </div>

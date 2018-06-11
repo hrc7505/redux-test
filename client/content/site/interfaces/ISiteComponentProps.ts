@@ -1,6 +1,6 @@
 import ISitePropsFromDispatch from "./ISitePropsFromDispatch";
-import ISiteState from "./ISiteState";
+import ISitePropsFromState from "./ISitePropsFromState";
 
-export default interface ISiteComponentProps extends ISiteState, ISitePropsFromDispatch {
-
+export default interface ISiteComponentProps
+    extends ISitePropsFromState, ISitePropsFromDispatch {
 }

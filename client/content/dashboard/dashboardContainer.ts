@@ -8,7 +8,6 @@ import IDashboardPropsFromDispatch from "./interfaces/IDashboardPropsFromDispatc
 import IDashboardPropsFromState from "./interfaces/IDashboardPropsFromState";
 import IDashboardToggleRightPaneAction from "./duck/actions/interfaces/IDashboardToggleRightPaneAction";
 
-
 function mapStateToProps(state: IAppState): IDashboardPropsFromState {
     return {
         isRightPaneVisible: state.dashboardState.isRightPaneVisible,
@@ -18,7 +17,8 @@ function mapStateToProps(state: IAppState): IDashboardPropsFromState {
 
 function mapDispatchToProps(dispatch: Dispatch<IDashboardToggleRightPaneAction>): IDashboardPropsFromDispatch {
     return {
-        jobTileOnClick: (rightPaneData: JSX.Element) => dispatch(dashboardToggleRightPane(rightPaneData))
+        jobTileOnClick: (rightPaneData: JSX.Element): IDashboardToggleRightPaneAction =>
+            dispatch(dashboardToggleRightPane(rightPaneData))
     };
 }
 

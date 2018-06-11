@@ -1,4 +1,4 @@
 export default interface IDashboardState {
-    isRightPaneVisible: boolean,
-    rightPaneData: JSX.Element
+    isRightPaneVisible: boolean;
+    rightPaneData: JSX.Element;
 }

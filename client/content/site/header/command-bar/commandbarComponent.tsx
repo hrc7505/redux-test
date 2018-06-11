@@ -31,9 +31,7 @@ export default class CommandbarComponent extends React.Component<ICommandBarComp
             items.map((data: IContextualMenuItem) => {
                 if (data.rightPanelData) {
                     data.onClick = (): void => this.props.openRightPanel(data.rightPanelData);
-                }
-
-                if (data.rightPaneData) {
+                } else if (data.rightPaneData) {
                     data.onClick = (): void => this.props.toggleRightPane(data.rightPaneData);
                 }
             });

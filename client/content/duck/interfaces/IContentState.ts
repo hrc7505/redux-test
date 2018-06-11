@@ -1,4 +1,4 @@
-import ISiteState from "../../site/interfaces/ISiteState";
+import ISiteState from "../../site/duck/interfaces/ISiteState";
 
 export default interface IContentState {
     siteState: ISiteState;

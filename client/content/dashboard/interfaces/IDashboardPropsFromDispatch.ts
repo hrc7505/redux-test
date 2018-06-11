@@ -1,3 +1,3 @@
 export default interface IDashboardPropsFromDispatch {
-    jobTileOnClick: (rightPaneData: JSX.Element) => void
+    jobTileOnClick: (rightPaneData: JSX.Element) => void;
 }
