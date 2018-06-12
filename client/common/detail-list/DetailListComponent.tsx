@@ -8,7 +8,7 @@ import * as React from "react";
 import IDetailsListDocumentsExampleState from "./interfaces/IDetailsListDocumentsExampleState";
 import IDocument from "./interfaces/IDocument";
 
-let emptyitems: IDocument[] = [];
+const emptyitems: IDocument[] = [];
 
 const fileIcons: Array<{ name: string; }> = [
     { name: "accdb" },
@@ -48,9 +48,18 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 const randomFileType = this.randomFileIcon();
                 let fileName: string = "fileName" + i;
                 let userName: string = "userName" + i;
-                fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
+                const zero: number = 0;
+                const one: number = 1;
+                fileName = fileName
+                    .charAt(zero)
+                    .toUpperCase() + fileName
+                    .slice(one)
+                    .concat(`.${randomFileType.docType}`);
                 userName = userName.split(" ").map((name: string) =>
-                    name.charAt(0).toUpperCase() + name.slice(1)).join(" ");
+                    name
+                    .charAt(zero)
+                    .toUpperCase() + name.slice(one))
+                    .join(" ");
                 emptyitems.push({
                     dateModified: randomDate.dateFormatted,
                     dateModifiedValue: randomDate.value,
@@ -62,7 +71,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                     value: fileName
                 });
             }
-            emptyitems = this.sortItems(emptyitems, "name");
         }
 
         const columns: IColumn[] = [
@@ -76,7 +84,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 isResizable: true,
                 isSorted: true,
                 isSortedDescending: false,
-                onColumnClick: this.onColumnClick,
                 data: "string",
                 isPadded: true
             },
@@ -87,7 +94,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 minWidth: 70,
                 maxWidth: 90,
                 isResizable: true,
-                onColumnClick: this.onColumnClick,
                 data: "number",
                 onRender: (item: IDocument): JSX.Element => <span>{item.dateModified}</span>,
                 isPadded: true
@@ -101,7 +107,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 isResizable: true,
                 isCollapsable: true,
                 data: "string",
-                onColumnClick: this.onColumnClick,
                 onRender: (item: IDocument): JSX.Element => <span>{item.modifiedBy}</span>,
                 isPadded: true
             },
@@ -114,7 +119,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
                 isResizable: true,
                 isCollapsable: true,
                 data: "number",
-                onColumnClick: this.onColumnClick,
                 onRender: (item: IDocument): JSX.Element => <span>{item.fileSize}</span>
             },
         ];
@@ -123,7 +127,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
         this.state = {
             columns,
             isCompactMode: false,
-            //  isModalSelection: this.selection.isModal(),
             items: emptyitems
         };
     }
@@ -147,7 +150,6 @@ export default class DetailsListComponent extends React.Component<object, IDetai
         );
     }
 
-
     private randomDate(start: Date, end: Date): { value: number; dateFormatted: string; } {
         const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
         const dateData = {
@@ -159,7 +161,8 @@ export default class DetailsListComponent extends React.Component<object, IDetai
     }
 
     private randomFileIcon(): { docType: string; url: string; } {
-        const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+        const defaultIndex: number = 0;
+        const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + defaultIndex].name;
 
         return {
             docType,
@@ -168,59 +171,13 @@ export default class DetailsListComponent extends React.Component<object, IDetai
     }
 
     private randomFileSize(): { value: string; rawSize: number; } {
-        const fileSize: number = Math.floor(Math.random() * 100) + 30;
+        const hundred: number = 100;
+        const thirty: number = 30;
+        const fileSize: number = Math.floor(Math.random() * hundred) + thirty;
 
         return {
             rawSize: fileSize,
             value: `${fileSize} KB`
         };
-    }
-
-    private onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
-        const { columns, items } = this.state;
-        let newItems: IDocument[] = items.slice();
-        const newColumns: IColumn[] = columns.slice();
-        const currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) =>
-            column.key === currCol.key)[0];
-        newColumns.forEach((newCol: IColumn) => {
-            if (newCol === currColumn) {
-                currColumn.isSortedDescending = !currColumn.isSortedDescending;
-                currColumn.isSorted = true;
-            } else {
-                newCol.isSorted = false;
-                newCol.isSortedDescending = true;
-            }
-        });
-        newItems = this.sortItems(newItems, currColumn.fieldName, currColumn.isSortedDescending);
-        this.setState({
-            columns: newColumns,
-            items: newItems
-        });
-    }
-
-    private sortItems = (items: IDocument[], sortBy: string, descending: boolean = false): IDocument[] => {
-        if (descending) {
-            return items.sort((a: IDocument, b: IDocument) => {
-                if (a[sortBy] < b[sortBy]) {
-                    return 1;
-                }
-                if (a[sortBy] > b[sortBy]) {
-                    return -1;
-                }
-
-                return 0;
-            });
-        } else {
-            return items.sort((a: IDocument, b: IDocument) => {
-                if (a[sortBy] < b[sortBy]) {
-                    return -1;
-                }
-                if (a[sortBy] > b[sortBy]) {
-                    return 1;
-                }
-
-                return 0;
-            });
-        }
     }
 }

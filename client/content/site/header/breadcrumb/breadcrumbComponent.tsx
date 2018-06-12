@@ -1,10 +1,10 @@
 import { Breadcrumb, IBreadcrumbItem } from "office-ui-fabric-react/lib/Breadcrumb";
 import * as React from "react";
+import { withRouter } from "react-router";
 
 import IBreadcrumbComponentProps from "./interfaces/IBreadcrumbComponentProps";
 
 import "./BreadcrumbComponentStyle.scss";
-import { withRouter } from "react-router";
 
 class BreadcrumbComponent extends React.Component<IBreadcrumbComponentProps> {
     public render(): JSX.Element {

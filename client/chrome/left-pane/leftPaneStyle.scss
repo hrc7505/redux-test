@@ -20,17 +20,23 @@ $topBarHeight:72px;
         margin-top: $topBarHeight;
         .menuItem {
             border-bottom: $commonBorder;
-            padding: 10px;
             min-height: 61px;
-            .menuItemName {
-                font-family: OpenSans-SemiBold;
-                font-size: 14px;
+            .menuItemLink {
+                padding: 20px 10px;
+                width: 100%;
                 color: #475357;
-                font-weight: 500;
-                text-transform: capitalize;
-            }
-            .menuItemIcon {
-                padding: 0 17px 0 8px;
+                .menuItemName {
+                    font-family: OpenSans-SemiBold;
+                    font-size: 14px;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                }
+                .menuItemIcon {
+                    padding: 0 17px 0 8px;
+                }
+                &.active{
+                    color: #94dadc;
+                }
             }
         }
     }
