@@ -1,28 +1,24 @@
 import * as React from "react";
 
 import IJobSummaryTileProps from "./interfaces/IJobSummaryTileProps";
-import IRightPaneSummaryProps from "./rightPaneSummary/interfaces/IRightPaneSummaryProps";
-import RightPaneSummary from "./rightPaneSummary/rightPaneSummary";
 
 import "./jobSummaryTileStyle.scss";
 
 export default class JobSummaryTileComponent extends React.Component<IJobSummaryTileProps> {
     public render(): JSX.Element {
-        const rightPaneSummaryProps: IRightPaneSummaryProps = {
-            jobTitle: this.props.jobTitle,
-            jobId: this.props.jobId,
-            jobCreatedDate: this.props.jobCreatedDate,
-            jobStatus: this.props.jobStatus,
-            jobSite: this.props.jobSite
-        };
-
         return (
             <div
                 className={`job pullLeft ${this.props.isSelected ? "selected" : ""}`}
                 onClick={
-                    (): void => this.props.tileOnClick(
-                        <RightPaneSummary key={this.props.jobId} {...rightPaneSummaryProps} />
-                    )
+                    (): void => this.props.tileOnClick({
+                        rightPaneHeaderText: `${this.props.jobTitle} (${this.props.jobId})`,
+                        rightPaneContent: this.content(
+                                                this.props.jobId, // Body div's key.
+                                                this.props.jobCreatedDate,
+                                                this.props.jobStatus,
+                                                this.props.jobSite),
+                        rightPaneFooterRender: this.rightPaneFootRender
+                    })
                 }
             >
                 <div className="cPanel jobTitle">{this.props.jobTitle}</div>
@@ -33,6 +29,21 @@ export default class JobSummaryTileComponent extends React.Component<IJobSummary
                 </div>
                 <div className="cPanel siteName">{this.props.jobSite}</div>
             </div>
+        );
+    }
+
+    private content = (key: string, date: string, status: string, site: string): JSX.Element => {
+        return (
+            <div key={key}>
+                <div> The job's created date is {date} </div>
+                <div> This job is currently {status} at {site} </div>
+            </div>
+        );
+    }
+
+    private rightPaneFootRender = (): JSX.Element =>  {
+        return (
+            <div> This is a footer. </div>
         );
     }
 

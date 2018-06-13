@@ -1,5 +1,4 @@
-export default interface IDashboardState {
-    isRightPaneVisible: boolean;
+export default interface IDashboardToggleRightPanePayload {
     rightPaneHeaderText: string;
     rightPaneContent: JSX.Element;
     rightPaneFooterRender?: () => JSX.Element;

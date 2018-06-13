@@ -1,0 +1,43 @@
+// CSS here is to mimic the CSS of fabric react's Panel control.
+// We want the look and feel of Panes and Panels to be mostly the same.
+.rightPane {
+    border: 1px solid;
+    width: 250px;
+    margin: 15px 15px 0 15px;
+    padding: 15px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    .rightPaneHeader {
+        margin: 14px 0;
+        flex-grow: 0;
+        .rightPaneHeaderText {
+            font-size: 21px;
+            font-weight: 100;
+            color: #333333;
+            line-height: 32px;
+            margin: 0;
+        }
+    }
+    .rightPaneContent {
+        margin-bottom: 0;
+        padding-bottom: 20px;
+        overflow-y: auto;
+        flex-grow: 1;
+    }
+    .rightPaneFooter {
+        flex-grow: 0;
+        border-top: 1px solid transparent;
+        .rightPaneFooterInner {
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+    }
+}
+
+.rightPane.hidden {
+    margin-right: -280px;
+    visibility: hidden;
+    display: inline-block;
+    vertical-align: top;
+}
