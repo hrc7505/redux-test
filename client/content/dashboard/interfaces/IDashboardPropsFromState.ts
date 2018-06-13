@@ -1,4 +1,5 @@
+import IRightPaneProps from "../../common/rightPane/interfaces/IRightPaneProps";
+
 export default interface IDashboardPropsFromState {
-    isRightPaneVisible: boolean;
-    rightPaneData: JSX.Element;
+    rightPaneProps: IRightPaneProps
 }

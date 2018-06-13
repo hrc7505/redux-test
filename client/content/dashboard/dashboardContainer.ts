@@ -7,18 +7,23 @@ import IDashboardProps from "./interfaces/IDashboardProps";
 import IDashboardPropsFromDispatch from "./interfaces/IDashboardPropsFromDispatch";
 import IDashboardPropsFromState from "./interfaces/IDashboardPropsFromState";
 import IDashboardToggleRightPaneAction from "./duck/actions/interfaces/IDashboardToggleRightPaneAction";
+import IDashboardToggleRightPanePayload from "./duck/actions/interfaces/IDashboardToggleRightPanePayload";
 
 function mapStateToProps(state: IAppState): IDashboardPropsFromState {
     return {
-        isRightPaneVisible: state.dashboardState.isRightPaneVisible,
-        rightPaneData: state.dashboardState.rightPaneData
+        rightPaneProps: {
+            isRightPaneVisible: state.dashboardState.isRightPaneVisible,
+            rightPaneHeaderText: state.dashboardState.rightPaneHeaderText,
+            rightPaneContent: state.dashboardState.rightPaneContent,
+            rightPaneFooterRender: state.dashboardState.rightPaneFooterRender,
+        }
     };
 }
 
 function mapDispatchToProps(dispatch: Dispatch<IDashboardToggleRightPaneAction>): IDashboardPropsFromDispatch {
     return {
-        jobTileOnClick: (rightPaneData: JSX.Element): IDashboardToggleRightPaneAction =>
-            dispatch(dashboardToggleRightPane(rightPaneData))
+        jobTileOnClick: (actionPayload: IDashboardToggleRightPanePayload): IDashboardToggleRightPaneAction =>
+            dispatch(dashboardToggleRightPane(actionPayload))
     };
 }
 
