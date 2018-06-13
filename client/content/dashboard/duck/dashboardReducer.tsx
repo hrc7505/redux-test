@@ -23,7 +23,9 @@ export default function dashboardReducer(state: IDashboardState, action: Action)
                     isRightPaneVisible: !state.isRightPaneVisible,
                     rightPaneHeaderText: action.payload.rightPaneHeaderText,
                     rightPaneContent: action.payload.rightPaneContent,
-                    rightPaneFooterRender: action.payload.rightPaneFooterRender ? action.payload.rightPaneFooterRender : null
+                    rightPaneFooterRender: action.payload.rightPaneFooterRender
+                        ? action.payload.rightPaneFooterRender
+                        : null
                 };
             } else {
                 // We want to load the new data into the right pane and open the pane.
@@ -31,7 +33,9 @@ export default function dashboardReducer(state: IDashboardState, action: Action)
                     isRightPaneVisible: true,
                     rightPaneHeaderText: action.payload.rightPaneHeaderText,
                     rightPaneContent: action.payload.rightPaneContent,
-                    rightPaneFooterRender: action.payload.rightPaneFooterRender ? action.payload.rightPaneFooterRender : null
+                    rightPaneFooterRender: action.payload.rightPaneFooterRender
+                        ? action.payload.rightPaneFooterRender
+                        : null
                 };
             }
 

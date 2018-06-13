@@ -3,12 +3,26 @@ import * as React from "react";
 import GET_SITE_PAGE_CONTENTS from "./action-types/GET_SITE_PAGE_CONTENTS";
 import IGetSitePageContentsAction from "./actions/interfaces/iGetSitePageContentsAction";
 import ISiteState from "../duck/interfaces/ISiteState";
-import IToggleRightPaneAction from "./actions/interfaces/IToggleRightPaneAction";
+import ISiteToggleRightPaneAction from "./actions/interfaces/ISiteToggleRightPaneAction";
+import ISiteToggleRightPanePayload from "./actions/interfaces/ISiteToggleRightPanePayload";
+import IToggleRightPanelPayload from "../../../chrome/right-panel/interfaces/IToggleRightPanelPayload";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
+import SITE_TOGGLE_RIGHT_PANE from "./action-types/SITE_TOGGLE_RIGHT_PANE";
 import Test1 from "../../right-panel-body-components/Test1";
-import TOGGLE_RIGHT_PANE from "./action-types/TOGGLE_RIGHT_PANE";
 
-type Action = IGetSitePageContentsAction | IToggleRightPaneAction;
+type Action = IGetSitePageContentsAction | ISiteToggleRightPaneAction;
+
+const rightPaneData: ISiteToggleRightPanePayload = {
+    rightPaneHeaderText: "HeaderText of the right pane",
+    rightPaneContent: <div>This is the body of the right pane...</div>,
+    rightPaneFooterRender: (): JSX.Element => (<div>Footer for the right pane</div>)
+};
+
+const rightPanelData: IToggleRightPanelPayload = {
+    rightPanelHeaderText: "Add New Site",
+    rightPanelContent: <Test1 />,
+    rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
+};
 
 export default function siteReducer(state: ISiteState, action: Action): ISiteState {
     switch (action.type) {
@@ -25,7 +39,7 @@ export default function siteReducer(state: ISiteState, action: Action): ISiteSta
                                     iconType: IconType.default
                                 },
                                 key: "information",
-                                rightPaneData: "Right pane for site page",
+                                rightPaneData,
                             }
                         ],
                         items: [
@@ -36,10 +50,7 @@ export default function siteReducer(state: ISiteState, action: Action): ISiteSta
                                 },
                                 key: "site",
                                 name: "Site",
-                                rightPanelData: {
-                                    headerTitle: "Add New Site",
-                                    body: <Test1 />
-                                }
+                                rightPanelData
                             },
                         ],
                         overflowItems: [],
@@ -47,11 +58,11 @@ export default function siteReducer(state: ISiteState, action: Action): ISiteSta
                 }
             };
 
-        case TOGGLE_RIGHT_PANE:
+        case SITE_TOGGLE_RIGHT_PANE:
             return {
                 ...state,
                 isRightPaneVisible: !state.isRightPaneVisible,
-                rightPaneData: action.rightPaneData
+                rightPaneData: action.payload
             };
 
         default:

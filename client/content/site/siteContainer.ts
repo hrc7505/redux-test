@@ -10,8 +10,10 @@ import SiteComponent from "./SiteComponent";
 
 function mapStateToProps(state: IAppState): ISitePropsFromState {
     return {
-        isRightPaneVisible: state.contentState.siteState.isRightPaneVisible,
-        rightPaneData: state.contentState.siteState.rightPaneData,
+        rightPaneProps: {
+            ...state.contentState.siteState.rightPaneData,
+            isRightPaneVisible: state.contentState.siteState.isRightPaneVisible
+        },
         headerData: state.contentState.siteState.headerData
     };
 }

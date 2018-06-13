@@ -32,7 +32,7 @@ export default class CommandbarComponent extends React.Component<ICommandBarComp
                 if (data.rightPanelData) {
                     data.onClick = (): void => this.props.openRightPanel(data.rightPanelData);
                 } else if (data.rightPaneData) {
-                    data.onClick = (): void => this.props.toggleRightPane(data.rightPaneData);
+                    data.onClick = (): void => this.props.siteButtonOnClick(data.rightPaneData);
                 }
             });
         }

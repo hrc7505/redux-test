@@ -1,4 +1,3 @@
-import { DefaultButton, PrimaryButton } from "office-ui-fabric-react/lib/Button";
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import * as React from "react";
 
@@ -10,23 +9,25 @@ export default class RightPanelComponent extends React.Component<IRightPanelProp
     private panelInstance: Panel;
 
     public render(): JSX.Element {
+        const {isRightPanelVisible, rightPanelProps } = this.props;
+
         return (
             <Panel
                 componentRef={(panelInstance: Panel): Panel => this.panelInstance = panelInstance}
-                isOpen={this.props.isRightPanelVisible}
+                isOpen={isRightPanelVisible}
                 type={PanelType.custom}
                 customWidth="500px"
                 onLightDismissClick={this.closePanel}
                 onDismissed={this.closePanel}
                 isLightDismiss={true}
-                headerText={this.props.rightPanelData.headerTitle}
+                headerText={rightPanelProps.rightPanelHeaderText}
                 closeButtonAriaLabel="Close"
-                onRenderFooterContent={this.onRenderFooterContent}
+                onRenderFooterContent={rightPanelProps.rightPanelFooterRender}
                 isFooterAtBottom={true}
                 className="panelRoot"
                 layerProps={{ className: "panelLayerClass" }}
             >
-                {this.props.rightPanelData.body}
+                {rightPanelProps.rightPanelContent}
             </Panel>
         );
     }
@@ -34,13 +35,4 @@ export default class RightPanelComponent extends React.Component<IRightPanelProp
     private closePanel = (): void => {
         this.props.closeRightPanel();
     }
-
-    private onRenderFooterContent = (): JSX.Element => (
-        <div>
-            <PrimaryButton onClick={this.panelInstance.dismiss} style={{ marginRight: "8px" }}>
-                Save
-            </PrimaryButton>
-            <DefaultButton onClick={this.props.closeRightPanel}>Cancel</DefaultButton>
-        </div>
-    )
 }

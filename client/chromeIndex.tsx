@@ -7,7 +7,7 @@ import Chrome from "./chrome/chrome";
 import chromeReducer from "./chrome/duck/chromeReducer";
 import IAppState from "./duck/interfaces/IAppState";
 import IChromeState from "./chrome/duck/interfaces/IChromeState";
-import IRightPanelData from "./chrome/right-panel/interfaces/IRightPanelData";
+import IToggleRightPanelPayload from "./chrome/right-panel/interfaces/IToggleRightPanelPayload";
 
 import "./common/common-style/CommonStyle.scss";
 
@@ -18,7 +18,7 @@ const chromeOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
 });
 
 const standAloneDefaultState: IChromeState = {
-    rightPanelData: {} as IRightPanelData,
+    rightPanelData: {} as IToggleRightPanelPayload,
     isRightPanelVisible: false,
     isLeftPaneVisible: false,
     isStandAlone: true

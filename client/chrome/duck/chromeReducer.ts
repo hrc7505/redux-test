@@ -2,8 +2,8 @@ import CLOSE_RIGHT_PANEL from "./action-types/CLOSE_RIGHT_PANEL";
 import IChromeState from "./interfaces/IChromeState";
 import ICloseRightPanelAction from "./actions/interfaces/ICloseRightPanelAction";
 import IOpenRightPanelAction from "./actions/interfaces/IOpenRightPanelAction";
-import IRightPanelData from "../right-panel/interfaces/IRightPanelData";
 import IToggleLeftPaneAction from "./actions/interfaces/IToggleLeftPaneAction";
+import IRightPanelData from "../right-panel/interfaces/IToggleRightPanelPayload";
 import OPEN_RIGHT_PANEL from "./action-types/OPEN_RIGHT_PANEL";
 import TOGGLE_LEFT_PANE from "./action-types/TOGGLE_LEFT_PANE";
 
@@ -27,7 +27,7 @@ export default function chromeReducer(state: IChromeState, action: Action): IChr
         case OPEN_RIGHT_PANEL:
             return {
                 ...state,
-                rightPanelData: action.rightPanelData,
+                rightPanelData: action.payload,
                 isRightPanelVisible: true,
             };
 

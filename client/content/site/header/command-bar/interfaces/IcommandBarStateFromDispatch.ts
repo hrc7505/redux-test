@@ -1,6 +1,7 @@
-import IRightPanelData from "../../../../../chrome/right-panel/interfaces/IRightPanelData";
+import ISiteToggleRightPanePayload from "../../../duck/actions/interfaces/ISiteToggleRightPanePayload";
+import IToggleRightPanelPayload from "../../../../../chrome/right-panel/interfaces/IToggleRightPanelPayload";
 
 export default interface ICommandBarStateFromDispatch {
-    openRightPanel?: (rightPanelData: IRightPanelData) => void;
-    toggleRightPane?: (rightPaneData: JSX.Element) => void;
+    openRightPanel?: (actionPayload: IToggleRightPanelPayload) => void;
+    siteButtonOnClick?: (actionPayload: ISiteToggleRightPanePayload) => void;
 }

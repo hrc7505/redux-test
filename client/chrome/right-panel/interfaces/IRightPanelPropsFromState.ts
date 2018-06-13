@@ -1,6 +1,6 @@
-import IRightPanelData from "./IRightPanelData";
+import IToggleRightPanelPayload from "./IToggleRightPanelPayload";
 
 export default interface IRightPanelPropsFromState {
     isRightPanelVisible: boolean;
-    rightPanelData: IRightPanelData;
+    rightPanelProps: IToggleRightPanelPayload;
 }

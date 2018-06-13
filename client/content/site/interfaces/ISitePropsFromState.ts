@@ -1,7 +1,7 @@
 import IHeaderComponentProps from "../header/interfaces/iHeaderComponentProps";
+import IRightPaneProps from "../../common/rightPane/interfaces/IRightPaneProps";
 
 export default interface ISitePropsFromState {
-    isRightPaneVisible: boolean;
-    rightPaneData: JSX.Element;
+    rightPaneProps: IRightPaneProps;
     headerData: IHeaderComponentProps;
 }

@@ -1,6 +1,6 @@
 import ITopBarPropsFromDispatch from "./ITopBarPropsFromDispatch";
 import ITopBarPropsFromState from "./ITopBarPropsFromState";
 
-export default interface IRightPanelProps
+export default interface ITopBarProps
     extends ITopBarPropsFromDispatch, ITopBarPropsFromState {
 }

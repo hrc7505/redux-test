@@ -3,24 +3,23 @@ import * as React from "react";
 import DetailsListComponent from "../../common/detail-list/DetailListComponent";
 import HeaderComponent from "./header/headerComponent";
 import ISiteComponentProps from "./interfaces/ISiteComponentProps";
-import RightPaneComponent from "../right-pane/RightPaneComponent";
+import RightPaneComponent from "../common/rightPane/RightPaneComponent";
 
 import "./siteComponentStyle.scss";
 
 export default class SiteComponent extends React.Component<ISiteComponentProps> {
     public render(): JSX.Element {
-        const { isRightPaneVisible, headerData, rightPaneData } = this.props;
+        const { headerData, rightPaneProps } = this.props;
 
         return (
             <div className="cPanel siteComponent">
                 <HeaderComponent {...headerData} />
                 <div className="bodyRightPanelContainer cPanel">
-                    <div className={`bodyContainer pullLeft ${isRightPaneVisible ? "shrink" : ""}`}>
+                    <div className={`bodyContainer pullLeft ${rightPaneProps.isRightPaneVisible ? "shrink" : ""}`}>
                         <DetailsListComponent />
                     </div>
                     <RightPaneComponent
-                        isRightPaneVisible={isRightPaneVisible}
-                        rightPaneData={rightPaneData}
+                       {...rightPaneProps}
                     />
                 </div>
             </div>

@@ -13,10 +13,10 @@ export default class JobSummaryTileComponent extends React.Component<IJobSummary
                     (): void => this.props.tileOnClick({
                         rightPaneHeaderText: `${this.props.jobTitle} (${this.props.jobId})`,
                         rightPaneContent: this.content(
-                                                this.props.jobId, // Body div's key.
-                                                this.props.jobCreatedDate,
-                                                this.props.jobStatus,
-                                                this.props.jobSite),
+                            this.props.jobId, // Body div's key.
+                            this.props.jobCreatedDate,
+                            this.props.jobStatus,
+                            this.props.jobSite),
                         rightPaneFooterRender: this.rightPaneFootRender
                     })
                 }
@@ -32,20 +32,16 @@ export default class JobSummaryTileComponent extends React.Component<IJobSummary
         );
     }
 
-    private content = (key: string, date: string, status: string, site: string): JSX.Element => {
-        return (
-            <div key={key}>
-                <div> The job's created date is {date} </div>
-                <div> This job is currently {status} at {site} </div>
-            </div>
-        );
-    }
+    private content = (key: string, date: string, status: string, site: string): JSX.Element => (
+        <div key={key}>
+            <div> The job's created date is {date} </div>
+            <div> This job is currently {status} at {site} </div>
+        </div>
+    )
 
-    private rightPaneFootRender = (): JSX.Element =>  {
-        return (
-            <div> This is a footer. </div>
-        );
-    }
+    private rightPaneFootRender = (): JSX.Element => (
+        <div> This is a footer. </div>
+    )
 
     private summaryTileInfoRender = (label: string, value: string): JSX.Element => (
         <div className="cPanel jobInfo">
