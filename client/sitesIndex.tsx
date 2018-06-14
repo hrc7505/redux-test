@@ -7,8 +7,8 @@ import { combineReducers, createStore, Reducer } from "redux";
 import contentReducer from "./content/duck/contentReducer";
 import IAppState from "./duck/interfaces/IAppState";
 import IContentState from "./content/duck/interfaces/IContentState";
-import ISiteState from "./content/site/duck/interfaces/ISiteState";
-import SiteContainer from "./content/site/siteContainer";
+import ISitesState from "./content/site/duck/interfaces/ISitesState";
+import SitesContainer from "./content/site/sitesContainer";
 
 import "./common/common-style/CommonStyle.scss";
 
@@ -18,7 +18,7 @@ const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     dashboardState: null
 });
 
-const defaultState: ISiteState = {
+const defaultState: ISitesState = {
     isRightPaneVisible: false,
     rightPaneData: null,
     headerData: null
@@ -26,14 +26,14 @@ const defaultState: ISiteState = {
 
 const siteStore: Store<IContentState> = createStore(sitesOnlyReducer, {
     chromeState: null,
-    contentState: { siteState: defaultState },
+    contentState: { sitesState: defaultState },
     dashboardState: null
 });
 
 ReactDOM.render(
     <Provider store={siteStore}>
         <Router>
-            <SiteContainer />
+            <SitesContainer />
         </Router>
     </Provider>,
     document.getElementById("root")

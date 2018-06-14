@@ -4,7 +4,7 @@ import ITopBarProps from "./interfaces/ITopBarProps";
 
 import "./topBarStyle.scss";
 
-export default class TopBarComponent extends React.Component<ITopBarProps> {
+export default class TopBarComponent extends React.PureComponent<ITopBarProps> {
     public render(): JSX.Element {
         return (
             <div className={`topBar flexBox vCenter ${!this.props.isLeftPaneVisible ? "cPanel" : ""}`}>

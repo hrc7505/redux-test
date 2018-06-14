@@ -4,9 +4,9 @@ import * as React from "react";
 
 import ICommandBarComponentProps from "./interfaces/ICommandBarComponentProps";
 
-import "./CommandBarComponentStyle.scss";
+import "./commandBarStyle.scss";
 
-export default class CommandbarComponent extends React.Component<ICommandBarComponentProps> {
+export default class CommandbarComponent extends React.PureComponent<ICommandBarComponentProps> {
     public render(): JSX.Element | JSX.Element[] {
         const { items, overflowItems, farItems } = this.props;
 

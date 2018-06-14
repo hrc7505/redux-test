@@ -1,7 +1,7 @@
-import IHeaderComponentProps from "../header/interfaces/iHeaderComponentProps";
+import IHeaderComponentProps from "../header/interfaces/IHeaderComponentProps";
 import IRightPaneProps from "../../common/rightPane/interfaces/IRightPaneProps";
 
-export default interface ISitePropsFromState {
+export default interface ISitesPropsFromState {
     rightPaneProps: IRightPaneProps;
     headerData: IHeaderComponentProps;
 }

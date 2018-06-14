@@ -5,7 +5,7 @@ import IRightPanelProps from "./interfaces/IRightPanelProps";
 
 import "./rightPanelStyle.scss";
 
-export default class RightPanelComponent extends React.Component<IRightPanelProps> {
+export default class RightPanelComponent extends React.PureComponent<IRightPanelProps> {
     private panelInstance: Panel;
 
     public render(): JSX.Element {

@@ -4,7 +4,7 @@ import LeftPaneContainer from "./left-pane/LeftPaneContainer";
 import RightPanelContainer from "./right-panel/RightPanelContainer";
 import TopBarContainer from "./top-bar/TopBarContainer";
 
-const chrome: React.SFC<object> = (): JSX.Element => (
+const Chrome: React.SFC<object> = (): JSX.Element => (
     <React.Fragment>
         <LeftPaneContainer />
         <TopBarContainer />
@@ -12,4 +12,4 @@ const chrome: React.SFC<object> = (): JSX.Element => (
     </React.Fragment>
 );
 
-export default chrome;
+export default Chrome;
