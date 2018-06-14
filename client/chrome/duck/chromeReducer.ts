@@ -12,8 +12,7 @@ type Action = IToggleLeftPaneAction | IOpenRightPanelAction | ICloseRightPanelAc
 const chromeDefaultState: IChromeState = {
     rightPanelData: {} as IRightPanelData,
     isRightPanelVisible: false,
-    isLeftPaneVisible: false,
-    isStandAlone: false
+    isLeftPaneVisible: false
 };
 
 export default function chromeReducer(state: IChromeState, action: Action): IChromeState {

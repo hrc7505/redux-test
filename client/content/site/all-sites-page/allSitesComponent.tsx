@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import DetailsListComponent from "../../../common/detail-list/DetailListComponent";
 import HeaderComponent from "../common/header/headerComponent";
 import IAllSitesComponentProps from "./interfaces/IAllSitesComponentProps";
-import RightPaneComponent from "../../common/rightPane/RightPaneComponent";
+import RightPaneComponent from "../../common/rightPane/rightPaneComponent";
 
 import "./sitesStyle.scss";
 

@@ -8,8 +8,7 @@ import { withRouter } from "react-router";
 function mapStateToProps(state: IAppState, ownProps: ILeftPaneProps): ILeftPaneProps {
     return {
         ...ownProps,
-        isLeftPaneVisible: state.chromeState.isLeftPaneVisible,
-        isStandAlone: state.chromeState.isStandAlone
+        isLeftPaneVisible: state.chromeState.isLeftPaneVisible
     };
 }
 

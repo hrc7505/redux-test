@@ -5,10 +5,10 @@ import Routes from "./routes";
 
 import "./contentStyle.scss";
 
-const ContentComponent: React.SFC<IContentComponentProps> = (props: IContentComponentProps): JSX.Element => (
+const contentComponent: React.SFC<IContentComponentProps> = (props: IContentComponentProps): JSX.Element => (
     <div className={`contentComponent ${!props.isLeftMenuVisible ? "cPanel" : "pullLeft"}`}>
         <Routes />
     </div >
 );
 
-export default ContentComponent;
+export default contentComponent;
