@@ -1,13 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 import { combineReducers, createStore, Reducer, Store } from "redux";
 
 import Chrome from "./chrome/chrome";
 import chromeReducer from "./chrome/duck/chromeReducer";
 import IAppState from "./duck/interfaces/IAppState";
-import IChromeState from "./chrome/duck/interfaces/IChromeState";
-import IToggleRightPanelPayload from "./chrome/right-panel/interfaces/IToggleRightPanelPayload";
 
 import "./common/common-style/CommonStyle.scss";
 
@@ -17,22 +16,13 @@ const chromeOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     sitesState: null,
 });
 
-const standAloneDefaultState: IChromeState = {
-    rightPanelData: {} as IToggleRightPanelPayload,
-    isRightPanelVisible: false,
-    isLeftPaneVisible: false,
-    isStandAlone: true
-};
-
-const standAloneChromeStore: Store<IAppState> = createStore(chromeOnlyReducer, {
-    chromeState: standAloneDefaultState,
-    dashboardState: null,
-    sitesState: null
-});
+const standAloneChromeStore: Store<IAppState> = createStore(chromeOnlyReducer);
 
 ReactDOM.render(
     <Provider store={standAloneChromeStore}>
-        <Chrome />
+        <Router>
+            <Chrome />
+        </Router>
     </Provider>,
     document.getElementById("root")
 );

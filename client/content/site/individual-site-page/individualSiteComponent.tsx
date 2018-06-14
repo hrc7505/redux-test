@@ -4,7 +4,7 @@ import HeaderComponent from "../common/header/headerComponent";
 import IIndividualSiteProps from "./interfaces/IIndividualSiteProps";
 import IJobSummaryTileProps from "../../common/jobSummaryTile/interfaces/IJobSummaryTileProps";
 import JobSummaryTile from "../../common/jobSummaryTile/jobSummaryTileComponent";
-import RightPaneComponent from "../../common/rightPane/RightPaneComponent";
+import RightPaneComponent from "../../common/rightPane/rightPaneComponent";
 
 import "./IndividualSiteStyle.scss";
 import InfoTile from "../common/info-tile/InfoTile";
