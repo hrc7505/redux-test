@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider, Store } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { combineReducers, createStore, Reducer } from "redux";
 
 import AllSitesContainer from "./content/site/all-sites-page/allSitesContainer";
