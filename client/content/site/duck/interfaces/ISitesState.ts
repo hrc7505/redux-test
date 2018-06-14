@@ -1,4 +1,5 @@
-import IHeaderComponentProps from "../../header/interfaces/IHeaderComponentProps";
+
+import IHeaderComponentProps from "../../common/header/interfaces/IHeaderComponentProps";
 import ISitesToggleRightPanePayload from "../actions/interfaces/ISitesToggleRightPanePayload";
 
 export default interface ISitesState {

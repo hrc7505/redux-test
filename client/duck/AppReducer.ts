@@ -1,14 +1,14 @@
 import { combineReducers, Reducer } from "redux";
 
 import chromeReducer from "../chrome/duck/chromeReducer";
-import contentReducer from "../content/duck/contentReducer";
 import dashboardReducer from "../content/dashboard/duck/dashboardReducer";
 import IAppState from "./interfaces/IAppState";
+import sitesReducer from "../content/site/duck/sitesReducer";
 
 const appReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: chromeReducer,
-    contentState: contentReducer,
-    dashboardState: dashboardReducer
+    dashboardState: dashboardReducer,
+    sitesState: sitesReducer
 });
 
 export default appReducer;

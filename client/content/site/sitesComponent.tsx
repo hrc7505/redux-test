@@ -1,32 +1,14 @@
 import * as React from "react";
+import { Route, RouteComponentProps, Switch, } from "react-router-dom";
 
-import DetailsListComponent from "../../common/detail-list/DetailListComponent";
-import HeaderComponent from "./header/headerComponent";
-import ISitesComponentProps from "./interfaces/ISitesComponentProps";
-import RightPaneComponent from "../common/rightPane/RightPaneComponent";
+import AllSitesContainer from "./all-sites-page/allSitesContainer";
+import IndividualSiteContainer from "./individual-site-page/individualSiteContainer";
 
-import "./sitesStyle.scss";
+const SitesComponent: React.SFC<RouteComponentProps<string>> = (props: RouteComponentProps<string>): JSX.Element => (
+    <Switch>
+        <Route exact path="/sites" component={AllSitesContainer} />
+        <Route path="/sites/:individualSite" component={IndividualSiteContainer} />
+    </Switch>
+);
 
-export default class SitesComponent extends React.Component<ISitesComponentProps> {
-    public render(): JSX.Element {
-        const { headerData, rightPaneProps } = this.props;
-
-        return (
-            <div className="cPanel siteComponent">
-                <HeaderComponent {...headerData} />
-                <div className="bodyRightPanelContainer cPanel">
-                    <div className={`bodyContainer pullLeft ${rightPaneProps.isRightPaneVisible ? "shrink" : ""}`}>
-                        <DetailsListComponent />
-                    </div>
-                    <RightPaneComponent
-                       {...rightPaneProps}
-                    />
-                </div>
-            </div>
-        );
-    }
-
-    public componentDidMount(): void {
-        this.props.getPageData();
-    }
-}
+export default SitesComponent;
