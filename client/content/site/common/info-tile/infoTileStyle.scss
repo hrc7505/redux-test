@@ -1,0 +1,28 @@
+$marginOfTile:10px;
+$totalMargin:20px+20px+20px; // Three tiles-> each have 10px left and 10px right
+.infoTile {
+    width: calc((100% - #{$totalMargin}) / 3);
+    margin: $marginOfTile;
+    border: 1px solid;
+    .tileTitle {
+        font-size: 20px;
+        text-align: center;
+        padding: 15px;
+        background: #000;
+        color: #fff;
+    }
+    .tileIcon {
+        text-align: center;
+        padding: 15px;
+    }
+    .tileCounters{
+        .counter{
+            border-right: 1px solid;
+            padding: 20px 10px;
+            text-align: center;
+            &:last-of-type{
+                border-right: none;
+            }
+        }
+    }
+}

@@ -1,9 +1,9 @@
 import IChromeState from "../../chrome/duck/interfaces/IChromeState";
-import IContentState from "../../content/duck/interfaces/IContentState";
 import IDashboardState from "../../content/dashboard/duck/interfaces/IDashboardState";
+import ISitesState from "../../content/site/duck/interfaces/ISitesState";
 
 export default interface IAppState {
     chromeState: IChromeState;
-    contentState: IContentState;
     dashboardState: IDashboardState;
+    sitesState: ISitesState;
 }

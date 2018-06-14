@@ -53,12 +53,12 @@ export default class DetailsListComponent extends React.PureComponent<object, ID
                 fileName = fileName
                     .charAt(zero)
                     .toUpperCase() + fileName
-                    .slice(one)
-                    .concat(`.${randomFileType.docType}`);
+                        .slice(one)
+                        .concat(`.${randomFileType.docType}`);
                 userName = userName.split(" ").map((name: string) =>
                     name
-                    .charAt(zero)
-                    .toUpperCase() + name.slice(one))
+                        .charAt(zero)
+                        .toUpperCase() + name.slice(one))
                     .join(" ");
                 emptyitems.push({
                     dateModified: randomDate.dateFormatted,
@@ -123,7 +123,6 @@ export default class DetailsListComponent extends React.PureComponent<object, ID
             },
         ];
 
-
         this.state = {
             columns,
             isCompactMode: false,
@@ -135,7 +134,7 @@ export default class DetailsListComponent extends React.PureComponent<object, ID
         const { columns, isCompactMode, items } = this.state;
 
         return (
-            <div className="cPanel">
+            <div className="cPanel" style={{ border: "1px solid" }}>
                 <DetailsList
                     items={items}
                     compact={isCompactMode}

@@ -11,7 +11,6 @@ $leftRightMarginToRightPane:15px+15px;
             margin-left: $topBarHeight;
             transition: 0.3s;
             margin-top: 15px;
-            border: 1px solid;
         }
         .bodyContainer.shrink {
             width: calc(100% - #{$topBarHeight} - #{$rightPaneWidth} - #{$leftRightMarginToRightPane});

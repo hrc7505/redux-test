@@ -13,8 +13,8 @@ import "./common/common-style/CommonStyle.scss";
 
 const chromeOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: chromeReducer,
-    contentState: null,
-    dashboardState: null
+    dashboardState: null,
+    sitesState: null,
 });
 
 const standAloneDefaultState: IChromeState = {
@@ -26,7 +26,8 @@ const standAloneDefaultState: IChromeState = {
 
 const standAloneChromeStore: Store<IAppState> = createStore(chromeOnlyReducer, {
     chromeState: standAloneDefaultState,
-    contentState: null
+    dashboardState: null,
+    sitesState: null
 });
 
 ReactDOM.render(

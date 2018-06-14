@@ -12,8 +12,8 @@ import "./common/common-style/CommonStyle.scss";
 
 const dashboardOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: null,
-    contentState: null,
-    dashboardState: dashboardReducer
+    dashboardState: dashboardReducer,
+    sitesState: null
 });
 
 const dashboardStore: Store<IDashboardState> = createStore(dashboardOnlyReducer);

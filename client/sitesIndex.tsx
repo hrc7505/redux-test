@@ -4,18 +4,17 @@ import { Provider, Store } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { combineReducers, createStore, Reducer } from "redux";
 
-import contentReducer from "./content/duck/contentReducer";
+import AllSitesContainer from "./content/site/all-sites-page/allSitesContainer";
 import IAppState from "./duck/interfaces/IAppState";
-import IContentState from "./content/duck/interfaces/IContentState";
 import ISitesState from "./content/site/duck/interfaces/ISitesState";
-import SitesContainer from "./content/site/sitesContainer";
+import sitesReducer from "./content/site/duck/sitesReducer";
 
 import "./common/common-style/CommonStyle.scss";
 
 const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: null,
-    contentState: contentReducer,
-    dashboardState: null
+    dashboardState: null,
+    sitesState: sitesReducer,
 });
 
 const defaultState: ISitesState = {
@@ -24,16 +23,16 @@ const defaultState: ISitesState = {
     headerData: null
 };
 
-const siteStore: Store<IContentState> = createStore(sitesOnlyReducer, {
+const siteStore: Store<ISitesState> = createStore(sitesOnlyReducer, {
     chromeState: null,
-    contentState: { sitesState: defaultState },
+    sitesState: defaultState,
     dashboardState: null
 });
 
 ReactDOM.render(
     <Provider store={siteStore}>
         <Router>
-            <SitesContainer />
+            <AllSitesContainer />
         </Router>
     </Provider>,
     document.getElementById("root")
