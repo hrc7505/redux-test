@@ -36,7 +36,7 @@ const fileIcons: Array<{ name: string; }> = [
     { name: "xsn" }
 ];
 
-export default class DetailsListComponent extends React.Component<object, IDetailsListDocumentsExampleState> {
+export default class DetailsListComponent extends React.PureComponent<object, IDetailsListDocumentsExampleState> {
     constructor(props: object) {
         super(props);
 

@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { createStore, Store } from "redux";
 
-import { App } from "./app";
-import appReducer from "./duck/AppReducer";
+import App from "./app";
+import appReducer from "./duck/appReducer";
 import IAppState from "./duck/interfaces/IAppState";
 
 import "./common/common-style/CommonStyle.scss";

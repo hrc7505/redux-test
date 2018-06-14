@@ -2,12 +2,12 @@ import * as React from "react";
 
 import DetailsListComponent from "../../common/detail-list/DetailListComponent";
 import HeaderComponent from "./header/headerComponent";
-import ISiteComponentProps from "./interfaces/ISiteComponentProps";
+import ISitesComponentProps from "./interfaces/ISitesComponentProps";
 import RightPaneComponent from "../common/rightPane/RightPaneComponent";
 
-import "./siteComponentStyle.scss";
+import "./sitesStyle.scss";
 
-export default class SiteComponent extends React.Component<ISiteComponentProps> {
+export default class SitesComponent extends React.Component<ISitesComponentProps> {
     public render(): JSX.Element {
         const { headerData, rightPaneProps } = this.props;
 

@@ -9,7 +9,7 @@ import RightPane from "../common/rightPane/RightPaneComponent";
 
 import "./dashboardStyle.scss";
 
-export default class DashboardComponent extends React.Component<IDashboardProps> {
+export default class DashboardComponent extends React.PureComponent<IDashboardProps> {
     public render(): JSX.Element {
         const rightPaneProps: IRightPaneProps = this.props.rightPaneProps;
 

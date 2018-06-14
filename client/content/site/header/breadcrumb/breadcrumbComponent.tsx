@@ -4,9 +4,9 @@ import { withRouter } from "react-router";
 
 import IBreadcrumbComponentProps from "./interfaces/IBreadcrumbComponentProps";
 
-import "./BreadcrumbComponentStyle.scss";
+import "./breadcrumbStyle.scss";
 
-class BreadcrumbComponent extends React.Component<IBreadcrumbComponentProps> {
+class BreadcrumbComponent extends React.PureComponent<IBreadcrumbComponentProps> {
     public render(): JSX.Element {
         const { items } = this.props;
 

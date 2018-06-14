@@ -4,7 +4,7 @@ import IJobSummaryTileProps from "./interfaces/IJobSummaryTileProps";
 
 import "./jobSummaryTileStyle.scss";
 
-export default class JobSummaryTileComponent extends React.Component<IJobSummaryTileProps> {
+export default class JobSummaryTileComponent extends React.PureComponent<IJobSummaryTileProps> {
     public render(): JSX.Element {
         return (
             <div

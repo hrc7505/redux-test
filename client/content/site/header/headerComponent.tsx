@@ -4,7 +4,7 @@ import BreadcrumbComponent from "./breadcrumb/BreadcrumbComponent";
 import CommandBarContainer from "./command-bar/CommandbarContainer";
 import IHeaderComponentProps from "./interfaces/IHeaderComponentProps";
 
-import "./headerComponentStyle.scss";
+import "./headerStyle.scss";
 
 const HeaderComponent: React.SFC<IHeaderComponentProps> = (props: IHeaderComponentProps): JSX.Element => (
     <div className="cPanel">

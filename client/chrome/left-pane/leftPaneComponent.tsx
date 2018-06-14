@@ -5,14 +5,16 @@ import ILeftPaneProps from "./interfaces/iLeftPaneProps";
 
 import "./leftPaneStyle.scss";
 
-export default class LeftPaneComponent extends React.Component<ILeftPaneProps> {
+export default class LeftPaneComponent extends React.PureComponent<ILeftPaneProps> {
     private standAloneTestContent: JSX.Element =
         <div>This is a standalone rendering of the chrome.</div>;
 
     public render(): JSX.Element {
         return (
             <div className={`hamburgerMenu pullLeft ${!this.props.isLeftPaneVisible ? "hiddeMenu" : ""}`}>
-                <div className="cPanel logo flexBox vCenter hCenter">logo</div>
+                <div className="cPanel logo flexBox vCenter hCenter">
+                    <img src="./client/images/hamburger-menu/ic_logo.svg" />
+                </div>
                 <div className="menuItemContainer cPanel">
                     {this.props.isStandAlone ? this.standAloneTestContent : this.leftMenuContent()}
                 </div>
@@ -25,7 +27,7 @@ export default class LeftPaneComponent extends React.Component<ILeftPaneProps> {
             <div className="menuItem flexBox vCenter">
                 <NavLink exact to="/" className="flexBox vCenter menuItemLink">
                     <div className="menuItemIcon">
-                        <img src="./client/images/hamburger-menu/dashboard.png" />
+                        <img src="./client/images/hamburger-menu/ic_dashboard.svg" />
                     </div>
                     <div className="menuItemName">DashBoard</div>
                 </NavLink>
@@ -33,7 +35,7 @@ export default class LeftPaneComponent extends React.Component<ILeftPaneProps> {
             <div className="menuItem flexBox vCenter">
                 <NavLink exact to="/sites" className="flexBox vCenter menuItemLink">
                     <div className="menuItemIcon">
-                        <img src="./client/images/hamburger-menu/dashboard.png" />
+                        <img src="./client/images/hamburger-menu/ic_site.svg" />
                     </div>
                     <div className="menuItemName">Sites</div>
                 </NavLink>
@@ -41,7 +43,7 @@ export default class LeftPaneComponent extends React.Component<ILeftPaneProps> {
             <div className="menuItem flexBox vCenter">
                 <NavLink exact to="/user-management" className="flexBox vCenter menuItemLink">
                     <div className="menuItemIcon">
-                        <img src="./client/images/hamburger-menu/dashboard.png" />
+                        <img src="./client/images/hamburger-menu/ic_dashboard.svg" />
                     </div>
                     <div className="menuItemName">User Management</div>
                 </NavLink>

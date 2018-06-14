@@ -1,7 +1,7 @@
-import ISiteToggleRightPanePayload from "./ISiteToggleRightPanePayload";
-import SITE_TOGGLE_RIGHT_PANE from "../../action-types/SITE_TOGGLE_RIGHT_PANE";
+import ISitesToggleRightPanePayload from "./ISitesToggleRightPanePayload";
+import SITES_TOGGLE_RIGHT_PANE from "../../action-types/SITES_TOGGLE_RIGHT_PANE";
 
 export default interface ISiteToggleRightPaneAction {
-    type: SITE_TOGGLE_RIGHT_PANE;
-    payload: ISiteToggleRightPanePayload;
+    type: SITES_TOGGLE_RIGHT_PANE;
+    payload: ISitesToggleRightPanePayload;
 }

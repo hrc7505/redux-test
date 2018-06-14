@@ -1,18 +1,14 @@
 import * as React from "react";
 
 import IContentComponentProps from "./interfaces/IContentComponentProps";
-import Routes from "./Routes";
+import Routes from "./routes";
 
-import "./ContentComponentStyle.scss";
+import "./contentStyle.scss";
 
-export default class ContentComponent extends React.Component<IContentComponentProps> {
-    public render(): JSX.Element {
-        const { isLeftMenuVisible } = this.props;
+const ContentComponent: React.SFC<IContentComponentProps> = (props: IContentComponentProps): JSX.Element => (
+    <div className={`contentComponent ${!props.isLeftMenuVisible ? "cPanel" : "pullLeft"}`}>
+        <Routes />
+    </div >
+);
 
-        return (
-            <div className={`contentComponent ${!isLeftMenuVisible ? "cPanel" : "pullLeft"}`}>
-                <Routes />
-            </div >
-        );
-    }
-}
+export default ContentComponent;
