@@ -1,11 +1,11 @@
-import CLOSE_RIGHT_PANEL from "./action-types/CLOSE_RIGHT_PANEL";
+import CLOSE_RIGHT_PANEL from "./actionTypes/CLOSE_RIGHT_PANEL";
 import IChromeState from "./interfaces/IChromeState";
 import ICloseRightPanelAction from "./actions/interfaces/ICloseRightPanelAction";
 import IOpenRightPanelAction from "./actions/interfaces/IOpenRightPanelAction";
 import IToggleLeftPaneAction from "./actions/interfaces/IToggleLeftPaneAction";
-import IRightPanelData from "../right-panel/interfaces/IToggleRightPanelPayload";
-import OPEN_RIGHT_PANEL from "./action-types/OPEN_RIGHT_PANEL";
-import TOGGLE_LEFT_PANE from "./action-types/TOGGLE_LEFT_PANE";
+import IRightPanelData from "../rightPanel/interfaces/IToggleRightPanelPayload";
+import OPEN_RIGHT_PANEL from "./actionTypes/OPEN_RIGHT_PANEL";
+import TOGGLE_LEFT_PANE from "./actionTypes/TOGGLE_LEFT_PANE";
 
 type Action = IToggleLeftPaneAction | IOpenRightPanelAction | ICloseRightPanelAction;
 

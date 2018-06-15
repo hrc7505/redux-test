@@ -8,7 +8,7 @@ import dashboardReducer from "./content/dashboard/duck/dashboardReducer";
 import IAppState from "./duck/interfaces/IAppState";
 import IDashboardState from "./content/dashboard/duck/interfaces/IDashboardState";
 
-import "./common/common-style/CommonStyle.scss";
+import "./common/commonStyle/commonStyle.scss";
 
 const dashboardOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: null,

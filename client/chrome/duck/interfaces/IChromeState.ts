@@ -1,4 +1,4 @@
-import IToggleRightPanelPayload from "../../right-panel/interfaces/IToggleRightPanelPayload";
+import IToggleRightPanelPayload from "../../rightPanel/interfaces/IToggleRightPanelPayload";
 
 export default interface IChromeState {
     isLeftPaneVisible: boolean;

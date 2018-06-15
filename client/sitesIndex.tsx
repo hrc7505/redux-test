@@ -4,12 +4,12 @@ import { Provider, Store } from "react-redux";
 import { HashRouter as Router } from "react-router-dom";
 import { combineReducers, createStore, Reducer } from "redux";
 
-import AllSitesContainer from "./content/site/all-sites/allSitesContainer";
+import AllSitesContainer from "./content/sites/allSites/allSitesContainer";
 import IAppState from "./duck/interfaces/IAppState";
-import ISitesState from "./content/site/duck/interfaces/ISitesState";
-import sitesReducer from "./content/site/duck/sitesReducer";
+import ISitesState from "./content/sites/duck/interfaces/ISitesState";
+import sitesReducer from "./content/sites/duck/sitesReducer";
 
-import "./common/common-style/CommonStyle.scss";
+import "./common/commonStyle/commonStyle.scss";
 
 const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: null,
