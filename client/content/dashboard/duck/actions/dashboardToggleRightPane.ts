@@ -1,4 +1,4 @@
-import DASHBOARD_TOGGLE_RIGHT_PANE from "../action-types/DASHBOARD_TOGGLE_RIGHT_PANE";
+import DASHBOARD_TOGGLE_RIGHT_PANE from "../actionTypes/DASHBOARD_TOGGLE_RIGHT_PANE";
 import IDashboardToggleRightPaneAction from "./interfaces/IDashboardToggleRightPaneAction";
 import IDashboardToggleRightPanePayload from "./interfaces/IDashboardToggleRightPanePayload";
 

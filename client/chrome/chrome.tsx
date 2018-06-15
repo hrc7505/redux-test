@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import LeftPaneContainer from "./left-pane/LeftPaneContainer";
-import RightPanelContainer from "./right-panel/RightPanelContainer";
-import TopBarContainer from "./top-bar/TopBarContainer";
+import LeftPaneContainer from "./leftPane/LeftPaneContainer";
+import RightPanelContainer from "./rightPanel/RightPanelContainer";
+import TopBarContainer from "./topBar/TopBarContainer";
 
 const Chrome: React.SFC<object> = (): JSX.Element => (
     <React.Fragment>

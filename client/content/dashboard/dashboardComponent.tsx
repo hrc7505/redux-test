@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import DetailsListComponent from "../../common/detail-list/DetailListComponent";
+import DetailsListHostComponent from "../../content/sites/common/detailListHost/detailListHostComponent";
 import IDashboardProps from "./interfaces/IDashboardProps";
 import IJobSummaryTileProps from "../common/jobSummaryTile/interfaces/IJobSummaryTileProps";
 import IRightPaneProps from "../common/rightPane/interfaces/IRightPaneProps";
@@ -59,7 +59,7 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
                         </div>
                     </div>
                     <div className="cPanel sectionTitle">sites</div>
-                    <DetailsListComponent />
+                    <DetailsListHostComponent />
                 </div>
                 <RightPaneComponent {...rightPaneProps}/>
             </div>

@@ -1,5 +1,5 @@
-import IToggleRightPanelPayload from "../../../right-panel/interfaces/IToggleRightPanelPayload";
-import OPEN_RIGHT_PANEL from "../../action-types/OPEN_RIGHT_PANEL";
+import IToggleRightPanelPayload from "../../../rightPanel/interfaces/IToggleRightPanelPayload";
+import OPEN_RIGHT_PANEL from "../../actionTypes/OPEN_RIGHT_PANEL";
 
 export default interface IOpenRightPanelAction {
     payload: IToggleRightPanelPayload;

@@ -8,7 +8,7 @@ import App from "./app";
 import appReducer from "./duck/appReducer";
 import IAppState from "./duck/interfaces/IAppState";
 
-import "./common/common-style/CommonStyle.scss";
+import "./common/commonStyle/commonStyle.scss";
 
 const appStore: Store<IAppState> = createStore(appReducer);
 

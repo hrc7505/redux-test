@@ -8,7 +8,7 @@ import Chrome from "./chrome/chrome";
 import chromeReducer from "./chrome/duck/chromeReducer";
 import IAppState from "./duck/interfaces/IAppState";
 
-import "./common/common-style/CommonStyle.scss";
+import "./common/commonStyle/commonStyle.scss";
 
 const chromeOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: chromeReducer,
