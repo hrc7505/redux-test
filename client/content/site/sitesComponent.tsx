@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import AllSitesContainer from "./all-sites/allSitesContainer";
 import HeaderComponent from "./common/header/headerComponent";
@@ -16,8 +16,12 @@ const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element
                     ? "shrink"
                     : ""
                 }`}>
-                <Route exact path="/sites" component={AllSitesContainer} />
-                <Route path="/sites/:individualSite" component={SiteDetailsContainer} />
+                <Switch>
+                    <Route exact path="/sites" component={AllSitesContainer} />
+                    <Route exact path="/sites/:individualSite" component={SiteDetailsContainer} />
+                    <Route exact path="/sites/:individualSite/job" component={AllSitesContainer} />
+                    <Redirect to="/404"/>
+                </Switch>
             </div>
             <RightPaneComponent {...props.rightPaneProps} />
         </div>
