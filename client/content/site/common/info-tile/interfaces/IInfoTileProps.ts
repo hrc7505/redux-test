@@ -1,7 +1,7 @@
-import IInfoTileCounter from "../IInfoTileCounter";
+import IInfoTileDetails from "../interfaces/IInfoTileDetails";
 
 export default interface IInfoTileProps {
     infoTileTitle: string;
     infoTileIcon: string;
-    infoTleCounterList: IInfoTileCounter[];
+    infoTileDetailsList: IInfoTileDetails[];
 }

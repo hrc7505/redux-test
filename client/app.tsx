@@ -5,8 +5,8 @@ import { RouteComponentProps, withRouter } from "react-router";
 import Chrome from "./chrome/chrome";
 import ContentContainer from "./content/contentContainer";
 
-class App extends React.PureComponent<object & RouteComponentProps<string>> {
-    constructor(props: object & RouteComponentProps<string>) {
+class App extends React.PureComponent<RouteComponentProps<string>> {
+    constructor(props: RouteComponentProps<string>) {
         super(props);
 
         initializeIcons(undefined, { disableWarnings: true });

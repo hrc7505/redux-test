@@ -1,26 +1,23 @@
 import { connect, Dispatch } from "react-redux";
 
 import AllSitesComponent from "./allSitesComponent";
-import getSitePageContents from "../duck/actions/getSitePageContents";
 import IAllSitesComponentProps from "./interfaces/IAllSitesComponentProps";
 import IAllSitesPropsFromDispatch from "./interfaces/IAllSitesPropsFromDispatch";
 import IAllSitesPropsFromState from "./interfaces/IAllSitesPropsFromState";
 import IAppState from "../../../duck/interfaces/IAppState";
-import IGetSitesPageContentsAction from "../duck/actions/interfaces/IGetSitesPageContentsAction";
+import IHeaderPayload from "../duck/actions/interfaces/IHeaderPayload";
+import ISetHeaderDataAction from "../duck/actions/interfaces/ISetHeaderDataAction";
+import setHeaderContent from "../duck/actions/setHeaderContent";
 
 function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
-    return {
-        rightPaneProps: {
-            ...state.sitesState.rightPaneData,
-            isRightPaneVisible: state.sitesState.isRightPaneVisible
-        },
-        headerData: state.sitesState.headerData
-    };
+    // For future use
+    return {};
 }
 
-function mapDispatchToProps(dispatch: Dispatch<IGetSitesPageContentsAction>): IAllSitesPropsFromDispatch {
+function mapDispatchToProps(dispatch: Dispatch<ISetHeaderDataAction>): IAllSitesPropsFromDispatch {
     return {
-        getPageData: (): IGetSitesPageContentsAction => dispatch(getSitePageContents())
+        setHeaderData: (actionPayload: IHeaderPayload): ISetHeaderDataAction =>
+            dispatch(setHeaderContent(actionPayload))
     };
 }
 

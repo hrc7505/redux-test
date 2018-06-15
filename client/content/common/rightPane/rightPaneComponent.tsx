@@ -2,7 +2,7 @@ import * as React from "react";
 
 import IRightPaneProps from "./interfaces/IRightPaneProps";
 
-import "./RightPaneStyle.scss";
+import "./rightPaneStyle.scss";
 
 const rightPaneComponent: React.SFC<IRightPaneProps> = (props: IRightPaneProps): JSX.Element => (
     <div className={`rightPane pullLeft ${!props.isRightPaneVisible ? "hidden" : ""}`}>

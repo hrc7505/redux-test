@@ -1,14 +1,14 @@
 import * as React from "react";
 
-import IInfoTileCounter from "./IInfoTileCounter";
+import IInfoTileDetails from "./interfaces/IInfoTileDetails";
 import IInfoTileProps from "./interfaces/IInfoTileProps";
 
 import "./infoTileStyle.scss";
 
 export default class InfoTile extends React.PureComponent<IInfoTileProps> {
     public render(): JSX.Element {
-        const { infoTileIcon, infoTileTitle, infoTleCounterList } = this.props;
-        const counterWidth: string = "calc(100% / " + infoTleCounterList.length + ")";
+        const { infoTileIcon, infoTileTitle, infoTileDetailsList } = this.props;
+        const infoTileDetailsWidtth: string = "calc(100% / " + infoTileDetailsList.length + ")";
 
         return (
             <div className="infoTile pullLeft">
@@ -16,12 +16,12 @@ export default class InfoTile extends React.PureComponent<IInfoTileProps> {
                 <div className="tileIcon cPanel">
                     <img src={infoTileIcon} alt={infoTileIcon} />
                 </div>
-                <div className="tileCounters cPanel">
+                <div className="tileDetailsContainer cPanel">
                     {
-                        infoTleCounterList.map((data: IInfoTileCounter, i: number) => (
-                            <div key={i} className="counter pullLeft" style={{ width: counterWidth }}>
-                                <div className="counterName cPanel">{data.counterName}</div>
-                                <div className="counterValue cPanel">{data.counterValue}</div>
+                        infoTileDetailsList.map((data: IInfoTileDetails, i: number) => (
+                            <div key={i} className="tileDetails pullLeft" style={{ width: infoTileDetailsWidtth }}>
+                                <div className="field cPanel">{data.field}</div>
+                                <div className="value cPanel">{data.value}</div>
                             </div>
                         ))
                     }

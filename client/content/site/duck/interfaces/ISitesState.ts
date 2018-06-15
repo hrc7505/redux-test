@@ -1,9 +1,11 @@
-
-import IHeaderComponentProps from "../../common/header/interfaces/IHeaderComponentProps";
-import ISitesToggleRightPanePayload from "../actions/interfaces/ISitesToggleRightPanePayload";
+import IAllSitesState from "../../all-sites/duck/interfaces/IAllSitesState";
+import IHeaderState from "./IHeaderState";
+import ISitesRightPaneState from "./ISitesRightPaneState";
+import ISiteDetailsState from "../../site-details/duck/interfaces/ISitesState";
 
 export default interface ISitesState {
-    isRightPaneVisible: boolean;
-    rightPaneData: ISitesToggleRightPanePayload;
-    headerData: IHeaderComponentProps;
+    headerState: IHeaderState;
+    rightPaneState: ISitesRightPaneState;
+    allSitesState: IAllSitesState;
+    siteDetailsState: ISiteDetailsState;
 }

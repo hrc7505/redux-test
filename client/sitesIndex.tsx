@@ -4,7 +4,7 @@ import { Provider, Store } from "react-redux";
 import { HashRouter as Router } from "react-router-dom";
 import { combineReducers, createStore, Reducer } from "redux";
 
-import AllSitesContainer from "./content/site/all-sites-page/allSitesContainer";
+import AllSitesContainer from "./content/site/all-sites/allSitesContainer";
 import IAppState from "./duck/interfaces/IAppState";
 import ISitesState from "./content/site/duck/interfaces/ISitesState";
 import sitesReducer from "./content/site/duck/sitesReducer";
@@ -18,9 +18,25 @@ const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
 });
 
 const defaultState: ISitesState = {
-    isRightPaneVisible: false,
-    rightPaneData: null,
-    headerData: null
+    headerState: {
+        breadcrumb: null,
+        commands: null,
+        title: null
+    },
+    rightPaneState: {
+        rightPaneData: null,
+        isRightPaneVisible: false
+    },
+    allSitesState: {
+        isRightPaneVisible: false,
+        rightPaneData: null,
+        headerData: null
+    },
+    siteDetailsState: {
+        isRightPaneVisible: false,
+        rightPaneData: null,
+        headerData: null
+    }
 };
 
 const siteStore: Store<ISitesState> = createStore(sitesOnlyReducer, {

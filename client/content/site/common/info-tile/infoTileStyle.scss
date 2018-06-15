@@ -15,12 +15,13 @@ $totalMargin:20px+20px+20px; // Three tiles-> each have 10px left and 10px right
         text-align: center;
         padding: 15px;
     }
-    .tileCounters{
-        .counter{
+    .tileDetailsContainer {
+        margin-bottom: 20px;
+        .tileDetails {
             border-right: 1px solid;
             padding: 20px 10px;
             text-align: center;
-            &:last-of-type{
+            &:last-of-type {
                 border-right: none;
             }
         }
