@@ -6,6 +6,7 @@ import IJobSummaryTileProps from "../common/jobSummaryTile/interfaces/IJobSummar
 import IRightPaneProps from "../common/rightPane/interfaces/IRightPaneProps";
 import JobSummaryTile from "../common/jobSummaryTile/jobSummaryTileComponent";
 import RightPaneComponent from "../common/rightPane/rightPaneComponent";
+import sites, { columns } from "../sites/common/detailListHost/testData";
 
 import "./dashboardStyle.scss";
 
@@ -59,9 +60,13 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
                         </div>
                     </div>
                     <div className="cPanel sectionTitle">sites</div>
-                    <DetailsListHostComponent />
+                    <DetailsListHostComponent
+                        columns={columns}
+                        isCompactMode={true}
+                        items={sites}
+                    />
                 </div>
-                <RightPaneComponent {...rightPaneProps}/>
+                <RightPaneComponent {...rightPaneProps} />
             </div>
         );
     }

@@ -28,14 +28,10 @@ const defaultState: ISitesState = {
         isRightPaneVisible: false
     },
     allSitesState: {
-        isRightPaneVisible: false,
-        rightPaneData: null,
-        headerData: null
+        sites: null
     },
     siteDetailsState: {
-        isRightPaneVisible: false,
-        rightPaneData: null,
-        headerData: null
+        site: null
     }
 };
 

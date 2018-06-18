@@ -7,8 +7,10 @@ import ISitesProps from "./interfaces/ISitesProps";
 import RightPaneComponent from "../common/rightPane/rightPaneComponent";
 import SiteDetailsContainer from "./siteDetails/siteDetailsContainer";
 
+import "./sitesStyle.scss";
+
 const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element => (
-    <div className="cPanel siteComponent">
+    <div className="cPanel sitesComponent">
         <HeaderComponent {...props.headerData} />
         <div className="bodyRightPanelContainer cPanel">
             <div className={`bodyContainer pullLeft

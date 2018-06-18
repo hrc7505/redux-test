@@ -1,12 +1,14 @@
 import * as React from "react";
 
+import ISiteCloseRightPaneAction from "./actions/interfaces/ISiteCloseRightPaneAction";
 import ISitesRightPaneState from "./interfaces/ISitesRightPaneState";
 import ISitesToggleRightPaneAction from "./actions/interfaces/ISitesToggleRightPaneAction";
 import ISitesToggleRightPaneByJobTileAction from "./actions/interfaces/ISitesToggleRightPaneByJobTileAction";
+import SITE_CLOSE_RIGHT_PANE from "./actionTypes/SITE_CLOSE_RIGHT_PANE";
 import SITES_TOGGLE_RIGHT_PANE from "./actionTypes/SITES_TOGGLE_RIGHT_PANE";
 import SITES_TOGGLE_RIGHT_PANE_BY_JOB_TILE from "./actionTypes/SITES_TOGGLE_RIGHT_PANE_BY_JOB_TILE";
 
-type Action = ISitesToggleRightPaneAction | ISitesToggleRightPaneByJobTileAction;
+type Action = ISitesToggleRightPaneAction | ISitesToggleRightPaneByJobTileAction | ISiteCloseRightPaneAction;
 
 const emptyRightPaneContent: JSX.Element = <div key="placeholder" />;
 
@@ -59,6 +61,12 @@ export default function sitesRightPaneReducer(state: ISitesRightPaneState, actio
                     }
                 };
             }
+
+        case SITE_CLOSE_RIGHT_PANE:
+            return {
+                ...state,
+                isRightPaneVisible: false
+            };
 
         default:
             return state || defaultState;

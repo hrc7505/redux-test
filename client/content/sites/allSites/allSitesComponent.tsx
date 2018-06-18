@@ -7,18 +7,22 @@ import IHeaderPayload from "../duck/actions/interfaces/IHeaderPayload";
 import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
 import IToggleRightPanelPayload from "../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
 import Test2 from "../../rightPanelBodyComponents/test2";
-
-import "./sitesStyle.scss";
+import { columns } from "../common/detailListHost/testData";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesComponentProps> {
     public render(): JSX.Element {
         return (
-            <DetailsListHostComponent />
+            <DetailsListHostComponent
+                columns={columns}
+                isCompactMode={true}
+                items={this.props.sites}
+            />
         );
     }
 
     public componentDidMount(): void {
         this.props.setHeaderData(headerPayload);
+        this.props.getAllSites();
     }
 }
 

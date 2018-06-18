@@ -13,93 +13,27 @@ import Test1 from "../../rightPanelBodyComponents/test1";
 
 import "./siteDetailsStyle.scss";
 
-class IndividualSiteComponent extends React.PureComponent<ISiteDetailsProps> {
+class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
+    private headerPayload: IHeaderPayload;
+
     public render(): JSX.Element {
-
-        // These are placeholders for real data which should be coming from the server.
-        // Setting this up so that we are ready when we have the ability to make a server call.
-        const tileProps: IJobSummaryTileProps[] = [
-            {
-                jobTitle: "foo",
-                jobId: "456",
-                jobSite: "My house",
-                jobCreatedDate: "01/01/2000",
-                jobStatus: "Active",
-                tileOnClick: this.props.jobTileOnClick,
-                isSelected: false
-            },
-            {
-                jobTitle: "bar",
-                jobId: "123",
-                jobSite: "My office",
-                jobCreatedDate: "11/19/1999",
-                jobStatus: "Active",
-                tileOnClick: this.props.jobTileOnClick,
-                isSelected: false
-            },
-            {
-                jobTitle: "baz",
-                jobId: "888",
-                jobSite: "My mansion",
-                jobCreatedDate: "09/01/2018",
-                jobStatus: "Active",
-                tileOnClick: this.props.jobTileOnClick,
-                isSelected: false
-            }
-        ];
-
-        const infoTileList: IInfoTileProps[] = [
-            {
-                infoTileIcon: "icon",
-                infoTileTitle: "Assets",
-                infoTileDetailsList: [
-                    {
-                        field: "unit",
-                        value: 14
-                    },
-                    {
-                        field: "piping",
-                        value: 10
-                    }
-                ]
-            },
-            {
-                infoTileIcon: "icon",
-                infoTileTitle: "jobs",
-                infoTileDetailsList: [
-                    {
-                        field: "active",
-                        value: 143
-                    },
-                    {
-                        field: "completed",
-                        value: 104
-                    },
-                    {
-                        field: "archived",
-                        value: 150
-                    }
-                ]
-            },
-            {
-                infoTileIcon: "icon",
-                infoTileTitle: "permissions",
-                infoTileDetailsList: [
-                    {
-                        field: "member",
-                        value: 5
-                    },
-                ]
-            }
-        ];
+        const { rightPaneProps } = this.props;
 
         return (
             <div className="cPanel">
                 <div className="activeJobs cPanel">
                     {
-                        tileProps.map((props: IJobSummaryTileProps): JSX.Element => (
-                            <JobSummaryTile key={props.jobId} {...props} />
-                        ))
+                        this.props.site && this.props.site.jobList
+                            ? this.props.site.jobList.map((props: IJobSummaryTileProps): JSX.Element => {
+                                props.tileOnClick = this.props.jobTileOnClick;
+                                props.isSelected = (
+                                    rightPaneProps.rightPaneContent.key === props.jobId &&
+                                    rightPaneProps.isRightPaneVisible
+                                );
+
+                                return <JobSummaryTile key={props.jobId} {...props} />;
+                            })
+                            : null
                     }
                 </div>
                 <div className="bodyContentTitle cPanel">Site Management </div>
@@ -113,11 +47,43 @@ class IndividualSiteComponent extends React.PureComponent<ISiteDetailsProps> {
     }
 
     public componentDidMount(): void {
-        this.props.setHeaderData(headerActionPayload);
+        this.headerPayload = headerActionPayload;
+        this.getSiteDetails();
+        window.addEventListener("hashchange", this.getSiteDetails);
+    }
+
+    public componentWillReceiveProps(nextProps: ISiteDetailsProps): void {
+        if (nextProps.site !== this.props.site) {
+            this.headerPayload = {
+                ...this.headerPayload,
+                title: nextProps.site.siteName,
+                breadcrumb: {
+                    ...this.headerPayload.breadcrumb,
+                    items: [
+                        { text: "Sites", key: "sites" },
+                        { text: nextProps.site.siteName, key: "individualSite", isCurrentItem: true }
+                    ]
+                }
+            };
+            this.setHeader();
+        }
+    }
+
+    public componentWillUnmount(): void {
+        window.removeEventListener("hashchange", this.getSiteDetails);
+    }
+
+    private setHeader(): void {
+        this.props.setHeaderData(this.headerPayload);
+    }
+
+    private getSiteDetails = (): void => {
+        this.props.closeRightPane();
+        this.props.getSiteDetails(this.props.match.params.individualSite);
     }
 }
 
-export default IndividualSiteComponent;
+export default SiteDetailsComponent;
 
 const rightPaneData: ISitesToggleRightPanePayload = {
     rightPaneHeaderText: "HeaderText of the right pane",
@@ -188,3 +154,48 @@ const headerActionPayload: IHeaderPayload = {
         overflowItems: [],
     }
 };
+
+const infoTileList: IInfoTileProps[] = [
+    {
+        infoTileIcon: "icon",
+        infoTileTitle: "Assets",
+        infoTileDetailsList: [
+            {
+                field: "unit",
+                value: 14
+            },
+            {
+                field: "piping",
+                value: 10
+            }
+        ]
+    },
+    {
+        infoTileIcon: "icon",
+        infoTileTitle: "jobs",
+        infoTileDetailsList: [
+            {
+                field: "active",
+                value: 143
+            },
+            {
+                field: "completed",
+                value: 104
+            },
+            {
+                field: "archived",
+                value: 150
+            }
+        ]
+    },
+    {
+        infoTileIcon: "icon",
+        infoTileTitle: "permissions",
+        infoTileDetailsList: [
+            {
+                field: "member",
+                value: 5
+            },
+        ]
+    }
+];
