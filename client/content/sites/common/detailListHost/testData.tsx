@@ -12,7 +12,7 @@ export interface ISiteDetails {
 
 const sites: ISiteDetails[] = [
     {
-        id: "1",
+        id: "909876",
         siteName: "My house",
         isActive: false,
         jobList: [
@@ -46,7 +46,7 @@ const sites: ISiteDetails[] = [
         ]
     },
     {
-        id: "2",
+        id: "909877",
         siteName: "My office",
         isActive: true,
         jobList: [
