@@ -1,4 +1,0 @@
-type GET_ALL_SITES = "GET_ALL_SITES";
-const GET_ALL_SITES: GET_ALL_SITES = "GET_ALL_SITES";
-
-export default GET_ALL_SITES;

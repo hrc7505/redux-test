@@ -7,7 +7,6 @@ import logger from "redux-logger";
 import promiseMiddleware from "redux-promise-middleware";
 import thunkMiddleware from "redux-thunk";
 
-
 import App from "./app";
 import appReducer from "./duck/appReducer";
 import IAppState from "./duck/interfaces/IAppState";

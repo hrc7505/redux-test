@@ -3,7 +3,7 @@ import IJobInfo from "../duck/operations/interfaces/IJobInfo";
 import ISiteInfo from "../duck/operations/interfaces/ISiteInfo";
 
 export default class DashboardDataShim {
-    static jobs: IJobInfo[] = [
+    private static jobs: IJobInfo[] = [
         {
             id: "456",
             title: "foo",
@@ -27,7 +27,7 @@ export default class DashboardDataShim {
         },
     ];
 
-    static sites: ISiteInfo[] = [
+    private static sites: ISiteInfo[] = [
         {
             id: "909876",
             name: "My house",
@@ -44,10 +44,10 @@ export default class DashboardDataShim {
         },
     ];
 
-    static getData(): IDashboardDataResponse {
+    public static getData(): IDashboardDataResponse {
         return {
             jobs: DashboardDataShim.jobs,
-            sites: DashboardDataShim.sites,
+            sites: DashboardDataShim.sites
         };
     }
 }

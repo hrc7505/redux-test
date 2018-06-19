@@ -12,7 +12,9 @@ export default function siteDetailsReducer(state: ISiteDetailsState, action: Act
 
             return {
                 ...state,
-                site: sites[index]
+                site: {
+                    ...sites[index]
+                }
             };
 
         default:

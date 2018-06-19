@@ -1,16 +1,32 @@
-import GET_ALL_SITES from "./actionTypes/GET_ALL_SITES";
 import IAllSitesState from "../duck/interfaces/IAllSitesState";
-import IGetAllSitesAction from "./actions/interfaces/IGetAllSitesAction";
-import sites from "../../common/detailListHost/testData";
+import ILoadAllSitesAction from "./actions/interfaces/ILoadAllSitesAction";
+import IRequestAllSitesAction from "./actions/interfaces/IRequestAllSitesAction";
+import LOAD_ALL_SITES from "./actionTypes/LOAD_ALL_SITES";
+import REQUEST_ALL_SITES from "./actionTypes/REQUEST_ALL_SITES";
 
-type Action = IGetAllSitesAction;
+type Action = IRequestAllSitesAction | ILoadAllSitesAction;
+
+const defaultAllSitesState: IAllSitesState = {
+    sites: [],
+    isLoading: false
+};
 
 export default function allSitesReducer(state: IAllSitesState, action: Action): IAllSitesState {
     switch (action.type) {
-        case GET_ALL_SITES:
-            return { ...state, sites };
+        case REQUEST_ALL_SITES:
+            return {
+                ...state,
+                isLoading: true,
+            };
+
+        case LOAD_ALL_SITES:
+            return {
+                ...state,
+                isLoading: false,
+                sites: action.payload.sites,
+            };
 
         default:
-            return state || { ...state, sites };
+            return state || defaultAllSitesState;
     }
 }

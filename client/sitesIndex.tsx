@@ -28,7 +28,8 @@ const defaultState: ISitesState = {
         isRightPaneVisible: false
     },
     allSitesState: {
-        sites: null
+        sites: null,
+        isLoading: false
     },
     siteDetailsState: {
         site: null

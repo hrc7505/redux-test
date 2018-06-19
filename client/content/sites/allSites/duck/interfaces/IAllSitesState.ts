@@ -1,5 +1,6 @@
-import { ISiteDetails } from "../../../common/detailListHost/testData";
+import ISiteDetailsListItemData from "../../../../dashboard/interfaces/ISiteDetailsListItemData";
 
 export default interface IAllSitesState {
-    sites: ISiteDetails[];
+    sites: ISiteDetailsListItemData[];
+    isLoading: boolean;
 }

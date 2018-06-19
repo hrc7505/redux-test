@@ -1,30 +1,93 @@
+import { DetailsList, DetailsListLayoutMode, IColumn } from "office-ui-fabric-react/lib/DetailsList";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
 import * as React from "react";
+import { Link } from "react-router-dom";
 
-import DetailsListHostComponent from "../../../content/sites/common/detailListHost/detailListHostComponent";
 import IAllSitesComponentProps from "./interfaces/IAllSitesProps";
 import IHeaderPayload from "../duck/actions/interfaces/IHeaderPayload";
+import ISiteDetailsListItemData from "../../dashboard/interfaces/ISiteDetailsListItemData";
 import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
 import IToggleRightPanelPayload from "../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
-import Test2 from "../../rightPanelBodyComponents/test2";
-import { columns } from "../common/detailListHost/testData";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesComponentProps> {
+    private static detailListColumns: IColumn[] = [
+        {
+            key: "siteName",
+            name: "Name",
+            fieldName: "name",
+            minWidth: 70,
+            maxWidth: 100,
+            isResizable: true,
+            isPadded: true,
+            onRender: (item: ISiteDetailsListItemData): JSX.Element => <Link to={`/sites/${item.id}`}>{item.name}</Link>
+        },
+        {
+            key: "location",
+            name: "Location",
+            fieldName: "location",
+            minWidth: 140,
+            maxWidth: 300,
+            isResizable: true,
+            isPadded: true,
+        },
+        {
+            key: "activeJobs",
+            name: "Active Jobs",
+            fieldName: "activeJobs",
+            minWidth: 35,
+            maxWidth: 35,
+            isResizable: true,
+            isPadded: true,
+        },
+        {
+            key: "totalJobs",
+            name: "Total Jobs",
+            fieldName: "totalJobs",
+            minWidth: 35,
+            maxWidth: 35,
+            isResizable: true,
+            isPadded: true,
+        }
+    ];
+
     public render(): JSX.Element {
         return (
-            <DetailsListHostComponent
-                columns={columns}
-                isCompactMode={true}
-                items={this.props.sites}
-            />
+            <div className="cPanel" style={{ border: "1px solid" }}>
+                <DetailsList
+                    items={this.props.detailsListItems}
+                    compact={true}
+                    columns={AllSitesComponent.detailListColumns}
+                    setKey="set"
+                    layoutMode={DetailsListLayoutMode.justified}
+                    isHeaderVisible={true}
+                    selectionPreservedOnEmptyClick={true}
+                    enterModalSelectionOnTouch={true}
+                />
+            </div>
         );
     }
 
     public componentDidMount(): void {
-        this.props.setHeaderData(headerPayload);
+        this.setHeaderData();
         this.props.getAllSites();
+        window.addEventListener("hashchange", this.setHeaderData);
+    }
+
+    public componentWillReceiveProps(): void {
+        window.removeEventListener("hashchange", this.setHeaderData);
+    }
+
+    private setHeaderData = (): void => {
+        this.props.setHeaderData(headerPayload);
     }
 }
+
+const Test2: React.SFC<object> = (): JSX.Element => (
+    <div style={{ background: "red" }}>
+        Hello this is component
+    <span style={{ fontSize: "25px" }}> 2</span>
+    </div>
+);
 
 const rightPaneData: ISitesToggleRightPanePayload = {
     rightPaneHeaderText: "Right pane for all sites",
@@ -40,6 +103,7 @@ const rightPanelData: IToggleRightPanelPayload = {
 
 const headerPayload: IHeaderPayload = {
     title: "Sites",
+    breadcrumb: null,
     commands: {
         farItems: [
             {

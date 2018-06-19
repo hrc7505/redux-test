@@ -2,12 +2,12 @@ import IGetSiteDetailsAction from "../duck/actions/interfaces/IGetSiteDetailsAct
 import IHeaderPayload from "../../duck/actions/interfaces/IHeaderPayload";
 import ISetHeaderDataAction from "../../duck/actions/interfaces/ISetHeaderDataAction";
 import ISiteCloseRightPaneAction from "../../duck/actions/interfaces/ISiteCloseRightPaneAction";
-import ISitesToggleRightPaneByJobTileAction from "../../duck/actions/interfaces/ISitesToggleRightPaneByJobTileAction";
+import ISitesToggleRightPaneAction from "../../duck/actions/interfaces/ISitesToggleRightPaneAction";
 import ISitesToggleRightPanePayload from "../../duck/actions/interfaces/ISitesToggleRightPanePayload";
 
 export default interface ISiteDetailsPropsFromDispatch {
     setHeaderData: (actionPayload: IHeaderPayload) => ISetHeaderDataAction;
-    jobTileOnClick: (actionPayload: ISitesToggleRightPanePayload) => ISitesToggleRightPaneByJobTileAction;
+    jobTileOnClick: (actionPayload: ISitesToggleRightPanePayload) => ISitesToggleRightPaneAction;
     getSiteDetails: (siteId: string) => IGetSiteDetailsAction;
     closeRightPane: () => ISiteCloseRightPaneAction;
 }

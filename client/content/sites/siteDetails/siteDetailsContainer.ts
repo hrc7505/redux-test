@@ -9,12 +9,12 @@ import ISiteCloseRightPaneAction from "../duck/actions/interfaces/ISiteCloseRigh
 import IIndividualSiteProps from "./interfaces/ISiteDetailsProps";
 import ISiteDetailsPropsFromDispatch from "./interfaces/ISiteDetailsPropsFromDispatch";
 import ISiteDetailsPropsFromState from "./interfaces/ISiteDetailsPropsFromState";
-import ISitesToggleRightPaneByJobTileAction from "../duck/actions/interfaces/ISitesToggleRightPaneByJobTileAction";
+import ISitesToggleRightPaneAction from "../duck/actions/interfaces/ISitesToggleRightPaneAction";
 import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
 import setHeaderContent from "../duck/actions/setHeaderContent";
 import siteCloseRightPane from "../duck/actions/siteCloseRightPane";
 import SiteDetailsComponent from "./siteDetailsComponent";
-import sitesToggleRightPaneByJobTile from "../duck/actions/sitesToggleRightPaneByJobTile";
+import sitesToggleRightPane from "../duck/actions/sitesToggleRightPane";
 
 function mapStateToProps(state: IAppState): ISiteDetailsPropsFromState {
     return {
@@ -27,7 +27,7 @@ function mapStateToProps(state: IAppState): ISiteDetailsPropsFromState {
 }
 
 type Actions = ISetHeaderDataAction |
-    ISitesToggleRightPaneByJobTileAction |
+    ISitesToggleRightPaneAction |
     IGetSiteDetailsAction |
     ISiteCloseRightPaneAction;
 
@@ -35,8 +35,8 @@ function mapStateToDispatch(dispatch: Dispatch<Actions>): ISiteDetailsPropsFromD
     return {
         setHeaderData: (actionPayload: IHeaderPayload): ISetHeaderDataAction =>
             dispatch(setHeaderContent(actionPayload)),
-        jobTileOnClick: (actionPayload: ISitesToggleRightPanePayload): ISitesToggleRightPaneByJobTileAction =>
-            dispatch(sitesToggleRightPaneByJobTile(actionPayload)),
+        jobTileOnClick: (actionPayload: ISitesToggleRightPanePayload): ISitesToggleRightPaneAction =>
+            dispatch(sitesToggleRightPane(actionPayload)),
         getSiteDetails: (siteId: string): IGetSiteDetailsAction => dispatch(getSitesDetails(siteId)),
         closeRightPane: (): ISiteCloseRightPaneAction => dispatch(siteCloseRightPane())
     };

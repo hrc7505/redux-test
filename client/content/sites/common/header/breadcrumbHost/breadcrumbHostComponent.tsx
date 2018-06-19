@@ -24,9 +24,11 @@ class BreadcrumbHostComponent extends React.PureComponent<IBreadcrumbHostProps> 
     }
 
     private addClickHandlerToItems(): void {
-        this.props.items.map((data: IBreadcrumbItem) => (
-            data.onClick = this.redirectToBreadcrumbLink
-        ));
+        this.props.items.map((data: IBreadcrumbItem) => {
+            if (!data.isCurrentItem) {
+                data.onClick = this.redirectToBreadcrumbLink;
+            }
+        });
     }
 
     private redirectToBreadcrumbLink = (ev?: React.MouseEvent<HTMLElement>, item?: IBreadcrumbItem): void => {
@@ -39,7 +41,7 @@ class BreadcrumbHostComponent extends React.PureComponent<IBreadcrumbHostProps> 
                 return "/sites";
 
             default:
-                return "/";
+                return itemKey || "/";
         }
     }
 }

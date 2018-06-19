@@ -4,10 +4,10 @@ import DASHBOARD_CLOSE_RIGHT_PANE from "./actionTypes/DASHBOARD_CLOSE_RIGHT_PANE
 import DASHBOARD_LOAD_DATA from "./actionTypes/DASHBOARD_LOAD_DATA";
 import DASHBOARD_REQUEST_DATA from "./actionTypes/DASHBOARD_REQUEST_DATA";
 import DASHBOARD_TOGGLE_RIGHT_PANE from "./actionTypes/DASHBOARD_TOGGLE_RIGHT_PANE";
-import IDashboardState from "./interfaces/IDashboardState";
 import IDashboardCloseRightPaneAction from "./actions/interfaces/IDashboardCloseRightPaneAction";
 import IDashboardLoadDataAction from "./actions/interfaces/IDashboardLoadDataAction";
 import IDashboardRequestDataAction from "./actions/interfaces/IDashboardRequestDataAction";
+import IDashboardState from "./interfaces/IDashboardState";
 import IDashboardToggleRightPaneAction from "./actions/interfaces/IDashboardToggleRightPaneAction";
 
 type Action =
@@ -52,7 +52,7 @@ export default function dashboardReducer(state: IDashboardState, action: Action)
                         ? action.payload.rightPaneFooterRender
                         : null,
                 };
-            };
+            }
         case DASHBOARD_CLOSE_RIGHT_PANE:
             return {
                 ...state,
@@ -69,7 +69,7 @@ export default function dashboardReducer(state: IDashboardState, action: Action)
                 isLoading: false,
                 activeJobs: action.payload.activeJobs,
                 sites: action.payload.sites,
-            }
+            };
         default:
             return state || dashboardDefaultState;
     }

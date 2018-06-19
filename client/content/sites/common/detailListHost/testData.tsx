@@ -1,109 +1,71 @@
-import IJobSummaryTileProps from "../../../common/jobSummaryTile/interfaces/IJobSummaryTileProps";
-import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
-import * as React from "react";
-import { Link } from "react-router-dom";
+import IJobTileData from "../../../dashboard/interfaces/IJobTileData";
+import ISiteDetailsListItemData from "../../../dashboard/interfaces/ISiteDetailsListItemData";
 
-export interface ISiteDetails {
-    id: string;
-    siteName: string;
-    isActive: boolean;
-    jobList: IJobSummaryTileProps[];
+export interface ISiteDetails extends ISiteDetailsListItemData {
+    jobList: IJobTileData[];
 }
 
 const sites: ISiteDetails[] = [
     {
         id: "909876",
-        siteName: "My house",
-        isActive: false,
+        name: "My house",
+        location: "test location1",
+        activeJobs: "1",
+        totalJobs: "3",
         jobList: [
             {
-                jobTitle: "foo",
-                jobId: "456",
-                jobSite: "my house",
-                jobCreatedDate: "01/01/2000",
-                jobStatus: "Active",
-                tileOnClick: null,
-                isSelected: false
+                title: "foo",
+                id: "456",
+                site: "my house",
+                createDate: "01/01/2000",
+                status: "Active"
             },
             {
-                jobTitle: "bar",
-                jobId: "123",
-                jobSite: "my house",
-                jobCreatedDate: "11/19/1999",
-                jobStatus: "Active",
-                tileOnClick: null,
-                isSelected: false
+                title: "bar",
+                id: "123",
+                site: "my house",
+                createDate: "11/19/1999",
+                status: "Active"
             },
             {
-                jobTitle: "baz",
-                jobId: "888",
-                jobSite: "my house",
-                jobCreatedDate: "09/01/2018",
-                jobStatus: "Active",
-                tileOnClick: null,
-                isSelected: false
+                title: "baz",
+                id: "888",
+                site: "my house",
+                createDate: "09/01/2018",
+                status: "Active"
             }
         ]
     },
     {
         id: "909877",
-        siteName: "My office",
-        isActive: true,
+        name: "My office",
+        location: "test location1",
+        activeJobs: "2",
+        totalJobs: "3",
         jobList: [
             {
-                jobTitle: "foo2",
-                jobId: "456",
-                jobSite: "My office",
-                jobCreatedDate: "01/01/2000",
-                jobStatus: "Active",
-                tileOnClick: null,
-                isSelected: false
+                title: "foo2",
+                id: "456",
+                site: "My office",
+                createDate: "01/01/2000",
+                status: "Active",
             },
             {
-                jobTitle: "bar2",
-                jobId: "123",
-                jobSite: "My office",
-                jobCreatedDate: "11/19/1999",
-                jobStatus: "Active",
-                tileOnClick: null,
-                isSelected: false
+                title: "bar2",
+                id: "123",
+                site: "My office",
+                createDate: "11/19/1999",
+                status: "Active"
             },
             {
-                jobTitle: "baz2",
-                jobId: "888",
-                jobSite: "My office",
-                jobCreatedDate: "09/01/2018",
-                jobStatus: "Active",
-                tileOnClick: null,
-                isSelected: false
+                title: "baz2",
+                id: "888",
+                site: "My office",
+                createDate: "09/01/2018",
+                status: "Active"
             }
         ]
     }
 ];
 
 export default sites;
-
-export const columns: IColumn[] = [
-    {
-        key: "siteName",
-        name: "Site Name",
-        fieldName: "site name",
-        minWidth: 70,
-        maxWidth: 100,
-        data: "string",
-        isResizable: true,
-        isPadded: true,
-        onRender: (item: ISiteDetails): JSX.Element => <Link to={`/sites/${item.id}`}>{item.siteName}</Link>,
-    },
-    {
-        key: "isSiteActive",
-        name: "Is Active",
-        fieldName: "is active",
-        minWidth: 70,
-        maxWidth: 100,
-        data: "boolean",
-        isResizable: true,
-        isPadded: true,
-        onRender: (item: ISiteDetails): JSX.Element => <span>{item.isActive.toString()}</span>,
-    }
-];

@@ -1,15 +1,15 @@
+import { Dropdown } from "office-ui-fabric-react/lib/Dropdown";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
+import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
 import IHeaderPayload from "../duck/actions/interfaces/IHeaderPayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
-import IJobSummaryTileProps from "../../common/jobSummaryTile/interfaces/IJobSummaryTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
 import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
 import IToggleRightPanelPayload from "../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
-import JobSummaryTile from "../../common/jobSummaryTile/jobSummaryTileComponent";
-import Test1 from "../../rightPanelBodyComponents/test1";
+import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListComponent";
 
 import "./siteDetailsStyle.scss";
 
@@ -21,21 +21,14 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
 
         return (
             <div className="cPanel">
-                <div className="activeJobs cPanel">
-                    {
-                        this.props.site && this.props.site.jobList
-                            ? this.props.site.jobList.map((props: IJobSummaryTileProps): JSX.Element => {
-                                props.tileOnClick = this.props.jobTileOnClick;
-                                props.isSelected = (
-                                    rightPaneProps.rightPaneContent.key === props.jobId &&
-                                    rightPaneProps.isRightPaneVisible
-                                );
-
-                                return <JobSummaryTile key={props.jobId} {...props} />;
-                            })
-                            : null
-                    }
-                </div>
+                <JobSummaryListComponent
+                    jobSummaryData={this.props.site ? this.props.site.jobList : null}
+                    tileOnClick={this.props.jobTileOnClick}
+                    selectedId={
+                        rightPaneProps.rightPaneContent && rightPaneProps.rightPaneContent.key
+                            ? rightPaneProps.rightPaneContent.key.toString()
+                            : null}
+                />
                 <div className="bodyContentTitle cPanel">Site Management </div>
                 {
                     infoTileList.map((data: IInfoTileProps, i: number) => (
@@ -56,12 +49,12 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
         if (nextProps.site !== this.props.site) {
             this.headerPayload = {
                 ...this.headerPayload,
-                title: nextProps.site.siteName,
+                title: nextProps.site.name,
                 breadcrumb: {
                     ...this.headerPayload.breadcrumb,
                     items: [
                         { text: "Sites", key: "sites" },
-                        { text: nextProps.site.siteName, key: "individualSite", isCurrentItem: true }
+                        { text: nextProps.site.name, key: "/sites/" + nextProps.site.id, isCurrentItem: true }
                     ]
                 }
             };
@@ -85,6 +78,46 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
 
 export default SiteDetailsComponent;
 
+const Test1: React.SFC<object> = (): JSX.Element => (
+    <div className="cPanel">
+        <TextField label="Site Name:*" placeholder="Site Name" errorMessage="Site Name is mandatory" />
+        {
+            // tslint:disable-next-line:no-magic-numbers
+            <TextField multiline rows={4} label="Site Description:" placeholder="Description here..." />
+        }
+        <TextField label="Phone Number:" placeholder="+1 123456789" />
+        <TextField label="Street:*" placeholder="Street" />
+        <TextField label="City:*" placeholder="City" />
+        <TextField label="Postal Code:*" placeholder="Postal Code" />
+        <Dropdown
+            placeHolder="Select a City"
+            label="Country:*"
+            options={
+                [
+                    { key: "A", text: "Newyork" },
+                    { key: "B", text: "Delhi" },
+                    { key: "C", text: "Shangai" },
+                    { key: "D", text: "Surray" },
+                    { key: "E", text: "London" }
+                ]
+            }
+        />
+        <Dropdown
+            placeHolder="Select a Province/State"
+            label="Province/State:*"
+            options={
+                [
+                    { key: "A", text: "State1" },
+                    { key: "B", text: "State2" },
+                    { key: "C", text: "State3" },
+                    { key: "D", text: "State4" },
+                    { key: "E", text: "State5" }
+                ]
+            }
+        />
+    </div>
+);
+
 const rightPaneData: ISitesToggleRightPanePayload = {
     rightPaneHeaderText: "HeaderText of the right pane",
     rightPaneContent: <div>This is the body of the right pane...</div>,
@@ -98,13 +131,8 @@ const rightPanelData: IToggleRightPanelPayload = {
 };
 
 const headerActionPayload: IHeaderPayload = {
-    title: "Individual Site Name",
-    breadcrumb: {
-        items: [
-            { text: "Sites", key: "sites" },
-            { text: "Individual Site Name", key: "individualSite", isCurrentItem: true }
-        ]
-    },
+    title: null,
+    breadcrumb: null,
     commands: {
         farItems: [
             {
