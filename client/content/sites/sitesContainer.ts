@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 import IAppState from "../../duck/interfaces/IAppState";
 import ISitesProps from "./interfaces/ISitesProps";
@@ -15,8 +16,10 @@ function mapStateToProps(state: IAppState): ISitesPropsFromState {
     };
 }
 
-const SitesContainer: React.ComponentClass = connect(
-    mapStateToProps
-)<ISitesProps>(SitesComponent);
+const SitesContainer: React.ComponentClass = withRouter(
+    connect(
+        mapStateToProps
+    )<ISitesProps>(SitesComponent)
+);
 
 export default SitesContainer;

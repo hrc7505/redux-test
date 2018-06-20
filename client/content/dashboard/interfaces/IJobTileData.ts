@@ -4,4 +4,4 @@ export default interface IJobTileData {
     site: string;
     createDate: string;
     status: string;
-};
+}

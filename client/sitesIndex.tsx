@@ -1,12 +1,16 @@
+import { initializeIcons } from "@uifabric/icons";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider, Store } from "react-redux";
 import { HashRouter as Router } from "react-router-dom";
-import { combineReducers, createStore, Reducer } from "redux";
+import { applyMiddleware, combineReducers, createStore, Reducer } from "redux";
+import logger from "redux-logger";
+import promiseMiddleware from "redux-promise-middleware";
+import thunkMiddleware from "redux-thunk";
 
-import AllSitesContainer from "./content/sites/allSites/allSitesContainer";
 import IAppState from "./duck/interfaces/IAppState";
 import ISitesState from "./content/sites/duck/interfaces/ISitesState";
+import SitesContainer from "./content/sites/sitesContainer";
 import sitesReducer from "./content/sites/duck/sitesReducer";
 
 import "./common/commonStyle/commonStyle.scss";
@@ -36,16 +40,26 @@ const defaultState: ISitesState = {
     }
 };
 
-const siteStore: Store<ISitesState> = createStore(sitesOnlyReducer, {
-    chromeState: null,
-    sitesState: defaultState,
-    dashboardState: null
-});
+const siteStore: Store<IAppState> = createStore(
+    sitesOnlyReducer,
+    {
+        chromeState: null,
+        sitesState: defaultState,
+        dashboardState: null
+    },
+    applyMiddleware(
+        thunkMiddleware,
+        promiseMiddleware(),
+        logger // Adding a logger to see what actions are occurring. Leaving comment to fix up for production later.
+    )
+);
+
+initializeIcons();
 
 ReactDOM.render(
     <Provider store={siteStore}>
         <Router>
-            <AllSitesContainer />
+            <SitesContainer />
         </Router>
     </Provider>,
     document.getElementById("root")

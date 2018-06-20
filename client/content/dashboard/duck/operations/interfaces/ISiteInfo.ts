@@ -6,4 +6,4 @@ export default interface ISiteInfo {
     location: string;
     activeJobs: string;
     totalJobs: string;
-};
+}
