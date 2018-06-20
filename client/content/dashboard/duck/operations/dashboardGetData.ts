@@ -1,8 +1,10 @@
 import { Dispatch } from "react-redux";
 
+import dashboardCloseRightPane from "../actions/dashboardCloseRightPane";
 import dashboardDataShim from "../../shim/dashboardDataShim";
 import dashboardLoadData from "../actions/dashboardLoadData";
 import dashboardRequestData from "../actions/dashboardRequestData";
+import IDashboardCloseRightPaneAction from "../actions/interfaces/IDashboardCloseRightPaneAction";
 import IDashboardDataResponse from "./interfaces/IDashboardDataResponse";
 import IDashboardLoadDataAction from "../actions/interfaces/IDashboardLoadDataAction";
 import IDashboardLoadDataPayload from "../actions/interfaces/IDashboardLoadDataPayload";
@@ -12,11 +14,18 @@ import IJobTileData from "../../interfaces/IJobTileData";
 import ISiteDetailsListItemData from "../../interfaces/ISiteDetailsListItemData";
 import ISiteInfo from "../operations/interfaces/ISiteInfo";
 
-type Actions = IDashboardRequestDataAction | IDashboardLoadDataAction;
+type Actions =
+    IDashboardRequestDataAction |
+    IDashboardCloseRightPaneAction |
+    IDashboardLoadDataAction;
 
 export default function dashboardGetData(): (dispatch: Dispatch<Actions>) => void {
     return (dispatch: Dispatch<Actions>): void => {
+        // Setting the dashboard into the loading state and closing the right pane.
         dispatch(dashboardRequestData());
+        dispatch(dashboardCloseRightPane());
+
+        // Getting the dashboard data.
         const result: IDashboardDataResponse = dashboardDataShim.getData();
         const loadDataPayload: IDashboardLoadDataPayload = {
             activeJobs: result.jobs.map((job: IJobInfo): IJobTileData => ({
@@ -34,6 +43,8 @@ export default function dashboardGetData(): (dispatch: Dispatch<Actions>) => voi
                 totalJobs: site.totalJobs,
             })),
         };
+
+        // Displaying the data.
         dispatch(dashboardLoadData(loadDataPayload));
     };
 }

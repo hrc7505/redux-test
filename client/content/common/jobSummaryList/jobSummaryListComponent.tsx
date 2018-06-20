@@ -9,7 +9,7 @@ export default class JobSummaryListComponent extends React.PureComponent<IJobSum
         return (
             <div className="activeJobs cPanel">
                 {
-                    this.props.jobSummaryData
+                    (this.props.jobSummaryData && this.props.jobSummaryData.length !== 0)
                         ? this.props.jobSummaryData.map((data: IJobTileData): JSX.Element => (
                             <JobSummaryTileComponent
                                 key={data.id}
@@ -22,7 +22,7 @@ export default class JobSummaryListComponent extends React.PureComponent<IJobSum
                                 isSelected={this.props.selectedId === data.id ? true : false}
                             />
                         ))
-                        : null
+                        : <div> Insert nice message about how there isn't any jobs that are active / to display. </div>
                 }
             </div>
         );

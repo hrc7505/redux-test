@@ -6,10 +6,12 @@ import {
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+import GeneralError from "../../common/generalError/generalError";
 import IDashboardProps from "./interfaces/IDashboardProps";
 import IRightPaneProps from "../common/rightPane/interfaces/IRightPaneProps";
 import ISiteDetailsListItemData from "./interfaces/ISiteDetailsListItemData";
 import JobSummaryListComponent from "../common/jobSummaryList/jobSummaryListComponent";
+import LoadingSpinner from "../../common/loadingSpinner/loadingSpinner";
 import RightPaneComponent from "../common/rightPane/rightPaneComponent";
 
 import "./dashboardStyle.scss";
@@ -56,7 +58,21 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
     ];
 
     public render(): JSX.Element {
+        if (this.props.isLoading) {
+            // Loading spinner when we are waiting for an async call to return.
+            return (
+                <LoadingSpinner />
+            );
+        }
         const rightPaneProps: IRightPaneProps = this.props.rightPaneProps;
+
+        if (!this.props.detailsListItems) {
+            // DetailsList blows up if null is passed into items. If we get into this situation,
+            // we should just render an error message for the user.
+            return (
+                <GeneralError />
+            );
+        }
 
         return (
             <div className="cPanel dashboardComponent">
@@ -66,7 +82,11 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
                         <JobSummaryListComponent
                             jobSummaryData={this.props.jobs}
                             tileOnClick={this.props.jobTileOnClick}
-                            selectedId={rightPaneProps.rightPaneContent.key.toString()}
+                            selectedId={
+                                rightPaneProps.isRightPaneVisible ?
+                                    rightPaneProps.rightPaneContent.key.toString() :
+                                    null
+                            }
                         />
                     </div>
                     <div className="cPanel sectionTitle">sites</div>
@@ -75,12 +95,17 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
                             items={this.props.detailsListItems}
                             compact={true}
                             columns={DashboardComponent.detailListColumns}
-                            setKey="set"
+                            setKey="site"
                             layoutMode={DetailsListLayoutMode.justified}
                             isHeaderVisible={true}
                             selectionPreservedOnEmptyClick={true}
                             enterModalSelectionOnTouch={true}
                         />
+                        { // If there are no items to render, we should render an emtpy message here.
+                            this.props.detailsListItems.length === 0
+                                ? <div> This list is empty. Insert nicer empty mode here. </div>
+                                : null
+                        }
                     </div>
                 </div>
                 <RightPaneComponent {...rightPaneProps} />

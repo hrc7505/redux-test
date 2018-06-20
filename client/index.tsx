@@ -1,3 +1,4 @@
+import { initializeIcons } from "@uifabric/icons";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -21,6 +22,8 @@ const appStore: Store<IAppState> = createStore(
         logger // Adding a logger to see what actions are occurring. Leaving comment to fix up for production later.
     )
 );
+
+initializeIcons();
 
 ReactDOM.render(
     <Provider store={appStore}>

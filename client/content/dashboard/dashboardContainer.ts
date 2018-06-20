@@ -27,8 +27,9 @@ function mapStateToProps(state: IAppState): IDashboardPropsFromState {
 }
 
 type Actions = IDashboardCloseRightPaneAction | IDashboardToggleRightPaneAction;
+type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Actions>) => IDashboardPropsFromDispatch;
 
-const mapDispatchToProps = (
+const mapDispatchToProps: MapDispatchToProps = (
     dispatch: ThunkDispatch<IAppState, void /* Extra Arguments*/, Actions>
 ): IDashboardPropsFromDispatch => (
         {

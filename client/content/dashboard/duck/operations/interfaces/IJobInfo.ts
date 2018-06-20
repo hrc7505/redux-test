@@ -6,4 +6,4 @@ export default interface IJobInfo {
     site: string;
     createDate: string;
     status: string;
-};
+}
