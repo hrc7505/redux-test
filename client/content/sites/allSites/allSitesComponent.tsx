@@ -4,7 +4,9 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 import IAllSitesComponentProps from "./interfaces/IAllSitesProps";
-import IHeaderPayload from "../duck/actions/interfaces/IHeaderPayload";
+import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
+import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
+import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import ISiteDetailsListItemData from "../../dashboard/interfaces/ISiteDetailsListItemData";
 import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
 import IToggleRightPanelPayload from "../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
@@ -78,7 +80,9 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesComp
     }
 
     private setHeaderData = (): void => {
-        this.props.setHeaderData(headerPayload);
+        this.props.setBreadcrumb(breadcrumbPayload);
+        this.props.setEntityTitle(entityTitlePayload);
+        this.props.setCommands(commandsPayload);
     }
 }
 
@@ -101,9 +105,11 @@ const rightPanelData: IToggleRightPanelPayload = {
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
 
-const headerPayload: IHeaderPayload = {
-    title: "Sites",
+const breadcrumbPayload: IBreadcrumbPayload = {
     breadcrumb: null,
+};
+const entityTitlePayload: IEnityTitlePayload = { title: "Sites" };
+const commandsPayload: ICommandsPayload = {
     commands: {
         farItems: [
             {

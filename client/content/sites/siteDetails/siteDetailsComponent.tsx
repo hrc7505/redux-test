@@ -3,7 +3,9 @@ import { IconType } from "office-ui-fabric-react/lib/Icon";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
-import IHeaderPayload from "../duck/actions/interfaces/IHeaderPayload";
+import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
+import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
+import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
@@ -14,7 +16,8 @@ import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListC
 import "./siteDetailsStyle.scss";
 
 class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
-    private headerPayload: IHeaderPayload;
+    private breadCrumbPayload: IBreadcrumbPayload;
+    private entityTitlePayload: IEnityTitlePayload;
 
     public render(): JSX.Element {
         const { rightPaneProps } = this.props;
@@ -40,34 +43,35 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     }
 
     public componentDidMount(): void {
-        this.headerPayload = headerActionPayload;
+        this.breadCrumbPayload = breadcrumbPayload;
+        this.entityTitlePayload = entityTitlePayload;
+        this.props.setCommands(commandsPayload);
         this.getSiteDetails();
         window.addEventListener("hashchange", this.getSiteDetails);
     }
 
     public componentWillReceiveProps(nextProps: ISiteDetailsProps): void {
         if (nextProps.site !== this.props.site) {
-            this.headerPayload = {
-                ...this.headerPayload,
-                title: nextProps.site.name,
+            this.breadCrumbPayload = {
                 breadcrumb: {
-                    ...this.headerPayload.breadcrumb,
                     items: [
                         { text: "Sites", key: "sites" },
                         { text: nextProps.site.name, key: "/sites/" + nextProps.site.id, isCurrentItem: true }
                     ]
                 }
             };
-            this.setHeader();
+
+            this.entityTitlePayload = {
+                title: nextProps.site.name
+            };
+
+            this.props.setBreadcrumb(this.breadCrumbPayload);
+            this.props.setEntityTitle(this.entityTitlePayload);
         }
     }
 
     public componentWillUnmount(): void {
         window.removeEventListener("hashchange", this.getSiteDetails);
-    }
-
-    private setHeader(): void {
-        this.props.setHeaderData(this.headerPayload);
     }
 
     private getSiteDetails = (): void => {
@@ -130,9 +134,15 @@ const rightPanelData: IToggleRightPanelPayload = {
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
 
-const headerActionPayload: IHeaderPayload = {
-    title: null,
+const breadcrumbPayload: IBreadcrumbPayload = {
     breadcrumb: null,
+};
+
+const entityTitlePayload: IEnityTitlePayload = {
+    title: null,
+};
+
+const commandsPayload: ICommandsPayload = {
     commands: {
         farItems: [
             {

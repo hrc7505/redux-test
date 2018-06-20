@@ -1,12 +1,11 @@
 import { Breadcrumb, IBreadcrumbItem } from "office-ui-fabric-react/lib/Breadcrumb";
 import * as React from "react";
-import { withRouter } from "react-router";
 
 import IBreadcrumbHostProps from "./interfaces/IBreadcrumbHostProps";
 
 import "./breadcrumbHostStyle.scss";
 
-class BreadcrumbHostComponent extends React.PureComponent<IBreadcrumbHostProps> {
+export default class BreadcrumbHostComponent extends React.PureComponent<IBreadcrumbHostProps> {
     public render(): JSX.Element {
         const { items } = this.props;
 
@@ -45,5 +44,3 @@ class BreadcrumbHostComponent extends React.PureComponent<IBreadcrumbHostProps> 
         }
     }
 }
-
-export default withRouter(BreadcrumbHostComponent);

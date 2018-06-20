@@ -1,9 +1,11 @@
 import { connect, Dispatch } from "react-redux";
 
 import CommandBarHostComponent from "./commandBarHostComponent";
+import IAppState from "../../../../../duck/interfaces/IAppState";
 import ICloseRightPanelAction from "../../../../../chrome/duck/actions/interfaces/ICloseRightPanelAction";
 import ICommandBarHostProps from "./interfaces/ICommandBarHostProps";
 import ICommandBarHostPropsFromDispatch from "./interfaces/ICommandBarHostPropsFromDispatch";
+import ICommanadBarHostPropsFromState from "./interfaces/ICommandBarHostPropsFromState";
 import IOpenRightPanelAction from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelAction";
 import ISiteToggleRightPaneAction from "../../../duck/actions/interfaces/ISitesToggleRightPaneAction";
 import ISitesToggleRightPanePayload from "../../../duck/actions/interfaces/ISitesToggleRightPanePayload";
@@ -13,6 +15,12 @@ import sitesToggleRightPane from "../../../../sites/duck/actions/sitesToggleRigh
 
 type DisptchProps = IOpenRightPanelAction | ICloseRightPanelAction | ISiteToggleRightPaneAction;
 
+function mapStateToProps(state: IAppState): ICommanadBarHostPropsFromState {
+    return {
+        ...state.sitesState.headerState.commands
+    };
+}
+
 function mapDispatchToProps(dispatch: Dispatch<DisptchProps>): ICommandBarHostPropsFromDispatch {
     return {
         openRightPanel: (actionPayload: IToggleRightPanelPayload): IOpenRightPanelAction =>
@@ -21,8 +29,8 @@ function mapDispatchToProps(dispatch: Dispatch<DisptchProps>): ICommandBarHostPr
             dispatch(sitesToggleRightPane(actionPayload))
     };
 }
-const CommandBarContainer: React.ComponentClass<ICommandBarHostProps> = connect(
-    null,
+const CommandBarContainer: React.ComponentClass = connect(
+    mapStateToProps,
     mapDispatchToProps
 )<ICommandBarHostProps>(CommandBarHostComponent);
 

@@ -11,8 +11,7 @@ function mapStateToProps(state: IAppState): ISitesPropsFromState {
         rightPaneProps: {
             ...state.sitesState.rightPaneState.rightPaneData,
             isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
-        },
-        headerData: state.sitesState.headerState
+        }
     };
 }
 

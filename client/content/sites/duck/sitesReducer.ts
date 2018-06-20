@@ -1,7 +1,7 @@
 import { combineReducers, Reducer } from "redux";
 
 import allSitesReducer from "../allSites/duck/allSitesReducer";
-import headerReducer from "./headerReducer";
+import headerReducer from "../common/header/duck/headerReducer";
 import ISitesState from "./interfaces/ISitesState";
 import siteDetailsReducer from "../../sites/siteDetails/duck/siteDetailsReducer";
 import sitesRightPaneReducer from "./sitesRightPaneReducer";

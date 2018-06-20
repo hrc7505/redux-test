@@ -1,5 +1,5 @@
 import IAllSitesState from "../../allSites/duck/interfaces/IAllSitesState";
-import IHeaderState from "./IHeaderState";
+import IHeaderState from "../../common/header/duck/interfaces/IHeaderState";
 import ISitesRightPaneState from "./ISitesRightPaneState";
 import ISiteDetailsState from "../../siteDetails/duck/interfaces/ISitesState";
 

@@ -11,7 +11,7 @@ import "./sitesStyle.scss";
 
 const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element => (
     <div className="cPanel sitesComponent">
-        <HeaderComponent {...props.headerData} />
+        <HeaderComponent />
         <div className="bodyRightPanelContainer cPanel">
             <div className={`bodyContainer pullLeft
                 ${props.rightPaneProps && props.rightPaneProps.isRightPaneVisible
@@ -19,12 +19,12 @@ const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element
                     : ""
                 }`}>
                 <Switch>
-                    { /* Root route used for standalone scenario so it doesn't default to 404 in that case. */ }
+                    { /* Root route used for standalone scenario so it doesn't default to 404 in that case. */}
                     <Route exact path="/" component={AllSitesContainer} />
                     <Route exact path="/sites" component={AllSitesContainer} />
                     <Route exact path="/sites/:individualSite" component={SiteDetailsContainer} />
                     <Route exact path="/sites/:individualSite/job" component={AllSitesContainer} />
-                    <Redirect to="/404"/>
+                    <Redirect to="/404" />
                 </Switch>
             </div>
             <RightPaneComponent {...props.rightPaneProps} />
