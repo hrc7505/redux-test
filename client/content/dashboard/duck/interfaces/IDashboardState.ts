@@ -1,15 +1,7 @@
-import IJobTileData from "../../interfaces/IJobTileData";
-import ISiteDetailsListItemData from "../../interfaces/ISiteDetailsListItemData";
+import IContentState from "./IContentState";
+import IRightPaneState from "../../../common/rightPane/duck/interfaces/IRightPaneState";
 
 export default interface IDashboardState {
-    // Right Pane.
-    isRightPaneVisible: boolean;
-    rightPaneHeaderText: string;
-    rightPaneContent: JSX.Element;
-    rightPaneFooterRender?: () => JSX.Element;
-
-    // Dashboard content.
-    isLoading: boolean;
-    activeJobs: IJobTileData[];
-    sites: ISiteDetailsListItemData[];
+    contentState: IContentState;
+    rightPaneState: IRightPaneState;
 }

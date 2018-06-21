@@ -28,8 +28,10 @@ const defaultState: ISitesState = {
         title: null
     },
     rightPaneState: {
-        rightPaneData: null,
-        isRightPaneVisible: false
+        isRightPaneVisible: false,
+        rightPaneId: null,
+        rightPaneHeaderText: null,
+        rightPaneContent: null
     },
     allSitesState: {
         sites: null,

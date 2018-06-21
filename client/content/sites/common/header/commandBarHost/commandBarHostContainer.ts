@@ -1,3 +1,4 @@
+import { ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
 import { connect, Dispatch } from "react-redux";
 
 import CommandBarHostComponent from "./commandBarHostComponent";
@@ -5,7 +6,6 @@ import IAppState from "../../../../../duck/interfaces/IAppState";
 import ICloseRightPanelAction from "../../../../../chrome/duck/actions/interfaces/ICloseRightPanelAction";
 import ICommandBarHostProps from "./interfaces/ICommandBarHostProps";
 import ICommandBarHostPropsFromDispatch from "./interfaces/ICommandBarHostPropsFromDispatch";
-import ICommanadBarHostPropsFromState from "./interfaces/ICommandBarHostPropsFromState";
 import IOpenRightPanelAction from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelAction";
 import ISiteToggleRightPaneAction from "../../../duck/actions/interfaces/ISitesToggleRightPaneAction";
 import ISitesToggleRightPanePayload from "../../../duck/actions/interfaces/ISitesToggleRightPanePayload";
@@ -15,7 +15,7 @@ import sitesToggleRightPane from "../../../../sites/duck/actions/sitesToggleRigh
 
 type DisptchProps = IOpenRightPanelAction | ICloseRightPanelAction | ISiteToggleRightPaneAction;
 
-function mapStateToProps(state: IAppState): ICommanadBarHostPropsFromState {
+function mapStateToProps(state: IAppState): ICommandBarProps {
     return {
         ...state.sitesState.headerState.commands
     };

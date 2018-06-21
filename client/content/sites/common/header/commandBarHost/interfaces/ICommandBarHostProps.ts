@@ -1,5 +1,6 @@
+import { ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
+
 import ICommandBarHostPropsFromDispatch from "./ICommandBarHostPropsFromDispatch";
-import ICommanadBarHostPropsFromState from "./ICommandBarHostPropsFromState";
 
 export default interface ICommandBarHostProps
-    extends ICommandBarHostPropsFromDispatch, ICommanadBarHostPropsFromState { }
+    extends ICommandBarHostPropsFromDispatch, ICommandBarProps { }

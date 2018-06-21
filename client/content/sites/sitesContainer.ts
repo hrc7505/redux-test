@@ -9,8 +9,12 @@ import SitesComponent from "./sitesComponent";
 function mapStateToProps(state: IAppState): ISitesPropsFromState {
     return {
         rightPaneProps: {
-            ...state.sitesState.rightPaneState.rightPaneData,
             isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
+            rightPaneHeaderText: state.sitesState.rightPaneState.rightPaneHeaderText,
+            rightPaneContent: state.sitesState.rightPaneState.rightPaneContent,
+            rightPaneFooterRender: state.sitesState.rightPaneState.rightPaneFooterRender
+                ? state.sitesState.rightPaneState.rightPaneFooterRender
+                : null
         }
     };
 }

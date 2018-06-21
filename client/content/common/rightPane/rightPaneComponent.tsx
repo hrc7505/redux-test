@@ -13,13 +13,15 @@ const rightPaneComponent: React.SFC<IRightPaneProps> = (props: IRightPaneProps):
             {props.rightPaneContent}
         </div>
         {
-            props.rightPaneFooterRender ?
+            props.rightPaneFooterRender
+            ? (
                 <div className="rightPaneFooter">
                     <div className="rightPaneFooterInner">
                         {props.rightPaneFooterRender()}
                     </div>
                 </div>
-                : null
+            )
+            : null
         }
     </div>
 );

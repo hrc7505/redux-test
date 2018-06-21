@@ -4,6 +4,7 @@ import ISiteDetailsListItemData from "./ISiteDetailsListItemData";
 
 export default interface IDashboardPropsFromState {
     rightPaneProps: IRightPaneProps;
+    rightPaneId: string;
     detailsListItems: ISiteDetailsListItemData[];
     jobs: IJobTileData[];
     isLoading: boolean;

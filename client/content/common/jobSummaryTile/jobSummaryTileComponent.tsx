@@ -11,9 +11,9 @@ export default class JobSummaryTileComponent extends React.PureComponent<IJobSum
                 className={`job pullLeft ${this.props.isSelected ? "selected" : ""}`}
                 onClick={
                     (): void => this.props.tileOnClick({
+                        rightPaneId: `${this.props.jobId}`,
                         rightPaneHeaderText: `${this.props.jobTitle} (${this.props.jobId})`,
                         rightPaneContent: this.content(
-                            this.props.jobId, // Body div's key.
                             this.props.jobCreatedDate,
                             this.props.jobStatus,
                             this.props.jobSite),
@@ -32,8 +32,8 @@ export default class JobSummaryTileComponent extends React.PureComponent<IJobSum
         );
     }
 
-    private content = (key: string, date: string, status: string, site: string): JSX.Element => (
-        <div key={key}>
+    private content = (date: string, status: string, site: string): JSX.Element => (
+        <div>
             <div> The job's created date is {date} </div>
             <div> This job is currently {status} at {site} </div>
         </div>
