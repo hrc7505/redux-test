@@ -83,9 +83,9 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
                             jobSummaryData={this.props.jobs}
                             tileOnClick={this.props.jobTileOnClick}
                             selectedId={
-                                rightPaneProps.isRightPaneVisible ?
-                                    rightPaneProps.rightPaneContent.key.toString() :
-                                    null
+                                rightPaneProps.isRightPaneVisible
+                                    ? this.props.rightPaneId
+                                    : null
                             }
                         />
                     </div>

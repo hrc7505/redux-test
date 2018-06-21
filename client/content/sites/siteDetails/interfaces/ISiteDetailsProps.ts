@@ -1,8 +1,8 @@
-import IIndividualSitePropsFromDispatch from "./ISiteDetailsPropsFromDispatch";
-import IIndividualSitePropsFromState from "./ISiteDetailsPropsFromState";
+import ISiteDetailsPropsFromDispatch from "./ISiteDetailsPropsFromDispatch";
+import ISiteDetailsPropsFromState from "./ISiteDetailsPropsFromState";
 import { RouteComponentProps } from "react-router";
 
-export default interface IIndividualSiteProps
-    extends IIndividualSitePropsFromState,
-    IIndividualSitePropsFromDispatch,
+export default interface ISiteDetailsProps
+    extends ISiteDetailsPropsFromState,
+    ISiteDetailsPropsFromDispatch,
     RouteComponentProps<{ individualSite: string }> { }

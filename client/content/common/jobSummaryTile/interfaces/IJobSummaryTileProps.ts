@@ -1,4 +1,4 @@
-import IDashboardToggleRightPanePayload from "../../../dashboard/duck/actions/interfaces/IDashboardToggleRightPanePayload";
+import IToggleSwitchRightPanePayload from "../../rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 export default interface IJobSummaryTileProps {
     jobTitle: string;
@@ -6,6 +6,6 @@ export default interface IJobSummaryTileProps {
     jobCreatedDate: string;
     jobStatus: string;
     jobId: string;
-    tileOnClick: (actionPayload: IDashboardToggleRightPanePayload) => void;
+    tileOnClick: (actionPayload: IToggleSwitchRightPanePayload) => void;
     isSelected: boolean;
 }

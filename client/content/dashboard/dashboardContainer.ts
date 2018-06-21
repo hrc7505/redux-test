@@ -3,37 +3,38 @@ import { ThunkDispatch } from "redux-thunk";
 
 import DashboardComponent from "./dashboardComponent";
 import dashboardGetData from "./duck/operations/dashboardGetData";
-import dashboardToggleRightPane from "./duck/actions/dashboardToggleRightPane";
+import dashboardToggleRightPane from "./duck/actions/dashboardToggleSwitchRightPane";
 import IAppState from "../../duck/interfaces/IAppState";
 import IDashboardCloseRightPaneAction from "./duck/actions/interfaces/IDashboardCloseRightPaneAction";
 import IDashboardProps from "./interfaces/IDashboardProps";
 import IDashboardPropsFromDispatch from "./interfaces/IDashboardPropsFromDispatch";
 import IDashboardPropsFromState from "./interfaces/IDashboardPropsFromState";
-import IDashboardToggleRightPaneAction from "./duck/actions/interfaces/IDashboardToggleRightPaneAction";
-import IDashboardToggleRightPanePayload from "./duck/actions/interfaces/IDashboardToggleRightPanePayload";
+import IDashboardToggleSwitchRightPaneAction from "./duck/actions/interfaces/IDashboardToggleSwitchRightPaneAction";
+import IToggleSwitchRightPanePayload from "../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 function mapStateToProps(state: IAppState): IDashboardPropsFromState {
     return {
         rightPaneProps: {
-            isRightPaneVisible: state.dashboardState.isRightPaneVisible,
-            rightPaneHeaderText: state.dashboardState.rightPaneHeaderText,
-            rightPaneContent: state.dashboardState.rightPaneContent,
-            rightPaneFooterRender: state.dashboardState.rightPaneFooterRender,
+            isRightPaneVisible: state.dashboardState.rightPaneState.isRightPaneVisible,
+            rightPaneHeaderText: state.dashboardState.rightPaneState.rightPaneHeaderText,
+            rightPaneContent: state.dashboardState.rightPaneState.rightPaneContent,
+            rightPaneFooterRender: state.dashboardState.rightPaneState.rightPaneFooterRender,
         },
-        detailsListItems: state.dashboardState.sites,
-        jobs: state.dashboardState.activeJobs,
-        isLoading: state.dashboardState.isLoading,
+        rightPaneId: state.dashboardState.rightPaneState.rightPaneId,
+        detailsListItems: state.dashboardState.contentState.sites,
+        jobs: state.dashboardState.contentState.activeJobs,
+        isLoading: state.dashboardState.contentState.isLoading,
     };
 }
 
-type Actions = IDashboardCloseRightPaneAction | IDashboardToggleRightPaneAction;
+type Actions = IDashboardCloseRightPaneAction | IDashboardToggleSwitchRightPaneAction;
 type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Actions>) => IDashboardPropsFromDispatch;
 
 const mapDispatchToProps: MapDispatchToProps = (
     dispatch: ThunkDispatch<IAppState, void /* Extra Arguments*/, Actions>
 ): IDashboardPropsFromDispatch => (
         {
-            jobTileOnClick: (actionPayload: IDashboardToggleRightPanePayload): IDashboardToggleRightPaneAction =>
+            jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload): IDashboardToggleSwitchRightPaneAction =>
                 dispatch(dashboardToggleRightPane(actionPayload)),
             getData: (): void => { dispatch(dashboardGetData()); },
         }

@@ -1,12 +1,12 @@
+import { IBreadcrumbProps } from "office-ui-fabric-react/lib/Breadcrumb";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
 import BreadcrumbHostComponent from "./breadcrumbHostComponent";
 import IAppState from "../../../../../duck/interfaces/IAppState";
 import IBreadcrumbHostProps from "./interfaces/IBreadcrumbHostProps";
-import IBreadcrumbHostPropsFromState from "./interfaces/IBreadcrumbHostPropsFromState";
 
-function mapStateToProps(state: IAppState): IBreadcrumbHostPropsFromState {
+function mapStateToProps(state: IAppState): IBreadcrumbProps {
     return {
         ...state.sitesState.headerState.breadcrumb
     };
