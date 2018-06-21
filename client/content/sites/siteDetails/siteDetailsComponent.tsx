@@ -75,7 +75,10 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     }
 
     private getSiteDetails = (): void => {
-        this.props.closeRightPane();
+        if (this.props.rightPaneProps.isRightPaneVisible) {
+            this.props.closeRightPane();
+        }
+
         this.props.getSiteDetails(this.props.match.params.individualSite);
     }
 }

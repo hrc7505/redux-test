@@ -7,11 +7,11 @@ import EntityTitleContainer from "./entityTitle/entityTitleContainer";
 import "./headerStyle.scss";
 
 const HeaderComponent: React.SFC<object> = (): JSX.Element => (
-    <div className="cPanel">
+    <React.Fragment>
         <BreadcrumbHostContainer />
         <EntityTitleContainer />
         <CommandBarHostContainer />
-    </div>
+    </React.Fragment>
 );
 
 export default HeaderComponent;
