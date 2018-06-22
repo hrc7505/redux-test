@@ -1,6 +1,6 @@
 import IJobTileData from "../../common/jobSummaryList/interfaces/IJobTileData";
 import IRightPaneProps from "../../common/rightPane/interfaces/IRightPaneProps";
-import ISiteDetailsListItemData from "./ISiteDetailsListItemData";
+import ISiteDetailsListItemData from "../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 
 export default interface IDashboardPropsFromState {
     rightPaneProps: IRightPaneProps;

@@ -1,5 +1,5 @@
-import IAllSiteResponse from "../duck/operations/interfaces/IAllSitesResponse";
-import ISiteInfo from "../../../dashboard/duck/operations/interfaces/ISiteInfo";
+import IAllSitesDataResponse from "../duck/operations/interfaces/IAllSitesDataResponse";
+import ISiteInfo from "../../../../models/sites/ISiteInfo";
 
 export default class AllSitesShim {
     private static sites: ISiteInfo[] = [
@@ -19,7 +19,7 @@ export default class AllSitesShim {
         },
     ];
 
-    public static getData(): IAllSiteResponse {
+    public static getData(): IAllSitesDataResponse {
         return {
             sites: AllSitesShim.sites
         };

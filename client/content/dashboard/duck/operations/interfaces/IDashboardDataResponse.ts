@@ -1,5 +1,5 @@
-import IJobInfo from "./IJobInfo";
-import ISiteInfo from "./ISiteInfo";
+import IJobInfo from "../../../../../models/jobs/IJobInfo";
+import ISiteInfo from "../../../../../models/sites/ISiteInfo";
 
 // This interface is TBD depending on server.
 
