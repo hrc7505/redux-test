@@ -14,7 +14,7 @@ import ISiteDetailsPropsFromDispatch from "./interfaces/ISiteDetailsPropsFromDis
 import ISiteDetailsPropsFromState from "./interfaces/ISiteDetailsPropsFromState";
 import ISitesCloseRightPaneAction from "../duck/actions/interfaces/ISitesCloseRightPaneAction";
 import ISitesToggleRightPaneAction from "../duck/actions/interfaces/ISitesToggleRightPaneAction";
-import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
+import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import setBreadcrumb from "../common/header/duck/actions/setBreadcrumb";
 import setCommands from "../common/header/duck/actions/setCommands";
 import setEntityTitle from "../common/header/duck/actions/setEntityTitle";
@@ -51,7 +51,7 @@ function mapStateToDispatch(dispatch: Dispatch<Actions>): ISiteDetailsPropsFromD
             dispatch(setEntityTitle(actionPayload)),
         setCommands: (actionPayload: ICommandsPayload): ISetCommandsAction =>
             dispatch(setCommands(actionPayload)),
-        jobTileOnClick: (actionPayload: ISitesToggleRightPanePayload): ISitesToggleRightPaneAction =>
+        jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload): ISitesToggleRightPaneAction =>
             dispatch(sitesToggleRightPane(actionPayload)),
         getSiteDetails: (siteId: string): IGetSiteDetailsAction => dispatch(getSitesDetails(siteId)),
         closeRightPane: (): ISitesCloseRightPaneAction => dispatch(sitesCloseRightPane())

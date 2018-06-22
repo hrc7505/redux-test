@@ -1,4 +1,4 @@
-import IJobTileData from "../../../dashboard/interfaces/IJobTileData";
+import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
 import ISiteDetailsListItemData from "../../../dashboard/interfaces/ISiteDetailsListItemData";
 
 export interface ISiteDetails extends ISiteDetailsListItemData {

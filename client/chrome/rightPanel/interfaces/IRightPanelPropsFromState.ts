@@ -1,6 +1,6 @@
-import IToggleRightPanelPayload from "./IToggleRightPanelPayload";
-
 export default interface IRightPanelPropsFromState {
     isRightPanelVisible: boolean;
-    rightPanelProps: IToggleRightPanelPayload;
+    rightPanelHeaderText: string;
+    rightPanelContent: JSX.Element;
+    rightPanelFooterRender?: () => JSX.Element;
 }

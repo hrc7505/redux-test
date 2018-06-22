@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import IJobSummaryListProps from "./interfaces/IJobSummaryListProps";
-import IJobTileData from "../../dashboard/interfaces/IJobTileData";
+import IJobTileData from "../../common/jobSummaryList/interfaces/IJobTileData";
 import JobSummaryTileComponent from "../jobSummaryTile/jobSummaryTileComponent";
 
 export default class JobSummaryListComponent extends React.PureComponent<IJobSummaryListProps> {

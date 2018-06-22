@@ -8,9 +8,9 @@ import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommands
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
+import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
-import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
-import IToggleRightPanelPayload from "../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
+import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListComponent";
 
 import "./siteDetailsStyle.scss";
@@ -125,13 +125,15 @@ const Test1: React.SFC<object> = (): JSX.Element => (
     </div>
 );
 
-const rightPaneData: ISitesToggleRightPanePayload = {
+const rightPaneData: IToggleSwitchRightPanePayload = {
+    rightPaneId: "siteDetailsRightPaneId",
     rightPaneHeaderText: "HeaderText of the right pane",
     rightPaneContent: <div>This is the body of the right pane...</div>,
     rightPaneFooterRender: (): JSX.Element => (<div>Footer for the right pane</div>)
 };
 
-const rightPanelData: IToggleRightPanelPayload = {
+const rightPanelData: IOpenRightPanelPayload = {
+    rightPanelId: "siteDetailsRightPanelId",
     rightPanelHeaderText: "Add New Site",
     rightPanelContent: <Test1 />,
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)

@@ -1,8 +1,8 @@
 import IOpenRightPanelAction from "./interfaces/IOpenRightPanelAction";
-import IToggleRightPanelPayload from "../../rightPanel/interfaces/IToggleRightPanelPayload";
+import IOpenRightPanelPayload from "../../duck/actions/interfaces/IOpenRightPanelPayload";
 import OPEN_RIGHT_PANEL from "../actionTypes/OPEN_RIGHT_PANEL";
 
-export default function openRightPanel(payload: IToggleRightPanelPayload): IOpenRightPanelAction  {
+export default function openRightPanel(payload: IOpenRightPanelPayload): IOpenRightPanelAction  {
     return {
         type: OPEN_RIGHT_PANEL,
         payload

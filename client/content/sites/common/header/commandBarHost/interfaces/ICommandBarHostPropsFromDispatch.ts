@@ -1,7 +1,7 @@
-import ISitesToggleRightPanePayload from "../../../../duck/actions/interfaces/ISitesToggleRightPanePayload";
-import IToggleRightPanelPayload from "../../../../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
+import IOpenRightPanelPayload from "../../../../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import IToggleSwitchRightPanePayload from "../../../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 export default interface ICommandBarHostPropsFromDispatch {
-    openRightPanel?: (actionPayload: IToggleRightPanelPayload) => void;
-    siteButtonOnClick?: (actionPayload: ISitesToggleRightPanePayload) => void;
+    openRightPanel?: (actionPayload: IOpenRightPanelPayload) => void;
+    siteButtonOnClick?: (actionPayload: IToggleSwitchRightPanePayload) => void;
 }

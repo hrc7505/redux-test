@@ -10,7 +10,7 @@ import IDashboardLoadDataAction from "../actions/interfaces/IDashboardLoadDataAc
 import IDashboardLoadDataPayload from "../actions/interfaces/IDashboardLoadDataPayload";
 import IDashboardRequestDataAction from "../actions/interfaces/IDashboardRequestDataAction";
 import IJobInfo from "../operations/interfaces/IJobInfo";
-import IJobTileData from "../../interfaces/IJobTileData";
+import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
 import ISiteDetailsListItemData from "../../interfaces/ISiteDetailsListItemData";
 import ISiteInfo from "../operations/interfaces/ISiteInfo";
 

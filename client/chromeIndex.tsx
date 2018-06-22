@@ -7,6 +7,7 @@ import { combineReducers, createStore, Reducer, Store } from "redux";
 import Chrome from "./chrome/chrome";
 import chromeReducer from "./chrome/duck/chromeReducer";
 import IAppState from "./duck/interfaces/IAppState";
+import IChromeState from "./chrome/duck/interfaces/IChromeState";
 
 import "./common/commonStyle/commonStyle.scss";
 
@@ -16,7 +17,24 @@ const chromeOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     sitesState: null,
 });
 
-const standAloneChromeStore: Store<IAppState> = createStore(chromeOnlyReducer);
+const defaultState: IChromeState = {
+    isLeftPaneVisible: false,
+    isRightPanelVisible: false,
+    rightPanelData: {
+        rightPanelId: "emptyId",
+        rightPanelHeaderText: "empty header",
+        rightPanelContent: <div>empty content</div>
+    }
+};
+
+const standAloneChromeStore: Store<IAppState> = createStore(
+    chromeOnlyReducer,
+    {
+        chromeState: defaultState,
+        dashboardState: null,
+        sitesState: null,
+    }
+);
 
 ReactDOM.render(
     <Provider store={standAloneChromeStore}>

@@ -1,4 +1,4 @@
-import IJobTileData from "../../../dashboard/interfaces/IJobTileData";
+import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
 import IToggleSwitchRightPanePayload from "../../rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 export default interface IJobSummaryListProps {

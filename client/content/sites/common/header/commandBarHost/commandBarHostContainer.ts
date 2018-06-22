@@ -7,9 +7,9 @@ import ICloseRightPanelAction from "../../../../../chrome/duck/actions/interface
 import ICommandBarHostProps from "./interfaces/ICommandBarHostProps";
 import ICommandBarHostPropsFromDispatch from "./interfaces/ICommandBarHostPropsFromDispatch";
 import IOpenRightPanelAction from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelAction";
+import IOpenRightPanelPayload from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ISiteToggleRightPaneAction from "../../../duck/actions/interfaces/ISitesToggleRightPaneAction";
-import ISitesToggleRightPanePayload from "../../../duck/actions/interfaces/ISitesToggleRightPanePayload";
-import IToggleRightPanelPayload from "../../../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
+import IToggleSwitchRightPanePayload from "../../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import openRightPanel from "../../../../../chrome/duck/actions/openRightPanel";
 import sitesToggleRightPane from "../../../../sites/duck/actions/sitesToggleRightPane";
 
@@ -23,9 +23,9 @@ function mapStateToProps(state: IAppState): ICommandBarProps {
 
 function mapDispatchToProps(dispatch: Dispatch<DisptchProps>): ICommandBarHostPropsFromDispatch {
     return {
-        openRightPanel: (actionPayload: IToggleRightPanelPayload): IOpenRightPanelAction =>
+        openRightPanel: (actionPayload: IOpenRightPanelPayload): IOpenRightPanelAction =>
             dispatch(openRightPanel(actionPayload)),
-        siteButtonOnClick: (actionPayload: ISitesToggleRightPanePayload): ISiteToggleRightPaneAction =>
+        siteButtonOnClick: (actionPayload: IToggleSwitchRightPanePayload): ISiteToggleRightPaneAction =>
             dispatch(sitesToggleRightPane(actionPayload))
     };
 }

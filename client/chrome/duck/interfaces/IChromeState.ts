@@ -1,7 +1,7 @@
-import IToggleRightPanelPayload from "../../rightPanel/interfaces/IToggleRightPanelPayload";
+import IOpenRightPanelPayload from "../../duck/actions/interfaces/IOpenRightPanelPayload";
 
 export default interface IChromeState {
     isLeftPaneVisible: boolean;
     isRightPanelVisible: boolean;
-    rightPanelData: IToggleRightPanelPayload;
+    rightPanelData: IOpenRightPanelPayload;
 }

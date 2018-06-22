@@ -7,9 +7,9 @@ import IAllSitesComponentProps from "./interfaces/IAllSitesProps";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
 import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
+import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ISiteDetailsListItemData from "../../dashboard/interfaces/ISiteDetailsListItemData";
-import ISitesToggleRightPanePayload from "../duck/actions/interfaces/ISitesToggleRightPanePayload";
-import IToggleRightPanelPayload from "../../../chrome/rightPanel/interfaces/IToggleRightPanelPayload";
+import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesComponentProps> {
     private static detailListColumns: IColumn[] = [
@@ -87,19 +87,21 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesComp
 }
 
 const Test2: React.SFC<object> = (): JSX.Element => (
-    <div style={{ background: "red" }}>
-        Hello this is component
-    <span style={{ fontSize: "25px" }}> 2</span>
+    <div>
+        Click on the next button to navigate to site details
+        <Link to="/sites/909876"> NEXT</Link>
     </div>
 );
 
-const rightPaneData: ISitesToggleRightPanePayload = {
+const rightPaneData: IToggleSwitchRightPanePayload = {
+    rightPaneId: "allSitesRightPaneId",
     rightPaneHeaderText: "Right pane for all sites",
     rightPaneContent: <div>This is the body of the right pane...</div>,
     rightPaneFooterRender: (): JSX.Element => (<div>Footer for the right pane</div>)
 };
 
-const rightPanelData: IToggleRightPanelPayload = {
+const rightPanelData: IOpenRightPanelPayload = {
+    rightPanelId: "allSitesRightPanelId",
     rightPanelHeaderText: "Test Panel",
     rightPanelContent: <Test2 />,
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)

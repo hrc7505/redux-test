@@ -7,13 +7,13 @@ import ISetCommandsAction from "../../common/header/duck/actions/interfaces/ISet
 import ISetEntityTitleAction from "../../common/header/duck/actions/interfaces/ISetEntityTitleAction";
 import ISitesCloseRightPaneAction from "../../duck/actions/interfaces/ISitesCloseRightPaneAction";
 import ISitesToggleRightPaneAction from "../../duck/actions/interfaces/ISitesToggleRightPaneAction";
-import ISitesToggleRightPanePayload from "../../duck/actions/interfaces/ISitesToggleRightPanePayload";
+import IToggleSwitchRightPanePayload from "../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 export default interface ISiteDetailsPropsFromDispatch {
     setBreadcrumb: (actionPayload: IBreadcrumbPayload) => ISetBreadcrumbAction;
     setEntityTitle: (actionPayload: IEnityTitlePayload) => ISetEntityTitleAction;
     setCommands: (actionPayload: ICommandsPayload) => ISetCommandsAction;
-    jobTileOnClick: (actionPayload: ISitesToggleRightPanePayload) => ISitesToggleRightPaneAction;
+    jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload) => ISitesToggleRightPaneAction;
     getSiteDetails: (siteId: string) => IGetSiteDetailsAction;
     closeRightPane: () => ISitesCloseRightPaneAction;
 }

@@ -9,7 +9,7 @@ export default class RightPanelComponent extends React.PureComponent<IRightPanel
     private panelInstance: Panel;
 
     public render(): JSX.Element {
-        const {isRightPanelVisible, rightPanelProps } = this.props;
+        const { isRightPanelVisible, rightPanelHeaderText, rightPanelContent, rightPanelFooterRender } = this.props;
 
         return (
             <Panel
@@ -20,14 +20,14 @@ export default class RightPanelComponent extends React.PureComponent<IRightPanel
                 onLightDismissClick={this.closePanel}
                 onDismissed={this.closePanel}
                 isLightDismiss={true}
-                headerText={rightPanelProps.rightPanelHeaderText}
+                headerText={rightPanelHeaderText}
                 closeButtonAriaLabel="Close"
-                onRenderFooterContent={rightPanelProps.rightPanelFooterRender}
+                onRenderFooterContent={rightPanelFooterRender}
                 isFooterAtBottom={true}
                 className="panelRoot"
                 layerProps={{ className: "panelLayerClass" }}
             >
-                {rightPanelProps.rightPanelContent}
+                {rightPanelContent}
             </Panel>
         );
     }
