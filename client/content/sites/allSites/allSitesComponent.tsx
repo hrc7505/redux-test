@@ -1,64 +1,31 @@
-import { DetailsList, DetailsListLayoutMode, IColumn } from "office-ui-fabric-react/lib/DetailsList";
+import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/DetailsList";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import IAllSitesComponentProps from "./interfaces/IAllSitesProps";
+import IAllSitesProps from "./interfaces/IAllSitesProps";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
 import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
-import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
+import IEntityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ISiteDetailsListItemData from "../../dashboard/interfaces/ISiteDetailsListItemData";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
+import siteDetailsListColumns from "../../common/detailsList/siteDetailsList/SiteDetailsListColumns";
 
-export default class AllSitesComponent extends React.PureComponent<IAllSitesComponentProps> {
-    private static detailListColumns: IColumn[] = [
-        {
-            key: "siteName",
-            name: "Name",
-            fieldName: "name",
-            minWidth: 70,
-            maxWidth: 100,
-            isResizable: true,
-            isPadded: true,
-            onRender: (item: ISiteDetailsListItemData): JSX.Element => <Link to={`/sites/${item.id}`}>{item.name}</Link>
-        },
-        {
-            key: "location",
-            name: "Location",
-            fieldName: "location",
-            minWidth: 140,
-            maxWidth: 300,
-            isResizable: true,
-            isPadded: true,
-        },
-        {
-            key: "activeJobs",
-            name: "Active Jobs",
-            fieldName: "activeJobs",
-            minWidth: 35,
-            maxWidth: 35,
-            isResizable: true,
-            isPadded: true,
-        },
-        {
-            key: "totalJobs",
-            name: "Total Jobs",
-            fieldName: "totalJobs",
-            minWidth: 35,
-            maxWidth: 35,
-            isResizable: true,
-            isPadded: true,
-        }
-    ];
-
+export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
     public render(): JSX.Element {
+        if (this.props.isLoading) {
+            return (
+                <LoadingSpinner />
+            );
+        }
+
         return (
             <div className="cPanel" style={{ border: "1px solid" }}>
                 <DetailsList
                     items={this.props.detailsListItems}
                     compact={true}
-                    columns={AllSitesComponent.detailListColumns}
+                    columns={siteDetailsListColumns}
                     setKey="set"
                     layoutMode={DetailsListLayoutMode.justified}
                     isHeaderVisible={true}
@@ -71,7 +38,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesComp
 
     public componentDidMount(): void {
         this.setHeaderData();
-        this.props.getAllSites();
+        this.props.getData();
         window.addEventListener("hashchange", this.setHeaderData);
     }
 
@@ -110,7 +77,7 @@ const rightPanelData: IOpenRightPanelPayload = {
 const breadcrumbPayload: IBreadcrumbPayload = {
     breadcrumb: null,
 };
-const entityTitlePayload: IEnityTitlePayload = { title: "Sites" };
+const entityTitlePayload: IEntityTitlePayload = { title: "Sites" };
 const commandsPayload: ICommandsPayload = {
     commands: {
         farItems: [

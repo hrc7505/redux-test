@@ -2,15 +2,15 @@ import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 
 import AllSitesComponent from "../../sites/allSites/allSitesComponent";
-import getAllSites from "./duck/operations/getAllSites";
-import IAllSitesComponentProps from "./interfaces/IAllSitesProps";
+import allSitesGetData from "./duck/operations/allSitesGetData";
+import IAllSitesProps from "./interfaces/IAllSitesProps";
 import IAllSitesPropsFromDispatch from "./interfaces/IAllSitesPropsFromDispatch";
 import IAllSitesPropsFromState from "./interfaces/IAllSitesPropsFromState";
+import IAllSitesRequestDataAction from "./duck/actions/interfaces/IAllSitesRequestDataAction";
 import IAppState from "../../../duck/interfaces/IAppState";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
 import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
-import IGetAllSitesAction from "./duck/actions/interfaces/IRequestAllSitesAction";
 import ISetBreadcrumbAction from "../common/header/duck/actions/interfaces/ISetBreadcrumbAction";
 import ISetCommandsAction from "../common/header/duck/actions/interfaces/ISetCommandsAction";
 import ISetEntityTitleAction from "../common/header/duck/actions/interfaces/ISetEntityTitleAction";
@@ -20,11 +20,12 @@ import setEntityTitle from "../common/header/duck/actions/setEntityTitle";
 
 function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
     return {
-        detailsListItems: state.sitesState.allSitesState.sites
+        detailsListItems: state.sitesState.allSitesState.sites,
+        isLoading: state.sitesState.allSitesState.isLoading,
     };
 }
 
-type Actions = IGetAllSitesAction | ISetEntityTitleAction | ISetCommandsAction | ISetBreadcrumbAction;
+type Actions = IAllSitesRequestDataAction | ISetEntityTitleAction | ISetCommandsAction | ISetBreadcrumbAction;
 
 function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): IAllSitesPropsFromDispatch {
     return {
@@ -34,13 +35,13 @@ function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): 
             dispatch(setEntityTitle(actionPayload)),
         setCommands: (actionPayload: ICommandsPayload): ISetCommandsAction =>
             dispatch(setCommands(actionPayload)),
-        getAllSites: (): void => { dispatch(getAllSites()); },
+        getData: (): void => { dispatch(allSitesGetData()); },
     };
 }
 
 const AllSitesContainer: React.ComponentClass = connect(
     mapStateToProps,
     mapDispatchToProps
-)<IAllSitesComponentProps>(AllSitesComponent);
+)<IAllSitesProps>(AllSitesComponent);
 
 export default AllSitesContainer;

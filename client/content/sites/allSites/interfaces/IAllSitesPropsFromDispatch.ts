@@ -9,5 +9,5 @@ export default interface IAllSitesPropsFromDispatch {
     setBreadcrumb: (actionPayload: IBreadcrumbPayload) => ISetBreadcrumbAction;
     setEntityTitle: (actionPayload: IEnityTitlePayload) => ISetEntityTitleAction;
     setCommands: (actionPayload: ICommandsPayload) => ISetCommandsAction;
-    getAllSites: () => void;
+    getData: () => void;
 }

@@ -1,6 +1,6 @@
 import IDashboardDataResponse from "../duck/operations/interfaces/IDashboardDataResponse";
-import IJobInfo from "../duck/operations/interfaces/IJobInfo";
-import ISiteInfo from "../duck/operations/interfaces/ISiteInfo";
+import IJobInfo from "../../../models/jobs/IJobInfo";
+import ISiteInfo from "../../../models/sites/ISiteInfo";
 
 export default class DashboardDataShim {
     private static jobs: IJobInfo[] = [

@@ -9,10 +9,10 @@ import IDashboardDataResponse from "./interfaces/IDashboardDataResponse";
 import IDashboardLoadDataAction from "../actions/interfaces/IDashboardLoadDataAction";
 import IDashboardLoadDataPayload from "../actions/interfaces/IDashboardLoadDataPayload";
 import IDashboardRequestDataAction from "../actions/interfaces/IDashboardRequestDataAction";
-import IJobInfo from "../operations/interfaces/IJobInfo";
+import IJobInfo from "../../../../models/jobs/IJobInfo";
 import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
-import ISiteDetailsListItemData from "../../interfaces/ISiteDetailsListItemData";
-import ISiteInfo from "../operations/interfaces/ISiteInfo";
+import ISiteDetailsListItemData from "../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import ISiteInfo from "../../../../models/sites/ISiteInfo";
 
 type Actions =
     IDashboardRequestDataAction |

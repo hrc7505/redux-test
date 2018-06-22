@@ -1,5 +1,5 @@
 import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
-import ISiteDetailsListItemData from "../../../dashboard/interfaces/ISiteDetailsListItemData";
+import ISiteDetailsListItemData from "../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 
 export interface ISiteDetails extends ISiteDetailsListItemData {
     jobList: IJobTileData[];

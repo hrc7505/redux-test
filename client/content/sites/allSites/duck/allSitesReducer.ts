@@ -1,10 +1,10 @@
+import ALL_SITES_LOAD_DATA from "./actionTypes/ALL_SITES_LOAD_DATA";
+import ALL_SITES_REQUEST_DATA from "./actionTypes/ALL_SITES_REQUEST_DATA";
+import IAllSitesLoadDataAction from "./actions/interfaces/IAllSitesLoadDataAction";
+import IAllSitesRequestDataAction from "./actions/interfaces/IAllSitesRequestDataAction";
 import IAllSitesState from "../duck/interfaces/IAllSitesState";
-import ILoadAllSitesAction from "./actions/interfaces/ILoadAllSitesAction";
-import IRequestAllSitesAction from "./actions/interfaces/IRequestAllSitesAction";
-import LOAD_ALL_SITES from "./actionTypes/LOAD_ALL_SITES";
-import REQUEST_ALL_SITES from "./actionTypes/REQUEST_ALL_SITES";
 
-type Action = IRequestAllSitesAction | ILoadAllSitesAction;
+type Action = IAllSitesRequestDataAction | IAllSitesLoadDataAction;
 
 const defaultAllSitesState: IAllSitesState = {
     sites: [],
@@ -13,13 +13,13 @@ const defaultAllSitesState: IAllSitesState = {
 
 export default function allSitesReducer(state: IAllSitesState, action: Action): IAllSitesState {
     switch (action.type) {
-        case REQUEST_ALL_SITES:
+        case ALL_SITES_REQUEST_DATA:
             return {
                 ...state,
                 isLoading: true,
             };
 
-        case LOAD_ALL_SITES:
+        case ALL_SITES_LOAD_DATA:
             return {
                 ...state,
                 isLoading: false,
