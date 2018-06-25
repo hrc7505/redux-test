@@ -9,7 +9,11 @@ import SET_ENTITY_TITLE from "./actionTypes/SET_ENTITY_TITLE";
 type Action = ISetBreadcrumbAction | ISetEntityTitleAction | ISetCommandsAction;
 
 const defaultState: IHeaderState = {
-    breadcrumb: null,
+    breadcrumb: {
+        link: "",
+        displayTitle: "",
+        entity: null
+    },
     title: null,
     commands: null
 };
@@ -19,7 +23,7 @@ export default function headerReducer(state: IHeaderState, action: Action): IHea
         case SET_BREADCRUMB:
             return {
                 ...state,
-                breadcrumb: action.payload.breadcrumb
+                breadcrumb: action.payload
             };
 
         case SET_ENTITY_TITLE:

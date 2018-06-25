@@ -4,8 +4,6 @@ import BreadcrumbHostContainer from "./breadcrumbHost/breadcrumbHostContainer";
 import CommandBarHostContainer from "./commandBarHost/commandBarHostContainer";
 import EntityTitleContainer from "./entityTitle/entityTitleContainer";
 
-import "./headerStyle.scss";
-
 const HeaderComponent: React.SFC<object> = (): JSX.Element => (
     <React.Fragment>
         <BreadcrumbHostContainer />

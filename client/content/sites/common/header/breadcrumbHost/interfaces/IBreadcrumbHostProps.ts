@@ -1,5 +1,5 @@
-import { IBreadcrumbProps } from "office-ui-fabric-react/lib/Breadcrumb";
+import IBreadcrumbPropsFromState from "./IBreadcrumbPropsFromState";
 import { RouteComponentProps } from "react-router";
 
 export default interface IBreadcrumbHostProps
-    extends IBreadcrumbProps, RouteComponentProps<string> { }
+    extends IBreadcrumbPropsFromState, RouteComponentProps<string> { }

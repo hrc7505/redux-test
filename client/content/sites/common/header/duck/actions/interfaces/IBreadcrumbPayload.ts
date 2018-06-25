@@ -1,5 +1,7 @@
-import { IBreadcrumbProps } from "office-ui-fabric-react/lib/Breadcrumb";
+import Entity from "../../../breadcrumbHost/entity";
 
 export default interface IBreadcrumbPayload {
-    breadcrumb: IBreadcrumbProps;
+    link: string;
+    displayTitle: string;
+    entity: Entity;
 }

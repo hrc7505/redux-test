@@ -3,6 +3,7 @@ import { IconType } from "office-ui-fabric-react/lib/Icon";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
+import Entity from "../common/header/breadcrumbHost/entity";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
 import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
@@ -43,7 +44,6 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     }
 
     public componentDidMount(): void {
-        this.breadCrumbPayload = breadcrumbPayload;
         this.entityTitlePayload = entityTitlePayload;
         this.props.setCommands(commandsPayload);
         this.getSiteDetails();
@@ -53,12 +53,9 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     public componentWillReceiveProps(nextProps: ISiteDetailsProps): void {
         if (nextProps.site !== this.props.site) {
             this.breadCrumbPayload = {
-                breadcrumb: {
-                    items: [
-                        { text: "Sites", key: "sites" },
-                        { text: nextProps.site.name, key: "/sites/" + nextProps.site.id, isCurrentItem: true }
-                    ]
-                }
+                displayTitle: nextProps.site.name,
+                link: nextProps.location.pathname,
+                entity: Entity.SiteDetails
             };
 
             this.entityTitlePayload = {
@@ -137,10 +134,6 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelHeaderText: "Add New Site",
     rightPanelContent: <Test1 />,
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
-};
-
-const breadcrumbPayload: IBreadcrumbPayload = {
-    breadcrumb: null,
 };
 
 const entityTitlePayload: IEnityTitlePayload = {

@@ -3,8 +3,8 @@ import { IconType } from "office-ui-fabric-react/lib/Icon";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+import Entity from "../common/header/breadcrumbHost/entity";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
-import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
 import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
 import IEntityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
@@ -26,7 +26,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
                     items={this.props.detailsListItems}
                     compact={true}
                     columns={siteDetailsListColumns}
-                    setKey="set"
+                    setKey="site"
                     layoutMode={DetailsListLayoutMode.justified}
                     isHeaderVisible={true}
                     selectionPreservedOnEmptyClick={true}
@@ -47,7 +47,11 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     }
 
     private setHeaderData = (): void => {
-        this.props.setBreadcrumb(breadcrumbPayload);
+        this.props.setBreadcrumb({
+            displayTitle: "sites",
+            link: "/sites",
+            entity: Entity.Sites
+        });
         this.props.setEntityTitle(entityTitlePayload);
         this.props.setCommands(commandsPayload);
     }
@@ -74,9 +78,6 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
 
-const breadcrumbPayload: IBreadcrumbPayload = {
-    breadcrumb: null,
-};
 const entityTitlePayload: IEntityTitlePayload = { title: "Sites" };
 const commandsPayload: ICommandsPayload = {
     commands: {
