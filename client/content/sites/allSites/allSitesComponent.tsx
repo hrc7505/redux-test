@@ -39,11 +39,6 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     public componentDidMount(): void {
         this.setHeaderData();
         this.props.getData();
-        window.addEventListener("hashchange", this.setHeaderData);
-    }
-
-    public componentWillReceiveProps(): void {
-        window.removeEventListener("hashchange", this.setHeaderData);
     }
 
     private setHeaderData = (): void => {
@@ -51,6 +46,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
             displayTitle: "sites",
             link: "/sites",
             entity: Entity.Sites
+
         });
         this.props.setEntityTitle(entityTitlePayload);
         this.props.setCommands(commandsPayload);

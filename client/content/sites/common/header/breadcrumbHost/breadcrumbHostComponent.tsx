@@ -37,16 +37,36 @@ export default class BreadcrumbHostComponent extends React.PureComponent<IBreadc
     private handleOperations(displayTitle: string, link: string, entityAsIndex: Entity): void {
         if (link) {
             if (this.items.length !== 0 && this.items.length > entityAsIndex) {
+                // Remove extra items if there are items and the items are more than the entity index
                 this.items.splice(-(this.items.length - 1));
-
             } else {
-                this.items.push({
-                    text: displayTitle
-                        ? displayTitle.replace(/\b\w/g, (x: string) => x.toUpperCase())
-                        : "...",
-                    onClick: (): void => this.handleClickForLink(link),
-                    key: link
-                });
+                const pathList: string[] = this.props.location.pathname.split("/");
+                pathList.splice(0, 1); // Remove first splited part "" which will be empty and not needed.
+
+                if (displayTitle && ((pathList.length - 1) === this.items.length)) {
+                    // From component on navigation
+                    const item: IBreadcrumbItem = {
+                        onClick: (): void => this.handleClickForLink(link),
+                        key: link,
+                        text: displayTitle.replace(/\b\w/g, (x: string) => x.toUpperCase())
+                    };
+
+                    this.items.push(item);
+                } else {
+                    // From url on reload
+                    const items: IBreadcrumbItem[] = [];
+                    pathList.map((data: string, i: number) => {
+                        items.push({
+                            onClick: (): void => this.handleClickForLink(data),
+                            key: data,
+                            text: (pathList.length - 1 === i)
+                                ? displayTitle.replace(/\b\w/g, (x: string) => x.toUpperCase())
+                                : "..."
+                        });
+                    });
+
+                    this.items = items;
+                }
             }
         }
     }

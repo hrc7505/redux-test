@@ -23,7 +23,7 @@ export default function headerReducer(state: IHeaderState, action: Action): IHea
         case SET_BREADCRUMB:
             return {
                 ...state,
-                breadcrumb: action.payload
+                breadcrumb: { ...action.payload }
             };
 
         case SET_ENTITY_TITLE:
