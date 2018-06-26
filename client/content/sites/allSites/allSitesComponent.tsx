@@ -1,13 +1,14 @@
 import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/DetailsList";
-import { IconType } from "office-ui-fabric-react/lib/Icon";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
+import ButtonType from "../common/header/buttons/buttonType";
 import Entity from "../common/header/breadcrumbHost/entity";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
-import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
+import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
 import IEntityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import ItemLocation from "../common/header/buttons/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
 import siteDetailsListColumns from "../../common/detailsList/siteDetailsList/SiteDetailsListColumns";
@@ -75,29 +76,19 @@ const rightPanelData: IOpenRightPanelPayload = {
 };
 
 const entityTitlePayload: IEntityTitlePayload = { title: "Sites" };
-const commandsPayload: ICommandsPayload = {
-    commands: {
-        farItems: [
-            {
-                iconProps: {
-                    iconName: "Info",
-                    iconType: IconType.default
-                },
-                key: "information",
-                rightPaneData,
-            }
-        ],
-        items: [
-            {
-                iconProps: {
-                    iconName: "CirclePlus",
-                    iconType: IconType.default
-                },
-                key: "site",
-                name: "Site",
-                rightPanelData
-            },
-        ],
-        overflowItems: [],
-    }
+const commandsPayload: ICommandButtonsPayload = {
+    buttonList: [
+        {
+            id: ButtonType.add,
+            name: "Site",
+            itemLocation: ItemLocation.Left,
+            actionPayload: rightPanelData
+        },
+        {
+            id: ButtonType.info,
+            name: null,
+            itemLocation: ItemLocation.Far,
+            actionPayload: rightPaneData
+        }
+    ]
 };

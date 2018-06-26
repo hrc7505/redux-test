@@ -3,7 +3,7 @@ import { connect, Dispatch } from "react-redux";
 import getSitesDetails from "./duck/actions/getSiteDetails";
 import IAppState from "../../../duck/interfaces/IAppState";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
-import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
+import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IGetSiteDetailsAction from "./duck/actions/interfaces/IGetSiteDetailsAction";
 import ISetBreadcrumbAction from "../common/header/duck/actions/interfaces/ISetBreadcrumbAction";
@@ -49,7 +49,7 @@ function mapStateToDispatch(dispatch: Dispatch<Actions>): ISiteDetailsPropsFromD
             (dispatch(setBreadcrumb(actionPayload))),
         setEntityTitle: (actionPayload: IEnityTitlePayload): ISetEntityTitleAction =>
             dispatch(setEntityTitle(actionPayload)),
-        setCommands: (actionPayload: ICommandsPayload): ISetCommandsAction =>
+        setCommands: (actionPayload: ICommandButtonsPayload): ISetCommandsAction =>
             dispatch(setCommands(actionPayload)),
         jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload): ISitesToggleRightPaneAction =>
             dispatch(sitesToggleRightPane(actionPayload)),

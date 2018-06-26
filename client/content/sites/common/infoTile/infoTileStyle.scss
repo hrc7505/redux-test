@@ -1,7 +1,8 @@
-$marginOfTile:10px;
-$totalMargin:20px+20px+20px; // Three tiles-> each have 10px left and 10px right
+$marginOfTile:5px;
+$totalTiles:3;
+$totalMargin:($marginOfTile * 2) * $totalTiles; // Three tiles-> each have $marginOfTile left and $marginOfTile right
 .infoTile {
-    width: calc((100% - #{$totalMargin}) / 3);
+    width: calc((100% - #{$totalMargin}) / #{$totalTiles});
     margin: $marginOfTile;
     border: 1px solid;
     .tileTitle {

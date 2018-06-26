@@ -1,16 +1,17 @@
 import { Dropdown } from "office-ui-fabric-react/lib/Dropdown";
-import { IconType } from "office-ui-fabric-react/lib/Icon";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
+import ButtonType from "../common/header/buttons/buttonType";
 import Entity from "../common/header/breadcrumbHost/entity";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
-import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
+import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
+import ItemLocation from "../common/header/buttons/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListComponent";
 
@@ -140,55 +141,39 @@ const entityTitlePayload: IEnityTitlePayload = {
     title: null,
 };
 
-const commandsPayload: ICommandsPayload = {
-    commands: {
-        farItems: [
-            {
-                iconProps: {
-                    iconName: "Info",
-                    iconType: IconType.default
-                },
-                key: "information",
-                rightPaneData,
-            }
-        ],
-        items: [
-            {
-                iconProps: {
-                    iconName: "CirclePlus",
-                    iconType: IconType.default
-                },
-                key: "asset",
-                name: "Asset",
-                rightPanelData
-            },
-            {
-                iconProps: {
-                    iconName: "CirclePlus",
-                    iconType: IconType.default
-                },
-                key: "job",
-                name: "Job",
-            },
-            {
-                iconProps: {
-                    iconName: "CirclePlus",
-                    iconType: IconType.default
-                },
-                key: "files",
-                name: "Files",
-            },
-            {
-                iconProps: {
-                    iconName: "CirclePlus",
-                    iconType: IconType.default
-                },
-                key: "permissions",
-                name: "Permissions",
-            },
-        ],
-        overflowItems: [],
-    }
+const commandsPayload: ICommandButtonsPayload = {
+    buttonList: [
+        {
+            id: ButtonType.add,
+            name: "Asset",
+            itemLocation: ItemLocation.Left,
+            actionPayload: rightPanelData,
+        },
+        {
+            id: ButtonType.add,
+            name: "Job",
+            itemLocation: ItemLocation.Left,
+            actionPayload: null,
+        },
+        {
+            id: ButtonType.add,
+            name: "Files",
+            itemLocation: ItemLocation.Left,
+            actionPayload: null,
+        },
+        {
+            id: ButtonType.add,
+            name: "Permissions",
+            itemLocation: ItemLocation.Left,
+            actionPayload: null,
+        },
+        {
+            id: ButtonType.info,
+            name: null,
+            itemLocation: ItemLocation.Far,
+            actionPayload: rightPaneData
+        }
+    ]
 };
 
 const infoTileList: IInfoTileProps[] = [

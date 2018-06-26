@@ -1,5 +1,5 @@
 import IBreadcrumbPayload from "../../common/header/duck/actions/interfaces/IBreadcrumbPayload";
-import ICommandsPayload from "../../common/header/duck/actions/interfaces/ICommandsPayload";
+import ICommandButtonsPayload from "../../common/header/duck/actions/interfaces/ICommandButtonsPayload";
 import IEnityTitlePayload from "../../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import IGetSiteDetailsAction from "../duck/actions/interfaces/IGetSiteDetailsAction";
 import ISetBreadcrumbAction from "../../common/header/duck/actions/interfaces/ISetBreadcrumbAction";
@@ -12,7 +12,7 @@ import IToggleSwitchRightPanePayload from "../../../common/rightPane/duck/action
 export default interface ISiteDetailsPropsFromDispatch {
     setBreadcrumb: (actionPayload: IBreadcrumbPayload) => ISetBreadcrumbAction;
     setEntityTitle: (actionPayload: IEnityTitlePayload) => ISetEntityTitleAction;
-    setCommands: (actionPayload: ICommandsPayload) => ISetCommandsAction;
+    setCommands: (actionPayload: ICommandButtonsPayload) => ISetCommandsAction;
     jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload) => ISitesToggleRightPaneAction;
     getSiteDetails: (siteId: string) => IGetSiteDetailsAction;
     closeRightPane: () => ISitesCloseRightPaneAction;

@@ -15,7 +15,9 @@ const defaultState: IHeaderState = {
         entity: null
     },
     title: null,
-    commands: null
+    commands: {
+        buttonList: []
+    }
 };
 
 export default function headerReducer(state: IHeaderState, action: Action): IHeaderState {
@@ -35,7 +37,9 @@ export default function headerReducer(state: IHeaderState, action: Action): IHea
         case SET_COMMANDS:
             return {
                 ...state,
-                commands: action.payload.commands
+                commands: {
+                    buttonList: action.payload.buttonList
+                }
             };
 
         default:

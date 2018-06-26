@@ -9,7 +9,7 @@ import IAllSitesPropsFromState from "./interfaces/IAllSitesPropsFromState";
 import IAllSitesRequestDataAction from "./duck/actions/interfaces/IAllSitesRequestDataAction";
 import IAppState from "../../../duck/interfaces/IAppState";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
-import ICommandsPayload from "../common/header/duck/actions/interfaces/ICommandsPayload";
+import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
 import ISetBreadcrumbAction from "../common/header/duck/actions/interfaces/ISetBreadcrumbAction";
 import ISetCommandsAction from "../common/header/duck/actions/interfaces/ISetCommandsAction";
@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): 
             (dispatch(setBreadcrumb(actionPayload))),
         setEntityTitle: (actionPayload: IEnityTitlePayload): ISetEntityTitleAction =>
             dispatch(setEntityTitle(actionPayload)),
-        setCommands: (actionPayload: ICommandsPayload): ISetCommandsAction =>
+        setCommands: (actionPayload: ICommandButtonsPayload): ISetCommandsAction =>
             dispatch(setCommands(actionPayload)),
         getData: (): void => { dispatch(allSitesGetData()); },
     };
