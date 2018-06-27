@@ -3,5 +3,5 @@ import IToggleSwitchRightPanePayload from "../../../../../common/rightPane/duck/
 
 export default interface ICommandBarHostPropsFromDispatch {
     openRightPanel?: (actionPayload: IOpenRightPanelPayload) => void;
-    siteButtonOnClick?: (actionPayload: IToggleSwitchRightPanePayload) => void;
+    toggleRightPane?: (actionPayload: IToggleSwitchRightPanePayload) => void;
 }

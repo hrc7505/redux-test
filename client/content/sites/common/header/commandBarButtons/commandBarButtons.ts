@@ -1,8 +1,8 @@
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
 
-import ButtonType from "./buttonType";
-import ICommandButton from "../duck/actions/interfaces/ICommandButton";
+import ButtonType from "./enums/buttonType";
+import ICommandButton from "../commandBarButtons/ICommandButton";
 
 export default class CommandBarButtons {
     public static getButton(commandButton: ICommandButton): IContextualMenuItem {

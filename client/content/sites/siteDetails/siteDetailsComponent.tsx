@@ -2,22 +2,22 @@ import { Dropdown } from "office-ui-fabric-react/lib/Dropdown";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
-import ButtonType from "../common/header/buttons/buttonType";
-import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
-import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
-import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
+import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
+import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
+import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
+import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
-import ItemLocation from "../common/header/buttons/itemLocation";
+import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListComponent";
 
 import "./siteDetailsStyle.scss";
 
 class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
-    private entityTitlePayload: IEnityTitlePayload;
+    private entityTitlePayload: IHeaderEntityTitlePayload;
 
     public render(): JSX.Element {
         const { rightPaneProps } = this.props;
@@ -44,7 +44,7 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
 
     public componentDidMount(): void {
         this.entityTitlePayload = entityTitlePayload;
-        const breadCrumbPayload: IBreadcrumbPayload = { path: this.props.location.pathname };
+        const breadCrumbPayload: IHeaderBreadcrumbPayload = { path: this.props.location.pathname };
         this.props.setBreadcrumb(breadCrumbPayload);
         this.props.setCommands(commandsPayload);
         this.getSiteDetails();
@@ -131,11 +131,11 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
 
-const entityTitlePayload: IEnityTitlePayload = {
+const entityTitlePayload: IHeaderEntityTitlePayload = {
     title: null,
 };
 
-const commandsPayload: ICommandButtonsPayload = {
+const commandsPayload: IHeaderCommandButtonsPayload = {
     buttonList: [
         {
             id: ButtonType.add,

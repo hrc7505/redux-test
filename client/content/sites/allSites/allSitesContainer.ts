@@ -4,20 +4,20 @@ import { ThunkDispatch } from "redux-thunk";
 
 import AllSitesComponent from "../../sites/allSites/allSitesComponent";
 import allSitesGetData from "./duck/operations/allSitesGetData";
+import headerSetBreadcrumb from "../common/header/duck/actions/headerSetBreadcrumb";
+import headerSetCommands from "../common/header/duck/actions/headerSetCommands";
+import headerSetEntityTitle from "../common/header/duck/actions/headerSetEntityTitle";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
 import IAllSitesPropsFromDispatch from "./interfaces/IAllSitesPropsFromDispatch";
 import IAllSitesPropsFromState from "./interfaces/IAllSitesPropsFromState";
 import IAllSitesRequestDataAction from "./duck/actions/interfaces/IAllSitesRequestDataAction";
 import IAppState from "../../../duck/interfaces/IAppState";
-import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
-import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
-import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
-import ISetBreadcrumbAction from "../common/header/duck/actions/interfaces/ISetBreadcrumbAction";
-import ISetCommandsAction from "../common/header/duck/actions/interfaces/ISetCommandsAction";
-import ISetEntityTitleAction from "../common/header/duck/actions/interfaces/ISetEntityTitleAction";
-import setBreadcrumb from "../common/header/duck/actions/setBreadcrumb";
-import setCommands from "../common/header/duck/actions/setCommands";
-import setEntityTitle from "../common/header/duck/actions/setEntityTitle";
+import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
+import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
+import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
+import IHeaderSetBreadcrumbAction from "../common/header/duck/actions/interfaces/IHeaderSetBreadcrumbAction";
+import IHeaderSetCommandsAction from "../common/header/duck/actions/interfaces/IHeaderSetCommandsAction";
+import IHeaderSetEntityTitleAction from "../common/header/duck/actions/interfaces/IHeaderSetEntityTitleAction";
 
 function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
     return {
@@ -26,16 +26,19 @@ function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
     };
 }
 
-type Actions = IAllSitesRequestDataAction | ISetEntityTitleAction | ISetCommandsAction | ISetBreadcrumbAction;
+type Actions = IAllSitesRequestDataAction |
+    IHeaderSetEntityTitleAction |
+    IHeaderSetCommandsAction |
+    IHeaderSetBreadcrumbAction;
 
 function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): IAllSitesPropsFromDispatch {
     return {
-        setBreadcrumb: (actionPayload: IBreadcrumbPayload): ISetBreadcrumbAction =>
-            (dispatch(setBreadcrumb(actionPayload))),
-        setEntityTitle: (actionPayload: IEnityTitlePayload): ISetEntityTitleAction =>
-            dispatch(setEntityTitle(actionPayload)),
-        setCommands: (actionPayload: ICommandButtonsPayload): ISetCommandsAction =>
-            dispatch(setCommands(actionPayload)),
+        setBreadcrumb: (actionPayload: IHeaderBreadcrumbPayload): IHeaderSetBreadcrumbAction =>
+            (dispatch(headerSetBreadcrumb(actionPayload))),
+        setEntityTitle: (actionPayload: IHeaderEntityTitlePayload): IHeaderSetEntityTitleAction =>
+            dispatch(headerSetEntityTitle(actionPayload)),
+        setCommands: (actionPayload: IHeaderCommandButtonsPayload): IHeaderSetCommandsAction =>
+            dispatch(headerSetCommands(actionPayload)),
         getData: (): void => { dispatch(allSitesGetData()); },
     };
 }
