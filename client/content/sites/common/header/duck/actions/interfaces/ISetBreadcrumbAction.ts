@@ -1,7 +1,7 @@
+import HEADER_SET_BREADCRUMB from "../../actionTypes/HEADER_SET_BREADCRUMB";
 import IBreadcrumbPayload from "./IBreadcrumbPayload";
-import SET_BREADCRUMB from "../../actionTypes/SET_BREADCRUMB";
 
 export default interface ISetBreadcrumbAction {
-    type: SET_BREADCRUMB;
+    type: HEADER_SET_BREADCRUMB;
     payload: IBreadcrumbPayload;
 }

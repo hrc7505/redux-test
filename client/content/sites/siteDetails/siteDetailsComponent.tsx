@@ -3,7 +3,6 @@ import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
 import ButtonType from "../common/header/buttons/buttonType";
-import Entity from "../common/header/breadcrumbHost/entity";
 import IBreadcrumbPayload from "../common/header/duck/actions/interfaces/IBreadcrumbPayload";
 import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
 import IEnityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
@@ -18,7 +17,6 @@ import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListC
 import "./siteDetailsStyle.scss";
 
 class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
-    private breadCrumbPayload: IBreadcrumbPayload;
     private entityTitlePayload: IEnityTitlePayload;
 
     public render(): JSX.Element {
@@ -46,24 +44,18 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
 
     public componentDidMount(): void {
         this.entityTitlePayload = entityTitlePayload;
+        const breadCrumbPayload: IBreadcrumbPayload = { path: this.props.location.pathname };
+        this.props.setBreadcrumb(breadCrumbPayload);
         this.props.setCommands(commandsPayload);
         this.getSiteDetails();
         window.addEventListener("hashchange", this.getSiteDetails);
     }
 
     public componentWillReceiveProps(nextProps: ISiteDetailsProps): void {
-        if (nextProps.site !== this.props.site) {
-            this.breadCrumbPayload = {
-                displayTitle: nextProps.site.name,
-                link: nextProps.location.pathname,
-                entity: Entity.SiteDetails
-            };
-
+        if (nextProps.site.id !== this.props.site.id) {
             this.entityTitlePayload = {
                 title: nextProps.site.name
             };
-
-            this.props.setBreadcrumb(this.breadCrumbPayload);
             this.props.setEntityTitle(this.entityTitlePayload);
         }
     }
@@ -77,7 +69,9 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
             this.props.closeRightPane();
         }
 
-        this.props.getSiteDetails(this.props.match.params.individualSite);
+        if (this.props.site.id !== this.props.match.params.individualSite) {
+            this.props.getSiteDetails(this.props.match.params.individualSite);
+        }
     }
 }
 
