@@ -2,12 +2,12 @@ import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/D
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import ButtonType from "../common/header/buttons/buttonType";
+import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
-import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
-import IEntityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
+import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
+import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ItemLocation from "../common/header/buttons/itemLocation";
+import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
 import siteDetailsListColumns from "../../common/detailsList/siteDetailsList/SiteDetailsListColumns";
@@ -71,8 +71,8 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
 
-const entityTitlePayload: IEntityTitlePayload = { title: "Sites" };
-const commandsPayload: ICommandButtonsPayload = {
+const entityTitlePayload: IHeaderEntityTitlePayload = { title: "Sites" };
+const commandsPayload: IHeaderCommandButtonsPayload = {
     buttonList: [
         {
             id: ButtonType.add,

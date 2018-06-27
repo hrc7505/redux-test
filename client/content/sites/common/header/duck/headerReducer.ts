@@ -1,12 +1,12 @@
 import HEADER_SET_BREADCRUMB from "./actionTypes/HEADER_SET_BREADCRUMB";
 import HEADER_SET_COMMANDS from "./actionTypes/HEADER_SET_COMMANDS";
 import HEADER_SET_ENTITY_TITLE from "./actionTypes/HEADER_SET_ENTITY_TITLE";
+import IHeaderSetBreadcrumbAction from "./actions/interfaces/IHeaderSetBreadcrumbAction";
+import IHeaderSetCommandsAction from "./actions/interfaces/IHeaderSetCommandsAction";
+import IHeaderSetEntityTitleAction from "./actions/interfaces/IHeaderSetEntityTitleAction";
 import IHeaderState from "./interfaces/IHeaderState";
-import ISetBreadcrumbAction from "./actions/interfaces/ISetBreadcrumbAction";
-import ISetCommandsAction from "./actions/interfaces/ISetCommandsAction";
-import ISetEntityTitleAction from "./actions/interfaces/ISetEntityTitleAction";
 
-type Action = ISetBreadcrumbAction | ISetEntityTitleAction | ISetCommandsAction;
+type Action = IHeaderSetBreadcrumbAction | IHeaderSetEntityTitleAction | IHeaderSetCommandsAction;
 
 const defaultState: IHeaderState = {
     breadcrumb: {

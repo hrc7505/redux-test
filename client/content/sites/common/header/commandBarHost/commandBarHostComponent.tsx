@@ -2,14 +2,14 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import * as React from "react";
 
-import CommandBarButtons from "../buttons/commandBarButtons";
+import CommandBarButtons from "../commandBarButtons/commandBarButtons";
 import ICommandBarHostProps from "./interfaces/ICommandBarHostProps";
-import ICommandButton from "../duck/actions/interfaces/ICommandButton";
-import ItemLocation from "../buttons/itemLocation";
+import ICommandButton from "../commandBarButtons/ICommandButton";
+import IOpenRightPanelPayload from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import ItemLocation from "../commandBarButtons/enums/itemLocation";
+import IToggleSwitchRightPanePayload from "../../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 import "./commandBarHostStyle.scss";
-import IOpenRightPanelPayload from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import IToggleSwitchRightPanePayload from "../../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 export default class CommandbarHostComponent extends React.PureComponent<ICommandBarHostProps> {
     constructor(props: ICommandBarHostProps) {
@@ -56,7 +56,7 @@ export default class CommandbarHostComponent extends React.PureComponent<IComman
                 items.push(menuItem);
             } else if (data.itemLocation === ItemLocation.Far) {
                 menuItem.onClick = data.actionPayload
-                    ? (): void => this.props.siteButtonOnClick(data.actionPayload as IToggleSwitchRightPanePayload)
+                    ? (): void => this.props.toggleRightPane(data.actionPayload as IToggleSwitchRightPanePayload)
                     : null;
                 farItems.push(menuItem);
             } else {

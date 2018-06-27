@@ -25,7 +25,7 @@ function mapDispatchToProps(dispatch: Dispatch<DisptchProps>): ICommandBarHostPr
     return {
         openRightPanel: (actionPayload: IOpenRightPanelPayload): IOpenRightPanelAction =>
             dispatch(openRightPanel(actionPayload)),
-        siteButtonOnClick: (actionPayload: IToggleSwitchRightPanePayload): ISiteToggleRightPaneAction =>
+        toggleRightPane: (actionPayload: IToggleSwitchRightPanePayload): ISiteToggleRightPaneAction =>
             dispatch(sitesToggleRightPane(actionPayload))
     };
 }

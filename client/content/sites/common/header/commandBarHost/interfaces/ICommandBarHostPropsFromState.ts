@@ -1,4 +1,4 @@
-import ICommandButton from "../../duck/actions/interfaces/ICommandButton";
+import ICommandButton from "../../commandBarButtons/ICommandButton";
 
 export default interface ICommandBarHostPropsFromState {
     buttonList: ICommandButton[];
