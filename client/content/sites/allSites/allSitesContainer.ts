@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import { ThunkDispatch } from "redux-thunk";
 
 import AllSitesComponent from "../../sites/allSites/allSitesComponent";
@@ -39,9 +40,11 @@ function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): 
     };
 }
 
-const AllSitesContainer: React.ComponentClass = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)<IAllSitesProps>(AllSitesComponent);
+const AllSitesContainer: React.ComponentClass = withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )<IAllSitesProps>(AllSitesComponent)
+);
 
 export default AllSitesContainer;

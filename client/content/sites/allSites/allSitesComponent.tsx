@@ -3,7 +3,6 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 import ButtonType from "../common/header/buttons/buttonType";
-import Entity from "../common/header/breadcrumbHost/entity";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
 import ICommandButtonsPayload from "../common/header/duck/actions/interfaces/ICommandButtonsPayload";
 import IEntityTitlePayload from "../common/header/duck/actions/interfaces/IEntityTitlePayload";
@@ -44,10 +43,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
 
     private setHeaderData = (): void => {
         this.props.setBreadcrumb({
-            displayTitle: "sites",
-            link: "/sites",
-            entity: Entity.Sites
-
+            path: this.props.location.pathname
         });
         this.props.setEntityTitle(entityTitlePayload);
         this.props.setCommands(commandsPayload);

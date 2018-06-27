@@ -5,6 +5,10 @@ import sites, { ISiteDetails } from "../../common/dummyData/testData";
 
 type Action = IGetSiteDetailsAction;
 
+const defaultState: ISiteDetailsState = {
+    site: {} as ISiteDetails
+};
+
 export default function siteDetailsReducer(state: ISiteDetailsState, action: Action): ISiteDetailsState {
     switch (action.type) {
         case GET_SITE_DETAILS:
@@ -18,9 +22,6 @@ export default function siteDetailsReducer(state: ISiteDetailsState, action: Act
             };
 
         default:
-            return state || {
-                ...state,
-                site: null
-            };
+            return state || defaultState;
     }
 }
