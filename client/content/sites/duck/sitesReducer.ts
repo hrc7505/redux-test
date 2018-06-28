@@ -10,7 +10,8 @@ const sitesReducer: Reducer<ISitesState> = combineReducers<ISitesState>({
     headerState: headerReducer,
     rightPaneState: rightPaneReducer("SITES"),
     allSitesState: allSitesReducer,
-    siteDetailsState: siteDetailsReducer
+    siteDetailsState: siteDetailsReducer,
+    isStandAlone: (isStandAlone: boolean): boolean => isStandAlone || false
 });
 
 export default sitesReducer;

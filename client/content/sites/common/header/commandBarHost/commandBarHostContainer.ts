@@ -17,7 +17,8 @@ type DisptchProps = IOpenRightPanelAction | ICloseRightPanelAction | ISiteToggle
 
 function mapStateToProps(state: IAppState): ICommandBarHostPropsFromState {
     return {
-        buttonList: state.sitesState.headerState.commands.buttonList
+        buttonList: state.sitesState.headerState.commands.buttonList,
+        isStandAlone: state.sitesState.isStandAlone
     };
 }
 

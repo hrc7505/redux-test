@@ -1,6 +1,8 @@
 enum ButtonType {
-    add,
-    info
+    Add,
+    Info,
+    Permissions,
+    Link,
 }
 
 export default ButtonType;

@@ -8,4 +8,6 @@ export default interface ISitesState {
     rightPaneState: IRightPaneState;
     allSitesState: IAllSitesState;
     siteDetailsState: ISiteDetailsState;
+
+    isStandAlone?: boolean;
 }

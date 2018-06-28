@@ -1,7 +1,4 @@
-import {
-    DetailsList,
-    DetailsListLayoutMode,
-} from "office-ui-fabric-react/lib/DetailsList";
+import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/DetailsList";
 import * as React from "react";
 
 import GeneralError from "../../common/generalError/generalError";

@@ -75,13 +75,13 @@ const entityTitlePayload: IHeaderEntityTitlePayload = { title: "Sites" };
 const commandsPayload: IHeaderCommandButtonsPayload = {
     buttonList: [
         {
-            id: ButtonType.add,
+            id: ButtonType.Add,
             name: "Site",
             itemLocation: ItemLocation.Left,
             actionPayload: rightPanelData
         },
         {
-            id: ButtonType.info,
+            id: ButtonType.Info,
             name: null,
             itemLocation: ItemLocation.Far,
             actionPayload: rightPaneData

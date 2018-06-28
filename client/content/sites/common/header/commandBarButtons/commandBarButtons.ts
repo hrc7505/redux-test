@@ -7,7 +7,7 @@ import ICommandButton from "../commandBarButtons/ICommandButton";
 export default class CommandBarButtons {
     public static getButton(commandButton: ICommandButton): IContextualMenuItem {
         switch (commandButton.id) {
-            case ButtonType.add:
+            case ButtonType.Add:
                 return {
                     iconProps: {
                         iconName: "CirclePlus",
@@ -18,7 +18,7 @@ export default class CommandBarButtons {
                     actionPayload: commandButton.actionPayload
                 };
 
-            case ButtonType.info:
+            case ButtonType.Info:
                 return {
                     iconProps: {
                         iconName: "Info",

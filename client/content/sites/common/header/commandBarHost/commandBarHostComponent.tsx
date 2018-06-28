@@ -2,6 +2,7 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import * as React from "react";
 
+import ButtonType from "../commandBarButtons/enums/buttonType";
 import CommandBarButtons from "../commandBarButtons/commandBarButtons";
 import ICommandBarHostProps from "./interfaces/ICommandBarHostProps";
 import ICommandButton from "../commandBarButtons/ICommandButton";
@@ -14,7 +15,6 @@ import "./commandBarHostStyle.scss";
 export default class CommandbarHostComponent extends React.PureComponent<ICommandBarHostProps> {
     constructor(props: ICommandBarHostProps) {
         super(props);
-
         this.createCommandBarMenuItems(props.buttonList);
     }
 
@@ -50,9 +50,27 @@ export default class CommandbarHostComponent extends React.PureComponent<IComman
             const menuItem: IContextualMenuItem = CommandBarButtons.getButton(data);
 
             if (data.itemLocation === ItemLocation.Left) {
-                menuItem.onClick = data.actionPayload
-                    ? (): void => this.props.openRightPanel(data.actionPayload as IOpenRightPanelPayload)
-                    : null;
+                if (data.actionPayload) {
+                    if (this.props.isStandAlone) {
+                        menuItem.onClick = (): void => this.props.toggleRightPane({
+                            rightPaneId: "standAloneModeId",
+                            rightPaneContent: null,
+                            rightPaneHeaderText: `Sites is in standalone mode.
+                                                We are not able to open right panel because it is a part of chrome.`
+                        });
+                    } else {
+                        menuItem.onClick = (): void => this.props.openRightPanel(
+                            data.actionPayload as IOpenRightPanelPayload
+                        );
+                    }
+                } else if (data.id === ButtonType.Link) {
+                    // If button has a navigation link we can give an event here.
+                    // For now it is set to null becasuse we do not have any link for button yet.
+                    menuItem.onClick = null;
+                } else {
+                    menuItem.onClick = null;
+                }
+
                 items.push(menuItem);
             } else if (data.itemLocation === ItemLocation.Far) {
                 menuItem.onClick = data.actionPayload

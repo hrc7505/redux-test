@@ -138,31 +138,31 @@ const entityTitlePayload: IHeaderEntityTitlePayload = {
 const commandsPayload: IHeaderCommandButtonsPayload = {
     buttonList: [
         {
-            id: ButtonType.add,
+            id: ButtonType.Add,
             name: "Asset",
             itemLocation: ItemLocation.Left,
             actionPayload: rightPanelData,
         },
         {
-            id: ButtonType.add,
+            id: ButtonType.Add,
             name: "Job",
             itemLocation: ItemLocation.Left,
             actionPayload: null,
         },
         {
-            id: ButtonType.add,
+            id: ButtonType.Add,
             name: "Files",
             itemLocation: ItemLocation.Left,
             actionPayload: null,
         },
         {
-            id: ButtonType.add,
+            id: ButtonType.Add,
             name: "Permissions",
             itemLocation: ItemLocation.Left,
             actionPayload: null,
         },
         {
-            id: ButtonType.info,
+            id: ButtonType.Info,
             name: null,
             itemLocation: ItemLocation.Far,
             actionPayload: rightPaneData

@@ -23,6 +23,7 @@ const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
 });
 
 const defaultState: ISitesState = {
+    isStandAlone: true,
     headerState: {
         breadcrumb: {
             path: null
