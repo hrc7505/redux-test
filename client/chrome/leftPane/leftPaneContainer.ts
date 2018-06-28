@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 import IAppState from "../../duck/interfaces/IAppState";
 import ILeftPaneProps from "./interfaces/ILeftPaneProps";
 import LeftPaneComponent from "./LeftPaneComponent";
-import { withRouter } from "react-router";
 
 function mapStateToProps(state: IAppState, ownProps: ILeftPaneProps): ILeftPaneProps {
     return {

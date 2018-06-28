@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import { ThunkDispatch } from "redux-thunk";
 
 import DashboardComponent from "./dashboardComponent";
@@ -12,8 +13,9 @@ import IDashboardPropsFromState from "./interfaces/IDashboardPropsFromState";
 import IDashboardToggleSwitchRightPaneAction from "./duck/actions/interfaces/IDashboardToggleSwitchRightPaneAction";
 import IToggleSwitchRightPanePayload from "../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
-function mapStateToProps(state: IAppState): IDashboardPropsFromState {
+function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): IDashboardPropsFromState {
     return {
+        ...ownProps,
         rightPaneProps: {
             isRightPaneVisible: state.dashboardState.rightPaneState.isRightPaneVisible,
             rightPaneHeaderText: state.dashboardState.rightPaneState.rightPaneHeaderText,
@@ -36,13 +38,15 @@ const mapDispatchToProps: MapDispatchToProps = (
         {
             jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload): IDashboardToggleSwitchRightPaneAction =>
                 dispatch(dashboardToggleRightPane(actionPayload)),
-            getData: (): void => { dispatch(dashboardGetData()); },
+            getData: (useShim: boolean): void => { dispatch(dashboardGetData(useShim)); },
         }
     );
 
-const DashboardContainer: React.ComponentClass = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)<IDashboardProps>(DashboardComponent);
+const DashboardContainer: React.ComponentClass = withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )<IDashboardProps>(DashboardComponent)
+);
 
 export default DashboardContainer;
