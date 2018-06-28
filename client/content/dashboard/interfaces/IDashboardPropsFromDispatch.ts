@@ -2,5 +2,5 @@ import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/i
 
 export default interface IDashboardPropsFromDispatch {
     jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload) => void;
-    getData: () => void;
+    getData: (useShim: boolean) => void;
 }

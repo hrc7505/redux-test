@@ -72,6 +72,6 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
     }
 
     public componentDidMount(): void {
-        this.props.getData();
+        this.props.getData(this.props.history.location.search === "?offline" ? true : false);
     }
 }

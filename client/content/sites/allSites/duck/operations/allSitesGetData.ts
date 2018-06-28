@@ -23,7 +23,7 @@ export default function allSitesGetData(): (dispatch: Dispatch<Actions>) => void
             sites: result.sites.map((site: ISiteInfo): ISiteDetailsListItemData => ({
                 id: site.id,
                 name: site.name,
-                location: site.location,
+                location: site.street,
                 activeJobs: site.activeJobs,
                 totalJobs: site.totalJobs,
             })),
