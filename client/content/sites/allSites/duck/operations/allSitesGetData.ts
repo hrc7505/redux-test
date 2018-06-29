@@ -5,29 +5,37 @@ import allSitesRequestData from "../actions/allSitesRequestData";
 import AllSitesShim from "../../shim/allSitesShim";
 import IAllSitesDataResponse from "./interfaces/IAllSitesDataResponse";
 import ILoadAllSitesAction from "../actions/interfaces/IAllSitesLoadDataAction";
-import ILoadAllSitesPayload from "../actions/interfaces/IAllSitesLoadDataPayload";
 import IAllSitesRequestDataAction from "../actions/interfaces/IAllSitesRequestDataAction";
-import ISiteDetailsListItemData from "../../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 import ISiteInfo from "../../../../../models/sites/ISiteInfo";
 import ISiteCloseRightPaneAction from "../../../duck/actions/interfaces/ISitesCloseRightPaneAction";
+import ISitesDataCreateUpdateSitesAction from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateSitesAction";
+import ISitesDataCreateUpdateSitesPayload from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateSitesPayload";
 import sitesCloseRightPane from "../../../duck/actions/sitesCloseRightPane";
+import sitesDataCreateUpdateSites from "../../../data/duck/actions/sitesDataCreateUpdateSites";
 
-type Actions = IAllSitesRequestDataAction | ILoadAllSitesAction | ISiteCloseRightPaneAction;
+type Actions =
+    IAllSitesRequestDataAction |
+    ILoadAllSitesAction |
+    ISiteCloseRightPaneAction |
+    ISitesDataCreateUpdateSitesAction;
 
 export default function allSitesGetData(): (dispatch: Dispatch<Actions>) => void {
     return (dispatch: Dispatch<Actions>): void => {
         dispatch(allSitesRequestData());
         dispatch(sitesCloseRightPane());
         const result: IAllSitesDataResponse = AllSitesShim.getData();
-        const loadDataPayload: ILoadAllSitesPayload = {
-            sites: result.sites.map((site: ISiteInfo): ISiteDetailsListItemData => ({
-                id: site.id,
-                name: site.name,
-                location: site.street,
-                activeJobs: site.activeJobs,
-                totalJobs: site.totalJobs,
-            })),
+
+        const sitesDataPayload: ISitesDataCreateUpdateSitesPayload = {
+            sites: { }
         };
-        dispatch(allSitesLoadData(loadDataPayload));
+
+        result.sites.map((site: ISiteInfo) => {
+            sitesDataPayload.sites[site.id] = site;
+        });
+
+        dispatch(sitesDataCreateUpdateSites(sitesDataPayload));
+        dispatch(allSitesLoadData({
+            sites: result.sites.map((site: ISiteInfo) => site.id)
+        }));
     };
 }
