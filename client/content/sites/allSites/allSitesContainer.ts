@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { ThunkDispatch } from "redux-thunk";
+import { createSelector, OutputSelector } from "reselect";
 
 import AllSitesComponent from "../../sites/allSites/allSitesComponent";
 import allSitesGetData from "./duck/operations/allSitesGetData";
@@ -18,21 +19,34 @@ import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/
 import IHeaderSetBreadcrumbAction from "../common/header/duck/actions/interfaces/IHeaderSetBreadcrumbAction";
 import IHeaderSetCommandsAction from "../common/header/duck/actions/interfaces/IHeaderSetCommandsAction";
 import IHeaderSetEntityTitleAction from "../common/header/duck/actions/interfaces/IHeaderSetEntityTitleAction";
-import ISiteInfo from "../../../models/sites/ISiteInfo";
+import ISiteData from "../data/duck/interfaces/ISiteData";
+import ISiteDetailsListItemData from "../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+
+type GetSiteIdsFromAllSitesState = (state: IAppState) => string[];
+type GetSiteDataFromSitesDataState = (state: IAppState) => ISiteData;
+type ResultFunction = (siteIds: string[], siteData: ISiteData) => ISiteDetailsListItemData[];
+
+const getSiteIds: GetSiteIdsFromAllSitesState = (state: IAppState): string[] => state.sitesState.allSitesState.sites;
+const getSiteData: GetSiteDataFromSitesDataState =
+    (state: IAppState): ISiteData => state.sitesState.sitesDataState.sites;
+
+const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemData[], ResultFunction> = createSelector(
+    [getSiteIds, getSiteData],
+    (siteIds: string[], siteData: ISiteData): ISiteDetailsListItemData[] => (
+        siteIds.filter((id: string): boolean => !!siteData[id]) // Checking that data exists for the Site ID.
+            .map((id: string) => ({ // Transforming the site data from the store into Detail List Items.
+                id: siteData[id].id,
+                name: siteData[id].name,
+                location: siteData[id].street,
+                activeJobs: siteData[id].activeJobs,
+                totalJobs: siteData[id].totalJobs,
+            }))
+    )
+);
 
 function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
     return {
-        detailsListItems: state.sitesState.allSitesState.sites.map((id: string) => {
-            const site: ISiteInfo = state.sitesState.sitesDataState.sites[id];
-
-            return {
-                id: site.id,
-                name: site.name,
-                location: site.street,
-                activeJobs: site.activeJobs,
-                totalJobs: site.totalJobs,
-            };
-        }),
+        detailsListItems: getSitesDetailsListItems(state),
         isLoading: state.sitesState.allSitesState.isLoading,
     };
 }
