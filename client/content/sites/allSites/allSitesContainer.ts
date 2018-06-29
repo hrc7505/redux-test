@@ -18,10 +18,21 @@ import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/
 import IHeaderSetBreadcrumbAction from "../common/header/duck/actions/interfaces/IHeaderSetBreadcrumbAction";
 import IHeaderSetCommandsAction from "../common/header/duck/actions/interfaces/IHeaderSetCommandsAction";
 import IHeaderSetEntityTitleAction from "../common/header/duck/actions/interfaces/IHeaderSetEntityTitleAction";
+import ISiteInfo from "../../../models/sites/ISiteInfo";
 
 function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
     return {
-        detailsListItems: state.sitesState.allSitesState.sites,
+        detailsListItems: state.sitesState.allSitesState.sites.map((id: string) => {
+            const site: ISiteInfo = state.sitesState.sitesDataState.sites[id];
+
+            return {
+                id: site.id,
+                name: site.name,
+                location: site.street,
+                activeJobs: site.activeJobs,
+                totalJobs: site.totalJobs,
+            };
+        }),
         isLoading: state.sitesState.allSitesState.isLoading,
     };
 }

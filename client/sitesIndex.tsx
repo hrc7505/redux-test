@@ -40,11 +40,15 @@ const defaultState: ISitesState = {
         rightPaneContent: null
     },
     allSitesState: {
-        sites: null,
+        sites: [],
         isLoading: false
     },
     siteDetailsState: {
         site: {} as ISiteDetails
+    },
+    sitesDataState: {
+        jobs: { },
+        sites: { },
     }
 };
 

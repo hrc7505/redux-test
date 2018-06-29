@@ -1,6 +1,6 @@
 import GET_SITE_DETAILS from "./actionTypes/GET_SITE_DETAILS";
 import IGetSiteDetailsAction from "./actions/interfaces/IGetSiteDetailsAction";
-import ISiteDetailsState from "../duck/interfaces/ISitesState";
+import ISiteDetailsState from "../duck/interfaces/ISiteDetailsState";
 import sites, { ISiteDetails } from "../../common/dummyData/testData";
 
 type Action = IGetSiteDetailsAction;
