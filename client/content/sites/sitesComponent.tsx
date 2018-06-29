@@ -3,9 +3,9 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import AllSitesContainer from "./allSites/allSitesContainer";
 import HeaderComponent from "./common/header/headerComponent";
-import SiteDetailsContainer from "./siteDetails/headerSetEntityTitle";
 import ISitesProps from "./interfaces/ISitesProps";
 import RightPaneComponent from "../common/rightPane/rightPaneComponent";
+import SiteDetailsContainer from "./siteDetails/siteDetailsContainer";
 
 import "./sitesStyle.scss";
 
