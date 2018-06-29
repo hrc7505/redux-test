@@ -1,7 +1,7 @@
-import IJobInfo from "../../../../../models/jobs/IJobInfo";
-import ISiteInfo from "../../../../../models/sites/ISiteInfo";
+import IJobData from "./IJobData";
+import ISiteData from "./ISiteData";
 
 export default interface ISitesDataState {
-    sites: { [siteId: string]: ISiteInfo };
-    jobs: { [jobId: string]: IJobInfo };
+    sites: ISiteData;
+    jobs: IJobData;
 }
