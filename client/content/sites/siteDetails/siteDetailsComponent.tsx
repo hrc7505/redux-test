@@ -17,8 +17,6 @@ import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListC
 import "./siteDetailsStyle.scss";
 
 class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
-    private entityTitlePayload: IHeaderEntityTitlePayload;
-
     public render(): JSX.Element {
         const { rightPaneProps } = this.props;
 
@@ -43,20 +41,18 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     }
 
     public componentDidMount(): void {
-        this.entityTitlePayload = entityTitlePayload;
         const breadCrumbPayload: IHeaderBreadcrumbPayload = { path: this.props.location.pathname };
-        this.props.setBreadcrumb(breadCrumbPayload);
-        this.props.setCommands(commandsPayload);
+        this.props.setHeader(breadCrumbPayload, null, commandsPayload);
         this.getSiteDetails();
         window.addEventListener("hashchange", this.getSiteDetails);
     }
 
     public componentWillReceiveProps(nextProps: ISiteDetailsProps): void {
         if (nextProps.site.id !== this.props.site.id) {
-            this.entityTitlePayload = {
+            const entityTitlePayload: IHeaderEntityTitlePayload = {
                 title: nextProps.site.name
             };
-            this.props.setEntityTitle(this.entityTitlePayload);
+            this.props.setHeader(null, entityTitlePayload, null);
         }
     }
 
@@ -129,10 +125,6 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelHeaderText: "Add New Site",
     rightPanelContent: <Test1 />,
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
-};
-
-const entityTitlePayload: IHeaderEntityTitlePayload = {
-    title: null,
 };
 
 const commandsPayload: IHeaderCommandButtonsPayload = {
