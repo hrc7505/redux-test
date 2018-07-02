@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
+import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
 import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
 import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
@@ -42,11 +43,10 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     }
 
     private setHeaderData = (): void => {
-        this.props.setBreadcrumb({
+        const breadcrumbPayload: IHeaderBreadcrumbPayload = {
             path: this.props.location.pathname
-        });
-        this.props.setEntityTitle(entityTitlePayload);
-        this.props.setCommands(commandsPayload);
+        };
+        this.props.setHeader(breadcrumbPayload, entityTitlePayload, commandsPayload);
     }
 }
 
