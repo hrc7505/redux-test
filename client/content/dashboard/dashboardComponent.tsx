@@ -6,6 +6,7 @@ import IDashboardProps from "./interfaces/IDashboardProps";
 import IRightPaneProps from "../common/rightPane/interfaces/IRightPaneProps";
 import JobSummaryListComponent from "../common/jobSummaryList/jobSummaryListComponent";
 import LoadingSpinner from "../../common/loadingSpinner/loadingSpinner";
+import QueryStringUtils from "../../utils/queryStringUtils";
 import RightPaneComponent from "../common/rightPane/rightPaneComponent";
 import siteDetailsListColumns from "../common/detailsList/siteDetailsList/SiteDetailsListColumns";
 
@@ -69,6 +70,6 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
     }
 
     public componentDidMount(): void {
-        this.props.getData(this.props.history.location.search === "?offline" ? true : false);
+        this.props.getData(QueryStringUtils.isOffineMode(this.props.history.location));
     }
 }

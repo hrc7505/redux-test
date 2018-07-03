@@ -3,7 +3,7 @@ import IHeaderCommandButtonsPayload from "../../common/header/duck/actions/inter
 import IHeaderEntityTitlePayload from "../../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
 
 export default interface IAllSitesPropsFromDispatch {
-    getData: () => void;
+    getData: (useShim: boolean) => void;
     setHeader: (
         breadcrumbPayload: IHeaderBreadcrumbPayload,
         entityTitlePayload: IHeaderEntityTitlePayload,

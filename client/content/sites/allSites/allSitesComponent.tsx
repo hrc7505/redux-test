@@ -3,6 +3,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
+import GeneralError from "../../../common/generalError/generalError";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
 import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
 import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
@@ -11,6 +12,7 @@ import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpe
 import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
+import QueryStringUtils from "../../../utils/queryStringUtils";
 import siteDetailsListColumns from "../../common/detailsList/siteDetailsList/SiteDetailsListColumns";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
@@ -18,6 +20,13 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
         if (this.props.isLoading) {
             return (
                 <LoadingSpinner />
+            );
+        }
+        if (!this.props.detailsListItems) {
+            // DetailsList blows up if null is passed into items. If we get into this situation,
+            // we should just render an error message for the user.
+            return (
+                <GeneralError />
             );
         }
 
@@ -33,13 +42,18 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
                     selectionPreservedOnEmptyClick={true}
                     enterModalSelectionOnTouch={true}
                 />
+                { // If there are no items to render, we should render an emtpy message here.
+                    this.props.detailsListItems.length === 0
+                        ? <div> This list is empty. Insert nicer empty mode here. </div>
+                        : null
+                }
             </div>
         );
     }
 
     public componentDidMount(): void {
         this.setHeaderData();
-        this.props.getData();
+        this.props.getData(QueryStringUtils.isOffineMode(this.props.history.location));
     }
 
     private setHeaderData = (): void => {
