@@ -10,9 +10,9 @@ import IAllSitesPropsFromDispatch from "./interfaces/IAllSitesPropsFromDispatch"
 import IAllSitesPropsFromState from "./interfaces/IAllSitesPropsFromState";
 import IAllSitesRequestDataAction from "./duck/actions/interfaces/IAllSitesRequestDataAction";
 import IAppState from "../../../duck/interfaces/IAppState";
-import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
-import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
-import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
+import IHeaderSetBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderSetBreadcrumbPayload";
+import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
+import IHeaderSetEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderSetEntityTitlePayload";
 import ISiteData from "../data/duck/interfaces/ISiteData";
 import ISiteDetailsListItemData from "../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 import setHeader from "../common/header/duck/operations/setHeader";
@@ -31,6 +31,7 @@ const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemDa
         if (!siteIds) {
             return null;
         }
+
         return siteIds.filter((id: string): boolean => !!siteData[id]) // Checking that data exists for the Site ID.
             .map((id: string) => ({ // Transforming the site data from the store into Detail List Items.
                 id: siteData[id].id,
@@ -38,7 +39,7 @@ const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemDa
                 location: siteData[id].street,
                 activeJobs: siteData[id].activeJobs,
                 totalJobs: siteData[id].totalJobs,
-            }))
+            }));
     }
 );
 
@@ -55,9 +56,9 @@ function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): 
     return {
         getData: (useShim: boolean): void => { dispatch(allSitesGetData(useShim)); },
         setHeader: (
-            breadcrumbPayload: IHeaderBreadcrumbPayload,
-            entityTitlePayload: IHeaderEntityTitlePayload,
-            commandButtonsPayload: IHeaderCommandButtonsPayload
+            breadcrumbPayload: IHeaderSetBreadcrumbPayload,
+            entityTitlePayload: IHeaderSetEntityTitlePayload,
+            commandButtonsPayload: IHeaderSetCommandButtonsPayload
         ): void => { dispatch(setHeader(breadcrumbPayload, entityTitlePayload, commandButtonsPayload)); }
     };
 }

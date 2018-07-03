@@ -1,12 +1,12 @@
-import IHeaderBreadcrumbPayload from "../../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
-import IHeaderCommandButtonsPayload from "../../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
-import IHeaderEntityTitlePayload from "../../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
+import IHeaderSetBreadcrumbPayload from "../../common/header/duck/actions/interfaces/IHeaderSetBreadcrumbPayload";
+import IHeaderSetCommandButtonsPayload from "../../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
+import IHeaderSetEntityTitlePayload from "../../common/header/duck/actions/interfaces/IHeaderSetEntityTitlePayload";
 
 export default interface IAllSitesPropsFromDispatch {
     getData: (useShim: boolean) => void;
     setHeader: (
-        breadcrumbPayload: IHeaderBreadcrumbPayload,
-        entityTitlePayload: IHeaderEntityTitlePayload,
-        commandButtonsPayload: IHeaderCommandButtonsPayload
+        breadcrumbPayload: IHeaderSetBreadcrumbPayload,
+        entityTitlePayload: IHeaderSetEntityTitlePayload,
+        commandButtonsPayload: IHeaderSetCommandButtonsPayload
     ) => void;
 }
