@@ -27,8 +27,11 @@ const getSiteData: GetSiteDataFromSitesDataState =
 
 const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemData[], ResultFunction> = createSelector(
     [getSiteIds, getSiteData],
-    (siteIds: string[], siteData: ISiteData): ISiteDetailsListItemData[] => (
-        siteIds.filter((id: string): boolean => !!siteData[id]) // Checking that data exists for the Site ID.
+    (siteIds: string[], siteData: ISiteData): ISiteDetailsListItemData[] => {
+        if (!siteIds) {
+            return null;
+        }
+        return siteIds.filter((id: string): boolean => !!siteData[id]) // Checking that data exists for the Site ID.
             .map((id: string) => ({ // Transforming the site data from the store into Detail List Items.
                 id: siteData[id].id,
                 name: siteData[id].name,
@@ -36,7 +39,7 @@ const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemDa
                 activeJobs: siteData[id].activeJobs,
                 totalJobs: siteData[id].totalJobs,
             }))
-    )
+    }
 );
 
 function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
@@ -50,7 +53,7 @@ type Actions = IAllSitesRequestDataAction;
 
 function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): IAllSitesPropsFromDispatch {
     return {
-        getData: (): void => { dispatch(allSitesGetData()); },
+        getData: (useShim: boolean): void => { dispatch(allSitesGetData(useShim)); },
         setHeader: (
             breadcrumbPayload: IHeaderBreadcrumbPayload,
             entityTitlePayload: IHeaderEntityTitlePayload,

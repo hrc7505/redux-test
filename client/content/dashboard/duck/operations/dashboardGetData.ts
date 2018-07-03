@@ -8,10 +8,10 @@ import IDashboardCloseRightPaneAction from "../actions/interfaces/IDashboardClos
 import IDashboardLoadDataAction from "../actions/interfaces/IDashboardLoadDataAction";
 import IDashboardLoadDataPayload from "../actions/interfaces/IDashboardLoadDataPayload";
 import IDashboardRequestDataAction from "../actions/interfaces/IDashboardRequestDataAction";
-import IDashboardResponse from "./interfaces/IDashboardResponse";
 import IDashboardResponseResult from "./interfaces/IDashboardResponseResult";
 import IJobInfo from "../../../../models/jobs/IJobInfo";
 import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
+import IResponse from "../../../../models/response/IResponse";
 import ISiteDetailsListItemData from "../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 import ISiteInfo from "../../../../models/sites/ISiteInfo";
 
@@ -29,7 +29,7 @@ const serverRequestOK: number = 200;
 const fetchDashboardData: FetchData = async (): Promise<IDashboardResponseResult> => {
     const response: Response = await fetch(DashboardAPI);
     if (response.status === serverRequestOK) {
-        const jsonReponse: IDashboardResponse = await response.json();
+        const jsonReponse: IResponse<IDashboardResponseResult> = await response.json();
 
         return jsonReponse.result;
     } else {

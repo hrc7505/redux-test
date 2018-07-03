@@ -1,4 +1,3 @@
-import IAllSitesDataResponse from "../duck/operations/interfaces/IAllSitesDataResponse";
 import ISiteInfo from "../../../../models/sites/ISiteInfo";
 
 export default class AllSitesShim {
@@ -35,9 +34,7 @@ export default class AllSitesShim {
         },
     ];
 
-    public static getData(): IAllSitesDataResponse {
-        return {
-            sites: AllSitesShim.sites
-        };
+    public static getData(): ISiteInfo[] {
+        return AllSitesShim.sites;
     }
 }
