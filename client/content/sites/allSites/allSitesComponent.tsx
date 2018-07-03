@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
 import GeneralError from "../../../common/generalError/generalError";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
-import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
-import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
-import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
+import IHeaderPayload from "../common/interfaces/IHeaderPayload";
+import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
@@ -16,6 +15,12 @@ import QueryStringUtils from "../../../utils/queryStringUtils";
 import siteDetailsListColumns from "../../common/detailsList/siteDetailsList/SiteDetailsListColumns";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
+    private headerPayload: IHeaderPayload = {
+        breadcrumbPayload: null,
+        entityTitlePayload: { title: "Sites" },
+        commandButtonsPayload: commandsPayload
+    };
+
     public render(): JSX.Element {
         if (this.props.isLoading) {
             return (
@@ -57,10 +62,14 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     }
 
     private setHeaderData = (): void => {
-        const breadcrumbPayload: IHeaderBreadcrumbPayload = {
+        this.headerPayload.breadcrumbPayload = {
             path: this.props.location.pathname
         };
-        this.props.setHeader(breadcrumbPayload, entityTitlePayload, commandsPayload);
+
+        this.props.setHeader(
+            this.headerPayload.breadcrumbPayload,
+            this.headerPayload.entityTitlePayload,
+            this.headerPayload.commandButtonsPayload);
     }
 }
 
@@ -85,8 +94,7 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
 
-const entityTitlePayload: IHeaderEntityTitlePayload = { title: "Sites" };
-const commandsPayload: IHeaderCommandButtonsPayload = {
+const commandsPayload: IHeaderSetCommandButtonsPayload = {
     buttonList: [
         {
             id: ButtonType.Add,

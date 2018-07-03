@@ -35,15 +35,15 @@ export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<A
             // Making the request to get data from the server OR
             // using the offline shim if the offline flag was set.
             const result: ISiteInfo[] = (!useShim)
-            ? await RequestUtils.makeGetRequest<ISiteInfo[]>(GetActiveSitesURL)
-            : AllSitesShim.getData();
+                ? await RequestUtils.makeGetRequest<ISiteInfo[]>(GetActiveSitesURL)
+                : AllSitesShim.getData();
 
             if (!result) {
                 throw new Error("Result was null.");
             }
 
             const sitesDataPayload: ISitesDataCreateUpdateSitesPayload = {
-                sites: { }
+                sites: {}
             };
 
             result.forEach((site: ISiteInfo): void => {

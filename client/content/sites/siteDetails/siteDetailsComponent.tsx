@@ -3,9 +3,8 @@ import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
 import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
-import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
-import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
-import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
+import IHeaderPayload from "../common/interfaces/IHeaderPayload";
+import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
@@ -17,6 +16,12 @@ import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListC
 import "./siteDetailsStyle.scss";
 
 class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
+    private headerPayload: IHeaderPayload = {
+        breadcrumbPayload: { path: this.props.history.location.pathname },
+        entityTitlePayload: null,
+        commandButtonsPayload: commandsPayload
+    };
+
     public render(): JSX.Element {
         const { rightPaneProps } = this.props;
 
@@ -41,18 +46,18 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     }
 
     public componentDidMount(): void {
-        const breadCrumbPayload: IHeaderBreadcrumbPayload = { path: this.props.location.pathname };
-        this.props.setHeader(breadCrumbPayload, null, commandsPayload);
+        this.props.setHeader(this.headerPayload.breadcrumbPayload, null, this.headerPayload.commandButtonsPayload);
         this.getSiteDetails();
         window.addEventListener("hashchange", this.getSiteDetails);
     }
 
     public componentWillReceiveProps(nextProps: ISiteDetailsProps): void {
         if (nextProps.site.id !== this.props.site.id) {
-            const entityTitlePayload: IHeaderEntityTitlePayload = {
+            this.headerPayload.breadcrumbPayload = { path: this.props.location.pathname };
+            this.headerPayload.entityTitlePayload = {
                 title: nextProps.site.name
             };
-            this.props.setHeader(null, entityTitlePayload, null);
+            this.props.setHeader(this.headerPayload.breadcrumbPayload, this.headerPayload.entityTitlePayload, null);
         }
     }
 
@@ -127,7 +132,7 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
 
-const commandsPayload: IHeaderCommandButtonsPayload = {
+const commandsPayload: IHeaderSetCommandButtonsPayload = {
     buttonList: [
         {
             id: ButtonType.Add,

@@ -4,9 +4,9 @@ import { ThunkDispatch } from "redux-thunk";
 import getSitesDetails from "./duck/actions/getSiteDetails";
 import IAppState from "../../../duck/interfaces/IAppState";
 import IGetSiteDetailsAction from "./duck/actions/interfaces/IGetSiteDetailsAction";
-import IHeaderBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderBreadcrumbPayload";
-import IHeaderCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderCommandButtonsPayload";
-import IHeaderEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderEntityTitlePayload";
+import IHeaderSetBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderSetBreadcrumbPayload";
+import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
+import IHeaderSetEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderSetEntityTitlePayload";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
 import ISiteDetailsPropsFromDispatch from "./interfaces/ISiteDetailsPropsFromDispatch";
 import ISiteDetailsPropsFromState from "./interfaces/ISiteDetailsPropsFromState";
@@ -43,9 +43,9 @@ function mapStateToDispatch(dispatch: ThunkDispatch<IAppState, void, Actions>): 
         getSiteDetails: (siteId: string): IGetSiteDetailsAction => dispatch(getSitesDetails(siteId)),
         closeRightPane: (): ISitesCloseRightPaneAction => dispatch(sitesCloseRightPane()),
         setHeader: (
-            breadcrumbPayload: IHeaderBreadcrumbPayload,
-            entityTitlePayload: IHeaderEntityTitlePayload,
-            commandButtonsPayload: IHeaderCommandButtonsPayload
+            breadcrumbPayload: IHeaderSetBreadcrumbPayload,
+            entityTitlePayload: IHeaderSetEntityTitlePayload,
+            commandButtonsPayload: IHeaderSetCommandButtonsPayload
         ): void => { dispatch(setHeader(breadcrumbPayload, entityTitlePayload, commandButtonsPayload)); }
     };
 }

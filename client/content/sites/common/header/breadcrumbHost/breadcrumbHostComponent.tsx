@@ -39,12 +39,16 @@ export default class BreadcrumbHostComponent extends React.PureComponent<IBreadc
             pathList.splice(0, 1);
 
             const items: IBreadcrumbItem[] = [];
+            let link: string = "/";
 
-            pathList.map((data: string) => {
+            pathList.map((data: string, i: number) => {
+                link += link === "/" ? data : ("/" + data);
+                const newLink: string = link;
+
                 items.push({
                     key: data,
                     text: data.replace(/\b\w/g, (x: string) => x.toUpperCase()),
-                    onClick: (): void => this.handleClickForLink("/" + data)
+                    onClick: (): void => this.handleClickForLink(newLink)
                 });
             });
 

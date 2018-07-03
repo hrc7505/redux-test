@@ -1,5 +1,5 @@
 import ICommandButton from "../../../commandBarButtons/ICommandButton";
 
-export default interface IHeaderCommandButtonsPayload {
+export default interface IHeaderSetCommandButtonsPayload {
     buttonList: ICommandButton[];
 }
