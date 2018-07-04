@@ -1,24 +1,19 @@
 import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/DetailsList";
 import * as React from "react";
-import { Link } from "react-router-dom";
 
-import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
 import GeneralError from "../../../common/generalError/generalError";
+import HeaderFor from "../common/header/duck/operations/enums/headerFor";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
 import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
-import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandsPayload";
-import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
-import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
 import QueryStringUtils from "../../../utils/queryStringUtils";
 import siteDetailsListColumns from "../../common/detailsList/siteDetailsList/SiteDetailsListColumns";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
     private headerPayload: IHeaderPayload = {
-        breadcrumbPayload: null,
-        entityTitlePayload: { title: "Sites" },
-        commandsPayload: commandsPayload
+        locationPath: null,
+        entityTitle: "Sites",
+        headerFor: HeaderFor.AllSites
     };
 
     public render(): JSX.Element {
@@ -27,6 +22,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
                 <LoadingSpinner />
             );
         }
+
         if (!this.props.detailsListItems) {
             // DetailsList blows up if null is passed into items. If we get into this situation,
             // we should just render an error message for the user.
@@ -62,48 +58,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     }
 
     private setHeaderData = (): void => {
-        this.headerPayload.breadcrumbPayload = {
-            path: this.props.location.pathname
-        };
-
+        this.headerPayload.locationPath = this.props.location.pathname;
         this.props.setHeader(this.headerPayload);
     }
 }
-
-const Test2: React.SFC<object> = (): JSX.Element => (
-    <div>
-        Click on the next button to navigate to site details
-        <Link to="/sites/909876"> NEXT</Link>
-    </div>
-);
-
-const rightPaneData: IToggleSwitchRightPanePayload = {
-    rightPaneId: "allSitesRightPaneId",
-    rightPaneHeaderText: "Right pane for all sites",
-    rightPaneContent: <div>This is the body of the right pane...</div>,
-    rightPaneFooterRender: (): JSX.Element => (<div>Footer for the right pane</div>)
-};
-
-const rightPanelData: IOpenRightPanelPayload = {
-    rightPanelId: "allSitesRightPanelId",
-    rightPanelHeaderText: "Test Panel",
-    rightPanelContent: <Test2 />,
-    rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
-};
-
-const commandsPayload: IHeaderSetCommandButtonsPayload = {
-    buttonList: [
-        {
-            id: ButtonType.Add,
-            name: "Site",
-            itemLocation: ItemLocation.Left,
-            actionPayload: rightPanelData
-        },
-        {
-            id: ButtonType.Info,
-            name: null,
-            itemLocation: ItemLocation.Far,
-            actionPayload: rightPaneData
-        }
-    ]
-};

@@ -5,15 +5,15 @@ import { createSelector, OutputSelector } from "reselect";
 
 import AllSitesComponent from "../../sites/allSites/allSitesComponent";
 import allSitesGetData from "./duck/operations/allSitesGetData";
+import headerSetHeader from "../common/header/duck/operations/headerSetHeader";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
 import IAllSitesPropsFromDispatch from "./interfaces/IAllSitesPropsFromDispatch";
 import IAllSitesPropsFromState from "./interfaces/IAllSitesPropsFromState";
 import IAllSitesRequestDataAction from "./duck/actions/interfaces/IAllSitesRequestDataAction";
 import IAppState from "../../../duck/interfaces/IAppState";
+import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
 import ISiteData from "../data/duck/interfaces/ISiteData";
 import ISiteDetailsListItemData from "../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
-import headerSetHeader from "../common/header/duck/operations/headerSetHeader";
-import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
 
 type GetSiteIdsFromAllSitesState = (state: IAppState) => string[];
 type GetSiteDataFromSitesDataState = (state: IAppState) => ISiteData;

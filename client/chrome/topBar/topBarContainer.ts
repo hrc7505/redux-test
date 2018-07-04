@@ -1,4 +1,5 @@
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
 import IAppState from "../../duck/interfaces/IAppState";
 import IOpenRightPanelAction from "../duck/actions/interfaces/IOpenRightPanelAction";

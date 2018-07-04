@@ -1,6 +1,6 @@
 import HEADER_SET_COMMANDS from "../actionTypes/HEADER_SET_COMMANDS";
-import IHeaderSetCommandsPayload from "./interfaces/IHeaderSetCommandsPayload";
 import IHeaderSetCommandsAction from "./interfaces/IHeaderSetCommandsAction";
+import IHeaderSetCommandsPayload from "./interfaces/IHeaderSetCommandsPayload";
 
 export default function headerSetCommands(payload: IHeaderSetCommandsPayload): IHeaderSetCommandsAction {
     return {

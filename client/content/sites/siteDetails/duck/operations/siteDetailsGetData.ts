@@ -1,4 +1,4 @@
-import { Dispatch } from "react-redux";
+import { Dispatch } from "redux";
 
 import ISiteDetailsLoadDataAction from "../actions/interfaces/ISiteDetailsLoadDataAction";
 import ISiteDetailsRequestDataAction from "../actions/interfaces/ISiteDetailsRequestDataAction";
