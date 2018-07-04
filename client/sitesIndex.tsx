@@ -12,7 +12,6 @@ import IAppState from "./duck/interfaces/IAppState";
 import ISitesState from "./content/sites/duck/interfaces/ISitesState";
 import SitesContainer from "./content/sites/sitesContainer";
 import sitesReducer from "./content/sites/duck/sitesReducer";
-import { ISiteDetails } from "./content/sites/common/dummyData/testData";
 
 import "./common/commonStyle/commonStyle.scss";
 
@@ -25,13 +24,9 @@ const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
 const defaultState: ISitesState = {
     isStandAlone: true,
     headerState: {
-        breadcrumb: {
-            path: null
-        },
-        commands: {
-            buttonList: []
-        },
-        title: null
+        breadcrumbPath: null,
+        title: null,
+        commands: [],
     },
     rightPaneState: {
         isRightPaneVisible: false,
@@ -45,7 +40,7 @@ const defaultState: ISitesState = {
     },
     siteDetailsState: {
         isLoading: false,
-        site: {} as ISiteDetails
+        site: "",
     },
     sitesDataState: {
         jobs: { },
