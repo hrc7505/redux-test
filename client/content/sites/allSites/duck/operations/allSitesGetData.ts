@@ -1,4 +1,4 @@
-import { Dispatch } from "react-redux";
+import { Dispatch } from "redux";
 
 import allSitesLoadData from "../actions/allSitesLoadData";
 import allSitesRequestData from "../actions/allSitesRequestData";
