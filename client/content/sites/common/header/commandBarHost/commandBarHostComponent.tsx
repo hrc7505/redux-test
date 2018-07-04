@@ -35,6 +35,7 @@ export default class CommandbarHostComponent extends React.PureComponent<IComman
         );
     }
 
+    // TODO: Remove componentWillReceiveProps as it is deprecated and should not be used.
     public componentWillReceiveProps(nextProps: ICommandBarHostProps): void {
         if (this.props.buttonList !== nextProps.buttonList) {
             this.createCommandBarMenuItems(nextProps.buttonList);

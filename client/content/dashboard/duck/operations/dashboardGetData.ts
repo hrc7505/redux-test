@@ -9,11 +9,11 @@ import IDashboardLoadDataAction from "../actions/interfaces/IDashboardLoadDataAc
 import IDashboardLoadDataPayload from "../actions/interfaces/IDashboardLoadDataPayload";
 import IDashboardRequestDataAction from "../actions/interfaces/IDashboardRequestDataAction";
 import IDashboardResponseResult from "./interfaces/IDashboardResponseResult";
-import IJobInfo from "../../../../models/jobs/IJobInfo";
+import IJobModel from "../../../../models/jobs/IJobModel";
 import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
 import IResponse from "../../../../models/response/IResponse";
 import ISiteDetailsListItemData from "../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
-import ISiteInfo from "../../../../models/sites/ISiteInfo";
+import ISiteModel from "../../../../models/sites/ISiteModel";
 
 type Actions =
     IDashboardRequestDataAction |
@@ -56,7 +56,7 @@ export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<
 
             const loadDataPayload: IDashboardLoadDataPayload = {
                 activeJobs: (responseResult.activeJobs && responseResult.activeJobs.length !== 0)
-                    ? responseResult.activeJobs.map((job: IJobInfo): IJobTileData => ({
+                    ? responseResult.activeJobs.map((job: IJobModel): IJobTileData => ({
                         id: job.id,
                         title: job.title,
                         site: job.site,
@@ -65,12 +65,12 @@ export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<
                     }))
                     : null,
                 sites: (responseResult.activeSites && responseResult.activeSites.length !== 0)
-                    ? responseResult.activeSites.map((site: ISiteInfo): ISiteDetailsListItemData => ({
+                    ? responseResult.activeSites.map((site: ISiteModel): ISiteDetailsListItemData => ({
                         id: site.id,
                         name: site.name,
                         location: `${site.street}, ${site.city}`,
-                        activeJobs: site.activeJobs,
-                        totalJobs: site.totalJobs,
+                        activeJobs: site.numberOfActiveJobs.toString(),
+                        totalJobs: site.numberOfTotalJobs.toString(),
                     }))
                     : null,
             };

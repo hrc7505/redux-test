@@ -1,5 +1,5 @@
-import IJobInfo from "../../../../../models/jobs/IJobInfo";
+import IJobModel from "../../../../../models/jobs/IJobModel";
 
 export default interface IJobData {
-    [jobId: string]: IJobInfo;
+    [jobId: string]: IJobModel;
 }

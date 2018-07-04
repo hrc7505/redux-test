@@ -10,12 +10,10 @@ import IAllSitesPropsFromDispatch from "./interfaces/IAllSitesPropsFromDispatch"
 import IAllSitesPropsFromState from "./interfaces/IAllSitesPropsFromState";
 import IAllSitesRequestDataAction from "./duck/actions/interfaces/IAllSitesRequestDataAction";
 import IAppState from "../../../duck/interfaces/IAppState";
-import IHeaderSetBreadcrumbPayload from "../common/header/duck/actions/interfaces/IHeaderSetBreadcrumbPayload";
-import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
-import IHeaderSetEntityTitlePayload from "../common/header/duck/actions/interfaces/IHeaderSetEntityTitlePayload";
 import ISiteData from "../data/duck/interfaces/ISiteData";
 import ISiteDetailsListItemData from "../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
-import setHeader from "../common/header/duck/operations/setHeader";
+import headerSetHeader from "../common/header/duck/operations/headerSetHeader";
+import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
 
 type GetSiteIdsFromAllSitesState = (state: IAppState) => string[];
 type GetSiteDataFromSitesDataState = (state: IAppState) => ISiteData;
@@ -37,8 +35,8 @@ const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemDa
                 id: siteData[id].id,
                 name: siteData[id].name,
                 location: siteData[id].street,
-                activeJobs: siteData[id].activeJobs,
-                totalJobs: siteData[id].totalJobs,
+                activeJobs: siteData[id].numberOfActiveJobs.toString(),
+                totalJobs: siteData[id].numberOfTotalJobs.toString(),
             }));
     }
 );
@@ -55,11 +53,7 @@ type Actions = IAllSitesRequestDataAction;
 function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): IAllSitesPropsFromDispatch {
     return {
         getData: (useShim: boolean): void => { dispatch(allSitesGetData(useShim)); },
-        setHeader: (
-            breadcrumbPayload: IHeaderSetBreadcrumbPayload,
-            entityTitlePayload: IHeaderSetEntityTitlePayload,
-            commandButtonsPayload: IHeaderSetCommandButtonsPayload
-        ): void => { dispatch(setHeader(breadcrumbPayload, entityTitlePayload, commandButtonsPayload)); }
+        setHeader: ( headerPayload: IHeaderPayload): void => { dispatch(headerSetHeader(headerPayload)); }
     };
 }
 

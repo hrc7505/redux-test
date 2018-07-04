@@ -3,8 +3,11 @@ import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
 import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
-import IHeaderPayload from "../common/interfaces/IHeaderPayload";
-import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
+import IAssetsInfoTileProps from "../common/infoTile/types/IAssetsInfoTileProps";
+import IJobsInfoTileProps from "../common/infoTile/types/IJobsInfoTileProps";
+import IFilesInfoTileProps from "../common/infoTile/types/IFilesInfoTileProps";
+import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
+import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandsPayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
@@ -12,23 +15,64 @@ import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
 import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListComponent";
+import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
 
 import "./siteDetailsStyle.scss";
 
-class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
-    private headerPayload: IHeaderPayload = {
-        breadcrumbPayload: { path: this.props.history.location.pathname },
-        entityTitlePayload: null,
-        commandButtonsPayload: commandsPayload
+export default class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
+    private commandsPayload: IHeaderSetCommandButtonsPayload = {
+        buttonList: [
+            {
+                id: ButtonType.Add,
+                name: "Asset",
+                itemLocation: ItemLocation.Left,
+                actionPayload: rightPanelData,
+            },
+            {
+                id: ButtonType.Add,
+                name: "Job",
+                itemLocation: ItemLocation.Left,
+                actionPayload: null,
+            },
+            {
+                id: ButtonType.Add,
+                name: "Files",
+                itemLocation: ItemLocation.Left,
+                actionPayload: null,
+            },
+            {
+                id: ButtonType.Add,
+                name: "Permissions",
+                itemLocation: ItemLocation.Left,
+                actionPayload: null,
+            },
+            {
+                id: ButtonType.Info,
+                name: null,
+                itemLocation: ItemLocation.Far,
+                actionPayload: rightPaneData
+            }
+        ]
     };
 
     public render(): JSX.Element {
-        const { rightPaneProps } = this.props;
+        const { rightPaneProps, site } = this.props;
+        const infoTileList: IInfoTileProps[] = [
+            new IAssetsInfoTileProps(site.numberOfUnits, site.numberOfPiping),
+            new IJobsInfoTileProps(site.numberOfActiveJobs, site.numberOfCompletedJobs, site.numberOfArchivedJobs),
+            new IFilesInfoTileProps(site.numberOfFiles)
+        ]
+
+        if (this.props.isLoading) {
+            return (
+                <LoadingSpinner />
+            );
+        }
 
         return (
             <div className="cPanel">
                 <JobSummaryListComponent
-                    jobSummaryData={this.props.site ? this.props.site.jobList : null}
+                    jobSummaryData={null}
                     tileOnClick={this.props.jobTileOnClick}
                     selectedId={
                         rightPaneProps.rightPaneContent && rightPaneProps.rightPaneContent.key
@@ -46,37 +90,39 @@ class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     }
 
     public componentDidMount(): void {
-        this.props.setHeader(this.headerPayload.breadcrumbPayload, null, this.headerPayload.commandButtonsPayload);
-        this.getSiteDetails();
-        window.addEventListener("hashchange", this.getSiteDetails);
+        // Setting the commandbar only since it is always the same for any instance of
+        // the Site Details page.
+        this.props.setHeader({
+            breadcrumbPayload: null,
+            entityTitlePayload: null,
+            commandsPayload: this.commandsPayload
+        });
+        window.addEventListener("hashchange", this.getDataForPage);
     }
 
-    public componentWillReceiveProps(nextProps: ISiteDetailsProps): void {
-        if (nextProps.site.id !== this.props.site.id) {
-            this.headerPayload.breadcrumbPayload = { path: this.props.location.pathname };
-            this.headerPayload.entityTitlePayload = {
-                title: nextProps.site.name
+    public componentDidUpdate(prevProps: ISiteDetailsProps): void {
+        if (this.props.site && this.props.site.id !== prevProps.site.id) {
+            const headerPayload: IHeaderPayload = {
+                breadcrumbPayload: { path: this.props.history.location.pathname },
+                entityTitlePayload: { title: this.props.site.name },
+                commandsPayload: null
             };
-            this.props.setHeader(this.headerPayload.breadcrumbPayload, this.headerPayload.entityTitlePayload, null);
+            this.props.setHeader(headerPayload);
         }
     }
 
     public componentWillUnmount(): void {
-        window.removeEventListener("hashchange", this.getSiteDetails);
+        window.removeEventListener("hashchange", this.getDataForPage);
     }
 
-    private getSiteDetails = (): void => {
-        if (this.props.rightPaneProps.isRightPaneVisible) {
-            this.props.closeRightPane();
-        }
-
-        if (this.props.site.id !== this.props.match.params.individualSite) {
-            this.props.getSiteDetails(this.props.match.params.individualSite);
+    private getDataForPage = (): void => {
+        const splitPathString: string[] = this.props.location.pathname.split("/");
+        const siteIdFromPath: string = splitPathString[splitPathString.length - 1];
+        if (this.props.site.id !== siteIdFromPath) {
+            this.props.getData(false, siteIdFromPath);
         }
     }
 }
-
-export default SiteDetailsComponent;
 
 const Test1: React.SFC<object> = (): JSX.Element => (
     <div className="cPanel">
@@ -131,83 +177,3 @@ const rightPanelData: IOpenRightPanelPayload = {
     rightPanelContent: <Test1 />,
     rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
 };
-
-const commandsPayload: IHeaderSetCommandButtonsPayload = {
-    buttonList: [
-        {
-            id: ButtonType.Add,
-            name: "Asset",
-            itemLocation: ItemLocation.Left,
-            actionPayload: rightPanelData,
-        },
-        {
-            id: ButtonType.Add,
-            name: "Job",
-            itemLocation: ItemLocation.Left,
-            actionPayload: null,
-        },
-        {
-            id: ButtonType.Add,
-            name: "Files",
-            itemLocation: ItemLocation.Left,
-            actionPayload: null,
-        },
-        {
-            id: ButtonType.Add,
-            name: "Permissions",
-            itemLocation: ItemLocation.Left,
-            actionPayload: null,
-        },
-        {
-            id: ButtonType.Info,
-            name: null,
-            itemLocation: ItemLocation.Far,
-            actionPayload: rightPaneData
-        }
-    ]
-};
-
-const infoTileList: IInfoTileProps[] = [
-    {
-        infoTileIcon: "icon",
-        infoTileTitle: "Assets",
-        infoTileDetailsList: [
-            {
-                field: "unit",
-                value: 14
-            },
-            {
-                field: "piping",
-                value: 10
-            }
-        ]
-    },
-    {
-        infoTileIcon: "icon",
-        infoTileTitle: "jobs",
-        infoTileDetailsList: [
-            {
-                field: "active",
-                value: 143
-            },
-            {
-                field: "completed",
-                value: 104
-            },
-            {
-                field: "archived",
-                value: 150
-            }
-        ]
-    },
-    {
-        infoTileIcon: "icon",
-        infoTileTitle: "permissions",
-        infoTileDetailsList: [
-            {
-                field: "member",
-                value: 5
-            },
-        ]
-    }
-];

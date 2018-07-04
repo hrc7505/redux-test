@@ -5,8 +5,8 @@ import allSitesRequestData from "../actions/allSitesRequestData";
 import AllSitesShim from "../../shim/allSitesShim";
 import ILoadAllSitesAction from "../actions/interfaces/IAllSitesLoadDataAction";
 import IAllSitesRequestDataAction from "../actions/interfaces/IAllSitesRequestDataAction";
-import ISiteInfo from "../../../../../models/sites/ISiteInfo";
-import ISiteCloseRightPaneAction from "../../../duck/actions/interfaces/ISitesCloseRightPaneAction";
+import ISiteModel from "../../../../../models/sites/ISiteModel";
+import ISitesCloseRightPaneAction from "../../../duck/actions/interfaces/ISitesCloseRightPaneAction";
 import ISitesDataCreateUpdateSitesAction from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateSitesAction";
 import ISitesDataCreateUpdateSitesPayload from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateSitesPayload";
 import RequestUtils from "../../../../../utils/requestUtils";
@@ -17,14 +17,10 @@ import UrlUtils from "../../../../../utils/urlUtils";
 type Actions =
     IAllSitesRequestDataAction |
     ILoadAllSitesAction |
-    ISiteCloseRightPaneAction |
+    ISitesCloseRightPaneAction |
     ISitesDataCreateUpdateSitesAction;
 
-// There seems be a model difference between both these calls. The ActiveSites call includes job information,
-// but is not camelCased and the other call is correctly camelCased, but does not have any info on jobs.
-// Using GetAllAsync for now until the backend has been figured out.
-const GetActiveSitesURL: string = UrlUtils.hostApi + "/Site/GetAllAsync";
-// const GetActiveSitesURL: string = UrlUtils.hostApi + "/Site/GetActiveSitesAsync";
+const GetActiveSitesUrl: string = UrlUtils.hostApi + "/Site/GetAllAsync?status=Active";
 
 export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<Actions>) => void {
     return async (dispatch: Dispatch<Actions>): Promise<void> => {
@@ -34,8 +30,8 @@ export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<A
         try {
             // Making the request to get data from the server OR
             // using the offline shim if the offline flag was set.
-            const result: ISiteInfo[] = (!useShim)
-                ? await RequestUtils.makeGetRequest<ISiteInfo[]>(GetActiveSitesURL)
+            const result: ISiteModel[] = (!useShim)
+                ? await RequestUtils.makeGetRequest<ISiteModel[]>(GetActiveSitesUrl)
                 : AllSitesShim.getData();
 
             if (!result) {
@@ -46,7 +42,7 @@ export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<A
                 sites: {}
             };
 
-            result.forEach((site: ISiteInfo): void => {
+            result.forEach((site: ISiteModel): void => {
                 sitesDataPayload.sites[site.id] = site;
             });
 
@@ -55,7 +51,7 @@ export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<A
 
             // Render the data obtained from the server.
             dispatch(allSitesLoadData({
-                sites: result.map((site: ISiteInfo) => site.id)
+                sites: result.map((site: ISiteModel) => site.id)
             }));
         } catch {
             // Dispatching with a null payload to render an error on the page.

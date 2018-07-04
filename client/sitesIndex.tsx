@@ -44,6 +44,7 @@ const defaultState: ISitesState = {
         isLoading: false
     },
     siteDetailsState: {
+        isLoading: false,
         site: {} as ISiteDetails
     },
     sitesDataState: {

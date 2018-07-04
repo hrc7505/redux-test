@@ -1,8 +1,7 @@
-import IHeaderSetBreadcrumbPayload from "../actions/interfaces/IHeaderSetBreadcrumbPayload";
-import IHeaderSetCommandButtonsPayload from "../actions/interfaces/IHeaderSetCommandButtonsPayload";
+import ICommandButton from "../../commandBarButtons/ICommandButton";
 
 export default interface IHeaderState {
-    breadcrumb?: IHeaderSetBreadcrumbPayload;
+    breadcrumbPath: string;
     title: string;
-    commands?: IHeaderSetCommandButtonsPayload;
+    commands: ICommandButton[];
 }
