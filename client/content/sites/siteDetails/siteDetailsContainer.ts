@@ -1,20 +1,18 @@
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 
+import headerSetHeader from "../common/header/duck/operations/headerSetHeader";
 import IAppState from "../../../duck/interfaces/IAppState";
+import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
 import ISiteDetailsPropsFromDispatch from "./interfaces/ISiteDetailsPropsFromDispatch";
 import ISiteDetailsPropsFromState from "./interfaces/ISiteDetailsPropsFromState";
-import ISitesCloseRightPaneAction from "../duck/actions/interfaces/ISitesCloseRightPaneAction";
 import ISitesToggleRightPaneAction from "../duck/actions/interfaces/ISitesToggleRightPaneAction";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
-import headerSetHeader from "../common/header/duck/operations/headerSetHeader";
 import SiteDetailsComponent from "./siteDetailsComponent";
-import sitesCloseRightPane from "../duck/actions/sitesCloseRightPane";
-import sitesToggleRightPane from "../duck/actions/sitesToggleRightPane";
 import siteDetailsGetData from "./duck/operations/siteDetailsGetData";
 import SiteDetailsShim from "./shim/siteDetailsShim";
-import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
+import sitesToggleRightPane from "../duck/actions/sitesToggleRightPane";
 
 function mapStateToProps(state: IAppState): ISiteDetailsPropsFromState {
     return {
@@ -34,14 +32,13 @@ function mapStateToProps(state: IAppState): ISiteDetailsPropsFromState {
     };
 }
 
-type Actions = ISitesToggleRightPaneAction | ISitesCloseRightPaneAction;
+type Actions = ISitesToggleRightPaneAction;
 
 function mapStateToDispatch(dispatch: ThunkDispatch<IAppState, void, Actions>): ISiteDetailsPropsFromDispatch {
     return {
         jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload): ISitesToggleRightPaneAction =>
             dispatch(sitesToggleRightPane(actionPayload)),
         getData: (useShim: boolean, siteId: string): void => { dispatch(siteDetailsGetData(useShim, siteId)); },
-        closeRightPane: (): ISitesCloseRightPaneAction => dispatch(sitesCloseRightPane()),
         setHeader: (headerPayload: IHeaderPayload): void => { dispatch(headerSetHeader(headerPayload)); }
     };
 }
