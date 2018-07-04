@@ -6,7 +6,6 @@ import DashboardComponent from "./dashboardComponent";
 import dashboardGetData from "./duck/operations/dashboardGetData";
 import dashboardToggleRightPane from "./duck/actions/dashboardToggleSwitchRightPane";
 import IAppState from "../../duck/interfaces/IAppState";
-import IDashboardCloseRightPaneAction from "./duck/actions/interfaces/IDashboardCloseRightPaneAction";
 import IDashboardProps from "./interfaces/IDashboardProps";
 import IDashboardPropsFromDispatch from "./interfaces/IDashboardPropsFromDispatch";
 import IDashboardPropsFromState from "./interfaces/IDashboardPropsFromState";
@@ -29,7 +28,7 @@ function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): 
     };
 }
 
-type Actions = IDashboardCloseRightPaneAction | IDashboardToggleSwitchRightPaneAction;
+type Actions = IDashboardToggleSwitchRightPaneAction;
 type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Actions>) => IDashboardPropsFromDispatch;
 
 const mapDispatchToProps: MapDispatchToProps = (

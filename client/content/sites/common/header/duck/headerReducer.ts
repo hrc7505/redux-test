@@ -9,13 +9,9 @@ import IHeaderState from "./interfaces/IHeaderState";
 type Action = IHeaderSetBreadcrumbAction | IHeaderSetEntityTitleAction | IHeaderSetCommandsAction;
 
 const defaultState: IHeaderState = {
-    breadcrumb: {
-        path: null
-    },
+    breadcrumbPath: null,
     title: null,
-    commands: {
-        buttonList: []
-    }
+    commands: [],
 };
 
 export default function headerReducer(state: IHeaderState, action: Action): IHeaderState {
@@ -23,7 +19,7 @@ export default function headerReducer(state: IHeaderState, action: Action): IHea
         case HEADER_SET_BREADCRUMB:
             return {
                 ...state,
-                breadcrumb: action.payload
+                breadcrumbPath: action.payload.path
             };
 
         case HEADER_SET_ENTITY_TITLE:
@@ -35,9 +31,7 @@ export default function headerReducer(state: IHeaderState, action: Action): IHea
         case HEADER_SET_COMMANDS:
             return {
                 ...state,
-                commands: {
-                    buttonList: action.payload.buttonList
-                }
+                commands: action.payload.buttonList
             };
 
         default:

@@ -23,6 +23,7 @@ export default class BreadcrumbHostComponent extends React.PureComponent<IBreadc
         );
     }
 
+    // TODO: Remove componentWillReceiveProps as it is deprecated and should not be used.
     public componentWillReceiveProps(nextProps: IBreadcrumbHostProps): void {
         if (this.props.locationPath !== nextProps.locationPath) {
             this.handleOperations(nextProps.locationPath);

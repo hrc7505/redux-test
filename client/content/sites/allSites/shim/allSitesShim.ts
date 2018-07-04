@@ -1,7 +1,7 @@
-import ISiteInfo from "../../../../models/sites/ISiteInfo";
+import ISiteModel from "../../../../models/sites/ISiteModel";
 
 export default class AllSitesShim {
-    private static sites: ISiteInfo[] = [
+    private static sites: ISiteModel[] = [
         {
             id: "909876",
             tenantId: "100",
@@ -14,8 +14,13 @@ export default class AllSitesShim {
             postalCode: "A1A 3D3",
             country: "Canada",
             phoneNumber: "18001001000",
-            activeJobs: "1",
-            totalJobs: "1",
+            numberOfUnits: 1,
+            numberOfPiping: 2,
+            numberOfActiveJobs: 3,
+            numberOfCompletedJobs: 4,
+            numberOfArchivedJobs: 5,
+            numberOfTotalJobs: 6,
+            numberOfFiles: 7,
         },
         {
             id: "909877",
@@ -29,12 +34,17 @@ export default class AllSitesShim {
             postalCode: "B1B 8D8",
             country: "Canada",
             phoneNumber: "18002002000",
-            activeJobs: "1",
-            totalJobs: "10",
+            numberOfUnits: 10,
+            numberOfPiping: 20,
+            numberOfActiveJobs: 30,
+            numberOfCompletedJobs: 40,
+            numberOfArchivedJobs: 50,
+            numberOfTotalJobs: 60,
+            numberOfFiles: 70,
         },
     ];
 
-    public static getData(): ISiteInfo[] {
+    public static getData(): ISiteModel[] {
         return AllSitesShim.sites;
     }
 }

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
 import GeneralError from "../../../common/generalError/generalError";
 import IAllSitesProps from "./interfaces/IAllSitesProps";
-import IHeaderPayload from "../common/interfaces/IHeaderPayload";
-import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandButtonsPayload";
+import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
+import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandsPayload";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
 import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
@@ -18,7 +18,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     private headerPayload: IHeaderPayload = {
         breadcrumbPayload: null,
         entityTitlePayload: { title: "Sites" },
-        commandButtonsPayload: commandsPayload
+        commandsPayload: commandsPayload
     };
 
     public render(): JSX.Element {
@@ -66,10 +66,7 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
             path: this.props.location.pathname
         };
 
-        this.props.setHeader(
-            this.headerPayload.breadcrumbPayload,
-            this.headerPayload.entityTitlePayload,
-            this.headerPayload.commandButtonsPayload);
+        this.props.setHeader(this.headerPayload);
     }
 }
 

@@ -1,5 +1,5 @@
-import ISiteInfo from "../../../../../models/sites/ISiteInfo";
+import ISiteModel from "../../../../../models/sites/ISiteModel";
 
 export default interface ISiteData {
-    [siteId: string]: ISiteInfo;
+    [siteId: string]: ISiteModel;
 }

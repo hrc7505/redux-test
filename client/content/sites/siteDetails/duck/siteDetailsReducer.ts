@@ -1,24 +1,28 @@
-import GET_SITE_DETAILS from "./actionTypes/GET_SITE_DETAILS";
-import IGetSiteDetailsAction from "./actions/interfaces/IGetSiteDetailsAction";
+import ISiteDetailsLoadDataAction from "./actions/interfaces/ISiteDetailsLoadDataAction";
+import ISiteDetailsRequestDataAction from "./actions/interfaces/ISiteDetailsRequestDataAction";
 import ISiteDetailsState from "../duck/interfaces/ISiteDetailsState";
-import sites, { ISiteDetails } from "../../common/dummyData/testData";
+import SITE_DETAILS_LOAD_DATA from "./actionTypes/SITE_DETAILS_LOAD_DATA";
+import SITE_DETAILS_REQUEST_DATA from "./actionTypes/SITE_DETAILS_REQUEST_DATA";
 
-type Action = IGetSiteDetailsAction;
+type Action = ISiteDetailsLoadDataAction | ISiteDetailsRequestDataAction;
 
 const defaultState: ISiteDetailsState = {
-    site: {} as ISiteDetails
+    isLoading: false,
+    site: "0",
 };
 
 export default function siteDetailsReducer(state: ISiteDetailsState, action: Action): ISiteDetailsState {
     switch (action.type) {
-        case GET_SITE_DETAILS:
-            const index: number = sites.findIndex((site: ISiteDetails) => site.id === action.siteId);
-
+        case SITE_DETAILS_REQUEST_DATA:
             return {
                 ...state,
-                site: {
-                    ...sites[index]
-                }
+                isLoading: true,
+            };
+
+        case SITE_DETAILS_LOAD_DATA:
+            return {
+                isLoading: false,
+                site: action.payload.site,
             };
 
         default:

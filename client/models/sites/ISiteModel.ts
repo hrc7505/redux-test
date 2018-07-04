@@ -1,7 +1,7 @@
 /**
  * Site information from the server.
  */
-export default interface ISiteInfo {
+export default interface ISiteModel{
     // Basic information for a site.
     id: string;
     tenantId: string;
@@ -17,7 +17,12 @@ export default interface ISiteInfo {
     country: string;
     phoneNumber: string;
 
-    // Job information for a site.
-    activeJobs?: string;
-    totalJobs?: string;
+    // Site metrics.
+    numberOfUnits: number;
+    numberOfPiping: number;
+    numberOfActiveJobs: number;
+    numberOfCompletedJobs: number;
+    numberOfArchivedJobs: number;
+    numberOfTotalJobs: number;
+    numberOfFiles: number;
 }

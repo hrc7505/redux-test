@@ -1,5 +1,5 @@
-import IJobInfo from "../../../../../../models/jobs/IJobInfo";
+import IJobModel from "../../../../../../models/jobs/IJobModel";
 
 export default interface ISitesDataCreateUpdateJobsPayload {
-    jobs: { [jobId: string]: IJobInfo };
+    jobs: { [jobId: string]: IJobModel };
 }

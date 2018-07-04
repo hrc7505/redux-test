@@ -8,7 +8,7 @@ import IBreadcrumbPropsFromState from "./interfaces/IBreadcrumbPropsFromState";
 
 function mapStateToProps(state: IAppState): IBreadcrumbPropsFromState {
     return {
-        locationPath: state.sitesState.headerState.breadcrumb.path
+        locationPath: state.sitesState.headerState.breadcrumbPath
     };
 }
 

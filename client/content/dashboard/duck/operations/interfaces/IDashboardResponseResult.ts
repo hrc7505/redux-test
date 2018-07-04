@@ -1,7 +1,7 @@
-import IJobInfo from "../../../../../models/jobs/IJobInfo";
-import ISiteInfo from "../../../../../models/sites/ISiteInfo";
+import IJobModel from "../../../../../models/jobs/IJobModel";
+import ISiteModel from "../../../../../models/sites/ISiteModel";
 
 export default interface IDashboardResponseResult {
-    activeJobs: IJobInfo[];
-    activeSites: ISiteInfo[];
+    activeJobs: IJobModel[];
+    activeSites: ISiteModel[];
 }

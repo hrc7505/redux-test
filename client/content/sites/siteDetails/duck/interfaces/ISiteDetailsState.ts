@@ -1,5 +1,4 @@
-import { ISiteDetails } from "../../../common/dummyData/testData";
-
 export default interface ISiteDetailsState {
-    site: ISiteDetails;
+    isLoading: boolean;
+    site: string;
 }
