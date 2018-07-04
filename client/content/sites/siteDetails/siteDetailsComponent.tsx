@@ -4,11 +4,11 @@ import * as React from "react";
 
 import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
 import IAssetsInfoTileProps from "../common/infoTile/types/IAssetsInfoTileProps";
-import IJobsInfoTileProps from "../common/infoTile/types/IJobsInfoTileProps";
 import IFilesInfoTileProps from "../common/infoTile/types/IFilesInfoTileProps";
 import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
 import IHeaderSetCommandButtonsPayload from "../common/header/duck/actions/interfaces/IHeaderSetCommandsPayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
+import IJobsInfoTileProps from "../common/infoTile/types/IJobsInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
 import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
@@ -61,7 +61,7 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
             new IAssetsInfoTileProps(site.numberOfUnits, site.numberOfPiping),
             new IJobsInfoTileProps(site.numberOfActiveJobs, site.numberOfCompletedJobs, site.numberOfArchivedJobs),
             new IFilesInfoTileProps(site.numberOfFiles)
-        ]
+        ];
 
         if (this.props.isLoading) {
             return (
