@@ -52,8 +52,10 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
         this.props.setHeader({
             locationPath: null,
             entityTitle: null,
-            headerFor: HeaderFor.SiteDetails
+            headerFor: HeaderFor.SiteDetails,
+            isUpdateCommands: true
         });
+        this.getDataForPage();
         window.addEventListener("hashchange", this.getDataForPage);
     }
 
@@ -75,6 +77,7 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
     private getDataForPage = (): void => {
         const splitPathString: string[] = this.props.location.pathname.split("/");
         const siteIdFromPath: string = splitPathString[splitPathString.length - 1];
+
         if (this.props.site.id !== siteIdFromPath) {
             this.props.getData(false, siteIdFromPath);
         }

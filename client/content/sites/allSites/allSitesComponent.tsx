@@ -13,7 +13,8 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     private headerPayload: IHeaderPayload = {
         locationPath: null,
         entityTitle: "Sites",
-        headerFor: HeaderFor.AllSites
+        headerFor: HeaderFor.AllSites,
+        isUpdateCommands: true
     };
 
     public render(): JSX.Element {
