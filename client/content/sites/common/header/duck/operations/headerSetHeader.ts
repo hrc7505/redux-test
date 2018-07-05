@@ -15,7 +15,6 @@ type Actions = IHeaderSetEntityTitleAction | IHeaderSetCommandsAction | IHeaderS
 export default function headerSetHeader(
     headerPayload: IHeaderPayload): (dispatch: Dispatch<Actions>) => void {
     return (dispatch: Dispatch<Actions>): void => {
-        const commandsPayload: IHeaderSetCommandButtonsPayload = getCommandsPayload(headerPayload.headerFor);
 
         if (headerPayload.locationPath) {
             dispatch(headerSetBreadcrumb({
@@ -29,8 +28,12 @@ export default function headerSetHeader(
             }));
         }
 
-        if (commandsPayload) {
-            dispatch(headerSetCommands(commandsPayload));
+        if (headerPayload.isUpdateCommands) {
+            const commandsPayload: IHeaderSetCommandButtonsPayload = getCommandsPayload(headerPayload.headerFor);
+
+            if (commandsPayload) {
+                dispatch(headerSetCommands(commandsPayload));
+            }
         }
     };
 }
