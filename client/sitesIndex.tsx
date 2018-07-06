@@ -41,6 +41,7 @@ const defaultState: ISitesState = {
     siteDetailsState: {
         isLoading: false,
         site: "",
+        jobs: [],
     },
     sitesDataState: {
         jobs: { },
