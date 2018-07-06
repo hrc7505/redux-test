@@ -1,13 +1,11 @@
+import IBaseModel from "../base/IBaseModel";
+
 /**
  * Site information from the server.
  */
-export default interface ISiteModel{
+export default interface ISiteModel extends IBaseModel{
     // Basic information for a site.
-    id: string;
-    tenantId: string;
-    name: string;
-    isActive: boolean;
-    description: string;
+    status: string;
 
     // Coordinates of a site.
     street: string;

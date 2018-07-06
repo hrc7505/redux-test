@@ -1,9 +1,16 @@
-// This interface is TBD depending on server.
+import IBaseModel from "../base/IBaseModel";
 
-export default interface IJobModel {
-    id: string;
-    title: string;
-    site: string;
-    createDate: string;
+export default interface IJobModel extends IBaseModel {
+    // Basic information for a job.
+    number: string;
+    siteId: string;
     status: string;
+
+    // Job metrics.
+    progress: number;
+    numberOfUnitsInProgress: number;
+    numberOfUnitsCompleted: number;
+    numberOfPipingInProgress: number;
+    numberOfPipingCompleted: number;
+    numberOfFiles: number;
 }

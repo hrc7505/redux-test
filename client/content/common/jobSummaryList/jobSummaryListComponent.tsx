@@ -13,11 +13,11 @@ export default class JobSummaryListComponent extends React.PureComponent<IJobSum
                         ? this.props.jobSummaryData.map((data: IJobTileData): JSX.Element => (
                             <JobSummaryTileComponent
                                 key={data.id}
-                                jobTitle={data.title}
-                                jobId={data.id}
-                                jobCreatedDate={data.createDate}
-                                jobSite={data.site}
-                                jobStatus={data.status}
+                                title={data.title}
+                                id={data.id}
+                                createDate={data.createDate}
+                                site={data.site}
+                                status={data.status}
                                 tileOnClick={this.props.tileOnClick}
                                 isSelected={this.props.selectedId === data.id ? true : false}
                             />

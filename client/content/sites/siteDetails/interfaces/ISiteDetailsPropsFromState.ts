@@ -1,10 +1,10 @@
-import IJobModel from "../../../../models/jobs/IJobModel";
-import IRightPaneProps from "../../../common/rightPane/interfaces/IRightPaneProps";
+import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
 import ISiteModel from "../../../../models/sites/ISiteModel";
 
 export default interface ISiteDetailsPropsFromState {
     site: ISiteModel;
-    jobs: IJobModel;
+    jobs: IJobTileData[];
     isLoading: boolean;
-    rightPaneProps: IRightPaneProps;
+    isRightPaneVisible: boolean;
+    rightPaneId: string;
 }
