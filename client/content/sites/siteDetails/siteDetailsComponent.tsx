@@ -1,19 +1,58 @@
+import { Dropdown } from "office-ui-fabric-react/lib/Dropdown";
+import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
-import HeaderFor from "../common/header/duck/operations/enums/headerFor";
+import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
 import IAssetsInfoTileProps from "../common/infoTile/types/IAssetsInfoTileProps";
+import ICommandButton from "../common/header/commandBarButtons/ICommandButton";
 import IFilesInfoTileProps from "../common/infoTile/types/IFilesInfoTileProps";
 import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import IJobsInfoTileProps from "../common/infoTile/types/IJobsInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
+import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
+import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
+import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListComponent";
 import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
 
 import "./siteDetailsStyle.scss";
 
 export default class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
+    private commands: ICommandButton[] = [
+        {
+            id: ButtonType.Add,
+            name: "Asset",
+            itemLocation: ItemLocation.Left,
+            actionPayload: rightPanelData,
+        },
+        {
+            id: ButtonType.Add,
+            name: "Job",
+            itemLocation: ItemLocation.Left,
+            actionPayload: null,
+        },
+        {
+            id: ButtonType.Add,
+            name: "Files",
+            itemLocation: ItemLocation.Left,
+            actionPayload: null,
+        },
+        {
+            id: ButtonType.Add,
+            name: "Permissions",
+            itemLocation: ItemLocation.Left,
+            actionPayload: null,
+        },
+        {
+            id: ButtonType.Info,
+            name: null,
+            itemLocation: ItemLocation.Far,
+            actionPayload: rightPaneData
+        }
+    ];
+
     public render(): JSX.Element {
         const { site } = this.props;
         const infoTileList: IInfoTileProps[] = [
@@ -56,8 +95,7 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
             entityTitle: this.props.site.name
                 ? this.props.site.name
                 : null,
-            headerFor: HeaderFor.SiteDetails,
-            isUpdateCommands: true
+            commands: this.commands
         });
         this.getDataForPage();
         window.addEventListener("hashchange", this.getDataForPage);
@@ -67,8 +105,7 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
         if (this.props.site && this.props.site.id !== prevProps.site.id) {
             const headerPayload: IHeaderPayload = {
                 locationPath: this.props.history.location.pathname,
-                entityTitle: this.props.site.name,
-                headerFor: HeaderFor.SiteDetails
+                entityTitle: this.props.site.name
             };
             this.props.setHeader(headerPayload);
         }
@@ -87,3 +124,55 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
         this.props.getData(false, siteIdFromPath);
     }
 }
+
+// SiteDetails page header row data
+const Test1: React.SFC<object> = (): JSX.Element => (
+    <div className="cPanel">
+        <TextField label="Site Name:*" placeholder="Site Name" errorMessage="Site Name is mandatory" />
+        <TextField multiline label="Site Description:" placeholder="Description here..." />
+        <TextField label="Phone Number:" placeholder="+1 123456789" />
+        <TextField label="Street:*" placeholder="Street" />
+        <TextField label="City:*" placeholder="City" />
+        <TextField label="Postal Code:*" placeholder="Postal Code" />
+        <Dropdown
+            placeHolder="Select a City"
+            label="Country:*"
+            options={
+                [
+                    { key: "A", text: "Newyork" },
+                    { key: "B", text: "Delhi" },
+                    { key: "C", text: "Shangai" },
+                    { key: "D", text: "Surray" },
+                    { key: "E", text: "London" }
+                ]
+            }
+        />
+        <Dropdown
+            placeHolder="Select a Province/State"
+            label="Province/State:*"
+            options={
+                [
+                    { key: "A", text: "State1" },
+                    { key: "B", text: "State2" },
+                    { key: "C", text: "State3" },
+                    { key: "D", text: "State4" },
+                    { key: "E", text: "State5" }
+                ]
+            }
+        />
+    </div>
+);
+
+const rightPaneData: IToggleSwitchRightPanePayload = {
+    rightPaneId: "siteDetailsRightPaneId",
+    rightPaneHeaderText: "HeaderText of the right pane",
+    rightPaneContent: <div>This is the body of the right pane...</div>,
+    rightPaneFooterRender: (): JSX.Element => (<div>Footer for the right pane</div>)
+};
+
+const rightPanelData: IOpenRightPanelPayload = {
+    rightPanelId: "siteDetailsRightPanelId",
+    rightPanelHeaderText: "Add New Site",
+    rightPanelContent: <Test1 />,
+    rightPanelFooterRender: (): JSX.Element => (<div>footer of the panel</div>)
+};

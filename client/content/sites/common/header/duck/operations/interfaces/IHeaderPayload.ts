@@ -1,8 +1,7 @@
-import HeaderFor from "../enums/headerFor";
+import ICommandButton from "../../../commandBarButtons/ICommandButton";
 
 export default interface IHeaderPayload {
-    headerFor: HeaderFor;
     locationPath: string;
     entityTitle: string;
-    isUpdateCommands?: boolean;
+    commands?: ICommandButton[];
 }
