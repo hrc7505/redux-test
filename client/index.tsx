@@ -17,7 +17,7 @@ import "./common/commonStyle/commonStyle.scss";
 const appStore: Store<IAppState> = createStore(
     appReducer,
     applyMiddleware(
-        thunkMiddleware,
+        thunkMiddleware.withExtraArgument("/abcd/def/"),
         promiseMiddleware(),
         logger // Adding a logger to see what actions are occurring. Leaving comment to fix up for production later.
     )

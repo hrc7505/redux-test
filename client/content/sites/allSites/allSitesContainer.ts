@@ -53,7 +53,7 @@ type Actions = IAllSitesRequestDataAction;
 function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): IAllSitesPropsFromDispatch {
     return {
         getData: (useShim: boolean): void => { dispatch(allSitesGetData(useShim)); },
-        setHeader: ( headerPayload: IHeaderPayload): void => { dispatch(headerSetHeader(headerPayload)); }
+        setHeader: (headerPayload: IHeaderPayload): void => { dispatch(headerSetHeader(headerPayload)); },
     };
 }
 
