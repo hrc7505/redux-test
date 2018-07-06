@@ -3,10 +3,10 @@ import ISiteModel from "../../../../models/sites/ISiteModel";
 export default class AllSitesShim {
     private static sites: ISiteModel[] = [
         {
-            id: "909876",
+            id: "0",
             tenantId: "100",
             name: "My house",
-            isActive: true,
+            status: "Active",
             description: "This is my house.",
             street: "99 SE 10th St",
             city: "Vancouver",
@@ -21,12 +21,16 @@ export default class AllSitesShim {
             numberOfArchivedJobs: 5,
             numberOfTotalJobs: 6,
             numberOfFiles: 7,
+            createdBy: "Jeff",
+            createdAt: "2018-01-05T19:11:11+00:00",
+            updatedBy: "Jeff",
+            updatedAt: "2018-01-05T19:11:11+00:00",
         },
         {
-            id: "909877",
+            id: "00",
             tenantId: "100",
             name: "My office",
-            isActive: true,
+            status: "Active",
             description: "Please take a seat.",
             street: "1188 West Pender St",
             city: "Vancouver",
@@ -41,6 +45,10 @@ export default class AllSitesShim {
             numberOfArchivedJobs: 50,
             numberOfTotalJobs: 60,
             numberOfFiles: 70,
+            createdBy: "Jeff",
+            createdAt: "2018-01-01T19:11:11+00:00",
+            updatedBy: "Jeff",
+            updatedAt: "2018-01-01T19:11:11+00:00",
         },
     ];
 

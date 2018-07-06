@@ -11,23 +11,23 @@ export default class JobSummaryTileComponent extends React.PureComponent<IJobSum
                 className={`job pullLeft ${this.props.isSelected ? "selected" : ""}`}
                 onClick={
                     (): void => this.props.tileOnClick({
-                        rightPaneId: `${this.props.jobId}`,
-                        rightPaneHeaderText: `${this.props.jobTitle} (${this.props.jobId})`,
+                        rightPaneId: `${this.props.id}`,
+                        rightPaneHeaderText: `${this.props.title} (${this.props.id})`,
                         rightPaneContent: this.content(
-                            this.props.jobCreatedDate,
-                            this.props.jobStatus,
-                            this.props.jobSite),
+                            this.props.createDate,
+                            this.props.status,
+                            this.props.site),
                         rightPaneFooterRender: this.rightPaneFootRender
                     })
                 }
             >
-                <div className="cPanel jobTitle">{this.props.jobTitle}</div>
+                <div className="cPanel jobTitle">{this.props.title}</div>
                 <div className="cPanel jobInfoContainer">
-                    {this.summaryTileInfoRender("date created", this.props.jobCreatedDate)}
-                    {this.summaryTileInfoRender("status", this.props.jobStatus)}
-                    {this.summaryTileInfoRender("job id", this.props.jobId)}
+                    {this.summaryTileInfoRender("date created", this.props.createDate)}
+                    {this.summaryTileInfoRender("status", this.props.status)}
+                    {this.summaryTileInfoRender("job id", this.props.id)}
                 </div>
-                <div className="cPanel siteName">{this.props.jobSite}</div>
+                <div className="cPanel siteName">{this.props.site}</div>
             </div>
         );
     }

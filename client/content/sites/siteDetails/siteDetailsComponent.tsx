@@ -15,7 +15,7 @@ import "./siteDetailsStyle.scss";
 
 export default class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     public render(): JSX.Element {
-        const { rightPaneProps, site } = this.props;
+        const { site } = this.props;
         const infoTileList: IInfoTileProps[] = [
             new IAssetsInfoTileProps(site.numberOfUnits, site.numberOfPiping),
             new IJobsInfoTileProps(site.numberOfActiveJobs, site.numberOfCompletedJobs, site.numberOfArchivedJobs),
@@ -31,11 +31,11 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
         return (
             <div className="cPanel">
                 <JobSummaryListComponent
-                    jobSummaryData={null}
+                    jobSummaryData={this.props.jobs}
                     tileOnClick={this.props.jobTileOnClick}
                     selectedId={
-                        rightPaneProps.rightPaneContent && rightPaneProps.rightPaneContent.key
-                            ? rightPaneProps.rightPaneContent.key.toString()
+                        this.props.isRightPaneVisible
+                            ? this.props.rightPaneId
                             : null}
                 />
                 <div className="bodyContentTitle cPanel">Site Management </div>
@@ -50,8 +50,12 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
 
     public componentDidMount(): void {
         this.props.setHeader({
-            locationPath: null,
-            entityTitle: null,
+            locationPath: this.props.history.location.pathname
+                ? this.props.history.location.pathname
+                : null,
+            entityTitle: this.props.site.name
+                ? this.props.site.name
+                : null,
             headerFor: HeaderFor.SiteDetails,
             isUpdateCommands: true
         });
@@ -75,11 +79,11 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
     }
 
     private getDataForPage = (): void => {
+        // Obtaining the Site ID from the URL.
         const splitPathString: string[] = this.props.location.pathname.split("/");
         const siteIdFromPath: string = splitPathString[splitPathString.length - 1];
 
-        if (this.props.site.id !== siteIdFromPath) {
-            this.props.getData(false, siteIdFromPath);
-        }
+        // Getting the data of the site based on the obtained Site ID in the URL.
+        this.props.getData(false, siteIdFromPath);
     }
 }

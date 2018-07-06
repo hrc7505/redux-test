@@ -1,5 +1,7 @@
+import * as moment from "moment";
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
+import { createSelector, OutputSelector } from "reselect";
 
 import headerSetHeader from "../common/header/duck/operations/headerSetHeader";
 import IAppState from "../../../duck/interfaces/IAppState";
@@ -13,22 +15,49 @@ import SiteDetailsComponent from "./siteDetailsComponent";
 import siteDetailsGetData from "./duck/operations/siteDetailsGetData";
 import SiteDetailsShim from "./shim/siteDetailsShim";
 import sitesToggleRightPane from "../duck/actions/sitesToggleRightPane";
+import IJobData from "../data/duck/interfaces/IJobData";
+import IJobTileData from "../../common/jobSummaryList/interfaces/IJobTileData";
+import ISiteData from "../data/duck/interfaces/ISiteData";
+
+type GetJobIdsFromSiteDetailsState = (state: IAppState) => string[];
+type GetJobDataFromSitesDataState = (state: IAppState) => IJobData;
+type GetSiteDataFromSitesDataState = (state: IAppState) => ISiteData;
+type ResultFunction = (jobIds: string[], jobData: IJobData, siteData: ISiteData) => IJobTileData[];
+
+const getJobIds: GetJobIdsFromSiteDetailsState =
+    (state: IAppState): string[] => state.sitesState.siteDetailsState.jobs;
+const getJobData: GetJobDataFromSitesDataState =
+    (state: IAppState): IJobData => state.sitesState.sitesDataState.jobs;
+const getSiteData: GetSiteDataFromSitesDataState =
+    (state: IAppState): ISiteData => state.sitesState.sitesDataState.sites;
+
+const getJobTileData: OutputSelector<IAppState, IJobTileData[], ResultFunction> = createSelector(
+    [getJobIds, getJobData, getSiteData],
+    (jobIds: string[], jobData: IJobData, siteData: ISiteData): IJobTileData[] => {
+        if (!jobIds) {
+            return null;
+        }
+
+        return jobIds.filter((id: string): boolean => !!jobData[id])
+            .map((id: string) => ({
+                id: jobData[id].number,
+                title: jobData[id].name,
+                site: siteData[jobData[id].siteId].name,
+                createDate: moment(jobData[id].createdAt).format("MMMM D, YYYY"),
+                status: jobData[id].status,
+            }));
+    }
+);
 
 function mapStateToProps(state: IAppState): ISiteDetailsPropsFromState {
     return {
         isLoading: state.sitesState.siteDetailsState.isLoading,
         site: state.sitesState.sitesDataState.sites[state.sitesState.siteDetailsState.site]
             ? state.sitesState.sitesDataState.sites[state.sitesState.siteDetailsState.site]
-            : SiteDetailsShim.getData(),
-        jobs: null,
-        rightPaneProps: {
-            isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
-            rightPaneHeaderText: state.sitesState.rightPaneState.rightPaneHeaderText,
-            rightPaneContent: state.sitesState.rightPaneState.rightPaneContent,
-            rightPaneFooterRender: state.sitesState.rightPaneState.rightPaneFooterRender
-                ? state.sitesState.rightPaneState.rightPaneFooterRender
-                : null
-        }
+            : SiteDetailsShim.getData(), // Using shim data as the default empty data set. Might want to rethink.
+        jobs: getJobTileData(state),
+        isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
+        rightPaneId: state.sitesState.rightPaneState.rightPaneId,
     };
 }
 

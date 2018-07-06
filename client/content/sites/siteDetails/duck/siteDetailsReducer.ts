@@ -9,6 +9,7 @@ type Action = ISiteDetailsLoadDataAction | ISiteDetailsRequestDataAction;
 const defaultState: ISiteDetailsState = {
     isLoading: false,
     site: "0",
+    jobs: [],
 };
 
 export default function siteDetailsReducer(state: ISiteDetailsState, action: Action): ISiteDetailsState {
@@ -23,6 +24,7 @@ export default function siteDetailsReducer(state: ISiteDetailsState, action: Act
             return {
                 isLoading: false,
                 site: action.payload.site,
+                jobs: action.payload.jobs,
             };
 
         default:

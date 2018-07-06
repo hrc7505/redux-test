@@ -58,9 +58,9 @@ export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<
                 activeJobs: (responseResult.activeJobs && responseResult.activeJobs.length !== 0)
                     ? responseResult.activeJobs.map((job: IJobModel): IJobTileData => ({
                         id: job.id,
-                        title: job.title,
-                        site: job.site,
-                        createDate: job.createDate,
+                        title: job.name,
+                        site: job.siteId,
+                        createDate: job.createdAt,
                         status: job.status,
                     }))
                     : null,
