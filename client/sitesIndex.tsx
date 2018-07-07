@@ -2,7 +2,7 @@ import { initializeIcons } from "@uifabric/icons";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { applyMiddleware, combineReducers, createStore, Reducer, Store } from "redux";
 import logger from "redux-logger";
 import promiseMiddleware from "redux-promise-middleware";

@@ -3,7 +3,7 @@ import IBaseModel from "../base/IBaseModel";
 /**
  * Site information from the server.
  */
-export default interface ISiteModel extends IBaseModel{
+export default interface ISiteModel extends IBaseModel {
     // Basic information for a site.
     status: string;
 
