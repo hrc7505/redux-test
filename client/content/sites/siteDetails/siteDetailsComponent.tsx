@@ -22,7 +22,7 @@ import "./siteDetailsStyle.scss";
 
 export default class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     private unlisten: History.UnregisterCallback;
-  
+
     private commands: ICommandButton[] = [
         {
             id: ButtonType.Add,
@@ -121,8 +121,7 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
         entityTitle: this.props.site.name
             ? this.props.site.name
             : null,
-        headerFor: HeaderFor.SiteDetails,
-        isUpdateCommands: true
+        commands: this.commands,
     }))
 
     /**
