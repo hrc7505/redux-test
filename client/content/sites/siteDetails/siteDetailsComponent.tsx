@@ -1,9 +1,9 @@
+import * as History from "history";
 import * as React from "react";
 
 import HeaderFor from "../common/header/duck/operations/enums/headerFor";
 import IAssetsInfoTileProps from "../common/infoTile/types/IAssetsInfoTileProps";
 import IFilesInfoTileProps from "../common/infoTile/types/IFilesInfoTileProps";
-import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
 import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
 import IJobsInfoTileProps from "../common/infoTile/types/IJobsInfoTileProps";
 import InfoTileComponent from "../common/infoTile/infoTileComponent";
@@ -14,6 +14,8 @@ import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
 import "./siteDetailsStyle.scss";
 
 export default class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
+    private unlisten: History.UnregisterCallback;
+
     public render(): JSX.Element {
         const { site } = this.props;
         const infoTileList: IInfoTileProps[] = [
@@ -49,38 +51,48 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
     }
 
     public componentDidMount(): void {
-        this.props.setHeader({
-            locationPath: this.props.history.location.pathname
-                ? this.props.history.location.pathname
-                : null,
-            entityTitle: this.props.site.name
-                ? this.props.site.name
-                : null,
-            headerFor: HeaderFor.SiteDetails,
-            isUpdateCommands: true
+        this.updateHeader();
+        this.getDataForPage(this.props.location);
+        this.unlisten = this.props.history.listen((location: History.Location, action: History.Action) => {
+            const regex: RegExp = new RegExp("^\/sites\/[^/]+[\/]?$", "gm");
+            if (regex.test(location.pathname) && action === "PUSH") {
+                this.getDataForPage(location);
+            }
         });
-        this.getDataForPage();
-        window.addEventListener("hashchange", this.getDataForPage);
     }
 
     public componentDidUpdate(prevProps: ISiteDetailsProps): void {
         if (this.props.site && this.props.site.id !== prevProps.site.id) {
-            const headerPayload: IHeaderPayload = {
-                locationPath: this.props.history.location.pathname,
-                entityTitle: this.props.site.name,
-                headerFor: HeaderFor.SiteDetails
-            };
-            this.props.setHeader(headerPayload);
+            this.updateHeader();
         }
     }
 
     public componentWillUnmount(): void {
-        window.removeEventListener("hashchange", this.getDataForPage);
+        this.unlisten();
     }
 
-    private getDataForPage = (): void => {
+    /**
+     * Updates the header of the page.
+     */
+    private updateHeader = (): void => (this.props.setHeader({
+        locationPath: this.props.history.location.pathname
+            ? this.props.history.location.pathname
+            : null,
+        entityTitle: this.props.site.name
+            ? this.props.site.name
+            : null,
+        headerFor: HeaderFor.SiteDetails,
+        isUpdateCommands: true
+    }))
+
+    /**
+     * Gets the data for the page. The Site ID is determined by the parameter.
+     * @param location The location object used to determine the Site ID.
+     * We do not use the location from props directly as that might not be up-to-date.
+     */
+    private getDataForPage = (location: History.Location): void => {
         // Obtaining the Site ID from the URL.
-        const splitPathString: string[] = this.props.location.pathname.split("/");
+        const splitPathString: string[] = location.pathname.split("/");
         const siteIdFromPath: string = splitPathString[splitPathString.length - 1];
 
         // Getting the data of the site based on the obtained Site ID in the URL.
