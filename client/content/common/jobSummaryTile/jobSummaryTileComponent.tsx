@@ -1,3 +1,4 @@
+import * as moment from "moment";
 import * as React from "react";
 
 import IJobSummaryTileProps from "content/common/jobSummaryTile/interfaces/IJobSummaryTileProps";
@@ -23,7 +24,7 @@ export default class JobSummaryTileComponent extends React.PureComponent<IJobSum
             >
                 <div className="cPanel jobTitle">{this.props.title}</div>
                 <div className="cPanel jobInfoContainer">
-                    {this.summaryTileInfoRender("date created", this.props.createDate)}
+                    {this.summaryTileInfoRender("date created", moment(this.props.createDate).format("MMMM D, YYYY"))}
                     {this.summaryTileInfoRender("status", this.props.status)}
                     {this.summaryTileInfoRender("job id", this.props.id)}
                 </div>

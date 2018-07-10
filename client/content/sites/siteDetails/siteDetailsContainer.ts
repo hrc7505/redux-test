@@ -1,4 +1,3 @@
-import * as moment from "moment";
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 import { createSelector, OutputSelector } from "reselect";
@@ -43,7 +42,7 @@ const getJobTileData: OutputSelector<IAppState, IJobTileData[], ResultFunction> 
                 id: jobData[id].number,
                 title: jobData[id].name,
                 site: siteData[jobData[id].siteId].name,
-                createDate: moment(jobData[id].createdAt).format("MMMM D, YYYY"),
+                createDate: jobData[id].createdAt,
                 status: jobData[id].status,
             }));
     }
