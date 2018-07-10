@@ -1,19 +1,19 @@
 import { Dispatch } from "redux";
 
-import dashboardCloseRightPane from "../actions/dashboardCloseRightPane";
-import dashboardDataShim from "../../shim/dashboardDataShim";
-import dashboardLoadData from "../actions/dashboardLoadData";
-import dashboardRequestData from "../actions/dashboardRequestData";
-import IDashboardCloseRightPaneAction from "../actions/interfaces/IDashboardCloseRightPaneAction";
-import IDashboardLoadDataAction from "../actions/interfaces/IDashboardLoadDataAction";
-import IDashboardLoadDataPayload from "../actions/interfaces/IDashboardLoadDataPayload";
-import IDashboardRequestDataAction from "../actions/interfaces/IDashboardRequestDataAction";
-import IDashboardResponseResult from "./interfaces/IDashboardResponseResult";
-import IJobModel from "../../../../models/jobs/IJobModel";
-import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
-import IResponse from "../../../../models/response/IResponse";
-import ISiteDetailsListItemData from "../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
-import ISiteModel from "../../../../models/sites/ISiteModel";
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import IJobTileData from "content/common/jobSummaryList/interfaces/IJobTileData";
+import dashboardCloseRightPane from "content/dashboard/duck/actions/dashboardCloseRightPane";
+import dashboardLoadData from "content/dashboard/duck/actions/dashboardLoadData";
+import dashboardRequestData from "content/dashboard/duck/actions/dashboardRequestData";
+import IDashboardCloseRightPaneAction from "content/dashboard/duck/actions/interfaces/IDashboardCloseRightPaneAction";
+import IDashboardLoadDataAction from "content/dashboard/duck/actions/interfaces/IDashboardLoadDataAction";
+import IDashboardLoadDataPayload from "content/dashboard/duck/actions/interfaces/IDashboardLoadDataPayload";
+import IDashboardRequestDataAction from "content/dashboard/duck/actions/interfaces/IDashboardRequestDataAction";
+import IDashboardResponseResult from "content/dashboard/duck/operations/interfaces/IDashboardResponseResult";
+import dashboardDataShim from "content/dashboard/shim/dashboardDataShim";
+import IJobModel from "models/jobs/IJobModel";
+import IResponse from "models/response/IResponse";
+import ISiteModel from "models/sites/ISiteModel";
 
 type Actions =
     IDashboardRequestDataAction |

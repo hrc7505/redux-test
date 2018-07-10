@@ -1,5 +1,6 @@
 const path = require("path");
 const env = process.env.NODE_ENV;
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -16,7 +17,10 @@ module.exports = {
     devtool: "source-map",
     resolve: {
         //Add ".ts" and ".tsx" as resolvable extenstions.
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+        plugins: [
+            new TsConfigPathsPlugin()
+        ],
     },
     module: {
         rules: [

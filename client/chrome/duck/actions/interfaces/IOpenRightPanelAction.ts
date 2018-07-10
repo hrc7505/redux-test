@@ -1,5 +1,5 @@
-import IOpenRightPanelPayload from "../../../duck/actions/interfaces/IOpenRightPanelPayload";
-import OPEN_RIGHT_PANEL from "../../actionTypes/OPEN_RIGHT_PANEL";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import OPEN_RIGHT_PANEL from "chrome/duck/actionTypes/OPEN_RIGHT_PANEL";
 
 export default interface IOpenRightPanelAction {
     payload: IOpenRightPanelPayload;

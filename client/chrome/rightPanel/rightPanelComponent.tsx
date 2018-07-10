@@ -1,9 +1,9 @@
 import { Panel, PanelType } from "office-ui-fabric-react/lib/Panel";
 import * as React from "react";
 
-import IRightPanelProps from "./interfaces/IRightPanelProps";
+import IRightPanelProps from "chrome/rightPanel/interfaces/IRightPanelProps";
 
-import "./rightPanelStyle.scss";
+import "chrome/rightPanel/rightPanelStyle.scss";
 
 export default class RightPanelComponent extends React.PureComponent<IRightPanelProps> {
     private panelInstance: Panel;

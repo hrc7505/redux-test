@@ -1,10 +1,10 @@
-import HEADER_SET_BREADCRUMB from "./actionTypes/HEADER_SET_BREADCRUMB";
-import HEADER_SET_COMMANDS from "./actionTypes/HEADER_SET_COMMANDS";
-import HEADER_SET_ENTITY_TITLE from "./actionTypes/HEADER_SET_ENTITY_TITLE";
-import IHeaderSetBreadcrumbAction from "./actions/interfaces/IHeaderSetBreadcrumbAction";
-import IHeaderSetCommandsAction from "./actions/interfaces/IHeaderSetCommandsAction";
-import IHeaderSetEntityTitleAction from "./actions/interfaces/IHeaderSetEntityTitleAction";
-import IHeaderState from "./interfaces/IHeaderState";
+import IHeaderSetBreadcrumbAction from "content/sites/common/header/duck/actions/interfaces/IHeaderSetBreadcrumbAction";
+import IHeaderSetCommandsAction from "content/sites/common/header/duck/actions/interfaces/IHeaderSetCommandsAction";
+import IHeaderSetEntityTitleAction from "content/sites/common/header/duck/actions/interfaces/IHeaderSetEntityTitleAction";
+import HEADER_SET_BREADCRUMB from "content/sites/common/header/duck/actionTypes/HEADER_SET_BREADCRUMB";
+import HEADER_SET_COMMANDS from "content/sites/common/header/duck/actionTypes/HEADER_SET_COMMANDS";
+import HEADER_SET_ENTITY_TITLE from "content/sites/common/header/duck/actionTypes/HEADER_SET_ENTITY_TITLE";
+import IHeaderState from "content/sites/common/header/duck/interfaces/IHeaderState";
 
 type Action = IHeaderSetBreadcrumbAction | IHeaderSetEntityTitleAction | IHeaderSetCommandsAction;
 

@@ -4,21 +4,21 @@ import { Dropdown } from "office-ui-fabric-react/lib/Dropdown";
 import { TextField } from "office-ui-fabric-react/lib/TextField";
 import * as React from "react";
 
-import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
-import IAssetsInfoTileProps from "../common/infoTile/types/IAssetsInfoTileProps";
-import ICommandButton from "../common/header/commandBarButtons/ICommandButton";
-import IFilesInfoTileProps from "../common/infoTile/types/IFilesInfoTileProps";
-import IInfoTileProps from "../common/infoTile/interfaces/IInfoTileProps";
-import IJobsInfoTileProps from "../common/infoTile/types/IJobsInfoTileProps";
-import InfoTileComponent from "../common/infoTile/infoTileComponent";
-import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ISiteDetailsProps from "./interfaces/ISiteDetailsProps";
-import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
-import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
-import JobSummaryListComponent from "../../common/jobSummaryList/jobSummaryListComponent";
-import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import LoadingSpinner from "common/loadingSpinner/loadingSpinner";
+import JobSummaryListComponent from "content/common/jobSummaryList/jobSummaryListComponent";
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
+import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
+import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import InfoTileComponent from "content/sites/common/infoTile/infoTileComponent";
+import IInfoTileProps from "content/sites/common/infoTile/interfaces/IInfoTileProps";
+import IAssetsInfoTileProps from "content/sites/common/infoTile/types/IAssetsInfoTileProps";
+import IFilesInfoTileProps from "content/sites/common/infoTile/types/IFilesInfoTileProps";
+import IJobsInfoTileProps from "content/sites/common/infoTile/types/IJobsInfoTileProps";
+import ISiteDetailsProps from "content/sites/siteDetails/interfaces/ISiteDetailsProps";
 
-import "./siteDetailsStyle.scss";
+import "content/sites/siteDetails/siteDetailsStyle.scss";
 
 export default class SiteDetailsComponent extends React.PureComponent<ISiteDetailsProps> {
     private unlisten: History.UnregisterCallback;

@@ -1,5 +1,5 @@
-import IJobData from "../../../../common/jobSummaryList/interfaces/IJobTileData";
-import ISiteDetailsListItemData from "../../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import IJobData from "content/common/jobSummaryList/interfaces/IJobTileData";
 
 export default interface IDashboardLoadDataPayload {
     activeJobs: IJobData[];

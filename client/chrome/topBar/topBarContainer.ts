@@ -1,16 +1,16 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import IAppState from "../../duck/interfaces/IAppState";
-import IOpenRightPanelAction from "../duck/actions/interfaces/IOpenRightPanelAction";
-import IOpenRightPanelPayload from "../duck/actions/interfaces/IOpenRightPanelPayload";
-import IToggleLeftPaneAction from "../duck/actions/interfaces/IToggleLeftPaneAction";
-import ITopBarProps from "./interfaces/ITopBarProps";
-import ITopBarPropsFromDispatch from "./interfaces/ITopBarPropsFromDispatch";
-import ITopBarPropsFromState from "./interfaces/ITopBarPropsFromState";
-import openRightPanel from "../duck/actions/openRightPanel";
-import toggleLeftPane from "../duck/actions/toggleLeftPane";
-import TopBarComponent from "./TopBarComponent";
+import IOpenRightPanelAction from "chrome/duck/actions/interfaces/IOpenRightPanelAction";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import IToggleLeftPaneAction from "chrome/duck/actions/interfaces/IToggleLeftPaneAction";
+import openRightPanel from "chrome/duck/actions/openRightPanel";
+import toggleLeftPane from "chrome/duck/actions/toggleLeftPane";
+import ITopBarProps from "chrome/topBar/interfaces/ITopBarProps";
+import ITopBarPropsFromDispatch from "chrome/topBar/interfaces/ITopBarPropsFromDispatch";
+import ITopBarPropsFromState from "chrome/topBar/interfaces/ITopBarPropsFromState";
+import TopBarComponent from "chrome/topBar/TopBarComponent";
+import IAppState from "duck/interfaces/IAppState";
 
 function mapStateToProps(state: IAppState): ITopBarPropsFromState {
     return {

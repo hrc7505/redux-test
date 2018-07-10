@@ -1,12 +1,12 @@
 import { combineReducers, Reducer } from "redux";
 
-import DASHBOARD_LOAD_DATA from "./actionTypes/DASHBOARD_LOAD_DATA";
-import DASHBOARD_REQUEST_DATA from "./actionTypes/DASHBOARD_REQUEST_DATA";
-import IContentState from "./interfaces/IContentState";
-import IDashboardLoadDataAction from "./actions/interfaces/IDashboardLoadDataAction";
-import IDashboardRequestDataAction from "./actions/interfaces/IDashboardRequestDataAction";
-import IDashboardState from "./interfaces/IDashboardState";
-import rightPaneReducer from "../../common/rightPane/duck/rightPaneReducer";
+import rightPaneReducer from "content/common/rightPane/duck/rightPaneReducer";
+import IDashboardLoadDataAction from "content/dashboard/duck/actions/interfaces/IDashboardLoadDataAction";
+import IDashboardRequestDataAction from "content/dashboard/duck/actions/interfaces/IDashboardRequestDataAction";
+import DASHBOARD_LOAD_DATA from "content/dashboard/duck/actionTypes/DASHBOARD_LOAD_DATA";
+import DASHBOARD_REQUEST_DATA from "content/dashboard/duck/actionTypes/DASHBOARD_REQUEST_DATA";
+import IContentState from "content/dashboard/duck/interfaces/IContentState";
+import IDashboardState from "content/dashboard/duck/interfaces/IDashboardState";
 
 type ContentAction =
     IDashboardLoadDataAction |

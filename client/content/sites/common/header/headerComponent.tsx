@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import BreadcrumbHostContainer from "./breadcrumbHost/breadcrumbHostContainer";
-import CommandBarHostContainer from "./commandBarHost/commandBarHostContainer";
-import EntityTitleContainer from "./entityTitle/entityTitleContainer";
+import BreadcrumbHostContainer from "content/sites/common/header/breadcrumbHost/breadcrumbHostContainer";
+import CommandBarHostContainer from "content/sites/common/header/commandBarHost/commandBarHostContainer";
+import EntityTitleContainer from "content/sites/common/header/entityTitle/entityTitleContainer";
 
 const HeaderComponent: React.SFC<object> = (): JSX.Element => (
     <React.Fragment>

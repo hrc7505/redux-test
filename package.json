@@ -41,7 +41,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --content-base ./",
-    "lint": "tslint client/**/*.ts{,x}"
+    "lint": "tslint client/**/*.ts{,x} --fix"
   },
   "author": "Mintyfusion Studio",
   "license": "ISC"

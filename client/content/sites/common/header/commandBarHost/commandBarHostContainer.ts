@@ -1,18 +1,18 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import CommandBarHostComponent from "./commandBarHostComponent";
-import IAppState from "../../../../../duck/interfaces/IAppState";
-import ICloseRightPanelAction from "../../../../../chrome/duck/actions/interfaces/ICloseRightPanelAction";
-import ICommandBarHostProps from "./interfaces/ICommandBarHostProps";
-import ICommandBarHostPropsFromDispatch from "./interfaces/ICommandBarHostPropsFromDispatch";
-import ICommandBarHostPropsFromState from "./interfaces/ICommandBarHostPropsFromState";
-import IOpenRightPanelAction from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelAction";
-import IOpenRightPanelPayload from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ISiteToggleRightPaneAction from "../../../duck/actions/interfaces/ISitesToggleRightPaneAction";
-import IToggleSwitchRightPanePayload from "../../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
-import openRightPanel from "../../../../../chrome/duck/actions/openRightPanel";
-import sitesToggleRightPane from "../../../../sites/duck/actions/sitesToggleRightPane";
+import ICloseRightPanelAction from "chrome/duck/actions/interfaces/ICloseRightPanelAction";
+import IOpenRightPanelAction from "chrome/duck/actions/interfaces/IOpenRightPanelAction";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import openRightPanel from "chrome/duck/actions/openRightPanel";
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import CommandBarHostComponent from "content/sites/common/header/commandBarHost/commandBarHostComponent";
+import ICommandBarHostProps from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostProps";
+import ICommandBarHostPropsFromDispatch from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostPropsFromDispatch";
+import ICommandBarHostPropsFromState from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostPropsFromState";
+import ISiteToggleRightPaneAction from "content/sites/duck/actions/interfaces/ISitesToggleRightPaneAction";
+import sitesToggleRightPane from "content/sites/duck/actions/sitesToggleRightPane";
+import IAppState from "duck/interfaces/IAppState";
 
 type DisptchProps = IOpenRightPanelAction | ICloseRightPanelAction | ISiteToggleRightPaneAction;
 

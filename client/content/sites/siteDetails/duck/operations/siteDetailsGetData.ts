@@ -1,21 +1,21 @@
 import { Dispatch } from "redux";
 
-import IJobModel from "../../../../../models/jobs/IJobModel";
-import ISiteDetailsLoadDataAction from "../actions/interfaces/ISiteDetailsLoadDataAction";
-import ISiteDetailsRequestDataAction from "../actions/interfaces/ISiteDetailsRequestDataAction";
-import ISiteModel from "../../../../../models/sites/ISiteModel";
-import ISitesCloseRightPaneAction from "../../../duck/actions/interfaces/ISitesCloseRightPaneAction";
-import ISitesDataCreateUpdateJobsAction from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateJobsAction";
-import ISitesDataCreateUpdateJobsPayload from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateJobsPayload";
-import ISitesDataCreateUpdateSitesAction from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateSitesAction";
-import ISitesDataCreateUpdateSitesPayload from "../../../data/duck/actions/interfaces/ISitesDataCreateUpdateSitesPayload";
-import RequestUtils from "../../../../../utils/requestUtils";
-import siteDetailsLoadData from "../actions/siteDetailsLoadData";
-import siteDetailsRequestData from "../actions/siteDetailsRequestData";
-import sitesCloseRightPane from "../../../duck/actions/sitesCloseRightPane";
-import sitesDataCreateUpdateJobs from "../../../data/duck/actions/sitesDataCreateUpdateJobs";
-import sitesDataCreateUpdateSites from "../../../data/duck/actions/sitesDataCreateUpdateSites";
-import UrlUtils from "../../../../../utils/urlUtils";
+import ISitesDataCreateUpdateJobsAction from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateJobsAction";
+import ISitesDataCreateUpdateJobsPayload from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateJobsPayload";
+import ISitesDataCreateUpdateSitesAction from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateSitesAction";
+import ISitesDataCreateUpdateSitesPayload from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateSitesPayload";
+import sitesDataCreateUpdateJobs from "content/sites/data/duck/actions/sitesDataCreateUpdateJobs";
+import sitesDataCreateUpdateSites from "content/sites/data/duck/actions/sitesDataCreateUpdateSites";
+import ISitesCloseRightPaneAction from "content/sites/duck/actions/interfaces/ISitesCloseRightPaneAction";
+import sitesCloseRightPane from "content/sites/duck/actions/sitesCloseRightPane";
+import ISiteDetailsLoadDataAction from "content/sites/siteDetails/duck/actions/interfaces/ISiteDetailsLoadDataAction";
+import ISiteDetailsRequestDataAction from "content/sites/siteDetails/duck/actions/interfaces/ISiteDetailsRequestDataAction";
+import siteDetailsLoadData from "content/sites/siteDetails/duck/actions/siteDetailsLoadData";
+import siteDetailsRequestData from "content/sites/siteDetails/duck/actions/siteDetailsRequestData";
+import IJobModel from "models/jobs/IJobModel";
+import ISiteModel from "models/sites/ISiteModel";
+import RequestUtils from "utils/requestUtils";
+import UrlUtils from "utils/urlUtils";
 
 type Actions = ISitesDataCreateUpdateSitesAction |
     ISitesDataCreateUpdateJobsAction |

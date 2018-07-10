@@ -1,4 +1,4 @@
-import IResponse from "../models/response/IResponse";
+import IResponse from "models/response/IResponse";
 
 type MakeGetRequest = <R>(url: string) => Promise<R>;
 

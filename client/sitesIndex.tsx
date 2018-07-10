@@ -8,12 +8,12 @@ import logger from "redux-logger";
 import promiseMiddleware from "redux-promise-middleware";
 import thunkMiddleware from "redux-thunk";
 
-import IAppState from "./duck/interfaces/IAppState";
-import ISitesState from "./content/sites/duck/interfaces/ISitesState";
-import SitesContainer from "./content/sites/sitesContainer";
-import sitesReducer from "./content/sites/duck/sitesReducer";
+import ISitesState from "content/sites/duck/interfaces/ISitesState";
+import sitesReducer from "content/sites/duck/sitesReducer";
+import SitesContainer from "content/sites/sitesContainer";
+import IAppState from "duck/interfaces/IAppState";
 
-import "./common/commonStyle/commonStyle.scss";
+import "common/commonStyle/commonStyle.scss";
 
 const sitesOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: null,

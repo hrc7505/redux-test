@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
-import IAppState from "../../duck/interfaces/IAppState";
-import ISitesProps from "./interfaces/ISitesProps";
-import ISitesPropsFromState from "./interfaces/ISitesPropsFromState";
-import SitesComponent from "./sitesComponent";
+import ISitesProps from "content/sites/interfaces/ISitesProps";
+import ISitesPropsFromState from "content/sites/interfaces/ISitesPropsFromState";
+import SitesComponent from "content/sites/sitesComponent";
+import IAppState from "duck/interfaces/IAppState";
 
 function mapStateToProps(state: IAppState): ISitesPropsFromState {
     return {

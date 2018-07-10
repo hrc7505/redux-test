@@ -1,5 +1,5 @@
-import IContentState from "./IContentState";
-import IRightPaneState from "../../../common/rightPane/duck/interfaces/IRightPaneState";
+import IRightPaneState from "content/common/rightPane/duck/interfaces/IRightPaneState";
+import IContentState from "content/dashboard/duck/interfaces/IContentState";
 
 export default interface IDashboardState {
     contentState: IContentState;

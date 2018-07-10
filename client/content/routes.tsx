@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Redirect, Route, RouteComponentProps, Switch, withRouter } from "react-router";
 
-import DashboardContainer from "./dashboard/dashboardContainer";
-import PageNotFound from "../common/pageNotFound/pageNotFound";
-import SitesContainer from "./sites/sitesContainer";
+import PageNotFound from "common/pageNotFound/pageNotFound";
+import DashboardContainer from "content/dashboard/dashboardContainer";
+import SitesContainer from "content/sites/sitesContainer";
 
 // This route list contains all routes to the standalone parts of the application.
 // There is an explicit entry for the 404 page and a redirect to catch all other paths.

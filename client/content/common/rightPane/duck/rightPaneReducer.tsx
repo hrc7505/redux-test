@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Reducer } from "redux";
 
-import ICloseRightPaneAction from "../duck/actions/interfaces/ICloseRightPaneAction";
-import IRightPaneState from "./interfaces/IRightPaneState";
-import IToggleSwitchRightPaneAction from "../duck/actions/interfaces/IToggleSwitchRightPaneAction";
+import ICloseRightPaneAction from "content/common/rightPane/duck/actions/interfaces/ICloseRightPaneAction";
+import IToggleSwitchRightPaneAction from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPaneAction";
+import IRightPaneState from "content/common/rightPane/duck/interfaces/IRightPaneState";
 
 type Action = ICloseRightPaneAction | IToggleSwitchRightPaneAction;
 type CreateRightPaneReducer = (name: string) => Reducer<IRightPaneState, Action>;

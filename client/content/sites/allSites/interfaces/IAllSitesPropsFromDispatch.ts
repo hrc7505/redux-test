@@ -1,4 +1,4 @@
-import IHeaderPayload from "../../common/header/duck/operations/interfaces/IHeaderPayload";
+import IHeaderPayload from "content/sites/common/header/duck/operations/interfaces/IHeaderPayload";
 
 export default interface IAllSitesPropsFromDispatch {
     getData: (useShim: boolean) => void;

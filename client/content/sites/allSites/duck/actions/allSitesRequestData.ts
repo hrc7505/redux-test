@@ -1,5 +1,5 @@
-import ALL_SITES_REQUEST_DATA from "../actionTypes/ALL_SITES_REQUEST_DATA";
-import IAllSitesRequestDataAction from "./interfaces/IAllSitesRequestDataAction";
+import IAllSitesRequestDataAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesRequestDataAction";
+import ALL_SITES_REQUEST_DATA from "content/sites/allSites/duck/actionTypes/ALL_SITES_REQUEST_DATA";
 
 export default function allSitesRequestData(): IAllSitesRequestDataAction {
     return {

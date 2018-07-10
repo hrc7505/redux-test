@@ -1,8 +1,8 @@
 import { RouteComponentProps } from "react-router";
 
-import IJobTileData from "../../common/jobSummaryList/interfaces/IJobTileData";
-import IRightPaneProps from "../../common/rightPane/interfaces/IRightPaneProps";
-import ISiteDetailsListItemData from "../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import IJobTileData from "content/common/jobSummaryList/interfaces/IJobTileData";
+import IRightPaneProps from "content/common/rightPane/interfaces/IRightPaneProps";
 
 export default interface IDashboardPropsFromState extends RouteComponentProps<string> {
     rightPaneProps: IRightPaneProps;

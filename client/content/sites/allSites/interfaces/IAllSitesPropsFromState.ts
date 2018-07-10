@@ -1,4 +1,4 @@
-import ISiteDetailsListItemData from "../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 
 export default interface IAllSitesPropsFromState {
     detailsListItems: ISiteDetailsListItemData[];

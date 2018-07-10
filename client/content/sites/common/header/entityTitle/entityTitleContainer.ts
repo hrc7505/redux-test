@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 
-import EntityTitleComponent from "./entityTitleComponent";
-import IAppState from "../../../../../duck/interfaces/IAppState";
-import IEntityTitleProps from "./interfaces/IEntityTitleProps";
+import EntityTitleComponent from "content/sites/common/header/entityTitle/entityTitleComponent";
+import IEntityTitleProps from "content/sites/common/header/entityTitle/interfaces/IEntityTitleProps";
+import IAppState from "duck/interfaces/IAppState";
 
 function mapStateToProps(state: IAppState): IEntityTitleProps {
     return {

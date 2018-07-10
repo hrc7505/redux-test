@@ -1,5 +1,5 @@
-import IJobTileData from "../../../common/jobSummaryList/interfaces/IJobTileData";
-import ISiteDetailsListItemData from "../../../common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import IJobTileData from "content/common/jobSummaryList/interfaces/IJobTileData";
 
 export default interface IContentState {
     /**

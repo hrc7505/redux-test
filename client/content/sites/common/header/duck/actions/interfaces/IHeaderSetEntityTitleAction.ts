@@ -1,5 +1,5 @@
-import HEADER_SET_ENTITY_TITLE from "../../actionTypes/HEADER_SET_ENTITY_TITLE";
-import IHeaderSetEntityTitlePayload from "./IHeaderSetEntityTitlePayload";
+import IHeaderSetEntityTitlePayload from "content/sites/common/header/duck/actions/interfaces/IHeaderSetEntityTitlePayload";
+import HEADER_SET_ENTITY_TITLE from "content/sites/common/header/duck/actionTypes/HEADER_SET_ENTITY_TITLE";
 
 export default interface IHeaderSetEntityTitleAction {
     type: HEADER_SET_ENTITY_TITLE;

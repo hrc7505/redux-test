@@ -8,11 +8,11 @@ import logger from "redux-logger";
 import promiseMiddleware from "redux-promise-middleware";
 import thunkMiddleware from "redux-thunk";
 
-import DashboardContainer from "./content/dashboard/dashboardContainer";
-import dashboardReducer from "./content/dashboard/duck/dashboardReducer";
-import IAppState from "./duck/interfaces/IAppState";
+import DashboardContainer from "content/dashboard/dashboardContainer";
+import dashboardReducer from "content/dashboard/duck/dashboardReducer";
+import IAppState from "duck/interfaces/IAppState";
 
-import "./common/commonStyle/commonStyle.scss";
+import "common/commonStyle/commonStyle.scss";
 
 const dashboardOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: null,

@@ -1,6 +1,6 @@
-import ISitesToggleRightPaneAction from "./interfaces/ISitesToggleRightPaneAction";
-import IToggleSwitchRightPanePayload from "../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
-import SITES_TOGGLE_SWITCH_RIGHT_PANE from "../actionTypes/SITES_TOGGLE_SWITCH_RIGHT_PANE";
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import ISitesToggleRightPaneAction from "content/sites/duck/actions/interfaces/ISitesToggleRightPaneAction";
+import SITES_TOGGLE_SWITCH_RIGHT_PANE from "content/sites/duck/actionTypes/SITES_TOGGLE_SWITCH_RIGHT_PANE";
 
 export default function sitesToggleRightPane(payload: IToggleSwitchRightPanePayload): ISitesToggleRightPaneAction {
     return {

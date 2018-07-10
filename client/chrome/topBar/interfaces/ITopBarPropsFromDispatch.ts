@@ -1,5 +1,5 @@
-import IOpenRightPanelAction from "../../duck/actions/interfaces/IOpenRightPanelAction";
-import IOpenRightPanelPayload from "../../duck/actions/interfaces/IOpenRightPanelPayload";
+import IOpenRightPanelAction from "chrome/duck/actions/interfaces/IOpenRightPanelAction";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 
 export default interface ITopBarPropsFromDispatch {
     toggleLeftPane: () => void;

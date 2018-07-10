@@ -4,12 +4,12 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { combineReducers, createStore, Reducer, Store } from "redux";
 
-import Chrome from "./chrome/chrome";
-import chromeReducer from "./chrome/duck/chromeReducer";
-import IAppState from "./duck/interfaces/IAppState";
-import IChromeState from "./chrome/duck/interfaces/IChromeState";
+import Chrome from "chrome/chrome";
+import chromeReducer from "chrome/duck/chromeReducer";
+import IChromeState from "chrome/duck/interfaces/IChromeState";
+import IAppState from "duck/interfaces/IAppState";
 
-import "./common/commonStyle/commonStyle.scss";
+import "common/commonStyle/commonStyle.scss";
 
 const chromeOnlyReducer: Reducer<IAppState> = combineReducers<IAppState>({
     chromeState: chromeReducer,

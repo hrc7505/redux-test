@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import IContentComponentProps from "./interfaces/IContentComponentProps";
-import Routes from "./routes";
+import IContentComponentProps from "content/interfaces/IContentComponentProps";
+import Routes from "content/routes";
 
-import "./contentStyle.scss";
+import "content/contentStyle.scss";
 
 const contentComponent: React.SFC<IContentComponentProps> = (props: IContentComponentProps): JSX.Element => (
     <div className={`contentComponent ${!props.isLeftMenuVisible ? "cPanel" : "pullLeft"}`}>
