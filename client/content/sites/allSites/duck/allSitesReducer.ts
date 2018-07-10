@@ -1,7 +1,7 @@
-import ALL_SITES_LOAD_DATA from "content/sites/allSites/duck/actionTypes/ALL_SITES_LOAD_DATA";
-import ALL_SITES_REQUEST_DATA from "content/sites/allSites/duck/actionTypes/ALL_SITES_REQUEST_DATA";
 import IAllSitesLoadDataAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesLoadDataAction";
 import IAllSitesRequestDataAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesRequestDataAction";
+import ALL_SITES_LOAD_DATA from "content/sites/allSites/duck/actionTypes/ALL_SITES_LOAD_DATA";
+import ALL_SITES_REQUEST_DATA from "content/sites/allSites/duck/actionTypes/ALL_SITES_REQUEST_DATA";
 import IAllSitesState from "content/sites/allSites/duck/interfaces/IAllSitesState";
 
 type Action = IAllSitesRequestDataAction | IAllSitesLoadDataAction;

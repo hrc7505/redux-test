@@ -3,17 +3,17 @@ import { withRouter } from "react-router";
 import { ThunkDispatch } from "redux-thunk";
 import { createSelector, OutputSelector } from "reselect";
 
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 import AllSitesComponent from "content/sites/allSites/allSitesComponent";
+import IAllSitesRequestDataAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesRequestDataAction";
 import allSitesGetData from "content/sites/allSites/duck/operations/allSitesGetData";
-import headerSetHeader from "content/sites/common/header/duck/operations/headerSetHeader";
 import IAllSitesProps from "content/sites/allSites/interfaces/IAllSitesProps";
 import IAllSitesPropsFromDispatch from "content/sites/allSites/interfaces/IAllSitesPropsFromDispatch";
 import IAllSitesPropsFromState from "content/sites/allSites/interfaces/IAllSitesPropsFromState";
-import IAllSitesRequestDataAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesRequestDataAction";
-import IAppState from "duck/interfaces/IAppState";
+import headerSetHeader from "content/sites/common/header/duck/operations/headerSetHeader";
 import IHeaderPayload from "content/sites/common/header/duck/operations/interfaces/IHeaderPayload";
 import ISiteData from "content/sites/data/duck/interfaces/ISiteData";
-import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import IAppState from "duck/interfaces/IAppState";
 
 type GetSiteIdsFromAllSitesState = (state: IAppState) => string[];
 type GetSiteDataFromSitesDataState = (state: IAppState) => ISiteData;

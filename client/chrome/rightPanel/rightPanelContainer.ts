@@ -2,12 +2,12 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import closeRightPanel from "chrome/duck/actions/CloseRightPanel";
-import IAppState from "duck/interfaces/IAppState";
 import ICloseRightPanelAction from "chrome/duck/actions/interfaces/ICloseRightPanelAction";
 import IRightPanelProps from "chrome/rightPanel/interfaces/IRightPanelProps";
 import IRightPanelPropsFromDispatch from "chrome/rightPanel/interfaces/IRightPanelPropsFromDispatch";
 import IRightPanelPropsFromState from "chrome/rightPanel/interfaces/IRightPanelPropsFromState";
 import RightPanelComponent from "chrome/rightPanel/RightPanelComponent";
+import IAppState from "duck/interfaces/IAppState";
 
 function mapStateToProps(state: IAppState): IRightPanelPropsFromState {
     return {

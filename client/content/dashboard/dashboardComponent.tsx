@@ -2,13 +2,13 @@ import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/D
 import * as React from "react";
 
 import GeneralError from "common/generalError/generalError";
-import IDashboardProps from "content/dashboard/interfaces/IDashboardProps";
-import IRightPaneProps from "content/common/rightPane/interfaces/IRightPaneProps";
-import JobSummaryListComponent from "content/common/jobSummaryList/jobSummaryListComponent";
 import LoadingSpinner from "common/loadingSpinner/loadingSpinner";
-import QueryStringUtils from "utils/queryStringUtils";
-import RightPaneComponent from "content/common/rightPane/rightPaneComponent";
 import siteDetailsListColumns from "content/common/detailsList/siteDetailsList/SiteDetailsListColumns";
+import JobSummaryListComponent from "content/common/jobSummaryList/jobSummaryListComponent";
+import IRightPaneProps from "content/common/rightPane/interfaces/IRightPaneProps";
+import RightPaneComponent from "content/common/rightPane/rightPaneComponent";
+import IDashboardProps from "content/dashboard/interfaces/IDashboardProps";
+import QueryStringUtils from "utils/queryStringUtils";
 
 import "content/dashboard/dashboardStyle.scss";
 

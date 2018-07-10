@@ -2,13 +2,13 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import * as React from "react";
 
-import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
-import CommandBarButtons from "content/sites/common/header/commandBarButtons/commandBarButtons";
-import ICommandBarHostProps from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostProps";
-import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
 import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
 import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import CommandBarButtons from "content/sites/common/header/commandBarButtons/commandBarButtons";
+import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
+import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
+import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import ICommandBarHostProps from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostProps";
 
 import "content/sites/common/header/commandBarHost/commandBarHostStyle.scss";
 

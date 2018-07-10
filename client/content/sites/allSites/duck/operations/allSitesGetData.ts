@@ -2,16 +2,16 @@ import { Dispatch } from "redux";
 
 import allSitesLoadData from "content/sites/allSites/duck/actions/allSitesLoadData";
 import allSitesRequestData from "content/sites/allSites/duck/actions/allSitesRequestData";
-import AllSitesShim from "content/sites/allSites/shim/allSitesShim";
 import ILoadAllSitesAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesLoadDataAction";
 import IAllSitesRequestDataAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesRequestDataAction";
-import ISiteModel from "models/sites/ISiteModel";
-import ISitesCloseRightPaneAction from "content/sites/duck/actions/interfaces/ISitesCloseRightPaneAction";
+import AllSitesShim from "content/sites/allSites/shim/allSitesShim";
 import ISitesDataCreateUpdateSitesAction from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateSitesAction";
 import ISitesDataCreateUpdateSitesPayload from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateSitesPayload";
-import RequestUtils from "utils/requestUtils";
-import sitesCloseRightPane from "content/sites/duck/actions/sitesCloseRightPane";
 import sitesDataCreateUpdateSites from "content/sites/data/duck/actions/sitesDataCreateUpdateSites";
+import ISitesCloseRightPaneAction from "content/sites/duck/actions/interfaces/ISitesCloseRightPaneAction";
+import sitesCloseRightPane from "content/sites/duck/actions/sitesCloseRightPane";
+import ISiteModel from "models/sites/ISiteModel";
+import RequestUtils from "utils/requestUtils";
 import UrlUtils from "utils/urlUtils";
 
 type Actions =

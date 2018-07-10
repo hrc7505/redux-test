@@ -3,21 +3,21 @@ import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 import { createSelector, OutputSelector } from "reselect";
 
+import IJobTileData from "content/common/jobSummaryList/interfaces/IJobTileData";
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import headerSetHeader from "content/sites/common/header/duck/operations/headerSetHeader";
-import IAppState from "duck/interfaces/IAppState";
 import IHeaderPayload from "content/sites/common/header/duck/operations/interfaces/IHeaderPayload";
 import IJobData from "content/sites/data/duck/interfaces/IJobData";
-import IJobTileData from "content/common/jobSummaryList/interfaces/IJobTileData";
 import ISiteData from "content/sites/data/duck/interfaces/ISiteData";
+import ISitesToggleRightPaneAction from "content/sites/duck/actions/interfaces/ISitesToggleRightPaneAction";
+import sitesToggleRightPane from "content/sites/duck/actions/sitesToggleRightPane";
+import siteDetailsGetData from "content/sites/siteDetails/duck/operations/siteDetailsGetData";
 import ISiteDetailsProps from "content/sites/siteDetails/interfaces/ISiteDetailsProps";
 import ISiteDetailsPropsFromDispatch from "content/sites/siteDetails/interfaces/ISiteDetailsPropsFromDispatch";
 import ISiteDetailsPropsFromState from "content/sites/siteDetails/interfaces/ISiteDetailsPropsFromState";
-import ISitesToggleRightPaneAction from "content/sites/duck/actions/interfaces/ISitesToggleRightPaneAction";
-import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
-import SiteDetailsComponent from "content/sites/siteDetails/siteDetailsComponent";
-import siteDetailsGetData from "content/sites/siteDetails/duck/operations/siteDetailsGetData";
 import SiteDetailsShim from "content/sites/siteDetails/shim/siteDetailsShim";
-import sitesToggleRightPane from "content/sites/duck/actions/sitesToggleRightPane";
+import SiteDetailsComponent from "content/sites/siteDetails/siteDetailsComponent";
+import IAppState from "duck/interfaces/IAppState";
 
 type GetJobIdsFromSiteDetailsState = (state: IAppState) => string[];
 type GetJobDataFromSitesDataState = (state: IAppState) => IJobData;

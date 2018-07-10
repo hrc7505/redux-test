@@ -1,7 +1,8 @@
 import { Dispatch } from "redux";
 
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
+import IJobTileData from "content/common/jobSummaryList/interfaces/IJobTileData";
 import dashboardCloseRightPane from "content/dashboard/duck/actions/dashboardCloseRightPane";
-import dashboardDataShim from "content/dashboard/shim/dashboardDataShim";
 import dashboardLoadData from "content/dashboard/duck/actions/dashboardLoadData";
 import dashboardRequestData from "content/dashboard/duck/actions/dashboardRequestData";
 import IDashboardCloseRightPaneAction from "content/dashboard/duck/actions/interfaces/IDashboardCloseRightPaneAction";
@@ -9,10 +10,9 @@ import IDashboardLoadDataAction from "content/dashboard/duck/actions/interfaces/
 import IDashboardLoadDataPayload from "content/dashboard/duck/actions/interfaces/IDashboardLoadDataPayload";
 import IDashboardRequestDataAction from "content/dashboard/duck/actions/interfaces/IDashboardRequestDataAction";
 import IDashboardResponseResult from "content/dashboard/duck/operations/interfaces/IDashboardResponseResult";
+import dashboardDataShim from "content/dashboard/shim/dashboardDataShim";
 import IJobModel from "models/jobs/IJobModel";
-import IJobTileData from "content/common/jobSummaryList/interfaces/IJobTileData";
 import IResponse from "models/response/IResponse";
-import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 import ISiteModel from "models/sites/ISiteModel";
 
 type Actions =

@@ -6,8 +6,8 @@ import { combineReducers, createStore, Reducer, Store } from "redux";
 
 import Chrome from "chrome/chrome";
 import chromeReducer from "chrome/duck/chromeReducer";
-import IAppState from "duck/interfaces/IAppState";
 import IChromeState from "chrome/duck/interfaces/IChromeState";
+import IAppState from "duck/interfaces/IAppState";
 
 import "common/commonStyle/commonStyle.scss";
 

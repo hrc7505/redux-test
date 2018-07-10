@@ -2,15 +2,15 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { ThunkDispatch } from "redux-thunk";
 
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import DashboardComponent from "content/dashboard/dashboardComponent";
-import dashboardGetData from "content/dashboard/duck/operations/dashboardGetData";
 import dashboardToggleRightPane from "content/dashboard/duck/actions/dashboardToggleSwitchRightPane";
-import IAppState from "duck/interfaces/IAppState";
+import IDashboardToggleSwitchRightPaneAction from "content/dashboard/duck/actions/interfaces/IDashboardToggleSwitchRightPaneAction";
+import dashboardGetData from "content/dashboard/duck/operations/dashboardGetData";
 import IDashboardProps from "content/dashboard/interfaces/IDashboardProps";
 import IDashboardPropsFromDispatch from "content/dashboard/interfaces/IDashboardPropsFromDispatch";
 import IDashboardPropsFromState from "content/dashboard/interfaces/IDashboardPropsFromState";
-import IDashboardToggleSwitchRightPaneAction from "content/dashboard/duck/actions/interfaces/IDashboardToggleSwitchRightPaneAction";
-import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import IAppState from "duck/interfaces/IAppState";
 
 function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): IDashboardPropsFromState {
     return {

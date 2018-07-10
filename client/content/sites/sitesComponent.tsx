@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
+import RightPaneComponent from "content/common/rightPane/rightPaneComponent";
 import AllSitesContainer from "content/sites/allSites/allSitesContainer";
 import HeaderComponent from "content/sites/common/header/headerComponent";
 import ISitesProps from "content/sites/interfaces/ISitesProps";
-import RightPaneComponent from "content/common/rightPane/rightPaneComponent";
 import SiteDetailsContainer from "content/sites/siteDetails/siteDetailsContainer";
 
 import "content/sites/sitesStyle.scss";
