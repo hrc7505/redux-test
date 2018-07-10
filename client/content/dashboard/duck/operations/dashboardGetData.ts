@@ -22,7 +22,7 @@ type Actions =
 
 type FetchData = () => Promise<IDashboardResponseResult>;
 
-const DashboardAPI: string = "https://centerpoint-v2-beta.azurewebsites.net/api/Dashboard";
+const DashboardAPI: string = "https://centerpoint-v2-beta-1.azurewebsites.net/api/Dashboard";
 
 const serverRequestOK: number = 200;
 

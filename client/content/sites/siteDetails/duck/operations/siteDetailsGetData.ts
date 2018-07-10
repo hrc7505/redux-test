@@ -26,7 +26,7 @@ type Actions = ISitesDataCreateUpdateSitesAction |
 type SiteDetailsGetData = (useShim: boolean, siteId: string) => ((dispatch: Dispatch<Actions>) => void);
 
 const GetSiteUrl: string = UrlUtils.hostApi + "Site?id=";
-const GetActiveUrlForSite: string = UrlUtils.hostApi + "Job/GetAllAsync?status=Active&siteid=";
+const GetActiveUrlForSite: string = UrlUtils.hostApi + "Job/list?status=Active&siteid=";
 
 const siteDetailsGetData: SiteDetailsGetData =
     (useShim: boolean, siteId: string): ((dispatch: Dispatch<Actions>) => void) => (

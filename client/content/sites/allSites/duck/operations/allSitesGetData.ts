@@ -20,7 +20,7 @@ type Actions =
     ISitesCloseRightPaneAction |
     ISitesDataCreateUpdateSitesAction;
 
-const GetActiveSitesUrl: string = UrlUtils.hostApi + "Site/GetAllAsync?status=Active";
+const GetActiveSitesUrl: string = UrlUtils.hostApi + "Site/list?status=Active";
 
 export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<Actions>) => void {
     return async (dispatch: Dispatch<Actions>): Promise<void> => {
