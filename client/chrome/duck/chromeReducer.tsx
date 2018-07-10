@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import CLOSE_RIGHT_PANEL from "./actionTypes/CLOSE_RIGHT_PANEL";
-import IChromeState from "./interfaces/IChromeState";
-import ICloseRightPanelAction from "./actions/interfaces/ICloseRightPanelAction";
-import IOpenRightPanelAction from "./actions/interfaces/IOpenRightPanelAction";
-import IToggleLeftPaneAction from "./actions/interfaces/IToggleLeftPaneAction";
-import OPEN_RIGHT_PANEL from "./actionTypes/OPEN_RIGHT_PANEL";
-import TOGGLE_LEFT_PANE from "./actionTypes/TOGGLE_LEFT_PANE";
+import CLOSE_RIGHT_PANEL from "chrome/duck/actionTypes/CLOSE_RIGHT_PANEL";
+import IChromeState from "chrome/duck/interfaces/IChromeState";
+import ICloseRightPanelAction from "chrome/duck/actions/interfaces/ICloseRightPanelAction";
+import IOpenRightPanelAction from "chrome/duck/actions/interfaces/IOpenRightPanelAction";
+import IToggleLeftPaneAction from "chrome/duck/actions/interfaces/IToggleLeftPaneAction";
+import OPEN_RIGHT_PANEL from "chrome/duck/actionTypes/OPEN_RIGHT_PANEL";
+import TOGGLE_LEFT_PANE from "chrome/duck/actionTypes/TOGGLE_LEFT_PANE";
 
 type Action = IToggleLeftPaneAction | IOpenRightPanelAction | ICloseRightPanelAction;
 

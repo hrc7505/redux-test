@@ -1,6 +1,6 @@
-import IDashboardResponseResult from "../duck/operations/interfaces/IDashboardResponseResult";
-import IJobModel from "../../../models/jobs/IJobModel";
-import ISiteModel from "../../../models/sites/ISiteModel";
+import IDashboardResponseResult from "content/dashboard/duck/operations/interfaces/IDashboardResponseResult";
+import IJobModel from "models/jobs/IJobModel";
+import ISiteModel from "models/sites/ISiteModel";
 
 export default class DashboardDataShim {
     private static jobs: IJobModel[] = [

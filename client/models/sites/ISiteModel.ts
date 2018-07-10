@@ -1,4 +1,4 @@
-import IBaseModel from "../base/IBaseModel";
+import IBaseModel from "models/base/IBaseModel";
 
 /**
  * Site information from the server.

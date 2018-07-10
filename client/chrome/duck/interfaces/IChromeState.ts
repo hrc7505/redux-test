@@ -1,4 +1,4 @@
-import IOpenRightPanelPayload from "../../duck/actions/interfaces/IOpenRightPanelPayload";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
 
 export default interface IChromeState {
     isLeftPaneVisible: boolean;

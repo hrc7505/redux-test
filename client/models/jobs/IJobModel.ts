@@ -1,4 +1,4 @@
-import IBaseModel from "../base/IBaseModel";
+import IBaseModel from "models/base/IBaseModel";
 
 export default interface IJobModel extends IBaseModel {
     // Basic information for a job.

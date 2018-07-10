@@ -1,4 +1,4 @@
-import ISiteModel from "../../../../models/sites/ISiteModel";
+import ISiteModel from "models/sites/ISiteModel";
 
 export default class AllSitesShim {
     private static sites: ISiteModel[] = [

@@ -1,4 +1,4 @@
-import IInfoTileDetails from "../interfaces/IInfoTileDetails";
+import IInfoTileDetails from "content/sites/common/infoTile/interfaces/IInfoTileDetails";
 
 export default interface IInfoTileProps {
     infoTileTitle: string;

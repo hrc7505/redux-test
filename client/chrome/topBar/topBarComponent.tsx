@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import ITopBarProps from "./interfaces/ITopBarProps";
+import ITopBarProps from "chrome/topBar/interfaces/ITopBarProps";
 
-import "./topBarStyle.scss";
+import "chrome/topBar/topBarStyle.scss";
 
 export default class TopBarComponent extends React.PureComponent<ITopBarProps> {
     public render(): JSX.Element {

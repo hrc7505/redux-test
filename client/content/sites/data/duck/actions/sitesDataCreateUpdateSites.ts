@@ -1,6 +1,6 @@
-import ISitesDataCreateUpdateSitesAction from "./interfaces/ISitesDataCreateUpdateSitesAction";
-import ISitesDataCreateUpdateSitesPayload from "./interfaces/ISitesDataCreateUpdateSitesPayload";
-import SITES_DATA_CREATE_UPDATE_SITES from "../actionTypes/SITES_DATA_CREATE_UPDATE_SITES";
+import ISitesDataCreateUpdateSitesAction from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateSitesAction";
+import ISitesDataCreateUpdateSitesPayload from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateSitesPayload";
+import SITES_DATA_CREATE_UPDATE_SITES from "content/sites/data/duck/actionTypes/SITES_DATA_CREATE_UPDATE_SITES";
 
 export default function sitesDataCreateUpdateSites(
     payload: ISitesDataCreateUpdateSitesPayload

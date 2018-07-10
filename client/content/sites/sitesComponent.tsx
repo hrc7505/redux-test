@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import AllSitesContainer from "./allSites/allSitesContainer";
-import HeaderComponent from "./common/header/headerComponent";
-import ISitesProps from "./interfaces/ISitesProps";
-import RightPaneComponent from "../common/rightPane/rightPaneComponent";
-import SiteDetailsContainer from "./siteDetails/siteDetailsContainer";
+import AllSitesContainer from "content/sites/allSites/allSitesContainer";
+import HeaderComponent from "content/sites/common/header/headerComponent";
+import ISitesProps from "content/sites/interfaces/ISitesProps";
+import RightPaneComponent from "content/common/rightPane/rightPaneComponent";
+import SiteDetailsContainer from "content/sites/siteDetails/siteDetailsContainer";
 
-import "./sitesStyle.scss";
+import "content/sites/sitesStyle.scss";
 
 const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element => (
     <div className="cPanel sitesComponent">

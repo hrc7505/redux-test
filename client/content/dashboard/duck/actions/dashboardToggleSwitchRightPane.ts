@@ -1,6 +1,6 @@
-import DASHBOARD_TOGGLE_SWITCH_RIGHT_PANE from "../actionTypes/DASHBOARD_TOGGLE_SWITCH_RIGHT_PANE";
-import IDashboardToggleSwitchRightPaneAction from "./interfaces/IDashboardToggleSwitchRightPaneAction";
-import IToggleSwitchRightPanePayload from "../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import DASHBOARD_TOGGLE_SWITCH_RIGHT_PANE from "content/dashboard/duck/actionTypes/DASHBOARD_TOGGLE_SWITCH_RIGHT_PANE";
+import IDashboardToggleSwitchRightPaneAction from "content/dashboard/duck/actions/interfaces/IDashboardToggleSwitchRightPaneAction";
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
 export default function dashboardToggleRightPane(
     payload: IToggleSwitchRightPanePayload

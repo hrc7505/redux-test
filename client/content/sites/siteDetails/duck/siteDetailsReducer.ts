@@ -1,8 +1,8 @@
-import ISiteDetailsLoadDataAction from "./actions/interfaces/ISiteDetailsLoadDataAction";
-import ISiteDetailsRequestDataAction from "./actions/interfaces/ISiteDetailsRequestDataAction";
-import ISiteDetailsState from "../duck/interfaces/ISiteDetailsState";
-import SITE_DETAILS_LOAD_DATA from "./actionTypes/SITE_DETAILS_LOAD_DATA";
-import SITE_DETAILS_REQUEST_DATA from "./actionTypes/SITE_DETAILS_REQUEST_DATA";
+import ISiteDetailsLoadDataAction from "content/sites/siteDetails/duck/actions/interfaces/ISiteDetailsLoadDataAction";
+import ISiteDetailsRequestDataAction from "content/sites/siteDetails/duck/actions/interfaces/ISiteDetailsRequestDataAction";
+import ISiteDetailsState from "content/sites/siteDetails/duck/interfaces/ISiteDetailsState";
+import SITE_DETAILS_LOAD_DATA from "content/sites/siteDetails/duck/actionTypes/SITE_DETAILS_LOAD_DATA";
+import SITE_DETAILS_REQUEST_DATA from "content/sites/siteDetails/duck/actionTypes/SITE_DETAILS_REQUEST_DATA";
 
 type Action = ISiteDetailsLoadDataAction | ISiteDetailsRequestDataAction;
 

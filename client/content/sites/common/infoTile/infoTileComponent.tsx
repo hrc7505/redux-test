@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import IInfoTileDetails from "./interfaces/IInfoTileDetails";
-import IInfoTileProps from "./interfaces/IInfoTileProps";
+import IInfoTileDetails from "content/sites/common/infoTile/interfaces/IInfoTileDetails";
+import IInfoTileProps from "content/sites/common/infoTile/interfaces/IInfoTileProps";
 
-import "./infoTileStyle.scss";
+import "content/sites/common/infoTile/infoTileStyle.scss";
 
 export default class InfoTileComponent extends React.PureComponent<IInfoTileProps> {
     public render(): JSX.Element {

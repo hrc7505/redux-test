@@ -1,5 +1,5 @@
-import IInfoTileDetails from "../interfaces/IInfoTileDetails";
-import IInfoTileProps from "../interfaces/IInfoTileProps";
+import IInfoTileDetails from "content/sites/common/infoTile/interfaces/IInfoTileDetails";
+import IInfoTileProps from "content/sites/common/infoTile/interfaces/IInfoTileProps";
 
 export default class IFilesInfoTileProps implements IInfoTileProps {
     public infoTileTitle: string;

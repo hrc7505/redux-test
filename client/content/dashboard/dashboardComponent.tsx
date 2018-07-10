@@ -1,16 +1,16 @@
 import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/DetailsList";
 import * as React from "react";
 
-import GeneralError from "../../common/generalError/generalError";
-import IDashboardProps from "./interfaces/IDashboardProps";
-import IRightPaneProps from "../common/rightPane/interfaces/IRightPaneProps";
-import JobSummaryListComponent from "../common/jobSummaryList/jobSummaryListComponent";
-import LoadingSpinner from "../../common/loadingSpinner/loadingSpinner";
-import QueryStringUtils from "../../utils/queryStringUtils";
-import RightPaneComponent from "../common/rightPane/rightPaneComponent";
-import siteDetailsListColumns from "../common/detailsList/siteDetailsList/SiteDetailsListColumns";
+import GeneralError from "common/generalError/generalError";
+import IDashboardProps from "content/dashboard/interfaces/IDashboardProps";
+import IRightPaneProps from "content/common/rightPane/interfaces/IRightPaneProps";
+import JobSummaryListComponent from "content/common/jobSummaryList/jobSummaryListComponent";
+import LoadingSpinner from "common/loadingSpinner/loadingSpinner";
+import QueryStringUtils from "utils/queryStringUtils";
+import RightPaneComponent from "content/common/rightPane/rightPaneComponent";
+import siteDetailsListColumns from "content/common/detailsList/siteDetailsList/SiteDetailsListColumns";
 
-import "./dashboardStyle.scss";
+import "content/dashboard/dashboardStyle.scss";
 
 export default class DashboardComponent extends React.PureComponent<IDashboardProps> {
     public render(): JSX.Element {

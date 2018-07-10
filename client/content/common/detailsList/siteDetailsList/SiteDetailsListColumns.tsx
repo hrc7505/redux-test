@@ -2,7 +2,7 @@ import { IColumn } from "office-ui-fabric-react/lib/DetailsList";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import ISiteDetailsListItemData from "./ISiteDetailsListItemData";
+import ISiteDetailsListItemData from "content/common/detailsList/siteDetailsList/ISiteDetailsListItemData";
 
 const siteDetailsListColumns: IColumn[] = [
     {

@@ -1,6 +1,6 @@
-import ALL_SITES_LOAD_DATA from "../actionTypes/ALL_SITES_LOAD_DATA";
-import IAllSitesLoadDataAction from "./interfaces/IAllSitesLoadDataAction";
-import IAllSitesLoadDataPayload from "./interfaces/IAllSitesLoadDataPayload";
+import ALL_SITES_LOAD_DATA from "content/sites/allSites/duck/actionTypes/ALL_SITES_LOAD_DATA";
+import IAllSitesLoadDataAction from "content/sites/allSites/duck/actions/interfaces/IAllSitesLoadDataAction";
+import IAllSitesLoadDataPayload from "content/sites/allSites/duck/actions/interfaces/IAllSitesLoadDataPayload";
 
 export default function allSitesLoadData(payload: IAllSitesLoadDataPayload): IAllSitesLoadDataAction {
     return {

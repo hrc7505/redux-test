@@ -2,15 +2,15 @@ import { CommandBar } from "office-ui-fabric-react/lib/CommandBar";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import * as React from "react";
 
-import ButtonType from "../commandBarButtons/enums/buttonType";
-import CommandBarButtons from "../commandBarButtons/commandBarButtons";
-import ICommandBarHostProps from "./interfaces/ICommandBarHostProps";
-import ICommandButton from "../commandBarButtons/ICommandButton";
-import IOpenRightPanelPayload from "../../../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ItemLocation from "../commandBarButtons/enums/itemLocation";
-import IToggleSwitchRightPanePayload from "../../../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
+import CommandBarButtons from "content/sites/common/header/commandBarButtons/commandBarButtons";
+import ICommandBarHostProps from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostProps";
+import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 
-import "./commandBarHostStyle.scss";
+import "content/sites/common/header/commandBarHost/commandBarHostStyle.scss";
 
 export default class CommandbarHostComponent extends React.PureComponent<ICommandBarHostProps> {
     constructor(props: ICommandBarHostProps) {

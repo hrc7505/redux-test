@@ -1,5 +1,5 @@
-import DASHBOARD_REQUEST_DATA from "../actionTypes/DASHBOARD_REQUEST_DATA";
-import IDashboardRequestDataAction from "./interfaces/IDashboardRequestDataAction";
+import DASHBOARD_REQUEST_DATA from "content/dashboard/duck/actionTypes/DASHBOARD_REQUEST_DATA";
+import IDashboardRequestDataAction from "content/dashboard/duck/actions/interfaces/IDashboardRequestDataAction";
 
 export default function dashboardRequestData(): IDashboardRequestDataAction {
     return {

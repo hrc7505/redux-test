@@ -1,10 +1,10 @@
 import { merge } from "lodash";
 
-import ISitesDataCreateUpdateJobsAction from "./actions/interfaces/ISitesDataCreateUpdateJobsAction";
-import ISitesDataCreateUpdateSitesAction from "./actions/interfaces/ISitesDataCreateUpdateSitesAction";
-import ISitesDataState from "./interfaces/ISitesDataState";
-import SITES_DATA_CREATE_UPDATE_JOBS from "./actionTypes/SITES_DATA_CREATE_UPDATE_JOBS";
-import SITES_DATA_CREATE_UPDATE_SITES from "./actionTypes/SITES_DATA_CREATE_UPDATE_SITES";
+import ISitesDataCreateUpdateJobsAction from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateJobsAction";
+import ISitesDataCreateUpdateSitesAction from "content/sites/data/duck/actions/interfaces/ISitesDataCreateUpdateSitesAction";
+import ISitesDataState from "content/sites/data/duck/interfaces/ISitesDataState";
+import SITES_DATA_CREATE_UPDATE_JOBS from "content/sites/data/duck/actionTypes/SITES_DATA_CREATE_UPDATE_JOBS";
+import SITES_DATA_CREATE_UPDATE_SITES from "content/sites/data/duck/actionTypes/SITES_DATA_CREATE_UPDATE_SITES";
 
 type Action = ISitesDataCreateUpdateJobsAction | ISitesDataCreateUpdateSitesAction;
 

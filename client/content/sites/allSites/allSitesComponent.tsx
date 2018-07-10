@@ -2,16 +2,16 @@ import { DetailsList, DetailsListLayoutMode } from "office-ui-fabric-react/lib/D
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import ButtonType from "../common/header/commandBarButtons/enums/buttonType";
-import GeneralError from "../../../common/generalError/generalError";
-import IAllSitesProps from "./interfaces/IAllSitesProps";
-import IHeaderPayload from "../common/header/duck/operations/interfaces/IHeaderPayload";
-import IOpenRightPanelPayload from "../../../chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import ItemLocation from "../common/header/commandBarButtons/enums/itemLocation";
-import IToggleSwitchRightPanePayload from "../../common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
-import LoadingSpinner from "../../../common/loadingSpinner/loadingSpinner";
-import QueryStringUtils from "../../../utils/queryStringUtils";
-import siteDetailsListColumns from "../../common/detailsList/siteDetailsList/SiteDetailsListColumns";
+import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
+import GeneralError from "common/generalError/generalError";
+import IAllSitesProps from "content/sites/allSites/interfaces/IAllSitesProps";
+import IHeaderPayload from "content/sites/common/header/duck/operations/interfaces/IHeaderPayload";
+import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
+import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
+import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import LoadingSpinner from "common/loadingSpinner/loadingSpinner";
+import QueryStringUtils from "utils/queryStringUtils";
+import siteDetailsListColumns from "content/common/detailsList/siteDetailsList/SiteDetailsListColumns";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
     private headerPayload: IHeaderPayload = {
