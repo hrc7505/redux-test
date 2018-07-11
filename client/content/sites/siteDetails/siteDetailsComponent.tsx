@@ -74,11 +74,7 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
             <div className="cPanel">
                 <JobSummaryListComponent
                     jobSummaryData={this.props.jobs}
-                    tileOnClick={this.props.jobTileOnClick}
-                    selectedId={
-                        this.props.isRightPaneVisible
-                            ? this.props.rightPaneId
-                            : null}
+                    tileOnClick={this.onClickNavigate}
                 />
                 <div className="bodyContentTitle cPanel">Site Management </div>
                 {
@@ -136,6 +132,10 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
 
         // Getting the data of the site based on the obtained Site ID in the URL.
         this.props.getData(false, siteIdFromPath);
+    }
+
+    private onClickNavigate = (path: string): void => {
+        this.props.history.push(path);
     }
 }
 

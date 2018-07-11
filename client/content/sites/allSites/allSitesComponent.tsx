@@ -10,28 +10,24 @@ import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions
 import IAllSitesProps from "content/sites/allSites/interfaces/IAllSitesProps";
 import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
 import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
-import IHeaderPayload from "content/sites/common/header/duck/operations/interfaces/IHeaderPayload";
+import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
 import QueryStringUtils from "utils/queryStringUtils";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
-    private headerPayload: IHeaderPayload = {
-        locationPath: null,
-        entityTitle: "Sites",
-        commands: [
-            {
-                id: ButtonType.Add,
-                name: "Site",
-                itemLocation: ItemLocation.Left,
-                actionPayload: rightPanelData
-            },
-            {
-                id: ButtonType.Info,
-                name: null,
-                itemLocation: ItemLocation.Far,
-                actionPayload: rightPaneData
-            }
-        ]
-    };
+    private commands: ICommandButton[] = [
+        {
+            id: ButtonType.Add,
+            name: "Site",
+            itemLocation: ItemLocation.Left,
+            actionPayload: rightPanelData
+        },
+        {
+            id: ButtonType.Info,
+            name: null,
+            itemLocation: ItemLocation.Far,
+            actionPayload: rightPaneData
+        }
+    ];
 
     public render(): JSX.Element {
         if (this.props.isLoading) {
@@ -70,14 +66,17 @@ export default class AllSitesComponent extends React.PureComponent<IAllSitesProp
     }
 
     public componentDidMount(): void {
-        this.setHeaderData();
+        this.updateHeader();
         this.props.getData(QueryStringUtils.isOffineMode(this.props.history.location));
     }
 
-    private setHeaderData = (): void => {
-        this.headerPayload.locationPath = this.props.location.pathname;
-        this.props.setHeader(this.headerPayload);
-    }
+    private updateHeader = (): void => (this.props.setHeader({
+        locationPath: this.props.history.location.pathname
+            ? this.props.history.location.pathname
+            : null,
+        entityTitle: "Sites",
+        commands: this.commands,
+    }))
 }
 
 const Test2: React.SFC<object> = (): JSX.Element => (

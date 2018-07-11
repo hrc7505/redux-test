@@ -24,6 +24,8 @@ const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element
                     <Route exact path="/sites" component={AllSitesContainer} />
                     <Route exact path="/sites/:individualSite" component={SiteDetailsContainer} />
                     <Route exact path="/sites/:individualSite/jobs" component={AllSitesContainer} />
+                    <Route exact path="/sites/:individualSite/jobs/:individualJob" component={AllSitesContainer} />
+
                     <Redirect to="/404" />
                 </Switch>
             </div>

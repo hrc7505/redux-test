@@ -34,7 +34,7 @@ const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemDa
             .map((id: string) => ({ // Transforming the site data from the store into Detail List Items.
                 id: siteData[id].id,
                 name: siteData[id].name,
-                location: siteData[id].street,
+                location: `${siteData[id].street}, ${siteData[id].city}`,
                 activeJobs: siteData[id].numberOfActiveJobs.toString(),
                 totalJobs: siteData[id].numberOfTotalJobs.toString(),
             }));

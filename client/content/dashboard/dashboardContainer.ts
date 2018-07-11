@@ -1,11 +1,9 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import { Action } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
-import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import DashboardComponent from "content/dashboard/dashboardComponent";
-import dashboardToggleRightPane from "content/dashboard/duck/actions/dashboardToggleSwitchRightPane";
-import IDashboardToggleSwitchRightPaneAction from "content/dashboard/duck/actions/interfaces/IDashboardToggleSwitchRightPaneAction";
 import dashboardGetData from "content/dashboard/duck/operations/dashboardGetData";
 import IDashboardProps from "content/dashboard/interfaces/IDashboardProps";
 import IDashboardPropsFromDispatch from "content/dashboard/interfaces/IDashboardPropsFromDispatch";
@@ -28,15 +26,12 @@ function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): 
     };
 }
 
-type Actions = IDashboardToggleSwitchRightPaneAction;
-type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Actions>) => IDashboardPropsFromDispatch;
+type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Action>) => IDashboardPropsFromDispatch;
 
 const mapDispatchToProps: MapDispatchToProps = (
-    dispatch: ThunkDispatch<IAppState, void /* Extra Arguments*/, Actions>
+    dispatch: ThunkDispatch<IAppState, void /* Extra Arguments*/, Action>
 ): IDashboardPropsFromDispatch => (
         {
-            jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload): IDashboardToggleSwitchRightPaneAction =>
-                dispatch(dashboardToggleRightPane(actionPayload)),
             getData: (useShim: boolean): void => { dispatch(dashboardGetData(useShim)); },
         }
     );

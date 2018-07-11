@@ -12,30 +12,16 @@ import IDashboardRequestDataAction from "content/dashboard/duck/actions/interfac
 import IDashboardResponseResult from "content/dashboard/duck/operations/interfaces/IDashboardResponseResult";
 import dashboardDataShim from "content/dashboard/shim/dashboardDataShim";
 import IJobModel from "models/jobs/IJobModel";
-import IResponse from "models/response/IResponse";
 import ISiteModel from "models/sites/ISiteModel";
+import RequestUtils from "utils/requestUtils";
+import UrlUtils from "utils/urlUtils";
 
 type Actions =
     IDashboardRequestDataAction |
     IDashboardCloseRightPaneAction |
     IDashboardLoadDataAction;
 
-type FetchData = () => Promise<IDashboardResponseResult>;
-
-const DashboardAPI: string = "https://centerpoint-v2-beta-1.azurewebsites.net/api/Dashboard";
-
-const serverRequestOK: number = 200;
-
-const fetchDashboardData: FetchData = async (): Promise<IDashboardResponseResult> => {
-    const response: Response = await fetch(DashboardAPI);
-    if (response.status === serverRequestOK) {
-        const jsonReponse: IResponse<IDashboardResponseResult> = await response.json();
-
-        return jsonReponse.result;
-    } else {
-        return null;
-    }
-};
+const DashboardDataUrl: string = UrlUtils.hostApi + "Dashboard";
 
 export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<Actions>) => void {
     return async (dispatch: Dispatch<Actions>): Promise<void> => {
@@ -46,7 +32,7 @@ export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<
         try {
             // Getting data for the dashboard.
             const responseResult: IDashboardResponseResult = !useShim
-                ? await fetchDashboardData()
+                ? await RequestUtils.makeGetRequest<IDashboardResponseResult>(DashboardDataUrl)
                 : dashboardDataShim.getData(); // Offline mode. Obtains data from the shim.
 
             if (!responseResult) {
@@ -54,12 +40,28 @@ export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<
                 throw new Error("Response was null.");
             }
 
+            let activeJobs: IJobModel[];
+            if (responseResult.activeJobs && responseResult.activeJobs.length !== 0) {
+                // Taking only the first 3 jobs to be displayed.
+                const maxNumberOfActiveJobsToDisplay: number = 3;
+                activeJobs = responseResult.activeJobs.slice(0, maxNumberOfActiveJobsToDisplay);
+            }
+
+            // !! >>>>> N.B. <<<<< !!
+            // We are not creating or storing the data from the dashboard request. This is intentional
+            // as there is no reason to store this information as it won't be reused anywhere other then
+            // displaying the dashboard. Passing the data directly into the redux state and then
+            // passing it from the state into the props should not be done generally.
+            // Do not follow this pattern.
             const loadDataPayload: IDashboardLoadDataPayload = {
-                activeJobs: (responseResult.activeJobs && responseResult.activeJobs.length !== 0)
-                    ? responseResult.activeJobs.map((job: IJobModel): IJobTileData => ({
+                activeJobs: (!!activeJobs && activeJobs.length !== 0)
+                    ? activeJobs.map((job: IJobModel): IJobTileData => ({
                         id: job.id,
+                        number: job.number,
                         title: job.name,
-                        site: job.siteId,
+                        siteId: job.siteId,
+                        siteName: responseResult.activeSites[responseResult.activeSites.findIndex(
+                            (site: ISiteModel): boolean => (site.id === job.siteId))].name,
                         createDate: job.createdAt,
                         status: job.status,
                     }))
