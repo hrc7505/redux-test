@@ -15,11 +15,12 @@ export default class JobSummaryListComponent extends React.PureComponent<IJobSum
                                 key={data.id}
                                 title={data.title}
                                 id={data.id}
+                                number={data.number}
                                 createDate={data.createDate}
-                                site={data.site}
+                                siteId={data.siteId}
+                                siteName={data.siteName}
                                 status={data.status}
                                 tileOnClick={this.props.tileOnClick}
-                                isSelected={this.props.selectedId === data.id ? true : false}
                             />
                         ))
                         : <div> Insert nice message about how there isn't any jobs that are active / to display. </div>

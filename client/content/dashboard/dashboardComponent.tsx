@@ -37,12 +37,7 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
                         <div className="cPanel sectionTitle">active jobs</div>
                         <JobSummaryListComponent
                             jobSummaryData={this.props.jobs}
-                            tileOnClick={this.props.jobTileOnClick}
-                            selectedId={
-                                rightPaneProps.isRightPaneVisible
-                                    ? this.props.rightPaneId
-                                    : null
-                            }
+                            tileOnClick={this.onClickNavigate}
                         />
                     </div>
                     <div className="cPanel sectionTitle">sites</div>
@@ -71,5 +66,9 @@ export default class DashboardComponent extends React.PureComponent<IDashboardPr
 
     public componentDidMount(): void {
         this.props.getData(QueryStringUtils.isOffineMode(this.props.history.location));
+    }
+
+    private onClickNavigate = (path: string): void => {
+        this.props.history.push(path);
     }
 }

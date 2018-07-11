@@ -39,9 +39,11 @@ const getJobTileData: OutputSelector<IAppState, IJobTileData[], ResultFunction> 
 
         return jobIds.filter((id: string): boolean => !!jobData[id])
             .map((id: string) => ({
-                id: jobData[id].number,
+                id: jobData[id].id,
+                number: jobData[id].number,
                 title: jobData[id].name,
-                site: siteData[jobData[id].siteId].name,
+                siteId: jobData[id].siteId,
+                siteName: siteData[jobData[id].siteId].name,
                 createDate: jobData[id].createdAt,
                 status: jobData[id].status,
             }));

@@ -56,9 +56,11 @@ export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<
             const loadDataPayload: IDashboardLoadDataPayload = {
                 activeJobs: (!!activeJobs && activeJobs.length !== 0)
                     ? activeJobs.map((job: IJobModel): IJobTileData => ({
-                        id: job.number,
+                        id: job.id,
+                        number: job.number,
                         title: job.name,
-                        site: responseResult.activeSites[responseResult.activeSites.findIndex(
+                        siteId: job.siteId,
+                        siteName: responseResult.activeSites[responseResult.activeSites.findIndex(
                             (site: ISiteModel): boolean => (site.id === job.siteId))].name,
                         createDate: job.createdAt,
                         status: job.status,

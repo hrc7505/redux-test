@@ -1,7 +1,9 @@
 export default interface IJobTileData {
     id: string;
+    number: string;
     title: string;
-    site: string;
+    siteId: string;
+    siteName: string;
     createDate: string;
     status: string;
 }
