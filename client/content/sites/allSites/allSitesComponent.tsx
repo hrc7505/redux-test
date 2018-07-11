@@ -13,7 +13,6 @@ import ItemLocation from "content/sites/common/header/commandBarButtons/enums/it
 import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
 import QueryStringUtils from "utils/queryStringUtils";
 
-
 export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
     private commands: ICommandButton[] = [
         {
