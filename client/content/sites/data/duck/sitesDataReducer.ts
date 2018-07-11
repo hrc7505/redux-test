@@ -7,13 +7,14 @@ import SITES_DATA_CREATE_UPDATE_SITES from "content/sites/data/duck/actionTypes/
 import ISitesDataState from "content/sites/data/duck/interfaces/ISitesDataState";
 
 type Action = ISitesDataCreateUpdateJobsAction | ISitesDataCreateUpdateSitesAction;
+type SitesDataReducer = (state: ISitesDataState, action: Action) => ISitesDataState;
 
 const defaultSitesDataState: ISitesDataState = {
-    sites: { },
-    jobs: { },
+    sites: {},
+    jobs: {},
 };
 
-export default function sitesDataReducer(state: ISitesDataState, action: Action): ISitesDataState {
+const sitesDataReducer: SitesDataReducer = (state: ISitesDataState, action: Action): ISitesDataState => {
     switch (action.type) {
         case SITES_DATA_CREATE_UPDATE_JOBS:
             return {
@@ -28,4 +29,6 @@ export default function sitesDataReducer(state: ISitesDataState, action: Action)
         default:
             return state || defaultSitesDataState;
     }
-}
+};
+
+export default sitesDataReducer;

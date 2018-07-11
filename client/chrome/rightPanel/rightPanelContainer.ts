@@ -9,20 +9,21 @@ import IRightPanelPropsFromState from "chrome/rightPanel/interfaces/IRightPanelP
 import RightPanelComponent from "chrome/rightPanel/RightPanelComponent";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState): IRightPanelPropsFromState {
-    return {
-        isRightPanelVisible: state.chromeState.isRightPanelVisible,
-        rightPanelHeaderText: state.chromeState.rightPanelData.rightPanelHeaderText,
-        rightPanelContent: state.chromeState.rightPanelData.rightPanelContent,
-        rightPanelFooterRender: state.chromeState.rightPanelData.rightPanelFooterRender
-    };
-}
+type MapStateToProps = (state: IAppState) => IRightPanelPropsFromState;
 
-function mapDispatchToProps(dispatch: Dispatch<ICloseRightPanelAction>): IRightPanelPropsFromDispatch {
-    return {
+const mapStateToProps: MapStateToProps = (state: IAppState): IRightPanelPropsFromState => ({
+    isRightPanelVisible: state.chromeState.isRightPanelVisible,
+    rightPanelHeaderText: state.chromeState.rightPanelData.rightPanelHeaderText,
+    rightPanelContent: state.chromeState.rightPanelData.rightPanelContent,
+    rightPanelFooterRender: state.chromeState.rightPanelData.rightPanelFooterRender
+});
+
+type MapDispatchToProps = (dispatch: Dispatch<ICloseRightPanelAction>) => IRightPanelPropsFromDispatch;
+
+const mapDispatchToProps: MapDispatchToProps =
+    (dispatch: Dispatch<ICloseRightPanelAction>): IRightPanelPropsFromDispatch => ({
         closeRightPanel: (): ICloseRightPanelAction => dispatch(closeRightPanel())
-    };
-}
+    });
 
 const RightPanelContainer: React.ComponentClass = connect(
     mapStateToProps,

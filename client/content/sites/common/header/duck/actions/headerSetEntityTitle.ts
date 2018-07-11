@@ -2,9 +2,11 @@ import IHeaderSetEntityTitleAction from "content/sites/common/header/duck/action
 import IHeaderSetEntityTitlePayload from "content/sites/common/header/duck/actions/interfaces/IHeaderSetEntityTitlePayload";
 import HEADER_SET_ENTITY_TITLE from "content/sites/common/header/duck/actionTypes/HEADER_SET_ENTITY_TITLE";
 
-export default function headerSetEntityTitle(payload: IHeaderSetEntityTitlePayload): IHeaderSetEntityTitleAction {
-    return {
+type HeaderSetEntityTitle = (payload: IHeaderSetEntityTitlePayload) => IHeaderSetEntityTitleAction;
+const headerSetEntityTitle: HeaderSetEntityTitle =
+    (payload: IHeaderSetEntityTitlePayload): IHeaderSetEntityTitleAction => ({
         type: HEADER_SET_ENTITY_TITLE,
         payload
-    };
-}
+    });
+
+export default headerSetEntityTitle;

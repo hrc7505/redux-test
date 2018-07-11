@@ -10,8 +10,10 @@ import IDashboardPropsFromDispatch from "content/dashboard/interfaces/IDashboard
 import IDashboardPropsFromState from "content/dashboard/interfaces/IDashboardPropsFromState";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): IDashboardPropsFromState {
-    return {
+type MapStateToProps = (state: IAppState, ownProps: IDashboardPropsFromState) => IDashboardPropsFromState;
+
+const mapStateToProps: MapStateToProps =
+    (state: IAppState, ownProps: IDashboardPropsFromState): IDashboardPropsFromState => ({
         ...ownProps,
         rightPaneProps: {
             isRightPaneVisible: state.dashboardState.rightPaneState.isRightPaneVisible,
@@ -23,8 +25,7 @@ function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): 
         detailsListItems: state.dashboardState.contentState.sites,
         jobs: state.dashboardState.contentState.activeJobs,
         isLoading: state.dashboardState.contentState.isLoading,
-    };
-}
+    });
 
 type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Action>) => IDashboardPropsFromDispatch;
 

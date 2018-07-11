@@ -11,7 +11,9 @@ const defaultAllSitesState: IAllSitesState = {
     isLoading: false
 };
 
-export default function allSitesReducer(state: IAllSitesState, action: Action): IAllSitesState {
+type AllSitesReducer = (state: IAllSitesState, action: Action) => IAllSitesState;
+
+const allSitesReducer: AllSitesReducer = (state: IAllSitesState, action: Action): IAllSitesState => {
     switch (action.type) {
         case ALL_SITES_REQUEST_DATA:
             return {
@@ -29,4 +31,6 @@ export default function allSitesReducer(state: IAllSitesState, action: Action): 
         default:
             return state || defaultAllSitesState;
     }
-}
+};
+
+export default allSitesReducer;

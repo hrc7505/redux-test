@@ -53,13 +53,14 @@ const computeBreadcrumbItems:
                 return items;
             }
         }
-);
+    );
 
-function mapStateToProps(state: IAppState, props: IBreadcrumbHostProps): IBreadcrumbPropsFromState {
-    return {
+type MapStateToProps = (state: IAppState, props: IBreadcrumbHostProps) => IBreadcrumbPropsFromState;
+
+const mapStateToProps: MapStateToProps =
+    (state: IAppState, props: IBreadcrumbHostProps): IBreadcrumbPropsFromState => ({
         breadcrumbItems: computeBreadcrumbItems(state, props),
-    };
-}
+    });
 
 const BreadcrumbHostContainer: React.ComponentClass = withRouter(
     connect(

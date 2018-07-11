@@ -5,6 +5,7 @@ import SITE_DETAILS_REQUEST_DATA from "content/sites/siteDetails/duck/actionType
 import ISiteDetailsState from "content/sites/siteDetails/duck/interfaces/ISiteDetailsState";
 
 type Action = ISiteDetailsLoadDataAction | ISiteDetailsRequestDataAction;
+type SiteDetailsReducer = (state: ISiteDetailsState, action: Action) => ISiteDetailsState;
 
 const defaultState: ISiteDetailsState = {
     isLoading: false,
@@ -12,7 +13,7 @@ const defaultState: ISiteDetailsState = {
     jobs: [],
 };
 
-export default function siteDetailsReducer(state: ISiteDetailsState, action: Action): ISiteDetailsState {
+const siteDetailsReducer: SiteDetailsReducer = (state: ISiteDetailsState, action: Action): ISiteDetailsState => {
     switch (action.type) {
         case SITE_DETAILS_REQUEST_DATA:
             return {
@@ -30,4 +31,6 @@ export default function siteDetailsReducer(state: ISiteDetailsState, action: Act
         default:
             return state || defaultState;
     }
-}
+};
+
+export default siteDetailsReducer;

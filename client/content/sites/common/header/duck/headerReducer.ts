@@ -7,6 +7,7 @@ import HEADER_SET_ENTITY_TITLE from "content/sites/common/header/duck/actionType
 import IHeaderState from "content/sites/common/header/duck/interfaces/IHeaderState";
 
 type Action = IHeaderSetBreadcrumbAction | IHeaderSetEntityTitleAction | IHeaderSetCommandsAction;
+type HeaderReducer = (state: IHeaderState, action: Action) => IHeaderState;
 
 const defaultState: IHeaderState = {
     breadcrumbPath: null,
@@ -14,7 +15,7 @@ const defaultState: IHeaderState = {
     commands: [],
 };
 
-export default function headerReducer(state: IHeaderState, action: Action): IHeaderState {
+const headerReducer: HeaderReducer = (state: IHeaderState, action: Action): IHeaderState => {
     switch (action.type) {
         case HEADER_SET_BREADCRUMB:
             return {
@@ -37,4 +38,6 @@ export default function headerReducer(state: IHeaderState, action: Action): IHea
         default:
             return state || defaultState;
     }
-}
+};
+
+export default headerReducer;

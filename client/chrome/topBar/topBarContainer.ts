@@ -12,21 +12,20 @@ import ITopBarPropsFromState from "chrome/topBar/interfaces/ITopBarPropsFromStat
 import TopBarComponent from "chrome/topBar/TopBarComponent";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState): ITopBarPropsFromState {
-    return {
-        isLeftPaneVisible: state.chromeState.isLeftPaneVisible
-    };
-}
+type MapStateToProps = (state: IAppState) => ITopBarPropsFromState;
+
+const mapStateToProps: MapStateToProps = (state: IAppState): ITopBarPropsFromState => ({
+    isLeftPaneVisible: state.chromeState.isLeftPaneVisible
+});
 
 type Actions = IToggleLeftPaneAction | IOpenRightPanelAction;
+type MapDispatchToProps = (dispatch: Dispatch<Actions>) => ITopBarPropsFromDispatch;
 
-function mapDispatchToProps(dispatch: Dispatch<Actions>): ITopBarPropsFromDispatch {
-    return {
-        toggleLeftPane: (): IToggleLeftPaneAction => dispatch(toggleLeftPane()),
-        openRightPanel: (actionPayload: IOpenRightPanelPayload): IOpenRightPanelAction =>
-            dispatch(openRightPanel(actionPayload))
-    };
-}
+const mapDispatchToProps: MapDispatchToProps = (dispatch: Dispatch<Actions>): ITopBarPropsFromDispatch => ({
+    toggleLeftPane: (): IToggleLeftPaneAction => dispatch(toggleLeftPane()),
+    openRightPanel: (actionPayload: IOpenRightPanelPayload): IOpenRightPanelAction =>
+        dispatch(openRightPanel(actionPayload))
+});
 
 const TopBarContainer: React.ComponentClass = connect(
     mapStateToProps,

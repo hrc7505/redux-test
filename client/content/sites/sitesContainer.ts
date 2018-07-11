@@ -6,18 +6,18 @@ import ISitesPropsFromState from "content/sites/interfaces/ISitesPropsFromState"
 import SitesComponent from "content/sites/sitesComponent";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState): ISitesPropsFromState {
-    return {
-        rightPaneProps: {
-            isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
-            rightPaneHeaderText: state.sitesState.rightPaneState.rightPaneHeaderText,
-            rightPaneContent: state.sitesState.rightPaneState.rightPaneContent,
-            rightPaneFooterRender: state.sitesState.rightPaneState.rightPaneFooterRender
-                ? state.sitesState.rightPaneState.rightPaneFooterRender
-                : null
-        }
-    };
-}
+type MapStateToProps = (state: IAppState) => ISitesPropsFromState;
+
+const mapStateToProps: MapStateToProps = (state: IAppState): ISitesPropsFromState => ({
+    rightPaneProps: {
+        isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
+        rightPaneHeaderText: state.sitesState.rightPaneState.rightPaneHeaderText,
+        rightPaneContent: state.sitesState.rightPaneState.rightPaneContent,
+        rightPaneFooterRender: state.sitesState.rightPaneState.rightPaneFooterRender
+            ? state.sitesState.rightPaneState.rightPaneFooterRender
+            : null
+    }
+});
 
 const SitesContainer: React.ComponentClass = withRouter(
     connect(

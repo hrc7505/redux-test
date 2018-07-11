@@ -5,12 +5,13 @@ import ContentComponent from "content/contentComponent";
 import IContentComponentProps from "content/interfaces/IContentComponentProps";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState, ownProps: IContentComponentProps): IContentComponentProps {
-    return {
+type MapStateToProps = (state: IAppState, ownProps: IContentComponentProps) => IContentComponentProps;
+
+const mapStateToProps: MapStateToProps =
+    (state: IAppState, ownProps: IContentComponentProps): IContentComponentProps => ({
         ...ownProps,
         isLeftMenuVisible: state.chromeState.isLeftPaneVisible
-    };
-}
+    });
 
 const contentContainer: React.ComponentClass = withRouter(
     connect(
