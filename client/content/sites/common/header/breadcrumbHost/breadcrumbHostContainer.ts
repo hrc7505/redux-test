@@ -1,7 +1,7 @@
 import * as H from "history";
 import { IBreadcrumbItem } from "office-ui-fabric-react/lib/Breadcrumb";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router";
 import { createSelector, OutputParametricSelector } from "reselect";
 
 import BreadcrumbHostComponent from "content/sites/common/header/breadcrumbHost/breadcrumbHostComponent";
@@ -10,16 +10,16 @@ import IBreadcrumbPropsFromState from "content/sites/common/header/breadcrumbHos
 import IAppState from "duck/interfaces/IAppState";
 
 type GetBreadcrumbPathFromHeaderState = (state: IAppState) => string;
-type ComponentRouterHistory = (state: IAppState, props: IBreadcrumbHostProps) => H.History;
+type ComponentRouterHistory = (state: IAppState, props: RouteComponentProps<string>) => H.History;
 type ResultFunction = (path: string, history: H.History) => IBreadcrumbItem[];
 
 const getBreadcrumbPath: GetBreadcrumbPathFromHeaderState =
     (state: IAppState): string => state.sitesState.headerState.breadcrumbPath;
 const componentRouterHistory: ComponentRouterHistory =
-    (state: IAppState, props: IBreadcrumbHostProps): H.History => props.history;
+    (state: IAppState, props: RouteComponentProps<string>): H.History => props.history;
 
 const computeBreadcrumbItems:
-    OutputParametricSelector<IAppState, IBreadcrumbHostProps, IBreadcrumbItem[], ResultFunction> = createSelector(
+    OutputParametricSelector<IAppState, RouteComponentProps<string>, IBreadcrumbItem[], ResultFunction> = createSelector(
         [getBreadcrumbPath, componentRouterHistory],
         (path: string, history: H.History): IBreadcrumbItem[] => {
             if (!path) {
@@ -55,11 +55,11 @@ const computeBreadcrumbItems:
         }
     );
 
-type MapStateToProps = (state: IAppState, props: IBreadcrumbHostProps) => IBreadcrumbPropsFromState;
+type MapStateToProps = (state: IAppState, props: RouteComponentProps<string>) => IBreadcrumbPropsFromState;
 
 const mapStateToProps: MapStateToProps =
-    (state: IAppState, props: IBreadcrumbHostProps): IBreadcrumbPropsFromState => ({
-        breadcrumbItems: computeBreadcrumbItems(state, props),
+    (state: IAppState, ownProps: RouteComponentProps<string>): IBreadcrumbPropsFromState => ({
+        breadcrumbItems: computeBreadcrumbItems(state, ownProps),
     });
 
 const BreadcrumbHostContainer: React.ComponentClass = withRouter(
