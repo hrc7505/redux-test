@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 
 import RightPaneComponent from "content/common/rightPane/rightPaneComponent";
 import AllSitesContainer from "content/sites/allSites/allSitesContainer";
-import HeaderComponent from "content/sites/common/header/headerComponent";
+import HeaderContainer from "content/sites/common/header/headerContainer";
 import ISitesProps from "content/sites/interfaces/ISitesProps";
 import SiteDetailsContainer from "content/sites/siteDetails/siteDetailsContainer";
 
@@ -11,7 +11,7 @@ import "content/sites/sitesStyle.scss";
 
 const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element => (
     <div className="cPanel sitesComponent">
-        <HeaderComponent />
+        <HeaderContainer />
         <div className="bodyRightPanelContainer cPanel">
             <div className={`bodyContainer pullLeft
                 ${props.rightPaneProps && props.rightPaneProps.isRightPaneVisible

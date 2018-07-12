@@ -1,5 +1,5 @@
-import ICommandBarHostPropsFromDispatch from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostPropsFromDispatch";
-import ICommandBarHostPropsFromState from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostPropsFromState";
+import { ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
 
-export default interface ICommandBarHostProps
-    extends ICommandBarHostPropsFromDispatch, ICommandBarHostPropsFromState { }
+export default interface ICommandBarHostProps {
+    commandbarItems: ICommandBarProps;
+}

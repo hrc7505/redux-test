@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router";
 import { Action } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
@@ -10,10 +10,10 @@ import IDashboardPropsFromDispatch from "content/dashboard/interfaces/IDashboard
 import IDashboardPropsFromState from "content/dashboard/interfaces/IDashboardPropsFromState";
 import IAppState from "duck/interfaces/IAppState";
 
-type MapStateToProps = (state: IAppState, ownProps: IDashboardPropsFromState) => IDashboardPropsFromState;
+type MapStateToProps = (state: IAppState, ownProps: RouteComponentProps<string>) => IDashboardPropsFromState;
 
 const mapStateToProps: MapStateToProps =
-    (state: IAppState, ownProps: IDashboardPropsFromState): IDashboardPropsFromState => ({
+    (state: IAppState, ownProps: RouteComponentProps<string>): IDashboardPropsFromState => ({
         ...ownProps,
         rightPaneProps: {
             isRightPaneVisible: state.dashboardState.rightPaneState.isRightPaneVisible,

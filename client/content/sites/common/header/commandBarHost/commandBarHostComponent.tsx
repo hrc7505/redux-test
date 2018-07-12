@@ -6,7 +6,7 @@ import ICommandBarHostProps from "content/sites/common/header/commandBarHost/int
 import "content/sites/common/header/commandBarHost/commandBarHostStyle.scss";
 
 export default class CommandbarHostComponent extends React.PureComponent<ICommandBarHostProps> {
-    public render(): JSX.Element | JSX.Element[] {
+    public render(): JSX.Element {
         return (
             <div className="cPanel commandBarContainer" >
                 <CommandBar

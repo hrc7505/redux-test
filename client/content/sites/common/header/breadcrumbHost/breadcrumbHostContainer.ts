@@ -19,7 +19,8 @@ const componentRouterHistory: ComponentRouterHistory =
     (state: IAppState, props: RouteComponentProps<string>): H.History => props.history;
 
 const computeBreadcrumbItems:
-    OutputParametricSelector<IAppState, RouteComponentProps<string>, IBreadcrumbItem[], ResultFunction> = createSelector(
+    OutputParametricSelector<IAppState, RouteComponentProps<string>, IBreadcrumbItem[], ResultFunction> =
+    createSelector(
         [getBreadcrumbPath, componentRouterHistory],
         (path: string, history: H.History): IBreadcrumbItem[] => {
             if (!path) {
