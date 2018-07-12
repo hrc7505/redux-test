@@ -14,7 +14,6 @@ type MapStateToProps = (state: IAppState, ownProps: RouteComponentProps<string>)
 
 const mapStateToProps: MapStateToProps =
     (state: IAppState, ownProps: RouteComponentProps<string>): IDashboardPropsFromState => ({
-        ...ownProps,
         rightPaneProps: {
             isRightPaneVisible: state.dashboardState.rightPaneState.isRightPaneVisible,
             rightPaneHeaderText: state.dashboardState.rightPaneState.rightPaneHeaderText,

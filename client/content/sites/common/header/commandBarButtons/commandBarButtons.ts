@@ -2,11 +2,11 @@ import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { IconType } from "office-ui-fabric-react/lib/Icon";
 
 import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
-import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import ICommandButton from "content/sites/common/header/commandBarButtons/interfaces/ICommandButton";
 
 export default class CommandBarButtons {
     public static getButton(commandButton: ICommandButton): IContextualMenuItem {
-        switch (commandButton.id) {
+        switch (commandButton.type) {
             case ButtonType.Add:
                 return {
                     iconProps: {
@@ -15,7 +15,6 @@ export default class CommandBarButtons {
                     },
                     key: commandButton.name,
                     name: commandButton.name,
-                    actionPayload: commandButton.actionPayload
                 };
 
             case ButtonType.Info:
@@ -25,7 +24,16 @@ export default class CommandBarButtons {
                         iconType: IconType.default
                     },
                     key: "information",
-                    actionPayload: commandButton.actionPayload,
+                };
+
+            case ButtonType.Permissions:
+                return {
+                    iconProps: {
+                        iconName: "Group",
+                        iconType: IconType.default
+                    },
+                    key: "permissions",
+                    name: commandButton.name,
                 };
 
             default:

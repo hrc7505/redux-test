@@ -1,6 +1,8 @@
+import * as H from "history";
 import { ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
 import { IContextualMenuItem } from "office-ui-fabric-react/lib/ContextualMenu";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 import { createSelector, OutputParametricSelector } from "reselect";
 
 import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
@@ -8,78 +10,127 @@ import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions
 import CommandBarButtons from "content/sites/common/header/commandBarButtons/commandBarButtons";
 import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
 import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
-import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import ICommandButton from "content/sites/common/header/commandBarButtons/interfaces/ICommandButton";
 import CommandBarHostComponent from "content/sites/common/header/commandBarHost/commandBarHostComponent";
-import ICommandBarHostProps from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostProps";
-import IHeaderProps from "content/sites/common/header/interfaces/IHeaderProps";
+import ICommandBarHostPropsFromParent from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostPropsFromParent";
+import ICommandBarHostPropsFromState from "content/sites/common/header/commandBarHost/interfaces/ICommandBarHostPropsFromState";
 import IAppState from "duck/interfaces/IAppState";
 
 type GetButtonListFromHeaderState = (state: IAppState) => ICommandButton[];
 type IsSitesStandAlone = (state: IAppState) => boolean;
-type GetProps = (state: IAppState, props: IHeaderProps) => IHeaderProps;
-type ResultFunction =
-    (buttonList: ICommandButton[], isStandAlone: boolean, props: IHeaderProps) => ICommandBarProps;
+type RightPanelDispatchAction = (actionPayload: IOpenRightPanelPayload) => void;
+type RightPaneDispatchAction = (actionPayload: IToggleSwitchRightPanePayload) => void;
+type GetRightPanelDispatchAction =
+    (state: IAppState, props: ICommandBarHostPropsFromParent) => RightPanelDispatchAction;
+type GetRightPaneDispatchAction =
+    (state: IAppState, props: ICommandBarHostPropsFromParent) => RightPaneDispatchAction;
+type GetComponentRouterHistory = (state: IAppState, props: ICommandBarHostPropsFromParent) => H.History;
+type ResultFunction = (
+    buttonList: ICommandButton[],
+    isStandAlone: boolean,
+    rightPanelDispatchAction: RightPanelDispatchAction,
+    rightPaneDispatchAction: RightPaneDispatchAction,
+    history: H.History) => ICommandBarProps;
 
 const getButtonList: GetButtonListFromHeaderState =
     (state: IAppState): ICommandButton[] => state.sitesState.headerState.commands;
 const isSitesStandAlone: IsSitesStandAlone = (state: IAppState): boolean => state.sitesState.isStandAlone;
-const getProps: GetProps = (state: IAppState, props: IHeaderProps): IHeaderProps => props;
+const getRightPanelDispatchAction: GetRightPanelDispatchAction =
+    (state: IAppState, props: ICommandBarHostPropsFromParent): RightPanelDispatchAction => props.openRightPanel;
+const getRightPaneDispatchAction: GetRightPaneDispatchAction =
+    (state: IAppState, props: ICommandBarHostPropsFromParent): RightPaneDispatchAction => props.toggleRightPane;
+const getComponentRouterHistory: GetComponentRouterHistory =
+    (state: IAppState, props: ICommandBarHostPropsFromParent): H.History => props.history;
 
 const computeCommandbarItems:
-    OutputParametricSelector<IAppState, IHeaderProps, ICommandBarProps, ResultFunction> = createSelector(
-        [getButtonList, isSitesStandAlone, getProps],
-        (buttonList: ICommandButton[], isStandAlone: boolean, props: IHeaderProps): ICommandBarProps => {
+    OutputParametricSelector<IAppState, ICommandBarHostPropsFromParent, ICommandBarProps, ResultFunction> =
+    createSelector(
+        [
+            getButtonList,
+            isSitesStandAlone,
+            getRightPanelDispatchAction,
+            getRightPaneDispatchAction,
+            getComponentRouterHistory
+        ],
+        (
+            buttonList: ICommandButton[],
+            isStandAlone: boolean,
+            rightPanelDispatchAction: RightPanelDispatchAction,
+            rightPaneDispatchAction: RightPaneDispatchAction,
+            history: H.History
+        ): ICommandBarProps => {
 
             if (!buttonList && buttonList.length === 0) {
                 // if buttons not found in the state, return null so the commandbar renders nothing.
                 return null;
             }
 
+            // Array to contain the buttons to be render on the left, right, and within the overflow (ellipses)
+            // sections respectively.
             const items: IContextualMenuItem[] = [];
             const farItems: IContextualMenuItem[] = [];
             const overflowItems: IContextualMenuItem[] = [];
 
-            buttonList.map((data: ICommandButton) => {
+            buttonList.map((button: ICommandButton) => {
                 // Get constructed buttons from the CommandBarButtons using the raw command.
-                const menuItem: IContextualMenuItem = CommandBarButtons.getButton(data);
+                const menuItem: IContextualMenuItem = CommandBarButtons.getButton(button);
 
-                if (data.itemLocation === ItemLocation.Left) {
-                    // Set click event to menu item(command button) aligned to left in the commandbar.
-                    if (data.actionPayload) {
-                        if (isStandAlone) {
-                            // If sites in a standalone mode, render static information in the right pane
-                            // instead of right panel on click of the menu item(command button).
-                            // Because right panel is a part of chrome.
-                            menuItem.onClick = (): void => props.toggleRightPane({
-                                rightPaneId: "standAloneModeId",
-                                rightPaneContent: null,
-                                rightPaneHeaderText: `Sites is in standalone mode.
-                                                    We are not able to open right panel because it is a part of chrome.`
-                            });
-                        } else {
-                            // If sites not in a standalone mode, render the given action palyload
-                            // in the right panel on click of the menu item(command button).
-                            menuItem.onClick = (): void => props.openRightPanel(
-                                data.actionPayload as IOpenRightPanelPayload
-                            );
+                // Attaching onClick for the menu item depending on the button type.
+                switch (button.type) {
+                    case ButtonType.Add:
+                        const payload: IOpenRightPanelPayload = button.actionPayload as IOpenRightPanelPayload;
+                        if (!payload) {
+                            // Don't set the onClick is the payload is not available.
+                            menuItem.onClick = null;
                         }
-                    } else if (data.id === ButtonType.Link) {
-                        // If button has a navigation link we can give an event here.
-                        // For now it is set to null becasuse we do not have any link for button yet.
-                        menuItem.onClick = null;
-                    } else {
-                        menuItem.onClick = null;
-                    }
 
-                    items.push(menuItem);
-                } else if (data.itemLocation === ItemLocation.Far) {
-                    // Set click event to menu item(command button) aligned to right side in the commandbar.
-                    menuItem.onClick = data.actionPayload
-                        ? (): void => props.toggleRightPane(data.actionPayload as IToggleSwitchRightPanePayload)
-                        : null;
-                    farItems.push(menuItem);
-                } else {
-                    overflowItems.push(menuItem);
+                        if (!isStandAlone) {
+                            menuItem.onClick = (): void => rightPanelDispatchAction(payload);
+                        } else {
+                            // If rendering in a standalone mode, we will render the content that was supposed to be
+                            // in the panel into the pane since the panel is not available in this mode.
+                            menuItem.onClick = (): void => rightPaneDispatchAction({
+                                rightPaneId: payload.rightPanelId,
+                                rightPaneContent: payload.rightPanelContent,
+                                rightPaneHeaderText: `STANDALONEMODE - ${payload.rightPanelHeaderText}`,
+                                rightPaneFooterRender: payload.rightPanelFooterRender,
+                            });
+                        }
+                        break;
+
+                    case ButtonType.Info:
+                        menuItem.onClick = button.actionPayload
+                            ? (): void => rightPaneDispatchAction(button.actionPayload as IToggleSwitchRightPanePayload)
+                            : null;
+                        break;
+
+                    case ButtonType.Permissions:
+                        // The permissions button will always navigate to the permissions page of the current location.
+                        if (history && history.location) {
+                            menuItem.onClick = (): void => history.push(`${history.location.pathname}/permissions`);
+                        } else {
+                            // We don't set the onClick if the history or history.location objects are not available.
+                            menuItem.onClick = null;
+                        }
+                        break;
+
+                    default: // No onClick is added in the default (unspecified) case.
+                }
+
+                // Adding the constructed menu item into the correct array based on the button's
+                // item location enum value.
+                switch (button.itemLocation) {
+                    case ItemLocation.Left:
+                        items.push(menuItem);
+                        break;
+
+                    case ItemLocation.Far:
+                        farItems.push(menuItem);
+                        break;
+
+                    case ItemLocation.Overflow:
+                    default: // Adding to overflow section in the default (unspecified) case for easy error detection.
+                        overflowItems.push(menuItem);
                 }
             });
 
@@ -91,15 +142,17 @@ const computeCommandbarItems:
         }
     );
 
-type MapStateToProps = (state: IAppState, ownProps: IHeaderProps) => ICommandBarHostProps;
+type MapStateToProps = (state: IAppState, ownProps: ICommandBarHostPropsFromParent) => ICommandBarHostPropsFromState;
 
 const mapStateToProps: MapStateToProps =
-    (state: IAppState, ownProps: IHeaderProps): ICommandBarHostProps => ({
+    (state: IAppState, ownProps: ICommandBarHostPropsFromParent): ICommandBarHostPropsFromState => ({
         commandbarItems: computeCommandbarItems(state, ownProps)
     });
 
-const CommandBarContainer: React.ComponentClass<IHeaderProps> = connect(
-    mapStateToProps
-)<ICommandBarHostProps>(CommandBarHostComponent);
+const CommandBarHostContainer: React.ComponentClass = withRouter(
+    connect(
+        mapStateToProps
+    )<ICommandBarHostPropsFromState>(CommandBarHostComponent)
+);
 
-export default CommandBarContainer;
+export default CommandBarHostContainer;

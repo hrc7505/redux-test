@@ -1,8 +1,6 @@
-import IOpenRightPanelPayload from "chrome/duck/actions/interfaces/IOpenRightPanelPayload";
-import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
+import { RouteComponentProps } from "react-router";
 
-export default interface IHeaderProps {
-    // We are using below functions for commandbar buttons. We are sending them as a props to CommandbarHostContainer.
-    openRightPanel?: (actionPayload: IOpenRightPanelPayload) => void;
-    toggleRightPane?: (actionPayload: IToggleSwitchRightPanePayload) => void;
-}
+import IHeaderPropsFromDispatch from "content/sites/common/header/interfaces/IHeaderPropsFromDispatch";
+
+export default interface IHeaderProps
+    extends IHeaderPropsFromDispatch, RouteComponentProps<string> { }

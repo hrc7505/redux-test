@@ -22,9 +22,12 @@ const SitesComponent: React.SFC<ISitesProps> = (props: ISitesProps): JSX.Element
                     { /* Root route used for standalone scenario so it doesn't default to 404 in that case. */}
                     <Route exact path="/test/sites" component={AllSitesContainer} />
                     <Route exact path="/sites" component={AllSitesContainer} />
-                    <Route exact path="/sites/:individualSite" component={SiteDetailsContainer} />
-                    <Route exact path="/sites/:individualSite/jobs" component={AllSitesContainer} />
-                    <Route exact path="/sites/:individualSite/jobs/:individualJob" component={AllSitesContainer} />
+                    <Route exact path="/sites/:SiteId" component={SiteDetailsContainer} />
+
+                    { /* These components have not been created. Using AllSiteContainer as a placeholder. */}
+                    <Route exact path="/sites/:SiteId/permissions" component={AllSitesContainer} />
+                    <Route exact path="/sites/:SiteId/jobs" component={AllSitesContainer} />
+                    <Route exact path="/sites/:SiteId/jobs/:JobId" component={AllSitesContainer} />
 
                     <Redirect to="/404" />
                 </Switch>

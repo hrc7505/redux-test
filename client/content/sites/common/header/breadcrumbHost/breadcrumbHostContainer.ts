@@ -5,23 +5,22 @@ import { RouteComponentProps, withRouter } from "react-router";
 import { createSelector, OutputParametricSelector } from "reselect";
 
 import BreadcrumbHostComponent from "content/sites/common/header/breadcrumbHost/breadcrumbHostComponent";
-import IBreadcrumbHostProps from "content/sites/common/header/breadcrumbHost/interfaces/IBreadcrumbHostProps";
 import IBreadcrumbPropsFromState from "content/sites/common/header/breadcrumbHost/interfaces/IBreadcrumbPropsFromState";
 import IAppState from "duck/interfaces/IAppState";
 
 type GetBreadcrumbPathFromHeaderState = (state: IAppState) => string;
-type ComponentRouterHistory = (state: IAppState, props: RouteComponentProps<string>) => H.History;
+type GetComponentRouterHistory = (state: IAppState, props: RouteComponentProps<string>) => H.History;
 type ResultFunction = (path: string, history: H.History) => IBreadcrumbItem[];
 
 const getBreadcrumbPath: GetBreadcrumbPathFromHeaderState =
     (state: IAppState): string => state.sitesState.headerState.breadcrumbPath;
-const componentRouterHistory: ComponentRouterHistory =
+const getComponentRouterHistory: GetComponentRouterHistory =
     (state: IAppState, props: RouteComponentProps<string>): H.History => props.history;
 
 const computeBreadcrumbItems:
     OutputParametricSelector<IAppState, RouteComponentProps<string>, IBreadcrumbItem[], ResultFunction> =
     createSelector(
-        [getBreadcrumbPath, componentRouterHistory],
+        [getBreadcrumbPath, getComponentRouterHistory],
         (path: string, history: H.History): IBreadcrumbItem[] => {
             if (!path) {
                 // If no path was found in the state, return an emtpy array so that the breadcrumb renders nothing.
@@ -66,7 +65,7 @@ const mapStateToProps: MapStateToProps =
 const BreadcrumbHostContainer: React.ComponentClass = withRouter(
     connect(
         mapStateToProps
-    )<IBreadcrumbHostProps>(BreadcrumbHostComponent)
+    )<IBreadcrumbPropsFromState>(BreadcrumbHostComponent)
 );
 
 export default BreadcrumbHostContainer;
