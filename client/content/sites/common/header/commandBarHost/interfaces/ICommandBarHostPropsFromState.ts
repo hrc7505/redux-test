@@ -1,6 +1,5 @@
-import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import { ICommandBarProps } from "office-ui-fabric-react/lib/CommandBar";
 
 export default interface ICommandBarHostPropsFromState {
-    buttonList: ICommandButton[];
-    isStandAlone: boolean;
+    commandbarItems: ICommandBarProps;
 }

@@ -4,8 +4,9 @@ import ButtonType from "content/sites/common/header/commandBarButtons/enums/butt
 import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
 
 export default interface ICommandButton {
-    id: ButtonType;
+    type: ButtonType;
     name: string;
     itemLocation: ItemLocation;
-    actionPayload: IOpenRightPanelPayload | IToggleSwitchRightPanePayload;
+    linkPath?: string;
+    actionPayload?: IOpenRightPanelPayload | IToggleSwitchRightPanePayload;
 }

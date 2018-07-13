@@ -50,32 +50,32 @@ const getJobTileData: OutputSelector<IAppState, IJobTileData[], ResultFunction> 
     }
 );
 
-function mapStateToProps(state: IAppState): ISiteDetailsPropsFromState {
-    return {
-        isLoading: state.sitesState.siteDetailsState.isLoading,
-        site: state.sitesState.sitesDataState.sites[state.sitesState.siteDetailsState.site]
-            ? state.sitesState.sitesDataState.sites[state.sitesState.siteDetailsState.site]
-            : SiteDetailsShim.getData(), // Using shim data as the default empty data set. Might want to rethink.
-        jobs: getJobTileData(state),
-        isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
-        rightPaneId: state.sitesState.rightPaneState.rightPaneId,
-    };
-}
+type MapStateToProps = (state: IAppState) => ISiteDetailsPropsFromState;
+
+const mapStateToProps: MapStateToProps = (state: IAppState): ISiteDetailsPropsFromState => ({
+    isLoading: state.sitesState.siteDetailsState.isLoading,
+    site: state.sitesState.sitesDataState.sites[state.sitesState.siteDetailsState.site]
+        ? state.sitesState.sitesDataState.sites[state.sitesState.siteDetailsState.site]
+        : SiteDetailsShim.getData(), // Using shim data as the default empty data set. Might want to rethink.
+    jobs: getJobTileData(state),
+    isRightPaneVisible: state.sitesState.rightPaneState.isRightPaneVisible,
+    rightPaneId: state.sitesState.rightPaneState.rightPaneId,
+});
 
 type Actions = ISitesToggleRightPaneAction;
+type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Actions>) => ISiteDetailsPropsFromDispatch;
 
-function mapStateToDispatch(dispatch: ThunkDispatch<IAppState, void, Actions>): ISiteDetailsPropsFromDispatch {
-    return {
+const mapDispatchToProps: MapDispatchToProps =
+    (dispatch: ThunkDispatch<IAppState, void, Actions>): ISiteDetailsPropsFromDispatch => ({
         jobTileOnClick: (actionPayload: IToggleSwitchRightPanePayload): ISitesToggleRightPaneAction =>
             dispatch(sitesToggleRightPane(actionPayload)),
         getData: (useShim: boolean, siteId: string): void => { dispatch(siteDetailsGetData(useShim, siteId)); },
         setHeader: (headerPayload: IHeaderPayload): void => { dispatch(headerSetHeader(headerPayload)); }
-    };
-}
+    });
 
 const SiteDetailsContainer: React.ComponentClass = connect(
     mapStateToProps,
-    mapStateToDispatch
+    mapDispatchToProps
 )<ISiteDetailsProps>(SiteDetailsComponent);
 
 export default SiteDetailsContainer;

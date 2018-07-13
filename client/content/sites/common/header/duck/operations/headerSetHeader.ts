@@ -9,10 +9,10 @@ import IHeaderSetEntityTitleAction from "content/sites/common/header/duck/action
 import IHeaderPayload from "content/sites/common/header/duck/operations/interfaces/IHeaderPayload";
 
 type Actions = IHeaderSetEntityTitleAction | IHeaderSetCommandsAction | IHeaderSetBreadcrumbAction;
+type HeaderSetHeader = (headerPayload: IHeaderPayload) => (dispatch: Dispatch<Actions>) => void;
 
-export default function headerSetHeader(
-    headerPayload: IHeaderPayload): (dispatch: Dispatch<Actions>) => void {
-    return (dispatch: Dispatch<Actions>): void => {
+const headerSetHeader: HeaderSetHeader = (headerPayload: IHeaderPayload): (dispatch: Dispatch<Actions>) => void => (
+    (dispatch: Dispatch<Actions>): void => {
 
         if (headerPayload.locationPath) {
             dispatch(headerSetBreadcrumb({
@@ -31,5 +31,6 @@ export default function headerSetHeader(
                 buttonList: headerPayload.commands
             }));
         }
-    };
-}
+    });
+
+export default headerSetHeader;

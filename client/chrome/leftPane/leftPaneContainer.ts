@@ -1,21 +1,21 @@
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router";
 
-import ILeftPaneProps from "chrome/leftPane/interfaces/ILeftPaneProps";
+import ILeftPanePropsFromState from "chrome/leftPane/interfaces/ILeftPanePropsFromState";
 import LeftPaneComponent from "chrome/leftPane/LeftPaneComponent";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState, ownProps: ILeftPaneProps): ILeftPaneProps {
-    return {
-        ...ownProps,
+type MapStateToProps = (state: IAppState, ownProps: RouteComponentProps<string>) => ILeftPanePropsFromState;
+
+const mapStateToProps: MapStateToProps =
+    (state: IAppState, ownProps: RouteComponentProps<string>): ILeftPanePropsFromState => ({
         isLeftPaneVisible: state.chromeState.isLeftPaneVisible
-    };
-}
+});
 
 const LeftPaneContainer: React.ComponentClass = withRouter(
     connect(
         mapStateToProps
-    )<ILeftPaneProps>(LeftPaneComponent)
+    )<ILeftPanePropsFromState>(LeftPaneComponent)
 );
 
 export default LeftPaneContainer;

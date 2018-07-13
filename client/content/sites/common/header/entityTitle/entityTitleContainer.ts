@@ -4,11 +4,11 @@ import EntityTitleComponent from "content/sites/common/header/entityTitle/entity
 import IEntityTitleProps from "content/sites/common/header/entityTitle/interfaces/IEntityTitleProps";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState): IEntityTitleProps {
-    return {
-        title: state.sitesState.headerState.title
-    };
-}
+type MapStateToProps = (state: IAppState) => IEntityTitleProps;
+
+const mapStateToProps: MapStateToProps = (state: IAppState): IEntityTitleProps => ({
+    title: state.sitesState.headerState.title
+});
 
 const EntityTitleContainer: React.ComponentClass = connect(
     mapStateToProps

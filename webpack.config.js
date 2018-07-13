@@ -1,7 +1,11 @@
 const path = require("path");
 const env = process.env.NODE_ENV;
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const createChunksJs = (chunks, filename, template = "index.html") => (
+    new HtmlWebpackPlugin({ template, chunks, filename })
+);
 
 module.exports = {
     entry: {
@@ -55,8 +59,4 @@ module.exports = {
         historyApiFallback: true
     },
     mode: env || "development"
-}
-
-function createChunksJs(chunks, filename, template = "index.html") {
-    return new HtmlWebpackPlugin({ template, chunks, filename });
 }

@@ -20,7 +20,9 @@ const chromeDefaultState: IChromeState = {
     isLeftPaneVisible: false
 };
 
-export default function chromeReducer(state: IChromeState, action: Action): IChromeState {
+type ChromeReducer = (state: IChromeState, action: Action) => IChromeState;
+
+const chromeReducer: ChromeReducer = (state: IChromeState, action: Action): IChromeState => {
     switch (action.type) {
         case TOGGLE_LEFT_PANE:
             return {
@@ -44,4 +46,6 @@ export default function chromeReducer(state: IChromeState, action: Action): IChr
         default:
             return state || chromeDefaultState;
     }
-}
+};
+
+export default chromeReducer;

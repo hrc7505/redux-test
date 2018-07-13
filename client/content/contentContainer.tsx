@@ -1,21 +1,21 @@
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
 import ContentComponent from "content/contentComponent";
-import IContentComponentProps from "content/interfaces/IContentComponentProps";
+import IContentComponentPropsFromState from "content/interfaces/IContentComponentPropsFromState";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState, ownProps: IContentComponentProps): IContentComponentProps {
-    return {
-        ...ownProps,
+type MapStateToProps = (state: IAppState, ownProps: RouteComponentProps<string>) => IContentComponentPropsFromState;
+
+const mapStateToProps: MapStateToProps =
+    (state: IAppState, ownProps: RouteComponentProps<string>): IContentComponentPropsFromState => ({
         isLeftMenuVisible: state.chromeState.isLeftPaneVisible
-    };
-}
+    });
 
 const contentContainer: React.ComponentClass = withRouter(
     connect(
         mapStateToProps
-    )<IContentComponentProps>(ContentComponent)
+    )<IContentComponentPropsFromState>(ContentComponent)
 );
 
 export default contentContainer;

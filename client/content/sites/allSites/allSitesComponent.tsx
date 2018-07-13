@@ -10,19 +10,19 @@ import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions
 import IAllSitesProps from "content/sites/allSites/interfaces/IAllSitesProps";
 import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
 import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
-import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import ICommandButton from "content/sites/common/header/commandBarButtons/interfaces/ICommandButton";
 import QueryStringUtils from "utils/queryStringUtils";
 
 export default class AllSitesComponent extends React.PureComponent<IAllSitesProps> {
     private commands: ICommandButton[] = [
         {
-            id: ButtonType.Add,
+            type: ButtonType.Add,
             name: "Site",
             itemLocation: ItemLocation.Left,
             actionPayload: rightPanelData
         },
         {
-            id: ButtonType.Info,
+            type: ButtonType.Info,
             name: null,
             itemLocation: ItemLocation.Far,
             actionPayload: rightPaneData

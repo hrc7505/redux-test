@@ -1,11 +1,11 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 
-import ILeftPaneProps from "chrome/leftPane/interfaces/iLeftPaneProps";
+import ILeftPanePropsFromState from "chrome/leftPane/interfaces/ILeftPanePropsFromState";
 
 import "chrome/leftPane/leftPaneStyle.scss";
 
-export default class LeftPaneComponent extends React.PureComponent<ILeftPaneProps> {
+export default class LeftPaneComponent extends React.PureComponent<ILeftPanePropsFromState> {
     public render(): JSX.Element {
         return (
             <div className={`hamburgerMenu pullLeft ${!this.props.isLeftPaneVisible ? "hiddeMenu" : ""}`}>

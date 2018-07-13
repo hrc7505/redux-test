@@ -19,11 +19,12 @@ type Actions =
     ILoadAllSitesAction |
     ISitesCloseRightPaneAction |
     ISitesDataCreateUpdateSitesAction;
+type AllSitesGetData = (useShim: boolean) => (dispatch: Dispatch<Actions>) => void;
 
 const GetActiveSitesUrl: string = UrlUtils.hostApi + "Site/list?status=Active";
 
-export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<Actions>) => void {
-    return async (dispatch: Dispatch<Actions>): Promise<void> => {
+const allSitesGetData: AllSitesGetData = (useShim: boolean): (dispatch: Dispatch<Actions>) => void => (
+    async (dispatch: Dispatch<Actions>): Promise<void> => {
         // Setting the page into the "isLoading" state and closing the right pane.
         dispatch(allSitesRequestData());
         dispatch(sitesCloseRightPane());
@@ -59,5 +60,7 @@ export default function allSitesGetData(useShim: boolean): (dispatch: Dispatch<A
                 sites: null
             }));
         }
-    };
-}
+    }
+);
+
+export default allSitesGetData;

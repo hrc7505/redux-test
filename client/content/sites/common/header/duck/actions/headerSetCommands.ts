@@ -2,9 +2,11 @@ import IHeaderSetCommandsAction from "content/sites/common/header/duck/actions/i
 import IHeaderSetCommandsPayload from "content/sites/common/header/duck/actions/interfaces/IHeaderSetCommandsPayload";
 import HEADER_SET_COMMANDS from "content/sites/common/header/duck/actionTypes/HEADER_SET_COMMANDS";
 
-export default function headerSetCommands(payload: IHeaderSetCommandsPayload): IHeaderSetCommandsAction {
-    return {
-        type: HEADER_SET_COMMANDS,
-        payload
-    };
-}
+type HeaderSetCommands = (payload: IHeaderSetCommandsPayload) => IHeaderSetCommandsAction;
+
+const headerSetCommands: HeaderSetCommands = (payload: IHeaderSetCommandsPayload): IHeaderSetCommandsAction => ({
+    type: HEADER_SET_COMMANDS,
+    payload
+});
+
+export default headerSetCommands;

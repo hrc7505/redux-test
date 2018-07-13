@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router";
 import { Action } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
@@ -10,9 +10,10 @@ import IDashboardPropsFromDispatch from "content/dashboard/interfaces/IDashboard
 import IDashboardPropsFromState from "content/dashboard/interfaces/IDashboardPropsFromState";
 import IAppState from "duck/interfaces/IAppState";
 
-function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): IDashboardPropsFromState {
-    return {
-        ...ownProps,
+type MapStateToProps = (state: IAppState, ownProps: RouteComponentProps<string>) => IDashboardPropsFromState;
+
+const mapStateToProps: MapStateToProps =
+    (state: IAppState, ownProps: RouteComponentProps<string>): IDashboardPropsFromState => ({
         rightPaneProps: {
             isRightPaneVisible: state.dashboardState.rightPaneState.isRightPaneVisible,
             rightPaneHeaderText: state.dashboardState.rightPaneState.rightPaneHeaderText,
@@ -23,8 +24,7 @@ function mapStateToProps(state: IAppState, ownProps: IDashboardPropsFromState): 
         detailsListItems: state.dashboardState.contentState.sites,
         jobs: state.dashboardState.contentState.activeJobs,
         isLoading: state.dashboardState.contentState.isLoading,
-    };
-}
+    });
 
 type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Action>) => IDashboardPropsFromDispatch;
 

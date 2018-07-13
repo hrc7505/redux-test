@@ -10,7 +10,7 @@ import JobSummaryListComponent from "content/common/jobSummaryList/jobSummaryLis
 import IToggleSwitchRightPanePayload from "content/common/rightPane/duck/actions/interfaces/IToggleSwitchRightPanePayload";
 import ButtonType from "content/sites/common/header/commandBarButtons/enums/buttonType";
 import ItemLocation from "content/sites/common/header/commandBarButtons/enums/itemLocation";
-import ICommandButton from "content/sites/common/header/commandBarButtons/ICommandButton";
+import ICommandButton from "content/sites/common/header/commandBarButtons/interfaces/ICommandButton";
 import InfoTileComponent from "content/sites/common/infoTile/infoTileComponent";
 import IInfoTileProps from "content/sites/common/infoTile/interfaces/IInfoTileProps";
 import IAssetsInfoTileProps from "content/sites/common/infoTile/types/IAssetsInfoTileProps";
@@ -25,31 +25,24 @@ export default class SiteDetailsComponent extends React.PureComponent<ISiteDetai
 
     private commands: ICommandButton[] = [
         {
-            id: ButtonType.Add,
+            type: ButtonType.Add,
             name: "Asset",
             itemLocation: ItemLocation.Left,
             actionPayload: rightPanelData,
         },
         {
-            id: ButtonType.Add,
+            type: ButtonType.Add,
             name: "Job",
             itemLocation: ItemLocation.Left,
             actionPayload: null,
         },
         {
-            id: ButtonType.Add,
-            name: "Files",
-            itemLocation: ItemLocation.Left,
-            actionPayload: null,
-        },
-        {
-            id: ButtonType.Add,
+            type: ButtonType.Permissions,
             name: "Permissions",
             itemLocation: ItemLocation.Left,
-            actionPayload: null,
         },
         {
-            id: ButtonType.Info,
+            type: ButtonType.Info,
             name: null,
             itemLocation: ItemLocation.Far,
             actionPayload: rightPaneData

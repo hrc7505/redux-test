@@ -41,21 +41,21 @@ const getSitesDetailsListItems: OutputSelector<IAppState, ISiteDetailsListItemDa
     }
 );
 
-function mapStateToProps(state: IAppState): IAllSitesPropsFromState {
-    return {
-        detailsListItems: getSitesDetailsListItems(state),
-        isLoading: state.sitesState.allSitesState.isLoading,
-    };
-}
+type MapStateToProps = (state: IAppState) => IAllSitesPropsFromState;
+
+const mapStateToProps: MapStateToProps = (state: IAppState): IAllSitesPropsFromState => ({
+    detailsListItems: getSitesDetailsListItems(state),
+    isLoading: state.sitesState.allSitesState.isLoading,
+});
 
 type Actions = IAllSitesRequestDataAction;
+type MapDispatchToProps = (dispatch: ThunkDispatch<IAppState, void, Actions>) => IAllSitesPropsFromDispatch;
 
-function mapDispatchToProps(dispatch: ThunkDispatch<IAppState, void, Actions>): IAllSitesPropsFromDispatch {
-    return {
+const mapDispatchToProps: MapDispatchToProps =
+    (dispatch: ThunkDispatch<IAppState, void, Actions>): IAllSitesPropsFromDispatch => ({
         getData: (useShim: boolean): void => { dispatch(allSitesGetData(useShim)); },
         setHeader: (headerPayload: IHeaderPayload): void => { dispatch(headerSetHeader(headerPayload)); },
-    };
-}
+    });
 
 const AllSitesContainer: React.ComponentClass = withRouter(
     connect(

@@ -20,11 +20,12 @@ type Actions =
     IDashboardRequestDataAction |
     IDashboardCloseRightPaneAction |
     IDashboardLoadDataAction;
+type DashboardGetData = (useShim: boolean) => (dispatch: Dispatch<Actions>) => void;
 
 const DashboardDataUrl: string = UrlUtils.hostApi + "Dashboard";
 
-export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<Actions>) => void {
-    return async (dispatch: Dispatch<Actions>): Promise<void> => {
+const dashboardGetData: DashboardGetData = (useShim: boolean): (dispatch: Dispatch<Actions>) => void => (
+    async (dispatch: Dispatch<Actions>): Promise<void> => {
         // Setting the dashboard into the loading state and closing the right pane.
         dispatch(dashboardRequestData());
         dispatch(dashboardCloseRightPane());
@@ -88,5 +89,7 @@ export default function dashboardGetData(useShim: boolean): (dispatch: Dispatch<
                 sites: null,
             }));
         }
-    };
-}
+    }
+);
+
+export default dashboardGetData;
