@@ -7,7 +7,7 @@
     "@types/lodash": "^4.14.110",
     "@types/redux-logger": "^3.0.6",
     "lodash": "^4.17.10",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "office-ui-fabric-react": "^5.101.2-hotfix.1",
     "react-router-dom": "^4.2.2",
     "redux-logger": "^3.0.6",
